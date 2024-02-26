@@ -1,0 +1,114 @@
+---
+title: Data Response Schema
+description: ''
+position: 6
+category: 'REFERENCE'
+---
+
+## General information
+
+- success ```boolean``` - true if the request is a success
+
+- email ```string``` - Represents the requested email
+
+- emailType ```string``` - "personal" if the request email is a personal email "professional" if it's a business email
+
+- credits_left ```number``` - Represents your credits left on your account
+
+- rate_limit_left ```number``` - Represents your rate limit left on your account
+
+
+## person object response
+
+- linkedInIdentifier ```string``` - Represents a unique identifer of the linkedin profile
+
+- linkedInUrl ```string``` - Represents the linkedin profile URL
+
+- firstName ```string``` - Represents the first name of the user profile
+
+- lastName ```string``` - Represents the last name of the user profile
+
+- headline ```string``` - Represents the headline of the linkedin profile
+
+- summary ```string``` - Represents the summary of the linkedin profile
+
+- companyName ```string``` - Represents the company the user profile is associated with
+
+- location ```string``` - Represents the location of the user/company profile
+
+- photoUrl ```string``` - Represents a url of the user profile
+
+- followerCount ```number``` - Represents the number of followers associated with the user profile
+
+- connectionCount ```number``` - Represents the number of connections associated with the user profile
+
+- skills ```array[string]``` - An array of skills associated with the user profile
+
+- languages ```array[string]``` - An array of languages associated with the user profile
+
+- creationDate ```object``` - Represents the Linkedin profile creation date
+    - year ```number``` - Represents the year of creation
+    - month ```number``` - Represents the month of creation
+
+- publicIdentifier ```string``` - Linkedin slug of the profile
+
+
+### schools object response
+
+- schools ```object``` - Represents the education information associated to the user profile
+    - educationsCount ```number``` - Represents the number of education
+    - educationHistory ```array[Object]``` - Represents the number of education
+        - degreeName ```string``` - Represents the certification obtained by the user
+        - schoolName ```string``` - Represents the name of the education organization
+        - fieldOfStudy ```string``` - Represents the field of study of the user
+        - schoolLocation ```string``` - Represents the location of the education organization
+        - schoolLogo ```string``` - Represents a url to the logo of the education organization
+        - linkedInUrl ```string``` - Represents the linkedin url to the education organization
+        - startEndDate ```object``` - Represents the state date
+            - start ```object```
+                - year ```string``` - Represents the year of commencement
+            - end ```object```
+                - year ```string``` - Represents the year of completion
+
+
+
+
+### positions object response
+
+- positions ```object``` - Represents the education information associated to the user profile
+    - positionsCount ```number``` - Represents the number of education
+    - positionHistory ```array[Object]``` - Represents the number of education
+        - contractType ```string``` - Represents the contract type of the position
+        - title ```string``` - Represents the title of the position
+        - companyName ```string``` - Represents the company name
+        - startEndDate ```object``` - Provides information about the commencement and termination date for the position
+            - start ```object```
+                - month ```string``` - Represents the month of commencement
+                - year ```boolean``` - Represents the year of commencement
+            - end ```object```
+                - month ```boolean``` - Represents the month of termination
+                - year ```boolean``` - Represents the year of termination
+        - description ```string``` - Represents a brief description of the role or position
+        - companyLocation ```string``` - Represents the company location
+        - companyLogo ```string``` - Represents a url to the company logo
+        - linkedInUrl ```string``` - Represents the linkedin url to the company
+
+
+
+## company object response
+
+- websiteUrl ```string``` - Represents the website URL of the company
+- name ```string``` - Represents the company name
+- employeeCount ```number``` - Represents the number of employees within the company
+- tagline ```string``` - Represents the tagline of the company
+- description ```string``` - Represents a brief description of the company
+- specialities ```array[string]``` - Represents the specialities of the company
+- headquarter ```array[Object]``` - Represents the headquarter of the company
+    - country ```string``` - Represents the headquarter country of the company
+    - city ```string``` - Represents the headquarter city of the company
+    - postalCode ```string``` - Represents the postalCode country of the company
+    - geographicArea ```string``` - Represents the geographicArea of the company
+- industry ```string``` - Represents the industry of the company
+- universalName ```string``` - Represents the slug Linkedin URL of the company
+- linkedInUrl ```string``` - Represents the Linkedin URL of the company
+- linkedInId ```string``` - Represents the Linkedin ID of the company

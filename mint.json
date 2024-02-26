@@ -1,0 +1,59 @@
+{
+  "$schema": "https://mintlify.com/schema.json",
+  "name": "ScrapIn API",
+  "logo": {
+    "dark": "/logo/dark.svg",
+    "light": "/logo/light.svg"
+  },
+  "favicon": "/icon.png",
+  "colors": {
+    "primary": "#0D9373",
+    "light": "#07C983",
+    "dark": "#0D9373",
+    "anchors": {
+      "from": "#0D9373",
+      "to": "#07C983"
+    }
+  },
+  "topbarLinks": [
+    {
+      "name": "Support",
+      "url": "mailto:support@scrapin.io"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "Homepage",
+    "url": "https://www.scrapin.io/"
+  },
+  "navigation": [
+    
+    {
+      "group": "Getting Started",
+      "pages": [
+        "introduction",
+        "quickstart"
+      ]
+    },
+    {
+      "group": "Person",
+      "pages": [
+        "endpoint/ExtractPersonDataProfile"
+      ]
+    },
+    {
+      "group": "Company",
+      "pages": [
+        "endpoint/ExtractCompanyDataProfile"
+      ]
+    },
+    {
+      "group": "References",
+      "pages": [
+        "profile",
+        "error_responses"
+      ]
+    }
+  ],
+  "footerSocials": {
+  }
+}

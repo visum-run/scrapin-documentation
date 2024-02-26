@@ -1,0 +1,115 @@
+---
+title: Error Responses
+description: ''
+position: 7
+category: 'REFERENCE'
+---
+
+A number of error responses can be returned by a request.
+
+- Invalid/Wrong API Key (unauthorized - 401)
+- No API Key/ email provided  (bad request - 400)
+- Invalid query email (bad request - 400)
+- No credits available (Insufficient account balance - 402)
+- LinkedIn Page doesn't exist anymore (page not found - 404)
+- Too many requests (Too mant requests - 429)
+- Server Error (500)
+
+Samples responses are as listed below.
+
+<code-group>
+  <code-block label="400|NO API-KEY" active>
+
+  ```json
+   {
+    "success": false,
+    "title": "An error has occurred 🚒",
+    "msg": "The API Key is missing"
+   }
+ ```
+  </code-block>
+
+  <code-block label="401|INVALID API-KEY">
+
+  ```json
+   {
+    "success": false,
+    "title": "An error has occurred 🚒",
+    "msg": "Unauthorized"
+   }
+  ```
+  </code-block>
+
+  <code-block label="402|PAYMENT REQUIRED">
+
+  ```json
+   {
+    "success": false,
+    "title": "You don't have enough credits on your account 💰",
+    "msg": "You have to upgrade to continue"
+   }
+  ```
+  </code-block>
+
+  <code-block label="400|INVALID EMAIL">
+
+  ```json
+    {
+        "success": false,
+        "title": "An error has occurred 🚒",
+        "msg": "The email has the wrong format"
+    }
+  ```
+
+  </code-block>
+
+</code-group>
+
+---
+
+<code-group>
+  <code-block label="400|MISSING EMAIL" active>
+
+  ```json
+    {
+        "success": false,
+        "title": "An error has occurred 🚒",
+        "msg": "The email is missing"
+    }
+ ```
+  </code-block>
+
+  <code-block label="404|PAGE NOT FOUND" active>
+
+  ```json
+    {
+        "success": false,
+        "title": "An error has occurred 🚒",
+        "msg": "This LinkedIn Profile is not available or does not exist."
+    }
+ ```
+  </code-block>
+
+  <code-block label="429|TOO MANY REQUEST" active>
+
+  ```json
+    {
+        "success": false,
+        "title": "An error has occurred 🚒",
+        "msg": "Too many requests"
+    }
+ ```
+  </code-block>
+
+  <code-block label="500|SERVER ERROR">
+
+  ```json
+    {
+        "success": false,
+        "title": "An error has occurred 🚒",
+        "msg": "🚨 Internal Server Error, you will not be credit debited."
+    }
+  ```
+  </code-block>
+
+</code-group>
