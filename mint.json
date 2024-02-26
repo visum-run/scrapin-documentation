@@ -45,13 +45,6 @@
       "pages": [
         "endpoint/ExtractCompanyDataProfile"
       ]
-    },
-    {
-      "group": "References",
-      "pages": [
-        "profile",
-        "error_responses"
-      ]
     }
   ],
   "footerSocials": {
