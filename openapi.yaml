@@ -44,7 +44,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ReverseEmailLookup'
+                $ref: '#/components/schemas/PersonSearch'
               examples:
                 ProfileFound:
                   $ref: '#/components/examples/ProfileFound'
@@ -194,7 +194,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ReverseDomainLookup'
+                $ref: '#/components/schemas/CompanySearch'
               examples:
                 CompanyFound:
                   $ref: '#/components/examples/CompanyFound'
