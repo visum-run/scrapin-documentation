@@ -326,6 +326,36 @@ paths:
                   $ref: '#/components/examples/ServerError'
 components:
   schemas:
+    PersonSearch:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Indicates success or failure of api request.
+        email:
+          type: string
+          description: Represents the email of the person account that was queried
+        emailType:
+          type: string
+          description: Represents the type of account.
+        person:
+          oneOf:
+          - $ref: '#/components/schemas/Person'
+          - type: boolean
+            enum:
+            - false
+        company:
+          oneOf:
+          - $ref: '#/components/schemas/Company'
+          - type: boolean
+            enum:
+            - false
+        credits_left:
+          type: integer
+          description: Represents the usable credits available for the user account after this query.
+        rate_limit_left:
+          type: integer
+          description: Represents the usable daily request limit available for the user account after this query.
     Person:
       type: object
       properties:
@@ -500,6 +530,24 @@ components:
           type: string
         websiteUrl:
           type: string
+    CompanySearch:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Indicates success or failure of api request.
+        credits_left:
+          type: integer
+          description: Represents the usable credits available for the user account after this query.
+        rate_limit_left:
+          type: integer
+          description: Represents the usable daily request limit available for the user account after this query.
+        company:
+          oneOf:
+          - $ref: '#/components/schemas/Company'
+          - type: boolean
+            enum:
+            - false
     ExtractCompanyDataProfile:
       type: object
       properties:
