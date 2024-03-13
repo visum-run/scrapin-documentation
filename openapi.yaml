@@ -10,6 +10,96 @@ tags:
 - name: Person
 - name: Company
 paths:
+  '/enrichment':
+    get:
+      tags:
+      - Person
+      operationId: PersonSearch
+      summary: Person Search
+      description: This operation allows you to find someone from first name, last name, company domain or email. It returns data profile and company information as the response. This operation consume 1 credit.
+      parameters:
+      - name: firstName
+        in: query
+        schema:
+          type: string
+        description: This optional parameter is a string. It represents the first name to query.
+      - name: lastName
+        in: query
+        schema:
+          type: string
+        description: This optional parameter is a string. It represents the last name to query.
+      - name: companyDomain
+        in: query
+        schema:
+          type: string
+        description: This optional parameter is a string. It represents the company domain/URL to query
+      - name: email
+        in: query
+        schema:
+          type: string
+        description: This required parameter is a string. It represents the email to query.
+      responses:
+        200:
+          description: 'The endpoint returns information about the person found and its company. There are two possible success responses for the operation. <br />1. Query Successful but no data found. <br />2. Query Successful with data found.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReverseEmailLookup'
+              examples:
+                ProfileFound:
+                  $ref: '#/components/examples/ProfileFound'
+                ProfileNotFound:
+                  $ref: '#/components/examples/ProfileNotFound'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseSchema'
+              examples:
+                NoApiKey:
+                  $ref: '#/components/examples/NoApiKey'
+                MissingEmail:
+                  $ref: '#/components/examples/MissingEmail'
+                InvalidEmail:
+                  $ref: '#/components/examples/InvalidEmail'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseSchema'
+              examples:
+                InvalidApiKey:
+                  $ref: '#/components/examples/InvalidApiKey'
+              
+        402:
+          description: Insufficient Account Balance
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseSchema'
+              examples:
+                PaymentRequired:
+                  $ref: '#/components/examples/PaymentRequired'
+        404:
+          description: Page Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseSchema'
+              examples:
+                PageNotFound:
+                  $ref: '#/components/examples/PageNotFound'
+        500:
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseSchema'
+              examples:
+                ServerError:
+                  $ref: '#/components/examples/ServerError'
   '/enrichment/profile':
     get:
       tags:
