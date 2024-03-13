@@ -174,6 +174,82 @@ paths:
               examples:
                 ServerError:
                   $ref: '#/components/examples/ServerError'
+  '/enrichment/company/domain':
+    get:
+      tags:
+      - Company
+      operationId: CompanySearch
+      summary: Company Search
+      description: This operation allows you to find a company from its domain name. It returns company information as the response. This operation consume 1 credit.
+      parameters:
+      - name: domain
+        in: query
+        schema:
+          type: string
+        description: "This required parameter is a string. It represents the domain name of the company to query."
+        required: true
+      responses:
+        200:
+          description: 'The endpoint returns information about the company. There are two possible success responses for the operation. <br />1. Query Successful but no data found. <Br />2. Query Successful with data found.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReverseDomainLookup'
+              examples:
+                CompanyFound:
+                  $ref: '#/components/examples/CompanyFound'
+                CompanyNotFound:
+                  $ref: '#/components/examples/CompanyNotFound'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseSchema'
+              examples:
+                NoApiKey:
+                  $ref: '#/components/examples/NoApiKey'
+                MissingEmail:
+                  $ref: '#/components/examples/MissingEmail'
+                InvalidEmail:
+                  $ref: '#/components/examples/InvalidEmail'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseSchema'
+              examples:
+                InvalidApiKey:
+                  $ref: '#/components/examples/InvalidApiKey'
+              
+        402:
+          description: Insufficient Account Balance
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseSchema'
+              examples:
+                PaymentRequired:
+                  $ref: '#/components/examples/PaymentRequired'
+        404:
+          description: Page Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseSchema'
+              examples:
+                PageNotFound:
+                  $ref: '#/components/examples/PageNotFound'
+        500:
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseSchema'
+              examples:
+                ServerError:
+                  $ref: '#/components/examples/ServerError'
   '/enrichment/company':
     get:
       tags:
