@@ -359,8 +359,6 @@ components:
     Person:
       type: object
       properties:
-        connectionCount:
-          type: number
         creationDate:
           type: object
           properties:
@@ -373,6 +371,8 @@ components:
         followerCount:
           type: number
         headline:
+          type: string
+        summary:
           type: string
         languages:
           type: array
@@ -785,6 +785,7 @@ components:
         rate_limit_left: 19608
         person:
           publicIdentifier: julien-keraval-visum
+          linkedInUrl: https://www.linkedin.com/in/ACoAACJrg3QBOHYEx_zMaj2sF7IgUFOpF5VLkss
           linkedInIdentifier: ACoAACJrg3QBOHYEx_zMaj2sF7IgUFOpF5VLkss
           firstName: Julien
           lastName: Keraval
@@ -794,9 +795,6 @@ components:
           creationDate:
             year: 2017
           followerCount: 6197
-          connectionCount: 5747
-          emails: []
-          phoneNumbers: []
           positions:
             positionsCount: 6
             positionHistory:
