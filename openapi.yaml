@@ -583,476 +583,383 @@ components:
       summary: Profile Found
       value:
         success: true
-        email: ilies@visum.run
+        email: bill.gates@microsoft.com
         emailType: professional
-        credits_left: 20602
+        credits_left: 90000
+        rate_limit_left: 19000
         person:
-          publicIdentifier: iliesgraffion-visum-find-stacks-of-anyone
-          linkedInIdentifier: ACoAABeeBc4BdhwvD1RNk_40gtabNjwzUgvost0
-          firstName: Iliès
-          lastName: Graffion B.🦉
-          headline: CTO @Visum | Data Hunter
-          location: France
-          photoUrl: https://media.licdn.com/dms/image/D4D03AQGINx51I2LHjA/profile-displayphoto-shrink_800_800/0/1633356200321?e=1695859200&v=beta&t=KqxxNeX7QSXUw8YKmR7uRDc19bBVgS2ctRrRisa1PC0
+          publicIdentifier: "williamhgates"
+          linkedInIdentifier: "ACoAAA8BYqEBCGLg_vT_ca6mMEqkpp9nVffJ3hc"
+          linkedInUrl: "https://www.linkedin.com/in/ACoAAA8BYqEBCGLg_vT_ca6mMEqkpp9nVffJ3hc"
+          firstName: "Bill"
+          lastName: "Gates"
+          headline: "Co-chair, Bill & Melinda Gates Foundation"
+          location: "Seattle, Washington, United States of America"
+          summary: "Co-chair of the Bill & Melinda Gates Foundation. Founder of Breakthrough Energy. Co-founder of Microsoft. Voracious reader. Avid traveler. Active blogger."
+          photoUrl: "https://media.licdn.com/dms/image/D5603AQHv6LsdiUg1kw/profile-displayphoto-shrink_800_800/0/1695167344576?e=1723680000&v=beta&t=NcEpysYwCpQ_NBg0QTz_a265pEOhfGICFJUX92-KNpw"
           creationDate:
-            month: 1
-            year: 2015
-          followerCount: 5400
-          connectionCount: 5148
+            month: 5
+            year: 2013
+          followerCount: 35415
           positions:
-            positionsCount: 5
+            positionsCount: 3
             positionHistory:
-              - startEndDate:
-                  start:
-                    month: 12
-                    year: 2020
-                title: CEO
-                description: Visum.run lets you know what tools, services and applications anyone is using from their email address.
-                companyName: Visum
-                companyLocation: Ville de Paris, Île-de-France, France
-                companyLogo: https://media.licdn.com/dms/image/C4E0BAQEbr48diDvnrw/company-logo_200_200/0/1674558570304?e=1698883200&v=beta&t=H5dvspy_TFn_g74R6JbuGOp3eUMNPNR3dFPJU0ugPZg
-                linkedInUrl: https://www.linkedin.com/company/71234370/
-              - startEndDate:
-                  start:
-                    month: 7
-                    year: 2020
-                contractType: Self-employed
-                title: 'Co-founder '
-                description: Repos Digital vous accompagne dans la suppression des données et la résiliation des contrats d'un défunt.
-                companyName: 'Repos Digital '
-                companyLocation: Ville de Paris, Île-de-France, France
-                companyLogo: https://media.licdn.com/dms/image/C4D0BAQGBtwCMV-deCA/company-logo_200_200/0/1625094869961?e=1698883200&v=beta&t=JEn-cCVXf2pZCzbrmxHYntSSneIG6xagEETP3cEToxM
-                linkedInUrl: https://www.linkedin.com/company/65841732/
-              - startEndDate:
-                  start:
-                    month: 8
-                    year: 2017
-                  end:
-                    month: 7
-                    year: 2020
-                title: DevOps Engineer
-                description: |-
-                  Integration and development of tools on PaaS Cloud Foundry and OpenShift.
-                  Implementation of a Development and Continuous Integration pipeline.
-                companyName: Orange
-                companyLocation: Orange Gardens - Châtillon
-                companyLogo: https://media.licdn.com/dms/image/C4D0BAQEIG5RkDRNPvg/company-logo_200_200/0/1574431121488?e=1698883200&v=beta&t=v6BlehKgjUHd7vM8OIACs47Ety8_SHewfP1CfAXh-98
-                linkedInUrl: https://www.linkedin.com/company/1110/
-              - startEndDate:
-                  start:
-                    month: 12
-                    year: 2017
-                  end:
-                    month: 2
-                    year: 2018
-                title: Graphic & Video Campaign Manager
-                description: |-
-                  I brought skills in graphics and video FX to Phore Blockchain. I'm also experienced in web design and development. I worked with the French and Belgian community and helped oversee the largest French discord community.
-
-                  After winning the video contest of the young start-up, the members of their team quickly contacted me so that I realize various audiovisual achievements.
-
-                  It is with almost 150,000 views on the last promotional video that I realized that the reputation of the project has increased sharply at the beginning of the year.
-                companyName: Phore Blockchain
-                companyLocation: Paris La Défense, Île-de-France, France
-                companyLogo: https://media.licdn.com/dms/image/C4E0BAQFcSihW9o0mXA/company-logo_200_200/0/1520369176944?e=1698883200&v=beta&t=hozOcQhhnZuA2jG8FtxV5q3ur_gZRJuprVQapwLh3iI
-                linkedInUrl: https://www.linkedin.com/company/18353394/
-              - startEndDate:
+              - title: "Co-chair"
+                companyName: "Bill & Melinda Gates Foundation"
+                description: ""
+                startEndDate:
                   start:
                     month: 1
-                    year: 2017
-                  end:
-                    month: 4
-                    year: 2017
-                title: Lead Software Engineer
-                description: |-
-                  It was with great pleasure and enthusiasm that I helped friends to start their startup.
-
-                  It was in a start-up competition organized by Start in Saclay (https://startinsaclay.fr/) that we were selected to participate in a competition in the prestigious HEC establishment.
-                  We finished our race at the final of the Pitch SEED EntrepreneurShip Summit 2017.
-
-                  My missions at the start-up were:
-                  • Supervise the technical aspects of the project
-                  • Develop a demo of the smartphone application on Android
-                  • Develop the website showcase of the application and the start-up
-                companyName: Stapler
-                companyLocation: Région de Paris, France
-                companyLogo: https://media.licdn.com/dms/image/C4E0BAQHygsJM2BlsWQ/company-logo_200_200/0/1519902766393?e=1698883200&v=beta&t=vHEz40JNm4ocu5p5BNhfMc_q0sHlDxKyMuZMTLUYUzU
-                linkedInUrl: https://www.linkedin.com/company/18106104/
-          schools:
-            educationsCount: 3
-            educationHistory:
-              - startEndDate:
+                    year: 2000
+                  end: null
+                companyLogo: "https://media.licdn.com/dms/image/C4E0BAQE7Na_mKQhIJg/company-logo_400_400/0/1633731811337/bill__melinda_gates_foundation_logo?e=1726099200&v=beta&t=LIgstVg1oR5LmBl9u1kolb_xeOqs5kX1ZTcUpaEtsE4"
+                linkedInUrl: "https://www.linkedin.com/company/8736/"
+                linkedInId: "8736"
+              - title: "Founder"
+                companyName: "Breakthrough Energy"
+                description: ""
+                startEndDate:
                   start:
-                    year: 2017
-                  end:
-                    year: 2020
-                schoolName: ESILV - Ecole Supérieure d'Ingénieurs Léonard de Vinci
-                description: |-
-                  The IBO Major trains general IT engineers, able to master all components of information processing. To meet the changing strategic needs of the company, the future engineer will be trained in information systems, database architecture, mobility and application development.
-
-                  Computers, Big Data and Connected Objects.
-                degreeName: Engineering degree, Computers, Big Data and Connected Objects
-                fieldOfStudy: Engineering degree, Computers, Big Data and Connected Objects
-                schoolLogo: https://media.licdn.com/dms/image/C560BAQF-voGLcZoK6w/company-logo_200_200/0/1642158124302?e=1698883200&v=beta&t=Nave9d9f8zyAgEmAB-i_Ncn1v3MnAsBW2EjiqohBsck
-                linkedInUrl: https://www.linkedin.com/company/15142508/
-              - startEndDate:
-                  start:
-                    year: 2018
-                  end:
-                    year: 2019
-                schoolName: Shanghai Normal University
-                degreeName: Summer School Program, Programme d'échange international
-                fieldOfStudy: Summer School Program, Programme d'échange international
-                schoolLogo: https://media.licdn.com/dms/image/C560BAQGhFlIwwrPy5Q/company-logo_200_200/0/1584115242490?e=1698883200&v=beta&t=xPM9J4HfzQ2GSFGp3m55fHRP-KCnPmCsLEdTpyZ-2Gc
-                linkedInUrl: https://www.linkedin.com/company/15093901/
-              - startEndDate:
-                  start:
+                    month: 1
                     year: 2015
+                  end: null
+                companyLogo: "https://media.licdn.com/dms/image/C4D0BAQGwD9vNu044FA/company-logo_400_400/0/1630531940051/breakthrough_energy_ventures_logo?e=1726099200&v=beta&t=DIU32ElAkeY4aqcq_9uJTAhiZI-v0GoOX77409cLZRE"
+                linkedInUrl: "https://www.linkedin.com/company/19141006/"
+                linkedInId: "19141006"
+              - title: "Co-founder"
+                companyName: "Microsoft"
+                description: ""
+                startEndDate:
+                  start:
+                    month: 1
+                    year: 1975
+                  end: null
+                companyLogo: "https://media.licdn.com/dms/image/C560BAQE88xCsONDULQ/company-logo_400_400/0/1630652622688/microsoft_logo?e=1726099200&v=beta&t=zueWlWXcJ4WjwGSzlUWgPOnjoAm8C2KfSIcWWHxWrGg"
+                linkedInUrl: "https://www.linkedin.com/company/1035/"
+                linkedInId: "1035"
+          schools:
+            educationsCount: 2
+            educationHistory:
+              - degreeName: ""
+                fieldOfStudy: ""
+                description: null
+                linkedInUrl: "https://www.linkedin.com/company/1646/"
+                schoolLogo: "https://media.licdn.com/dms/image/C4E0BAQF5t62bcL0e9g/company-logo_400_400/0/1631318058235?e=1726099200&v=beta&t=tSGQKfAlig70DD9n2_xkYR54yBTf7K3aKsau8PMQSVM"
+                schoolName: "Harvard University"
+                startEndDate:
+                  start:
+                    month: 1
+                    year: 1973
                   end:
-                    year: 2016
-                schoolName: Conservatoire National des Arts et Métiers
-                description: This degree offers a professional training in the business of information systems engineering and decision making. Its purpose is to facilitate the professional insertion in IT fields in continuous growth.
-                degreeName: ' Professional License Computer Systems and Database,  Analyst-Designer in Information and Decision System (ACSID)'
-                fieldOfStudy: ' Professional License Computer Systems and Database,  Analyst-Designer in Information and Decision System (ACSID)'
-                schoolLogo: https://media.licdn.com/dms/image/C4D0BAQGRQuv1v-KRxQ/company-logo_200_200/0/1604394648285?e=1698883200&v=beta&t=Vl3o5KIX8Rp2g-hFKnfy7ph9B3xgLSl-CoFY-fume2o
-                linkedInUrl: https://www.linkedin.com/company/15091873/
-          skills:
-            - Reverse Contact
-            - AngularJS
-            - PHP
-            - Java
-            - JavaScript
-            - SQL
-            - HTML5
-            - CSS
-            - Git
-            - API Google Maps
-            - API Google Charts
-            - Sourcetree
-            - Oracle
-            - UML
-            - C++
-            - Linux
-            - MySQL
-            - Bitbucket
-            - Gestion machine SSH
-            - Conception de systèmes
-          languages:
-            - Anglais
-            - Arabe
-            - Français
-          linkedInUrl: https://www.linkedin.com/in/iliesgraffion-visum-find-stacks-of-anyone/en
+                    month: 1
+                    year: 1975
+              - degreeName: ""
+                fieldOfStudy: ""
+                description: null
+                linkedInUrl: "https://www.linkedin.com/company/30288/"
+                schoolLogo: "https://media.licdn.com/dms/image/D560BAQGFmOQmzpxg9A/company-logo_400_400/0/1683732883164/lakeside_school_logo?e=1726099200&v=beta&t=cylwvrQe7Q4N8oU1hotzPfrae8yxPuzdtG1ocBSuEmA"
+                schoolName: "Lakeside School"
+                startEndDate:
+                  start:
+                    month: null
+                    year: null
+                  end:
+                    month: null
+                    year: null
+          skills: []
+          languages: []
         company:
-          websiteUrl: https://visum.run
-          name: Visum
-          employeeCount: 8
-          description: |-
-            In other words “the mister gadget” of Data enrichment.
-
-            We specialize in hunting down all types of data for your business - with over 5 years of experience and already 3 enrichment tools created, we're dedicated to providing you with the most comprehensive and up-to-date data possible, no matter how complex or difficult it may be to get it.
-
-            Trust us to be your data hunting experts and help you stay ahead of the competition.
-          tagline: Data Hunter for companies
+          linkedInId: "1035"
+          name: "Microsoft"
+          universalName: "microsoft"
+          linkedInUrl: "https://www.linkedin.com/company/1035"
+          employeeCount: 228581
+          websiteUrl: "https://news.microsoft.com/"
+          tagline: null
+          description: |
+            Every company has a mission. What's ours? To empower every person and every organization to achieve more. We believe technology can and should be a force for good and that meaningful innovation contributes to a brighter world in the future and today. Our culture doesn’t just encourage curiosity; it embraces it. Each day we make progress together by showing up as our authentic selves. We show up with a learn-it-all mentality. We show up cheering on others, knowing their success doesn't diminish our own. We show up every day open to learning our own biases, changing our behavior, and inviting in differences. Because impact matters.
+        
+            Microsoft operates in 190 countries and is made up of more than 220,000 passionate employees worldwide.
+          industry: "Software Development"
+          phone: null
           specialities:
-            - Lead Generation
-            - Lead Qualification
-            - Market Search
-            - Competitor analysis
-            - CRM enrichment
+            - "Business Software"
+            - "Developer Tools"
+            - "Home & Educational Software"
+            - "Tablets"
+            - "Search"
+            - "Advertising"
+            - "Servers"
+            - "Windows Operating System"
+            - "Windows Applications & Platforms"
+            - "Smartphones"
+            - "Cloud Computing"
+            - "Quantum Computing"
+            - "Future of Work"
+            - "Productivity"
+            - "AI"
+            - "Artificial Intelligence"
+            - "Machine Learning"
+            - "Laptops"
+            - "Mixed Reality"
+            - "Virtual Reality"
+            - "Gaming"
+            - "Developers"
+            - "IT Professional"
           headquarter:
-            country: FR
-            geographicArea: Île-de-France
-            city: Paris
-            postalCode: '75013'
-          industry: Computer Software
-          universalName: visum-run
-          linkedInUrl: https://www.linkedin.com/company/visum-run/
-          linkedInId: '71234370'
+            city: "Redmond"
+            country: "US"
+            postalCode: "98052"
+            geographicArea: "Washington"
+          logo: "https://media.licdn.com/dms/image/C560BAQE88xCsONDULQ/company-logo_400_400/0/1630652622688/microsoft_logo?e=1725494400&v=beta&t=joSXHhDAEare7f9gk8MwXr2sOr84zX7HDx2h5znXEYI"
     ProfileNotFound:
       summary: Profile Not Found
       value:
         success: true
         email: efzefhzefzef@live.fr
         emailType: personal
-        credits_left: 140
+        credits_left: 90000
+        rate_limit_left: 19000
         person: false
         company: false
     PersonProfileExtracted:
       summary: Person Profile Extracted
       value:
         success: true
-        credits_left: 4337
-        rate_limit_left: 19608
+        credits_left: 90000
+        rate_limit_left: 19000
         person:
-          publicIdentifier: julien-keraval-visum
-          linkedInUrl: https://www.linkedin.com/in/ACoAACJrg3QBOHYEx_zMaj2sF7IgUFOpF5VLkss
-          linkedInIdentifier: ACoAACJrg3QBOHYEx_zMaj2sF7IgUFOpF5VLkss
-          firstName: Julien
-          lastName: Keraval
-          headline: COO @ Visum | Data Hunter
-          location: Paris, Île-de-France France
-          photoUrl: https://media.licdn.com/dms/image/C4D03AQEN7W54z8qsHQ/profile-displayphoto-shrink_800_800/0/1633355607781?e=1701907200&v=beta&t=79-W0gvK6hm_TK3liARic0iUnTYY1F6qbF_vkQV-ZoI
+          publicIdentifier: "williamhgates"
+          linkedInIdentifier: "ACoAAA8BYqEBCGLg_vT_ca6mMEqkpp9nVffJ3hc"
+          linkedInUrl: "https://www.linkedin.com/in/ACoAAA8BYqEBCGLg_vT_ca6mMEqkpp9nVffJ3hc"
+          firstName: "Bill"
+          lastName: "Gates"
+          headline: "Co-chair, Bill & Melinda Gates Foundation"
+          location: "Seattle, Washington, United States of America"
+          summary: "Co-chair of the Bill & Melinda Gates Foundation. Founder of Breakthrough Energy. Co-founder of Microsoft. Voracious reader. Avid traveler. Active blogger."
+          photoUrl: "https://media.licdn.com/dms/image/D5603AQHv6LsdiUg1kw/profile-displayphoto-shrink_800_800/0/1695167344576?e=1723680000&v=beta&t=NcEpysYwCpQ_NBg0QTz_a265pEOhfGICFJUX92-KNpw"
           creationDate:
-            year: 2017
-          followerCount: 6197
+            month: 5
+            year: 2013
+          followerCount: 35415
           positions:
-            positionsCount: 6
+            positionsCount: 3
             positionHistory:
-              - startEndDate:
+              - title: "Co-chair"
+                companyName: "Bill & Melinda Gates Foundation"
+                description: ""
+                startEndDate:
                   start:
-                    month: 12
-                    year: 2020
-                title: Co-founder & COO
-                description: Visum collects all the data you need to help your sales & marketing team
-                companyName: 'Visum '
-                companyLocation: Ville de Paris, Île-de-France, France
-                companyLogo: https://media.licdn.com/dms/image/C4E0BAQEbr48diDvnrw/company-logo_200_200/0/1674558570304?e=1704326400&v=beta&t=qk9thQBKgXOkog_Ii-EZF1NxdbSuCvUkQE4-u_TUNsY
-                linkedInUrl: https://www.linkedin.com/company/71234370/
-              - startEndDate:
-                  start:
-                    month: 3
-                    year: 2020
-                title: Directeur marketing
-                description: Repos Digital recherche et sécurise les réseaux sociaux, boîtes mails et messageries après décès.
-                companyName: 'Repos Digital '
-                companyLocation: Paris Ouest La Défense
-                companyLogo: https://media.licdn.com/dms/image/C4D0BAQGBtwCMV-deCA/company-logo_200_200/0/1625094869961?e=1704326400&v=beta&t=YBIB_x52MvVB1gx4wQxr-r7I7O8yHPRuVz-fonyKpQs
-                linkedInUrl: https://www.linkedin.com/company/65841732/
-              - startEndDate:
-                  start:
-                    month: 9
-                    year: 2019
-                  end:
-                    month: 7
-                    year: 2020
-                title: Engineering Project Manager
-                companyName: Safran
-                companyLocation: Vélizy-Villacoublay, Île-de-France, France
-                companyLogo: https://media.licdn.com/dms/image/C4D0BAQF12gJLvR-O3Q/company-logo_200_200/0/1519935017250?e=1704326400&v=beta&t=8L57xyEJPGaJ6CQhKq0i2mF5IsywCOZuUWGGNRPgeTk
-                linkedInUrl: https://www.linkedin.com/company/521777/
-              - startEndDate:
-                  start:
-                    month: 8
-                    year: 2017
-                  end:
-                    month: 9
-                    year: 2019
-                title: Test Manager
-                companyName: Safran
-                companyLocation: Vélizy-Villacoublay, Île-de-France, France
-                companyLogo: https://media.licdn.com/dms/image/C4D0BAQF12gJLvR-O3Q/company-logo_200_200/0/1519935017250?e=1704326400&v=beta&t=8L57xyEJPGaJ6CQhKq0i2mF5IsywCOZuUWGGNRPgeTk
-                linkedInUrl: https://www.linkedin.com/company/521777/
-              - startEndDate:
-                  start:
-                    month: 9
-                    year: 2019
-                  end:
                     month: 1
-                    year: 2020
-                contractType: Self-employed
-                title: Développeur web / Webmarketing freelance
-                description: |-
-                  - Création de maquettes
-                  - Développement de site web
-                  - Intégration de module de paiement (workflow e-commerce et/ou Marketplace)
-                  - Intégration de module de livraison / expédition
-                  - Intégration de module de réservation
-                  - Mise en production de site web / application web
-                  - Configuration DNS
-                  - Creation d’application mobile native Android + IOS et mise en ligne sur les stores (avec gestion du workflow de test)
-                  - Configuration de serveur mail
-                  - Configuration de serveur web (Apache et/ou Ngnix)
-                  - Mise en place de funnel de conversion
-                  - Intégration CRM
-                  - Mise en place marketing automation
-                  - Amélioration du référencement Web (SEO)
-                  - Mise en place SEA (Search Engine Advertising)
-                  - Création et gestion de campagne de PUB sur les réseaux sociaux
-                  - Création et gestion de blog entreprise (content marketing) => Ecriture, diffusion, analyse
-                  - Monitoring et maintenance de serveur web
-                  - Evolution de site / application web existant
-                  - Migration d’hébergeur web
-                  - Conseil Marketing, Business, Informatique etc.
-                  - Formation à différent langage de développement web (html5, css, JavaScript, PHP …)
-                  - Formation à différent Framework de développement web (Laravel, Vue.js, node.js, express.js, bootstrap, Vuetify…)
-                  - Formation à différent CMS (WordPress, WooCommerce …)
-                companyName: 'Malt '
-                companyLocation: Ville de Paris, Île-de-France, France
-                companyLogo: https://media.licdn.com/dms/image/D4E0BAQE6sdo2FBxl2Q/company-logo_200_200/0/1689250164264?e=1704326400&v=beta&t=bwUHhylNGcXOipjwBMyFGzJKnx5Vl_l3-DUddjLcu8c
-                linkedInUrl: https://www.linkedin.com/company/5285846/
-              - startEndDate:
+                    year: 2000
+                  end: null
+                companyLogo: "https://media.licdn.com/dms/image/C4E0BAQE7Na_mKQhIJg/company-logo_400_400/0/1633731811337/bill__melinda_gates_foundation_logo?e=1726099200&v=beta&t=LIgstVg1oR5LmBl9u1kolb_xeOqs5kX1ZTcUpaEtsE4"
+                linkedInUrl: "https://www.linkedin.com/company/8736/"
+                linkedInId: "8736"
+              - title: "Founder"
+                companyName: "Breakthrough Energy"
+                description: ""
+                startEndDate:
                   start:
-                    month: 9
+                    month: 1
                     year: 2015
-                  end:
-                    month: 8
-                    year: 2017
-                title: Assistant chef d'exploitation
-                companyName: GRDF
-                companyLocation: Villeneuve-le-Roi, Île-de-France, France
-                companyLogo: https://media.licdn.com/dms/image/C4E0BAQFbrgye86-8pw/company-logo_200_200/0/1671574027730?e=1704326400&v=beta&t=GPrlvhxJCtiPI2PgOBLs-OOXEtbiRmWZdA5BClbHAdI
-                linkedInUrl: https://www.linkedin.com/company/1037919/
+                  end: null
+                companyLogo: "https://media.licdn.com/dms/image/C4D0BAQGwD9vNu044FA/company-logo_400_400/0/1630531940051/breakthrough_energy_ventures_logo?e=1726099200&v=beta&t=DIU32ElAkeY4aqcq_9uJTAhiZI-v0GoOX77409cLZRE"
+                linkedInUrl: "https://www.linkedin.com/company/19141006/"
+                linkedInId: "19141006"
+              - title: "Co-founder"
+                companyName: "Microsoft"
+                description: ""
+                startEndDate:
+                  start:
+                    month: 1
+                    year: 1975
+                  end: null
+                companyLogo: "https://media.licdn.com/dms/image/C560BAQE88xCsONDULQ/company-logo_400_400/0/1630652622688/microsoft_logo?e=1726099200&v=beta&t=zueWlWXcJ4WjwGSzlUWgPOnjoAm8C2KfSIcWWHxWrGg"
+                linkedInUrl: "https://www.linkedin.com/company/1035/"
+                linkedInId: "1035"
           schools:
             educationsCount: 2
             educationHistory:
-              - startEndDate:
+              - degreeName: ""
+                fieldOfStudy: ""
+                description: null
+                linkedInUrl: "https://www.linkedin.com/company/1646/"
+                schoolLogo: "https://media.licdn.com/dms/image/C4E0BAQF5t62bcL0e9g/company-logo_400_400/0/1631318058235?e=1726099200&v=beta&t=tSGQKfAlig70DD9n2_xkYR54yBTf7K3aKsau8PMQSVM"
+                schoolName: "Harvard University"
+                startEndDate:
                   start:
-                    year: 2017
+                    month: 1
+                    year: 1973
                   end:
-                    year: 2020
-                schoolName: ESILV - Ecole Supérieure d'Ingénieurs Léonard de Vinci
-                description: |-
-                  The IBO Major trains general IT engineers, able to master all components of information processing. To meet the changing strategic needs of the company, the future engineer will be trained in information systems, database architecture, mobility and application development.
-
-                  Program Overview
-                  Computers, Big Data and Connected Objects
-
-                  • ADVANCED SOFTWARE DEVELOPMENT: Architecture & Programming, Advanced Data Structures and Algorithms, Software Development Process, Java EE & Frameworks; Mobile Application development, Web Application Architectures;
-                  • DATABASES: Advanced Topics in NoSQL Databases, Advanced Database Management;
-                  • BIG DATA: Machine Learning and Clustering;
-                  • NETWORKS: Network Management & Security;
-                  • INFORMATION SYSTEMS: Cloud computing & Datacenters, IT management, B.I. SAP;
-                  • INFORMATION PROCESSING: Parallel computing, Multimedia Information Processing;
-                  • EMBEDDED SYSTEMS: Embedded Systems.
-                degreeName: Diplôme d'ingénieur, Informatique, Big data et Objets connectés
-                fieldOfStudy: Diplôme d'ingénieur, Informatique, Big data et Objets connectés
-                schoolLogo: https://media.licdn.com/dms/image/C560BAQF-voGLcZoK6w/company-logo_200_200/0/1642158124302?e=1704326400&v=beta&t=mSoLd4M_OiQ2zuzoycEcFaKV9-bjxMMpnw-PeIMRb6k
-                linkedInUrl: https://www.linkedin.com/company/15142508/
-              - schoolName: Pepite x Schoolab
-                description: |-
-                  Pépite Start’up Ile-de-France a été créé par les PÉPITE franciliens et par Pépite Île-de-France, avec le le soutien de la Région Ile-de-France, en collaboration avec le Schoolab. Il est conçu pour les Étudiants-Entrepreneurs des PÉPITE franciliens.
-
-                  C’est un programme d’accompagnement early stage pendant lesquels vous travaillez à 100 % à sur votre projet de création.
-
-                  PÉPITE Start’up vous emmène sur le terrain pour confronter votre idée au marché, prototyper et tester votre produit pour qu’il devienne un business. Vous rencontrez des experts pour vous challenger et participez à des ateliers pour monter en compétences, le tout dans un espace de travail unique à Station F.
-                degreeName: Pepite Start'up IDF at Station F, Entrepreneuriat / études entrepreneuriales
-                fieldOfStudy: Pepite Start'up IDF at Station F, Entrepreneuriat / études entrepreneuriales
-                schoolLogo: null
-                linkedInUrl: null
-          skills:
-            - Reverse Contact
-            - Développement d’API
-            - Marketing numérique
-            - Lean Startup
-            - Gestion du changement
-            - Testing
-            - Optimisation des moteurs de recherche (SEO)
-            - Marketing par moteur de recherche (SEM)
-            - Marketing sur les médias sociaux
-            - Programmation
-            - Tests de systèmes
-            - HP Quality Center
-            - JavaScript
-            - HTML5
-            - CSS
-            - SAP
-            - MongoDB
-            - NoSQL
-            - Python
-            - SQL
-          languages:
-            - Anglais
-            - Français
+                    month: 1
+                    year: 1975
+              - degreeName: ""
+                fieldOfStudy: ""
+                description: null
+                linkedInUrl: "https://www.linkedin.com/company/30288/"
+                schoolLogo: "https://media.licdn.com/dms/image/D560BAQGFmOQmzpxg9A/company-logo_400_400/0/1683732883164/lakeside_school_logo?e=1726099200&v=beta&t=cylwvrQe7Q4N8oU1hotzPfrae8yxPuzdtG1ocBSuEmA"
+                schoolName: "Lakeside School"
+                startEndDate:
+                  start:
+                    month: null
+                    year: null
+                  end:
+                    month: null
+                    year: null
+          skills: []
+          languages: []
         company:
-          websiteUrl: https://visum.run
-          name: Visum
-          logo: https://media.licdn.com/dms/image/C4E0BAQEbr48diDvnrw/company-logo_200_200/0/1674558570304?e=1704326400&v=beta&t=qk9thQBKgXOkog_Ii-EZF1NxdbSuCvUkQE4-u_TUNsY
-          employeeCount: 8
-          description: |-
-            In other words “the mister gadget” of Data enrichment.
-
-            We specialize in hunting down all types of data for your business - with over 5 years of experience and already 3 enrichment tools created, we're dedicated to providing you with the most comprehensive and up-to-date data possible, no matter how complex or difficult it may be to get it.
-
-            Trust us to be your data hunting experts and help you stay ahead of the competition.
-          tagline: Data Hunter for companies
+          linkedInId: "1035"
+          name: "Microsoft"
+          universalName: "microsoft"
+          linkedInUrl: "https://www.linkedin.com/company/1035"
+          employeeCount: 228581
+          websiteUrl: "https://news.microsoft.com/"
+          tagline: null
+          description: |
+            Every company has a mission. What's ours? To empower every person and every organization to achieve more. We believe technology can and should be a force for good and that meaningful innovation contributes to a brighter world in the future and today. Our culture doesn’t just encourage curiosity; it embraces it. Each day we make progress together by showing up as our authentic selves. We show up with a learn-it-all mentality. We show up cheering on others, knowing their success doesn't diminish our own. We show up every day open to learning our own biases, changing our behavior, and inviting in differences. Because impact matters.
+        
+            Microsoft operates in 190 countries and is made up of more than 220,000 passionate employees worldwide.
+          industry: "Software Development"
+          phone: null
           specialities:
-            - Lead Generation
-            - Lead Qualification
-            - Market Search
-            - Competitor analysis
-            - CRM enrichment
+            - "Business Software"
+            - "Developer Tools"
+            - "Home & Educational Software"
+            - "Tablets"
+            - "Search"
+            - "Advertising"
+            - "Servers"
+            - "Windows Operating System"
+            - "Windows Applications & Platforms"
+            - "Smartphones"
+            - "Cloud Computing"
+            - "Quantum Computing"
+            - "Future of Work"
+            - "Productivity"
+            - "AI"
+            - "Artificial Intelligence"
+            - "Machine Learning"
+            - "Laptops"
+            - "Mixed Reality"
+            - "Virtual Reality"
+            - "Gaming"
+            - "Developers"
+            - "IT Professional"
           headquarter:
-            country: FR
-            geographicArea: Île-de-France
-            city: Paris
-            postalCode: '75013'
-          industry: Technology, Information and Internet
-          universalName: visum-run
-          linkedinUrl: https://www.linkedin.com/company/visum-run/
-          linkedinId: '71234370'
+            city: "Redmond"
+            country: "US"
+            postalCode: "98052"
+            geographicArea: "Washington"
+          logo: "https://media.licdn.com/dms/image/C560BAQE88xCsONDULQ/company-logo_400_400/0/1630652622688/microsoft_logo?e=1725494400&v=beta&t=joSXHhDAEare7f9gk8MwXr2sOr84zX7HDx2h5znXEYI"
     CompanyFound:
       summary: Company Found
       value:
         success: true
-        credits_left: 1773
-        rate_limit_left: 19989
+        credits_left: 90000
+        rate_limit_left: 19000
         company:
-          linkedInUrl: https://www.linkedin.com/company/visum-run/
-          name: Visum
-          websiteUrl: https://visum.run
-          logo: https://media.licdn.com/dms/image/C4E0BAQEbr48diDvnrw/company-logo_200_200/0/1674558570304?e=1705536000&v=beta&t=F9SV8wQpI8HVpJPUZSmiGAGpWHDo1kGTVOgc2wJwEsw
-          description: |-
-            In other words “the mister gadget” of Data enrichment.
-
-            We specialize in hunting down all types of data for your business - with over 5 years of experience and already 3 enrichment tools created, we're dedicated to providing you with the most comprehensive and up-to-date data possible, no matter how complex or difficult it may be to get it.
-
-            Trust us to be your data hunting experts and help you stay ahead of the competition.
-          tagline: Data Hunter for companies
+          linkedInId: "1035"
+          name: "Microsoft"
+          universalName: "microsoft"
+          linkedInUrl: "https://www.linkedin.com/company/1035"
+          employeeCount: 228581
+          websiteUrl: "https://news.microsoft.com/"
+          tagline: null
+          description: |
+            Every company has a mission. What's ours? To empower every person and every organization to achieve more. We believe technology can and should be a force for good and that meaningful innovation contributes to a brighter world in the future and today. Our culture doesn’t just encourage curiosity; it embraces it. Each day we make progress together by showing up as our authentic selves. We show up with a learn-it-all mentality. We show up cheering on others, knowing their success doesn't diminish our own. We show up every day open to learning our own biases, changing our behavior, and inviting in differences. Because impact matters.
+        
+            Microsoft operates in 190 countries and is made up of more than 220,000 passionate employees worldwide.
+          industry: "Software Development"
+          phone: null
           specialities:
-            - Lead Generation
-            - Lead Qualification
-            - Market Search
-            - Competitor analysis
-            - CRM enrichment
+            - "Business Software"
+            - "Developer Tools"
+            - "Home & Educational Software"
+            - "Tablets"
+            - "Search"
+            - "Advertising"
+            - "Servers"
+            - "Windows Operating System"
+            - "Windows Applications & Platforms"
+            - "Smartphones"
+            - "Cloud Computing"
+            - "Quantum Computing"
+            - "Future of Work"
+            - "Productivity"
+            - "AI"
+            - "Artificial Intelligence"
+            - "Machine Learning"
+            - "Laptops"
+            - "Mixed Reality"
+            - "Virtual Reality"
+            - "Gaming"
+            - "Developers"
+            - "IT Professional"
           headquarter:
-            country: FR
-            geographicArea: Île-de-France
-            city: Paris
-            postalCode: '75013'
-          industry: Technology, Information and Internet
-          employeeCount: 8
-          universalName: visum-run
-          linkedInId: '71234370'
+            city: "Redmond"
+            country: "US"
+            postalCode: "98052"
+            geographicArea: "Washington"
+          logo: "https://media.licdn.com/dms/image/C560BAQE88xCsONDULQ/company-logo_400_400/0/1630652622688/microsoft_logo?e=1725494400&v=beta&t=joSXHhDAEare7f9gk8MwXr2sOr84zX7HDx2h5znXEYI"
     CompanyNotFound:
       summary: Company Not Found
       value:
         success: true
-        credits_left: 1773
-        rate_limit_left: 19989
+        credits_left: 90000
+        rate_limit_left: 19000
         company: false
     CompanyProfileExtracted:
       summary: Company Profile Extracted
       value:
         success: true
-        credits_left: 1796
-        rate_limit_left: 19999
+        credits_left: 90000
+        rate_limit_left: 19000
         company:
-          linkedInUrl: https://www.linkedin.com/company/visum-run/
-          name: Visum
-          websiteUrl: https://visum.run
-          logo: https://media.licdn.com/dms/image/C4E0BAQEbr48diDvnrw/company-logo_200_200/0/1674558570304?e=1704326400&v=beta&t=qk9thQBKgXOkog_Ii-EZF1NxdbSuCvUkQE4-u_TUNsY
-          description: |-
-            In other words “the mister gadget” of Data enrichment.
-
-            We specialize in hunting down all types of data for your business - with over 5 years of experience and already 3 enrichment tools created, we're dedicated to providing you with the most comprehensive and up-to-date data possible, no matter how complex or difficult it may be to get it.
-
-            Trust us to be your data hunting experts and help you stay ahead of the competition.
-          tagline: Data Hunter for companies
+          linkedInId: "1035"
+          name: "Microsoft"
+          universalName: "microsoft"
+          linkedInUrl: "https://www.linkedin.com/company/1035"
+          employeeCount: 228581
+          websiteUrl: "https://news.microsoft.com/"
+          tagline: null
+          description: |
+            Every company has a mission. What's ours? To empower every person and every organization to achieve more. We believe technology can and should be a force for good and that meaningful innovation contributes to a brighter world in the future and today. Our culture doesn’t just encourage curiosity; it embraces it. Each day we make progress together by showing up as our authentic selves. We show up with a learn-it-all mentality. We show up cheering on others, knowing their success doesn't diminish our own. We show up every day open to learning our own biases, changing our behavior, and inviting in differences. Because impact matters.
+        
+            Microsoft operates in 190 countries and is made up of more than 220,000 passionate employees worldwide.
+          industry: "Software Development"
+          phone: null
           specialities:
-            - Lead Generation
-            - Lead Qualification
-            - Market Search
-            - Competitor analysis
-            - CRM enrichment
+            - "Business Software"
+            - "Developer Tools"
+            - "Home & Educational Software"
+            - "Tablets"
+            - "Search"
+            - "Advertising"
+            - "Servers"
+            - "Windows Operating System"
+            - "Windows Applications & Platforms"
+            - "Smartphones"
+            - "Cloud Computing"
+            - "Quantum Computing"
+            - "Future of Work"
+            - "Productivity"
+            - "AI"
+            - "Artificial Intelligence"
+            - "Machine Learning"
+            - "Laptops"
+            - "Mixed Reality"
+            - "Virtual Reality"
+            - "Gaming"
+            - "Developers"
+            - "IT Professional"
           headquarter:
-            country: FR
-            geographicArea: Île-de-France
-            city: Paris
-            postalCode: '75013'
-          industry: Technology, Information and Internet
-          employeeCount: 8
-          universalName: visum-run
-          linkedInId: '71234370'
+            city: "Redmond"
+            country: "US"
+            postalCode: "98052"
+            geographicArea: "Washington"
+          logo: "https://media.licdn.com/dms/image/C560BAQE88xCsONDULQ/company-logo_400_400/0/1630652622688/microsoft_logo?e=1725494400&v=beta&t=joSXHhDAEare7f9gk8MwXr2sOr84zX7HDx2h5znXEYI"
     NoApiKey:
       summary: No Api Key
       value:
