@@ -501,6 +501,15 @@ components:
           type: string
         employeeCount:
           type: number
+        employeeCountRange:
+          type: object
+          properties:
+            start:
+              type: number
+            end:
+              type: number
+        followerCount:
+          type: number
         headquarter:
           type: object
           properties:
@@ -511,6 +520,10 @@ components:
             geographicArea:
               type: string
             postalCode:
+              type: string
+            street1:
+              type: string
+            street2:
               type: string
         industry:
           type: string
@@ -674,6 +687,9 @@ components:
           universalName: "microsoft"
           linkedInUrl: "https://www.linkedin.com/company/1035"
           employeeCount: 228581
+          employeeCountRange:
+            start: 10001
+            end: 1
           websiteUrl: "https://news.microsoft.com/"
           tagline: null
           description: |
@@ -706,11 +722,14 @@ components:
             - "Gaming"
             - "Developers"
             - "IT Professional"
+          followerCount: 22736947
           headquarter:
             city: "Redmond"
             country: "US"
             postalCode: "98052"
             geographicArea: "Washington"
+            street1: "1 Microsoft Way"
+            street2: null
           logo: "https://media.licdn.com/dms/image/C560BAQE88xCsONDULQ/company-logo_400_400/0/1630652622688/microsoft_logo?e=1725494400&v=beta&t=joSXHhDAEare7f9gk8MwXr2sOr84zX7HDx2h5znXEYI"
     ProfileNotFound:
       summary: Profile Not Found
@@ -815,6 +834,9 @@ components:
           universalName: "microsoft"
           linkedInUrl: "https://www.linkedin.com/company/1035"
           employeeCount: 228581
+          employeeCountRange:
+            start: 10001
+            end: 1
           websiteUrl: "https://news.microsoft.com/"
           tagline: null
           description: |
@@ -847,11 +869,14 @@ components:
             - "Gaming"
             - "Developers"
             - "IT Professional"
+          followerCount: 22736947
           headquarter:
             city: "Redmond"
             country: "US"
             postalCode: "98052"
             geographicArea: "Washington"
+            street1: "1 Microsoft Way"
+            street2: null
           logo: "https://media.licdn.com/dms/image/C560BAQE88xCsONDULQ/company-logo_400_400/0/1630652622688/microsoft_logo?e=1725494400&v=beta&t=joSXHhDAEare7f9gk8MwXr2sOr84zX7HDx2h5znXEYI"
     CompanyFound:
       summary: Company Found
@@ -865,6 +890,9 @@ components:
           universalName: "microsoft"
           linkedInUrl: "https://www.linkedin.com/company/1035"
           employeeCount: 228581
+          employeeCountRange:
+            start: 10001
+            end: 1
           websiteUrl: "https://news.microsoft.com/"
           tagline: null
           description: |
@@ -897,11 +925,14 @@ components:
             - "Gaming"
             - "Developers"
             - "IT Professional"
+          followerCount: 22736947
           headquarter:
             city: "Redmond"
             country: "US"
             postalCode: "98052"
             geographicArea: "Washington"
+            street1: "1 Microsoft Way"
+            street2: null
           logo: "https://media.licdn.com/dms/image/C560BAQE88xCsONDULQ/company-logo_400_400/0/1630652622688/microsoft_logo?e=1725494400&v=beta&t=joSXHhDAEare7f9gk8MwXr2sOr84zX7HDx2h5znXEYI"
     CompanyNotFound:
       summary: Company Not Found
@@ -922,6 +953,9 @@ components:
           universalName: "microsoft"
           linkedInUrl: "https://www.linkedin.com/company/1035"
           employeeCount: 228581
+          employeeCountRange:
+            start: 10001
+            end: 1
           websiteUrl: "https://news.microsoft.com/"
           tagline: null
           description: |
@@ -954,11 +988,14 @@ components:
             - "Gaming"
             - "Developers"
             - "IT Professional"
+          followerCount: 22736947
           headquarter:
             city: "Redmond"
             country: "US"
             postalCode: "98052"
             geographicArea: "Washington"
+            street1: "1 Microsoft Way"
+            street2: null
           logo: "https://media.licdn.com/dms/image/C560BAQE88xCsONDULQ/company-logo_400_400/0/1630652622688/microsoft_logo?e=1725494400&v=beta&t=joSXHhDAEare7f9gk8MwXr2sOr84zX7HDx2h5znXEYI"
     NoApiKey:
       summary: No Api Key
