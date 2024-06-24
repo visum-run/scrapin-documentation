@@ -108,7 +108,7 @@ paths:
       summary: Extract Person Data Profile
       description: This operation allows you to extract data from a Person Linkedin URL. It returns profile data and current company data of the person as the response. This operation consume 1 credit.
       parameters:
-      - name: linkedinUrl
+      - name: linkedInUrl
         in: query
         schema:
           type: string
