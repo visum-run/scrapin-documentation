@@ -431,6 +431,8 @@ components:
               type: number
         publicIdentifier:
           type: string
+        memberIdentifier:
+          type: string
         schools:
           type: object
           properties:
@@ -602,8 +604,9 @@ components:
         rate_limit_left: 19000
         person:
           publicIdentifier: "williamhgates"
+          memberIdentifier: "251749025"
           linkedInIdentifier: "ACoAAA8BYqEBCGLg_vT_ca6mMEqkpp9nVffJ3hc"
-          linkedInUrl: "https://www.linkedin.com/in/ACoAAA8BYqEBCGLg_vT_ca6mMEqkpp9nVffJ3hc"
+          linkedInUrl: "https://www.linkedin.com/in/williamhgates"
           firstName: "Bill"
           lastName: "Gates"
           headline: "Co-chair, Bill & Melinda Gates Foundation"
@@ -749,8 +752,9 @@ components:
         rate_limit_left: 19000
         person:
           publicIdentifier: "williamhgates"
+          memberIdentifier: "251749025"
           linkedInIdentifier: "ACoAAA8BYqEBCGLg_vT_ca6mMEqkpp9nVffJ3hc"
-          linkedInUrl: "https://www.linkedin.com/in/ACoAAA8BYqEBCGLg_vT_ca6mMEqkpp9nVffJ3hc"
+          linkedInUrl: "https://www.linkedin.com/in/williamhgates"
           firstName: "Bill"
           lastName: "Gates"
           headline: "Co-chair, Bill & Melinda Gates Foundation"
