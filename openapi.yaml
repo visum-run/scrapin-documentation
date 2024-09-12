@@ -388,6 +388,12 @@ components:
           type: string
         photoUrl:
           type: string
+        backgroundUrl:
+          type: string
+        openToWork:
+          type: boolean
+        premium:
+          type: boolean
         positions:
           type: object
           properties:
@@ -613,6 +619,9 @@ components:
           location: "Seattle, Washington, United States of America"
           summary: "Co-chair of the Bill & Melinda Gates Foundation. Founder of Breakthrough Energy. Co-founder of Microsoft. Voracious reader. Avid traveler. Active blogger."
           photoUrl: "https://media.licdn.com/dms/image/D5603AQHv6LsdiUg1kw/profile-displayphoto-shrink_800_800/0/1695167344576?e=1723680000&v=beta&t=NcEpysYwCpQ_NBg0QTz_a265pEOhfGICFJUX92-KNpw"
+          backgroundUrl: "https://media.licdn.com/dms/image/v2/D5616AQHy2R5tyt2YUA/profile-displaybackgroundimage-shrink_350_1400/profile-displaybackgroundimage-shrink_350_1400/0/1672782785474?e=1731542400&v=beta&t=0HWY04xeK0kEQngJOje3yNudJ6eTvNz2Q2HrTRB4hO8"
+          openToWork: false
+          premium: false
           creationDate:
             month: 5
             year: 2013
@@ -761,6 +770,9 @@ components:
           location: "Seattle, Washington, United States of America"
           summary: "Co-chair of the Bill & Melinda Gates Foundation. Founder of Breakthrough Energy. Co-founder of Microsoft. Voracious reader. Avid traveler. Active blogger."
           photoUrl: "https://media.licdn.com/dms/image/D5603AQHv6LsdiUg1kw/profile-displayphoto-shrink_800_800/0/1695167344576?e=1723680000&v=beta&t=NcEpysYwCpQ_NBg0QTz_a265pEOhfGICFJUX92-KNpw"
+          backgroundUrl: "https://media.licdn.com/dms/image/v2/D5616AQHy2R5tyt2YUA/profile-displaybackgroundimage-shrink_350_1400/profile-displaybackgroundimage-shrink_350_1400/0/1672782785474?e=1731542400&v=beta&t=0HWY04xeK0kEQngJOje3yNudJ6eTvNz2Q2HrTRB4hO8"
+          openToWork: false
+          premium: false
           creationDate:
             month: 5
             year: 2013
