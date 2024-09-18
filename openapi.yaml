@@ -51,55 +51,56 @@ paths:
                 ProfileNotFound:
                   $ref: '#/components/examples/ProfileNotFound'
         400:
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponseSchema'
-              examples:
-                NoApiKey:
-                  $ref: '#/components/examples/NoApiKey'
-                MissingEmail:
-                  $ref: '#/components/examples/MissingEmail'
-                InvalidEmail:
-                  $ref: '#/components/examples/InvalidEmail'
+          $ref: '#/components/responses/BadRequest'
         401:
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponseSchema'
-              examples:
-                InvalidApiKey:
-                  $ref: '#/components/examples/InvalidApiKey'
-              
+          $ref: '#/components/responses/Unauthorized'
         402:
-          description: Insufficient Account Balance
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponseSchema'
-              examples:
-                PaymentRequired:
-                  $ref: '#/components/examples/PaymentRequired'
+          $ref: '#/components/responses/PaymentRequired'
         404:
-          description: Page Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponseSchema'
-              examples:
-                PageNotFound:
-                  $ref: '#/components/examples/PageNotFound'
+          $ref: '#/components/responses/NotFound'
         500:
-          description: Server Error
+          $ref: '#/components/responses/ServerError'
+          
+  '/v1/persons/linkedin/activities':
+    get:
+      tags:
+      - Person
+      operationId: GetPersonLinkedInActivities
+      summary: Get Person LinkedIn Activities
+      description: This operation allows you to retrieve the LinkedIn activities (posts, comments, and likes) of a person based on their LinkedIn profile URL. This operation consumes 1 credit.
+      parameters:
+      - name: linkedInUrl
+        in: query
+        required: true
+        schema:
+          type: string
+        description: This required parameter is a string. It represents the LinkedIn profile URL of the person whose activities you want to retrieve.
+      - name: apikey
+        in: query
+        required: true
+        schema:
+          type: string
+        description: This required parameter is a string. It represents your API key for authentication.
+      responses:
+        200:
+          description: 'The endpoint returns the LinkedIn activities of the person, including posts, comments, and reactions.'
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponseSchema'
-              examples:
-                ServerError:
-                  $ref: '#/components/examples/ServerError'
+                $ref: '#/components/schemas/PersonLinkedInActivities'
+              example:
+                $ref: '#/components/examples/PersonLinkedInActivitiesExample'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        402:
+          $ref: '#/components/responses/PaymentRequired'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+
   '/enrichment/profile':
     get:
       tags:
@@ -125,55 +126,16 @@ paths:
                 ProfileFound:
                   $ref: '#/components/examples/PersonProfileExtracted'
         400:
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponseSchema'
-              examples:
-                NoApiKey:
-                  $ref: '#/components/examples/NoApiKey'
-                MissingEmail:
-                  $ref: '#/components/examples/MissingEmail'
-                InvalidEmail:
-                  $ref: '#/components/examples/InvalidEmail'
+          $ref: '#/components/responses/BadRequest'
         401:
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponseSchema'
-              examples:
-                InvalidApiKey:
-                  $ref: '#/components/examples/InvalidApiKey'
-
+          $ref: '#/components/responses/Unauthorized'
         402:
-          description: Insufficient Account Balance
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponseSchema'
-              examples:
-                PaymentRequired:
-                  $ref: '#/components/examples/PaymentRequired'
+          $ref: '#/components/responses/PaymentRequired'
         404:
-          description: Page Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponseSchema'
-              examples:
-                PageNotFound:
-                  $ref: '#/components/examples/PageNotFound'
+          $ref: '#/components/responses/NotFound'
         500:
-          description: Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponseSchema'
-              examples:
-                ServerError:
-                  $ref: '#/components/examples/ServerError'
+          $ref: '#/components/responses/ServerError'
+
   '/enrichment/company/domain':
     get:
       tags:
@@ -201,55 +163,16 @@ paths:
                 CompanyNotFound:
                   $ref: '#/components/examples/CompanyNotFound'
         400:
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponseSchema'
-              examples:
-                NoApiKey:
-                  $ref: '#/components/examples/NoApiKey'
-                MissingEmail:
-                  $ref: '#/components/examples/MissingEmail'
-                InvalidEmail:
-                  $ref: '#/components/examples/InvalidEmail'
+          $ref: '#/components/responses/BadRequest'
         401:
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponseSchema'
-              examples:
-                InvalidApiKey:
-                  $ref: '#/components/examples/InvalidApiKey'
-              
+          $ref: '#/components/responses/Unauthorized'
         402:
-          description: Insufficient Account Balance
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponseSchema'
-              examples:
-                PaymentRequired:
-                  $ref: '#/components/examples/PaymentRequired'
+          $ref: '#/components/responses/PaymentRequired'
         404:
-          description: Page Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponseSchema'
-              examples:
-                PageNotFound:
-                  $ref: '#/components/examples/PageNotFound'
+          $ref: '#/components/responses/NotFound'
         500:
-          description: Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponseSchema'
-              examples:
-                ServerError:
-                  $ref: '#/components/examples/ServerError'
+          $ref: '#/components/responses/ServerError'
+
   '/enrichment/company':
     get:
       tags:
@@ -275,55 +198,16 @@ paths:
                 CompanyFound:
                   $ref: '#/components/examples/CompanyProfileExtracted'
         400:
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponseSchema'
-              examples:
-                NoApiKey:
-                  $ref: '#/components/examples/NoApiKey'
-                MissingEmail:
-                  $ref: '#/components/examples/MissingEmail'
-                InvalidEmail:
-                  $ref: '#/components/examples/InvalidEmail'
+          $ref: '#/components/responses/BadRequest'
         401:
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponseSchema'
-              examples:
-                InvalidApiKey:
-                  $ref: '#/components/examples/InvalidApiKey'
-
+          $ref: '#/components/responses/Unauthorized'
         402:
-          description: Insufficient Account Balance
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponseSchema'
-              examples:
-                PaymentRequired:
-                  $ref: '#/components/examples/PaymentRequired'
+          $ref: '#/components/responses/PaymentRequired'
         404:
-          description: Page Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponseSchema'
-              examples:
-                PageNotFound:
-                  $ref: '#/components/examples/PageNotFound'
+          $ref: '#/components/responses/NotFound'
         500:
-          description: Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponseSchema'
-              examples:
-                ServerError:
-                  $ref: '#/components/examples/ServerError'
+          $ref: '#/components/responses/ServerError'
+
 components:
   schemas:
     PersonSearch:
@@ -356,6 +240,125 @@ components:
         rate_limit_left:
           type: integer
           description: Represents the usable daily request limit available for the user account after this query.
+          
+    PersonLinkedInActivities:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Indicates success or failure of api request.
+        posts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Post'
+          description: Array of posts made by the person
+        comments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Comment'
+          description: Array of comments made by the person
+        reactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Reaction'
+          description: Array of reactions made by the person
+        credits_left:
+          type: integer
+          description: Represents the usable credits available for the user account after this query.
+        rate_limit_left:
+          type: integer
+          description: Represents the usable daily request limit available for the user account after this query.
+          
+    Post:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the post
+        text:
+          type: string
+          description: Content of the post
+        likesCount:
+          type: integer
+          description: Number of likes on the post
+        commentsCount:
+          type: integer
+          description: Number of comments on the post
+        activityDate:
+          type: string
+          format: date-time
+          description: Date and time when the post was created
+        authorId:
+          type: string
+          description: Unique identifier of the post author
+        authorPublicIdentifier:
+          type: string
+          description: Public identifier of the post author
+        authorName:
+          type: string
+          description: Name of the post author
+        activityUrl:
+          type: string
+          description: URL of the post on LinkedIn
+          
+    Comment:
+      type: object
+      properties:
+        text:
+          type: string
+          description: Content of the comment
+        likesCount:
+          type: integer
+          description: Number of likes on the comment
+        commentsCount:
+          type: integer
+          description: Number of replies to the comment
+        activityDate:
+          type: string
+          format: date-time
+          description: Date and time when the comment was created
+        authorId:
+          type: string
+          description: Unique identifier of the comment author
+        authorName:
+          type: string
+          description: Name of the comment author
+        authorPublicIdentifier:
+          type: string
+          description: Public identifier of the comment author
+        post:
+          $ref: '#/components/schemas/Post'
+          description: The post on which this comment was made
+        activityUrl:
+          type: string
+          description: URL of the comment on LinkedIn
+          
+    Reaction:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Type of reaction (e.g., "LIKE", "CELEBRATE", etc.)
+        activityDate:
+          type: string
+          format: date-time
+          description: Date and time when the reaction was made
+        authorId:
+          type: string
+          description: Unique identifier of the person who made the reaction
+        authorName:
+          type: string
+          description: Name of the person who made the reaction
+        authorPublicIdentifier:
+          type: string
+          description: Public identifier of the person who made the reaction
+        post:
+          $ref: '#/components/schemas/Post'
+          description: The post on which this reaction was made
+        activityUrl:
+          type: string
+          description: URL of the reaction on LinkedIn
+
     Person:
       type: object
       properties:
@@ -705,7 +708,7 @@ components:
           websiteUrl: "https://news.microsoft.com/"
           tagline: null
           description: |
-            Every company has a mission. What's ours? To empower every person and every organization to achieve more. We believe technology can and should be a force for good and that meaningful innovation contributes to a brighter world in the future and today. Our culture doesn’t just encourage curiosity; it embraces it. Each day we make progress together by showing up as our authentic selves. We show up with a learn-it-all mentality. We show up cheering on others, knowing their success doesn't diminish our own. We show up every day open to learning our own biases, changing our behavior, and inviting in differences. Because impact matters.
+            Every company has a mission. What's ours? To empower every person and every organization to achieve more. We believe technology can and should be a force for good and that meaningful innovation contributes to a brighter world in the future and today. Our culture doesn't just encourage curiosity; it embraces it. Each day we make progress together by showing up as our authentic selves. We show up with a learn-it-all mentality. We show up cheering on others, knowing their success doesn't diminish our own. We show up every day open to learning our own biases, changing our behavior, and inviting in differences. Because impact matters.
         
             Microsoft operates in 190 countries and is made up of more than 220,000 passionate employees worldwide.
           industry: "Software Development"
@@ -743,6 +746,44 @@ components:
             street1: "1 Microsoft Way"
             street2: null
           logo: "https://media.licdn.com/dms/image/C560BAQE88xCsONDULQ/company-logo_400_400/0/1630652622688/microsoft_logo?e=1725494400&v=beta&t=joSXHhDAEare7f9gk8MwXr2sOr84zX7HDx2h5znXEYI"
+    
+    PersonLinkedInActivitiesExample:
+      summary: Person LinkedIn Activities Example
+      value:
+        success: true
+        posts:
+          - id: "7242064211135107072"
+            text: "DevOps n'est en aucun cas un rôle, et encore moins une personne. C'est une culture, un mouvement, ... c'est écrit partout.\n\n\n💡 DevOps, c'est avant tout une manière de travailler. Ceci, afin d'améliorer la collaboration entre les équipes de dev et les ops en faveur du produit. \n\n💥 Le but ? Livrer plus vite, plus souvent, et de manière sécurisée. Pour y arriver, chaque membre de l'équipe doit être impliqué, que ce soit sur la qualité du code, l'automatisation des déploiements, la gestion de l'infrastructure, ...\n\nCela peut se matérialiser au quotidien par du pair programming entre un ops et un dev, sur un sujet commun. Ainsi, chacun apprend de l'autre.\n\nFinalement, le but est simple : fluidifier les process, livrer plus rapidement, et améliorer la qualité du produit.\n\nQuelques sites :\n- https://lnkd.in/dZyprRTx\n- https://lnkd.in/dVcwxX9z\n- https://lnkd.in/dnGX_fV4\n- https://lnkd.in/d7vKFWFn\n- https://lnkd.in/dmHzbu2E"
+            likesCount: 12
+            commentsCount: 3
+            activityDate: "2024-09-18T06:57:38.981Z"
+            authorId: "ACoAAAVx6k8BWYOybRvvm1pR9TdIPXoqM9Da2qE"
+            authorPublicIdentifier: "mickaelwegerich"
+            authorName: "Mickael Wegerich"
+            activityUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7242064211135107072"
+        comments:
+          - text: "Amine Bezzarga en effet meme SRE, c'est limite car c'est pour (\nSite Reliability Engineering) qui est désigne un ensemble de pratiques.\n\nTu penses à transformer le \"Engineering\" en \"Engineer\" ?"
+            likesCount: 0
+            commentsCount: 0
+            activityDate: "2024-09-18T10:15:23.741Z"
+            authorId: "ACoAAAVx6k8BWYOybRvvm1pR9TdIPXoqM9Da2qE"
+            authorName: "Mickael Wegerich"
+            authorPublicIdentifier: "mickaelwegerich"
+            post:
+              id: "7242064211135107072"
+              text: "DevOps n'est en aucun cas un rôle, et encore moins une personne. C'est une culture, un mouvement, ... c'est écrit partout.\n\n\n💡 DevOps, c'est avant tout une manière de travailler. Ceci, afin d'améliorer la collaboration entre les équipes de dev et les ops en faveur du produit. \n\n💥 Le but ? Livrer plus vite, plus souvent, et de manière sécurisée. Pour y arriver, chaque membre de l'équipe doit être impliqué, que ce soit sur la qualité du code, l'automatisation des déploiements, la gestion de l'infrastructure, ...\n\nCela peut se matérialiser au quotidien par du pair programming entre un ops et un dev, sur un sujet commun. Ainsi, chacun apprend de l'autre.\n\nFinalement, le but est simple : fluidifier les process, livrer plus rapidement, et améliorer la qualité du produit.\n\nQuelques sites :\n- https://lnkd.in/dZyprRTx\n- https://lnkd.in/dVcwxX9z\n- https://lnkd.in/dnGX_fV4\n- https://lnkd.in/d7vKFWFn\n- https://lnkd.in/dmHzbu2E"
+              likesCount: 12
+              commentsCount: 3
+              activityDate: "2024-09-18T06:57:38.981Z"
+              authorId: "ACoAAAVx6k8BWYOybRvvm1pR9TdIPXoqM9Da2qE"
+              authorPublicIdentifier: "mickaelwegerich"
+              authorName: "Mickael Wegerich"
+              activityUrl: "https://www.linkedin.com/posts/mickaelwegerich_devops-wikipedia-activity-7242064211135107072-j7LV?utm_source=combined_share_message&utm_medium=member_desktop_web"
+            activityUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7242064211135107072?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7242064211135107072%2C7242111448426950656%29&replyUrn=urn%3Ali%3Acomment%3A%28activity%3A7242064211135107072%2C7242113975545384960%29&dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287242111448426950656%2Curn%3Ali%3Aactivity%3A7242064211135107072%29&dashReplyUrn=urn%3Ali%3Afsd_comment%3A%287242113975545384960%2Curn%3Ali%3Aactivity%3A7242064211135107072%29"
+        reactions: []
+        credits_left: 15
+        rate_limit_left: 19
+    
     ProfileNotFound:
       summary: Profile Not Found
       value:
@@ -856,7 +897,7 @@ components:
           websiteUrl: "https://news.microsoft.com/"
           tagline: null
           description: |
-            Every company has a mission. What's ours? To empower every person and every organization to achieve more. We believe technology can and should be a force for good and that meaningful innovation contributes to a brighter world in the future and today. Our culture doesn’t just encourage curiosity; it embraces it. Each day we make progress together by showing up as our authentic selves. We show up with a learn-it-all mentality. We show up cheering on others, knowing their success doesn't diminish our own. We show up every day open to learning our own biases, changing our behavior, and inviting in differences. Because impact matters.
+            Every company has a mission. What's ours? To empower every person and every organization to achieve more. We believe technology can and should be a force for good and that meaningful innovation contributes to a brighter world in the future and today. Our culture doesn't just encourage curiosity; it embraces it. Each day we make progress together by showing up as our authentic selves. We show up with a learn-it-all mentality. We show up cheering on others, knowing their success doesn't diminish our own. We show up every day open to learning our own biases, changing our behavior, and inviting in differences. Because impact matters.
         
             Microsoft operates in 190 countries and is made up of more than 220,000 passionate employees worldwide.
           industry: "Software Development"
@@ -912,7 +953,7 @@ components:
           websiteUrl: "https://news.microsoft.com/"
           tagline: null
           description: |
-            Every company has a mission. What's ours? To empower every person and every organization to achieve more. We believe technology can and should be a force for good and that meaningful innovation contributes to a brighter world in the future and today. Our culture doesn’t just encourage curiosity; it embraces it. Each day we make progress together by showing up as our authentic selves. We show up with a learn-it-all mentality. We show up cheering on others, knowing their success doesn't diminish our own. We show up every day open to learning our own biases, changing our behavior, and inviting in differences. Because impact matters.
+            Every company has a mission. What's ours? To empower every person and every organization to achieve more. We believe technology can and should be a force for good and that meaningful innovation contributes to a brighter world in the future and today. Our culture doesn't just encourage curiosity; it embraces it. Each day we make progress together by showing up as our authentic selves. We show up with a learn-it-all mentality. We show up cheering on others, knowing their success doesn't diminish our own. We show up every day open to learning our own biases, changing our behavior, and inviting in differences. Because impact matters.
         
             Microsoft operates in 190 countries and is made up of more than 220,000 passionate employees worldwide.
           industry: "Software Development"
@@ -975,7 +1016,7 @@ components:
           websiteUrl: "https://news.microsoft.com/"
           tagline: null
           description: |
-            Every company has a mission. What's ours? To empower every person and every organization to achieve more. We believe technology can and should be a force for good and that meaningful innovation contributes to a brighter world in the future and today. Our culture doesn’t just encourage curiosity; it embraces it. Each day we make progress together by showing up as our authentic selves. We show up with a learn-it-all mentality. We show up cheering on others, knowing their success doesn't diminish our own. We show up every day open to learning our own biases, changing our behavior, and inviting in differences. Because impact matters.
+            Every company has a mission. What's ours? To empower every person and every organization to achieve more. We believe technology can and should be a force for good and that meaningful innovation contributes to a brighter world in the future and today. Our culture doesn't just encourage curiosity; it embraces it. Each day we make progress together by showing up as our authentic selves. We show up with a learn-it-all mentality. We show up cheering on others, knowing their success doesn't diminish our own. We show up every day open to learning our own biases, changing our behavior, and inviting in differences. Because impact matters.
         
             Microsoft operates in 190 countries and is made up of more than 220,000 passionate employees worldwide.
           industry: "Software Development"
@@ -1055,6 +1096,58 @@ components:
         success: false
         title: An error has occurred 🚒
         msg: 🚨 Internal Server Error, you will not be credit debited.
+  
+  responses:
+    BadRequest:
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponseSchema'
+          examples:
+            NoApiKey:
+              $ref: '#/components/examples/NoApiKey'
+            MissingEmail:
+              $ref: '#/components/examples/MissingEmail'
+            InvalidEmail:
+              $ref: '#/components/examples/InvalidEmail'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponseSchema'
+          examples:
+            InvalidApiKey:
+              $ref: '#/components/examples/InvalidApiKey'
+    PaymentRequired:
+      description: Insufficient Account Balance
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponseSchema'
+          examples:
+            PaymentRequired:
+              $ref: '#/components/examples/PaymentRequired'
+    NotFound:
+      description: Page Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponseSchema'
+          examples:
+            PageNotFound:
+              $ref: '#/components/examples/PageNotFound'
+    ServerError:
+      description: Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponseSchema'
+          examples:
+            ServerError:
+              $ref: '#/components/examples/ServerError'
+  
   securitySchemes:
     apiKey:
       name: apikey
