@@ -68,6 +68,10 @@ paths:
       operationId: ExtractPersonActivities
       summary: Get Person LinkedIn Activities
       description: This operation allows you to retrieve the LinkedIn activities (posts, comments, and likes) of a person based on their LinkedIn profile URL. This operation consumes 1 credit.
+      x-mintlify-metadata:
+        badge: 
+          label: Beta
+          color: blue
       parameters:
       - name: linkedInUrl
         in: query
