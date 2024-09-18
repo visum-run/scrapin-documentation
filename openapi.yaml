@@ -61,11 +61,11 @@ paths:
         500:
           $ref: '#/components/responses/ServerError'
           
-  '/v1/persons/linkedin/activities':
+  '/enrichment/activities':
     get:
       tags:
       - Person
-      operationId: GetPersonLinkedInActivities
+      operationId: ExtractPersonActivity
       summary: Get Person LinkedIn Activities
       description: This operation allows you to retrieve the LinkedIn activities (posts, comments, and likes) of a person based on their LinkedIn profile URL. This operation consumes 1 credit.
       parameters:
@@ -87,9 +87,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PersonLinkedInActivities'
+                $ref: '#/components/schemas/ExtractPersonActivity'
               example:
-                $ref: '#/components/examples/PersonLinkedInActivitiesExample'
+                $ref: '#/components/examples/ExtractedPersonActivityExample'
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -241,7 +241,7 @@ components:
           type: integer
           description: Represents the usable daily request limit available for the user account after this query.
           
-    PersonLinkedInActivities:
+    ExtractPersonActivity:
       type: object
       properties:
         success:
@@ -747,7 +747,7 @@ components:
             street2: null
           logo: "https://media.licdn.com/dms/image/C560BAQE88xCsONDULQ/company-logo_400_400/0/1630652622688/microsoft_logo?e=1725494400&v=beta&t=joSXHhDAEare7f9gk8MwXr2sOr84zX7HDx2h5znXEYI"
     
-    PersonLinkedInActivitiesExample:
+    ExtractedPersonActivityExample:
       summary: Person LinkedIn Activities Example
       value:
         success: true
