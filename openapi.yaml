@@ -79,12 +79,6 @@ paths:
         schema:
           type: string
         description: This required parameter is a string. It represents the LinkedIn profile URL of the person whose activities you want to retrieve.
-      - name: apikey
-        in: query
-        required: true
-        schema:
-          type: string
-        description: This required parameter is a string. It represents your API key for authentication.
       responses:
         200:
           description: 'The endpoint returns the LinkedIn activities of the person, including posts, comments, and reactions.'
