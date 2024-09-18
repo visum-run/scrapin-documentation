@@ -1,4 +1,4 @@
 ---
-title: 'Extract Person Activity'
-openapi: 'GET /enrichment/activity'
+title: 'Extract Person Activities'
+openapi: 'GET /enrichment/activities'
 ---
