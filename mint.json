@@ -38,6 +38,7 @@
       "group": "Person",
       "pages": [
         "endpoint/ExtractPersonDataProfile",
+        "endpoint/ExtractPersonActivities",
         "endpoint/PersonSearch"
       ]
     },
