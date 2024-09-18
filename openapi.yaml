@@ -259,7 +259,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Reaction'
-          description: Array of reactions made by the person
+          description: Array of reactions made by the person (Coming soon)
         credits_left:
           type: integer
           description: Represents the usable credits available for the user account after this query.
