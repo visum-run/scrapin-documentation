@@ -33,6 +33,11 @@ paths:
         schema:
           type: string
         description: This optional parameter is a string. It represents the company domain/URL to query
+      - name: companyName
+        in: query
+        schema:
+          type: string
+        description: This optional parameter is a string. It represents the company name to query
       - name: email
         in: query
         schema:
