@@ -91,8 +91,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExtractPersonActivities'
-              example:
-                $ref: '#/components/examples/ExtractedPersonActivitiesExample'
+              examples:
+                ExtractedPersonActivitiesExample:
+                  $ref: '#/components/examples/ExtractedPersonActivitiesExample'
         400:
           $ref: '#/components/responses/BadRequest'
         401:
