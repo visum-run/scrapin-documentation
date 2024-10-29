@@ -276,9 +276,6 @@ components:
     Post:
       type: object
       properties:
-        id:
-          type: string
-          description: Unique identifier of the post
         text:
           type: string
           description: Content of the post
