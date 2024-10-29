@@ -304,6 +304,42 @@ components:
         activityUrl:
           type: string
           description: URL of the post on LinkedIn
+        isRepublishedPost:
+          type: boolean
+          description: Indicates if this post is a republished post from another user
+        relatedPost:
+          type: object
+          description: Information about the original post if this is a republished post
+          properties:
+            text:
+              type: string
+              description: Content of the related post
+            likesCount:
+              type: integer
+              description: Number of likes on the related post
+            commentsCount:
+              type: integer
+              description: Number of comments on the related post
+            activityDate:
+              type: string
+              format: date-time
+              description: Date and time when the related post was created
+            authorId:
+              type: string
+              description: Unique identifier of the related post author
+            authorPublicIdentifier:
+              type: string
+              description: Public identifier of the related post author
+            authorName:
+              type: string
+              description: Name of the related post author
+            activityUrl:
+              type: string
+              description: URL of the related post on LinkedIn
+            relatedPost:
+              type: object
+              nullable: true
+              description: Nested related post (if any)
           
     Comment:
       type: object
@@ -336,7 +372,7 @@ components:
         activityUrl:
           type: string
           description: URL of the comment on LinkedIn
-          
+
     Reaction:
       type: object
       properties:
@@ -356,9 +392,13 @@ components:
         authorPublicIdentifier:
           type: string
           description: Public identifier of the person who made the reaction
-        post:
+        relatedPost:
           $ref: '#/components/schemas/Post'
           description: The post on which this reaction was made
+        relatedComment:
+          $ref: '#/components/schemas/Comment'
+          nullable: true
+          description: The comment on which this reaction was made (if applicable)
         activityUrl:
           type: string
           description: URL of the reaction on LinkedIn
