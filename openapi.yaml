@@ -756,35 +756,58 @@ components:
       value:
         success: true
         posts:
-          - id: "7242064211135107072"
-            text: "DevOps n'est en aucun cas un rôle, et encore moins une personne. C'est une culture, un mouvement, ... c'est écrit partout.\n\n\n💡 DevOps, c'est avant tout une manière de travailler. Ceci, afin d'améliorer la collaboration entre les équipes de dev et les ops en faveur du produit. \n\n💥 Le but ? Livrer plus vite, plus souvent, et de manière sécurisée. Pour y arriver, chaque membre de l'équipe doit être impliqué, que ce soit sur la qualité du code, l'automatisation des déploiements, la gestion de l'infrastructure, ...\n\nCela peut se matérialiser au quotidien par du pair programming entre un ops et un dev, sur un sujet commun. Ainsi, chacun apprend de l'autre.\n\nFinalement, le but est simple : fluidifier les process, livrer plus rapidement, et améliorer la qualité du produit.\n\nQuelques sites :\n- https://lnkd.in/dZyprRTx\n- https://lnkd.in/dVcwxX9z\n- https://lnkd.in/dnGX_fV4\n- https://lnkd.in/d7vKFWFn\n- https://lnkd.in/dmHzbu2E"
-            likesCount: 12
-            commentsCount: 3
-            activityDate: "2024-09-18T06:57:38.981Z"
-            authorId: "ACoAAAVx6k8BWYOybRvvm1pR9TdIPXoqM9Da2qE"
-            authorPublicIdentifier: "mickaelwegerich"
-            authorName: "Mickael Wegerich"
-            activityUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7242064211135107072"
+          - id: "7254912034612379648"
+            text: "I'm proud that the Gates Foundation is opening a new office in Dakar, Senegal. Africa's development progress is a priority for the foundation, and I'm grateful for all our partners and staff who have worked so hard to make this happen."
+            likesCount: 2449
+            commentsCount: 372
+            activityDate: "2024-10-23T17:50:18.799Z"
+            authorId: "ACoAAA8BYqEBCGLg_vT_ca6mMEqkpp9nVffJ3hc"
+            authorPublicIdentifier: "williamhgates"
+            authorName: "Bill Gates"
+            activityUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7254912034612379648"
+            isRepublishedPost: true
+            relatedPost:
+                text: "We recently celebrated a momentous occasion with the official launch of the Bill & Melinda Gates Foundation's Senegal office! This significant step underscores our ongoing dedication to Africa's development goals and our commitment to collaborating with local partners.\n\nThe launch isn't just about opening doors—it's about forging pathways to innovative solutions that will save millions of lives across the continent. \n\nIt was great to have you with us Chris Elias and Paulin BASINGA and thanks for moderating a great discussion Raïssa OKOÏ !\n\nAs we move forward, we continue to learn, co-create, and deepen our relationships with key stakeholders, driving meaningful change for communities in Senegal and beyond.\n\n#BMGFSenegalLaunch #AfricaDevelopment #PartnershipForImpact"
+                activityDate: "2024-10-22T13:09:42.578Z"
+                authorId: "104421531"
+                authorPublicIdentifier: "gates-foundation-africa"
+                authorName: "Gates Foundation Africa"
+                activityUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7254479030517698560"
         comments:
-          - text: "Amine Bezzarga en effet meme SRE, c'est limite car c'est pour (\nSite Reliability Engineering) qui est désigne un ensemble de pratiques.\n\nTu penses à transformer le \"Engineering\" en \"Engineer\" ?"
-            likesCount: 0
-            commentsCount: 0
-            activityDate: "2024-09-18T10:15:23.741Z"
-            authorId: "ACoAAAVx6k8BWYOybRvvm1pR9TdIPXoqM9Da2qE"
-            authorName: "Mickael Wegerich"
-            authorPublicIdentifier: "mickaelwegerich"
+          - text: "Thanks for having me. It's inspiring to see how far research for Alzheimer's has come."
+            likesCount: 38
+            commentsCount: 19
+            activityDate: "2024-08-29T16:25:17.386Z"
+            authorId: "ACoAAA8BYqEBCGLg_vT_ca6mMEqkpp9nVffJ3hc"
+            authorName: "Bill Gates"
+            authorPublicIdentifier: "williamhgates"
             post:
-              id: "7242064211135107072"
-              text: "DevOps n'est en aucun cas un rôle, et encore moins une personne. C'est une culture, un mouvement, ... c'est écrit partout.\n\n\n💡 DevOps, c'est avant tout une manière de travailler. Ceci, afin d'améliorer la collaboration entre les équipes de dev et les ops en faveur du produit. \n\n💥 Le but ? Livrer plus vite, plus souvent, et de manière sécurisée. Pour y arriver, chaque membre de l'équipe doit être impliqué, que ce soit sur la qualité du code, l'automatisation des déploiements, la gestion de l'infrastructure, ...\n\nCela peut se matérialiser au quotidien par du pair programming entre un ops et un dev, sur un sujet commun. Ainsi, chacun apprend de l'autre.\n\nFinalement, le but est simple : fluidifier les process, livrer plus rapidement, et améliorer la qualité du produit.\n\nQuelques sites :\n- https://lnkd.in/dZyprRTx\n- https://lnkd.in/dVcwxX9z\n- https://lnkd.in/dnGX_fV4\n- https://lnkd.in/d7vKFWFn\n- https://lnkd.in/dmHzbu2E"
-              likesCount: 12
-              commentsCount: 3
-              activityDate: "2024-09-18T06:57:38.981Z"
-              authorId: "ACoAAAVx6k8BWYOybRvvm1pR9TdIPXoqM9Da2qE"
-              authorPublicIdentifier: "mickaelwegerich"
-              authorName: "Mickael Wegerich"
-              activityUrl: "https://www.linkedin.com/posts/mickaelwegerich_devops-wikipedia-activity-7242064211135107072-j7LV?utm_source=combined_share_message&utm_medium=member_desktop_web"
-            activityUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7242064211135107072?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7242064211135107072%2C7242111448426950656%29&replyUrn=urn%3Ali%3Acomment%3A%28activity%3A7242064211135107072%2C7242113975545384960%29&dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287242111448426950656%2Curn%3Ali%3Aactivity%3A7242064211135107072%29&dashReplyUrn=urn%3Ali%3Afsd_comment%3A%287242113975545384960%2Curn%3Ali%3Aactivity%3A7242064211135107072%29"
-        reactions: []
+              text: "This afternoon, we welcomed Bill Gates as he toured labs at the Indiana University School of Medicine and met with key faculty members to learn more about the expansive Alzheimer's disease research happening right here in Indianapolis."
+              likesCount: 3257
+              commentsCount: 118
+              activityDate: "2024-08-29T16:25:17.386Z"
+              authorId: "3323"
+              authorPublicIdentifier: "indiana-university-school-of-medicine"
+              authorName: "Indiana University School of Medicine"
+              activityUrl: "https://www.linkedin.com/posts/indiana-university-school-of-medicine_this-afternoon-we-welcomed-bill-gates-as-ugcPost-7231813250051383296-24DS?utm_source=combined_share_message&utm_medium=member_desktop_web"
+              relatedPost: null
+            activityUrl: "https://www.linkedin.com/feed/update/urn:li:ugcPost:7231813250051383296?commentUrn=urn%3Ali%3Acomment%3A%28ugcPost%3A7231813250051383296%2C7234959305127444481%29&dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287234959305127444481%2Curn%3Ali%3AugcPost%3A7231813250051383296%29"
+        reactions:
+          - type: "LIKE"
+            authorId: "ACoAAA8BYqEBCGLg_vT_ca6mMEqkpp9nVffJ3hc"
+            authorName: "Bill Gates"
+            authorPublicIdentifier: "williamhgates"
+            relatedComment: null
+            relatedPost:
+              text: "What an incredible week at Climate Week NYC! Climate Week brings together an ecosystem of people and organizations committed to building a sustainable future. I felt a sense of urgency combined with a strong commitment to change and getting the work done.\n\nOne highlight was my conversation with Bill Gates at an event hosted by Breakthrough Energy and CBRE focused on the Clean Industrial Revolution and the critical role of emerging climate technologies. Our partnership with Breakthrough Energy to decarbonize buildings, highlighted by our work with Luxwall, is a significant step forward in our net-zero commitment. \n\nWe further demonstrated the opportunity to decarbonize the built environment by honoring our work with the Javits Center. The Javits Centers' innovative microgrid featuring the largest rooftop solar array and battery storage system in Manhattan is an inspiring example of the solutions available now that can be scaled to any built environment. \n\nAnother memorable moment was speaking at Carnegie Hall during the Siemens Arts Program and Atlantik-Brücke e.V. event. It was an honor to reflect on the power of technology and culture to change the world, and to celebrate the enduring German-American friendship that has been pivotal in our journey. \n\nAs we move forward, the message is clear: partnerships are essential. No company can do this alone. The ecosystem of partners we have at #ClimateWeekNYC is crucial to delivering impact with greater speed and scale. \n\nThank you to everyone who made this week possible. Let's continue to push boundaries and take bold actions together. The future is ours to shape.  \n\n#Sustainability #NetZero #Innovation #CleanEnergy"
+              likesCount: 341
+              commentsCount: 13
+              activityDate: "2024-10-02T17:33:47.405Z"
+              authorId: "ACoAAARuJH4BUfWDnLosZmlFyNr6SrDaRFmmBK4"
+              authorPublicIdentifier: "barbara-humpton"
+              authorName: "Barbara Humpton"
+              activityUrl: "https://www.linkedin.com/posts/barbara-humpton_climateweeknyc-sustainability-netzero-ugcPost-7245556119614496768-Sufh?utm_source=combined_share_message&utm_medium=member_desktop_web"
+              relatedPost: null
         credits_left: 15
         rate_limit_left: 19
     
