@@ -45,7 +45,7 @@ paths:
         description: This required parameter is a string. It represents the email to query.
       responses:
         200:
-          description: 'The endpoint returns information about the person found and its company. There are two possible success responses for the operation. <br />1. Query Successful but no data found. <br />2. Query Successful with data found.'
+          description: 'The endpoint found and returns information about the query.'
           content:
             application/json:
               schema:
@@ -152,7 +152,7 @@ paths:
         required: true
       responses:
         200:
-          description: 'The endpoint returns information about the company. There are two possible success responses for the operation. <br />1. Query Successful but no data found. <Br />2. Query Successful with data found.'
+          description: 'The endpoint returns information about the company.'
           content:
             application/json:
               schema:
@@ -189,7 +189,7 @@ paths:
         required: true
       responses:
         200:
-          description: 'The endpoint returns information about the Linkedin URL owner and its company.'
+          description: 'The endpoint returns information about the company.'
           content:
             application/json:
               schema:
@@ -261,7 +261,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Reaction'
-          description: Array of reactions made by the person (Coming soon)
+          description: Array of reactions made by the person 
         credits_left:
           type: integer
           description: Represents the usable credits available for the user account after this query.
