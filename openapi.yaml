@@ -3,210 +3,289 @@ info:
   title: ScrapIn API
   version: 1.0.0
 servers:
-- url: https://api.scrapin.io
+  - url: https://api.scrapin.io
 security:
-- apiKey: []
+  - apiKey: []
 tags:
-- name: Person
-- name: Company
+  - name: Person
+  - name: Company
+  - name: Job
 paths:
-  '/enrichment':
+  "/enrichment":
     get:
       tags:
-      - Person
+        - Person
       operationId: PersonSearch
       summary: Person Search
-      description: This operation allows you to find someone from first name, last name, company domain or email. It returns data profile and company information as the response. This operation consume 1 credit.
+      description: This operation allows you to find a LinkedIn User based on first name, last name, company domain or email. It returns data profile and company information as the response. This operation consume 1 credit.
       parameters:
-      - name: firstName
-        in: query
-        schema:
-          type: string
-        description: This optional parameter is a string. It represents the first name to query.
-      - name: lastName
-        in: query
-        schema:
-          type: string
-        description: This optional parameter is a string. It represents the last name to query.
-      - name: companyDomain
-        in: query
-        schema:
-          type: string
-        description: This optional parameter is a string. It represents the company domain/URL to query
-      - name: companyName
-        in: query
-        schema:
-          type: string
-        description: This optional parameter is a string. It represents the company name to query
-      - name: email
-        in: query
-        schema:
-          type: string
-        description: This required parameter is a string. It represents the email to query.
+        - name: firstName
+          in: query
+          schema:
+            type: string
+          description: This optional parameter is a string. It represents the first name to query.
+        - name: lastName
+          in: query
+          schema:
+            type: string
+          description: This optional parameter is a string. It represents the last name to query.
+        - name: companyDomain
+          in: query
+          schema:
+            type: string
+          description: This optional parameter is a string. It represents the company domain/URL to query
+        - name: companyName
+          in: query
+          schema:
+            type: string
+          description: This optional parameter is a string. It represents the company name to query
+        - name: email
+          in: query
+          schema:
+            type: string
+          description: This required parameter is a string. It represents the email to query.
       responses:
         200:
-          description: 'The endpoint found and returns information about the query.'
+          description: "The endpoint found and returns information about the query."
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PersonSearch'
+                $ref: "#/components/schemas/PersonSearch"
               examples:
                 ProfileFound:
-                  $ref: '#/components/examples/ProfileFound'
-                ProfileNotFound:
-                  $ref: '#/components/examples/ProfileNotFound'
+                  $ref: "#/components/examples/ProfileFound"
         400:
-          $ref: '#/components/responses/BadRequest'
+          $ref: "#/components/responses/BadRequest"
         401:
-          $ref: '#/components/responses/Unauthorized'
+          $ref: "#/components/responses/Unauthorized"
         402:
-          $ref: '#/components/responses/PaymentRequired'
+          $ref: "#/components/responses/PaymentRequired"
         404:
-          $ref: '#/components/responses/NotFound'
+          $ref: "#/components/responses/NotFound"
         500:
-          $ref: '#/components/responses/ServerError'
-          
-  '/enrichment/activities':
+          $ref: "#/components/responses/ServerError"
+
+  "/enrichment/activities":
     get:
       tags:
-      - Person
+        - Person
       operationId: ExtractPersonActivities
       summary: Get Person LinkedIn Activities
       description: This operation allows you to retrieve the LinkedIn activities (posts, comments, and likes) of a person based on their LinkedIn profile URL. This operation consumes 1 credit.
       parameters:
-      - name: linkedInUrl
-        in: query
-        required: true
-        schema:
-          type: string
-        description: This required parameter is a string. It represents the LinkedIn profile URL of the person whose activities you want to retrieve.
+        - name: linkedInUrl
+          in: query
+          required: true
+          schema:
+            type: string
+          description: This required parameter is a string. It represents the LinkedIn profile URL of the person whose activities you want to retrieve.
       responses:
         200:
-          description: 'The endpoint returns the LinkedIn activities of the person, including posts, comments, and reactions.'
+          description: "The endpoint returns the LinkedIn activities of the person, including posts, comments, and reactions."
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ExtractPersonActivities'
+                $ref: "#/components/schemas/ExtractPersonActivities"
               examples:
                 ExtractedPersonActivitiesExample:
-                  $ref: '#/components/examples/ExtractedPersonActivitiesExample'
+                  $ref: "#/components/examples/ExtractedPersonActivitiesExample"
         400:
-          $ref: '#/components/responses/BadRequest'
+          $ref: "#/components/responses/BadRequest"
         401:
-          $ref: '#/components/responses/Unauthorized'
+          $ref: "#/components/responses/Unauthorized"
         402:
-          $ref: '#/components/responses/PaymentRequired'
+          $ref: "#/components/responses/PaymentRequired"
         404:
-          $ref: '#/components/responses/NotFound'
+          $ref: "#/components/responses/NotFound"
         500:
-          $ref: '#/components/responses/ServerError'
+          $ref: "#/components/responses/ServerError"
 
-  '/enrichment/profile':
+  "/enrichment/profile":
     get:
       tags:
-      - Person
+        - Person
       operationId: ExtractPersonDataProfile
       summary: Extract Person Data Profile
-      description: This operation allows you to extract data from a Person Linkedin URL. It returns profile data and current company data of the person as the response. This operation consume 1 credit.
+      description: This operation allows you to extract data from a Person LinkedIn URL. It returns profile data and current company data of the person as the response. This operation consume 1 credit.
       parameters:
-      - name: linkedInUrl
-        in: query
-        schema:
-          type: string
-        description: "This required parameter is a string. It represents the Linkedin URL of the person with this format: https://www.linkedin.com/in/xxxxxxxxxxxxx/."
-        required: true
+        - name: linkedInUrl
+          in: query
+          schema:
+            type: string
+          description: "This required parameter is a string. It represents the LinkedIn URL of the person with this format: https://www.linkedin.com/in/xxxxxxxxxxxxx/."
+          required: true
       responses:
         200:
-          description: 'The endpoint returns information about the Linkedin URL owner and its company.'
+          description: "The endpoint returns informations about the LinkedIn URL owner and its company."
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ExtractPersonDataProfile'
+                $ref: "#/components/schemas/ExtractPersonDataProfile"
               examples:
                 ProfileFound:
-                  $ref: '#/components/examples/PersonProfileExtracted'
+                  $ref: "#/components/examples/PersonProfileExtracted"
         400:
-          $ref: '#/components/responses/BadRequest'
+          $ref: "#/components/responses/BadRequest"
         401:
-          $ref: '#/components/responses/Unauthorized'
+          $ref: "#/components/responses/Unauthorized"
         402:
-          $ref: '#/components/responses/PaymentRequired'
+          $ref: "#/components/responses/PaymentRequired"
         404:
-          $ref: '#/components/responses/NotFound'
+          $ref: "#/components/responses/NotFound"
         500:
-          $ref: '#/components/responses/ServerError'
+          $ref: "#/components/responses/ServerError"
 
-  '/enrichment/company/domain':
+  "/enrichment/company/domain":
     get:
       tags:
-      - Company
+        - Company
       operationId: CompanySearch
       summary: Company Search
       description: This operation allows you to find a company from its domain name. It returns company information as the response. This operation consume 1 credit.
       parameters:
-      - name: domain
-        in: query
-        schema:
-          type: string
-        description: "This required parameter is a string. It represents the domain name of the company to query."
-        required: true
+        - name: domain
+          in: query
+          schema:
+            type: string
+          description: "This required parameter is a string. It represents the domain name of the company to query."
+          required: true
       responses:
         200:
-          description: 'The endpoint returns information about the company.'
+          description: "The endpoint returns informations about the company."
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CompanySearch'
+                $ref: "#/components/schemas/CompanySearch"
               examples:
                 CompanyFound:
-                  $ref: '#/components/examples/CompanyFound'
-                CompanyNotFound:
-                  $ref: '#/components/examples/CompanyNotFound'
+                  $ref: "#/components/examples/CompanyFound"
         400:
-          $ref: '#/components/responses/BadRequest'
+          $ref: "#/components/responses/BadRequest"
         401:
-          $ref: '#/components/responses/Unauthorized'
+          $ref: "#/components/responses/Unauthorized"
         402:
-          $ref: '#/components/responses/PaymentRequired'
+          $ref: "#/components/responses/PaymentRequired"
         404:
-          $ref: '#/components/responses/NotFound'
+          $ref: "#/components/responses/NotFound"
         500:
-          $ref: '#/components/responses/ServerError'
+          $ref: "#/components/responses/ServerError"
 
-  '/enrichment/company':
+  "/enrichment/company":
     get:
       tags:
-      - Company
+        - Company
       operationId: ExtractCompanyDataProfile
       summary: Extract Company Data Profile
-      description: This operation allows you to extract data from a Company Linkedin URL. It returns company data as the response. This operation consume 1 credit.
+      description: This operation allows you to extract data from a Company LinkedIn URL. It returns company data as the response. This operation consume 1 credit.
       parameters:
-      - name: linkedInUrl
-        in: query
-        schema:
-          type: string
-        description: "This required parameter is a string. It represents the Linkedin URL of the person with this format: https://www.linkedin.com/company/xxxxxxxxxx/."
-        required: true
+        - name: linkedInUrl
+          in: query
+          schema:
+            type: string
+          description: "This required parameter is a string. It represents the LinkedIn URL of the company with this format: https://www.linkedin.com/company/xxxxxxxxxx/."
+          required: true
       responses:
         200:
-          description: 'The endpoint returns information about the company.'
+          description: "The endpoint returns informations about the company."
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ExtractCompanyDataProfile'
+                $ref: "#/components/schemas/ExtractCompanyDataProfile"
               examples:
                 CompanyFound:
-                  $ref: '#/components/examples/CompanyProfileExtracted'
+                  $ref: "#/components/examples/CompanyProfileExtracted"
         400:
-          $ref: '#/components/responses/BadRequest'
+          $ref: "#/components/responses/BadRequest"
         401:
-          $ref: '#/components/responses/Unauthorized'
+          $ref: "#/components/responses/Unauthorized"
         402:
-          $ref: '#/components/responses/PaymentRequired'
+          $ref: "#/components/responses/PaymentRequired"
         404:
-          $ref: '#/components/responses/NotFound'
+          $ref: "#/components/responses/NotFound"
         500:
-          $ref: '#/components/responses/ServerError'
+          $ref: "#/components/responses/ServerError"
+
+  "/enrichment/jobs/search":
+    get:
+      tags:
+        - Job
+      operationId: JobSearch
+      summary: Extract Job Search Data
+      description: This operation allows you to extract data from a Job Search by keywords, location and companyUrl filters. Atleast one of the input parameters is required. It returns a list of job data as the response. This operation consume 1 credit.
+      parameters:
+        - name: keywords
+          in: query
+          schema:
+            type: string
+          description: "This required parameter is a string. It represents the keywords contained by the job title."
+          required: false
+        - name: location
+          in: query
+          schema:
+            type: string
+          description: "This required parameter is a string. It represents the location of the job. It can be the city, the region of the country name."
+          required: false
+        - name: companyUrl
+          in: query
+          schema:
+            type: string
+          description: "This required parameter is a string. It represents the LinkedIn URL of the company with this format: https://www.linkedin.com/company/xxxxxxxxxx/."
+          required: false
+      responses:
+        200:
+          description: "The endpoint returns a list of jobs."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JobSearch"
+              examples:
+                JobFound:
+                  $ref: "#/components/examples/JobListExtracted"
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        402:
+          $ref: "#/components/responses/PaymentRequired"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/ServerError"
+
+  "/enrichment/jobs/details":
+    get:
+      tags:
+        - Job
+      operationId: ExtractJobData
+      summary: Extract Job Data
+      description: This operation allows you to extract data from a Job LinkedIn URL. It returns job data as the response. This operation consume 1 credit.
+      parameters:
+        - name: url
+          in: query
+          schema:
+            type: string
+          description: "This required parameter is a string. It represents the LinkedIn URL of the job with the following formats: https://www.linkedin.com/jobs/collections/recommended/?currentJobId=XXXXXXXXXX, https://www.linkedin.com/jobs/search/?currentJobId=XXXXXXXXXX or https://www.linkedin.com/jobs/view/XXXXXXXXXX/."
+          required: true
+      responses:
+        200:
+          description: "The endpoint returns informations about the job."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ExtractJobData"
+              examples:
+                JobFound:
+                  $ref: "#/components/examples/JobExtracted"
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        402:
+          $ref: "#/components/responses/PaymentRequired"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/ServerError"
 
 components:
   schemas:
@@ -224,23 +303,22 @@ components:
           description: Represents the type of account.
         person:
           oneOf:
-          - $ref: '#/components/schemas/Person'
-          - type: boolean
-            enum:
-            - false
+            - $ref: "#/components/schemas/Person"
+            - type: boolean
+              enum:
+                - false
         company:
           oneOf:
-          - $ref: '#/components/schemas/Company'
-          - type: boolean
-            enum:
-            - false
+            - $ref: "#/components/schemas/Company"
+            - type: boolean
+              enum:
+                - false
         credits_left:
           type: integer
           description: Represents the usable credits available for the user account after this query.
         rate_limit_left:
           type: integer
           description: Represents the usable daily request limit available for the user account after this query.
-          
     ExtractPersonActivities:
       type: object
       properties:
@@ -250,25 +328,24 @@ components:
         posts:
           type: array
           items:
-            $ref: '#/components/schemas/Post'
+            $ref: "#/components/schemas/Post"
           description: Array of posts made by the person
         comments:
           type: array
           items:
-            $ref: '#/components/schemas/Comment'
+            $ref: "#/components/schemas/Comment"
           description: Array of comments made by the person
         reactions:
           type: array
           items:
-            $ref: '#/components/schemas/Reaction'
-          description: Array of reactions made by the person 
+            $ref: "#/components/schemas/Reaction"
+          description: Array of reactions made by the person
         credits_left:
           type: integer
           description: Represents the usable credits available for the user account after this query.
         rate_limit_left:
           type: integer
           description: Represents the usable daily request limit available for the user account after this query.
-          
     Post:
       type: object
       properties:
@@ -333,7 +410,6 @@ components:
               type: object
               nullable: true
               description: Nested related post (if any)
-          
     Comment:
       type: object
       properties:
@@ -360,12 +436,11 @@ components:
           type: string
           description: Public identifier of the comment author
         post:
-          $ref: '#/components/schemas/Post'
+          $ref: "#/components/schemas/Post"
           description: The post on which this comment was made
         activityUrl:
           type: string
           description: URL of the comment on LinkedIn
-
     Reaction:
       type: object
       properties:
@@ -386,16 +461,15 @@ components:
           type: string
           description: Public identifier of the person who made the reaction
         relatedPost:
-          $ref: '#/components/schemas/Post'
+          $ref: "#/components/schemas/Post"
           description: The post on which this reaction was made
         relatedComment:
-          $ref: '#/components/schemas/Comment'
+          $ref: "#/components/schemas/Comment"
           nullable: true
           description: The comment on which this reaction was made (if applicable)
         activityUrl:
           type: string
           description: URL of the reaction on LinkedIn
-
     Person:
       type: object
       properties:
@@ -532,16 +606,16 @@ components:
           description: The usable daily request limit available for the user account after this query.
         person:
           oneOf:
-          - $ref: '#/components/schemas/Person'
-          - type: boolean
-            enum:
-            - false
+            - $ref: "#/components/schemas/Person"
+            - type: boolean
+              enum:
+                - false
         company:
           oneOf:
-          - $ref: '#/components/schemas/Company'
-          - type: boolean
-            enum:
-            - false
+            - $ref: "#/components/schemas/Company"
+            - type: boolean
+              enum:
+                - false
     Company:
       type: object
       properties:
@@ -605,10 +679,10 @@ components:
           description: Represents the usable daily request limit available for the user account after this query.
         company:
           oneOf:
-          - $ref: '#/components/schemas/Company'
-          - type: boolean
-            enum:
-            - false
+            - $ref: "#/components/schemas/Company"
+            - type: boolean
+              enum:
+                - false
     ExtractCompanyDataProfile:
       type: object
       properties:
@@ -623,17 +697,96 @@ components:
           description: Represents the usable daily request limit available for the user account after this query.
         company:
           oneOf:
-          - $ref: '#/components/schemas/Company'
-          - type: boolean
-            enum:
-            - false
+            - $ref: "#/components/schemas/Company"
+            - type: boolean
+              enum:
+                - false
+    Job:
+      type: object
+      properties:
+        linkedinIdentifier:
+          type: string
+        title:
+          type: string
+        companyName:
+          type: string
+        companyLogo:
+          type: string
+        description:
+          type: string
+        location:
+          type: string
+        url:
+          type: string
+        creationDate:
+          type: string
+        repostedJob:
+          type: boolean
+        repostDate:
+          type: string
+        applicantsCount:
+          type: number
+        flexibility:
+          type: string
+        experienceLevel:
+          type: string
+        contractType:
+          type: string
+    JobSearch:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Indicates success or failure of api request.
+        credits_left:
+          type: integer
+          description: Represents the usable credits available for the user account after this query.
+        rate_limit_left:
+          type: integer
+          description: Represents the usable daily request limit available for the user account after this query.
+        metadata:
+          type: object
+          properties:
+            current_page:
+              type: integer
+              description: This indicates the current page of the results you are fetching.
+            per_page:
+              type: integer
+              description: This indicates the number of the jobs fetched at each call, a page contains 100 jobs by default. (It can not be modified for now.)
+            total:
+              type: integer
+              description: The total number of matching jobs found on LinkedIn Jobs Search Engine. The number can be over 1000, but we do not provide any data to more than the first 1000 jobs.
+        jobs:
+          type: array
+          items:
+            $ref: "#/components/schemas/Job"
+          description: Array of jobs
+    ExtractJobData:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Indicates success or failure of api request.
+        credits_left:
+          type: integer
+          description: Represents the usable credits available for the user account after this query.
+        rate_limit_left:
+          type: integer
+          description: Represents the usable daily request limit available for the user account after this query.
+        job:
+          oneOf:
+            - $ref: "#/components/schemas/Job"
+            - type: boolean
+              enum:
+                - false
+
     ErrorResponseSchema:
       type: object
       properties:
         success:
           type: boolean
           enum:
-          - false
+            - false
         title:
           type: string
         msg:
@@ -746,7 +899,7 @@ components:
           tagline: null
           description: |
             Every company has a mission. What's ours? To empower every person and every organization to achieve more. We believe technology can and should be a force for good and that meaningful innovation contributes to a brighter world in the future and today. Our culture doesn't just encourage curiosity; it embraces it. Each day we make progress together by showing up as our authentic selves. We show up with a learn-it-all mentality. We show up cheering on others, knowing their success doesn't diminish our own. We show up every day open to learning our own biases, changing our behavior, and inviting in differences. Because impact matters.
-        
+
             Microsoft operates in 190 countries and is made up of more than 220,000 passionate employees worldwide.
           industry: "Software Development"
           phone: null
@@ -783,7 +936,6 @@ components:
             street1: "1 Microsoft Way"
             street2: null
           logo: "https://media.licdn.com/dms/image/C560BAQE88xCsONDULQ/company-logo_400_400/0/1630652622688/microsoft_logo?e=1725494400&v=beta&t=joSXHhDAEare7f9gk8MwXr2sOr84zX7HDx2h5znXEYI"
-    
     ExtractedPersonActivitiesExample:
       summary: Person LinkedIn Activities Example
       value:
@@ -800,12 +952,12 @@ components:
             activityUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7254912034612379648"
             isRepublishedPost: true
             relatedPost:
-                text: "We recently celebrated a momentous occasion with the official launch of the Bill & Melinda Gates Foundation's Senegal office! This significant step underscores our ongoing dedication to Africa's development goals and our commitment to collaborating with local partners.\n\nThe launch isn't just about opening doors—it's about forging pathways to innovative solutions that will save millions of lives across the continent. \n\nIt was great to have you with us Chris Elias and Paulin BASINGA and thanks for moderating a great discussion Raïssa OKOÏ !\n\nAs we move forward, we continue to learn, co-create, and deepen our relationships with key stakeholders, driving meaningful change for communities in Senegal and beyond.\n\n#BMGFSenegalLaunch #AfricaDevelopment #PartnershipForImpact"
-                activityDate: "2024-10-22T13:09:42.578Z"
-                authorId: "104421531"
-                authorPublicIdentifier: "gates-foundation-africa"
-                authorName: "Gates Foundation Africa"
-                activityUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7254479030517698560"
+              text: "We recently celebrated a momentous occasion with the official launch of the Bill & Melinda Gates Foundation's Senegal office! This significant step underscores our ongoing dedication to Africa's development goals and our commitment to collaborating with local partners.\n\nThe launch isn't just about opening doors—it's about forging pathways to innovative solutions that will save millions of lives across the continent. \n\nIt was great to have you with us Chris Elias and Paulin BASINGA and thanks for moderating a great discussion Raïssa OKOÏ !\n\nAs we move forward, we continue to learn, co-create, and deepen our relationships with key stakeholders, driving meaningful change for communities in Senegal and beyond.\n\n#BMGFSenegalLaunch #AfricaDevelopment #PartnershipForImpact"
+              activityDate: "2024-10-22T13:09:42.578Z"
+              authorId: "104421531"
+              authorPublicIdentifier: "gates-foundation-africa"
+              authorName: "Gates Foundation Africa"
+              activityUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7254479030517698560"
         comments:
           - text: "Thanks for having me. It's inspiring to see how far research for Alzheimer's has come."
             likesCount: 38
@@ -843,17 +995,6 @@ components:
               relatedPost: null
         credits_left: 15
         rate_limit_left: 19
-    
-    ProfileNotFound:
-      summary: Profile Not Found
-      value:
-        success: true
-        email: efzefhzefzef@live.fr
-        emailType: personal
-        credits_left: 90000
-        rate_limit_left: 19000
-        person: false
-        company: false
     PersonProfileExtracted:
       summary: Person Profile Extracted
       value:
@@ -958,7 +1099,7 @@ components:
           tagline: null
           description: |
             Every company has a mission. What's ours? To empower every person and every organization to achieve more. We believe technology can and should be a force for good and that meaningful innovation contributes to a brighter world in the future and today. Our culture doesn't just encourage curiosity; it embraces it. Each day we make progress together by showing up as our authentic selves. We show up with a learn-it-all mentality. We show up cheering on others, knowing their success doesn't diminish our own. We show up every day open to learning our own biases, changing our behavior, and inviting in differences. Because impact matters.
-        
+
             Microsoft operates in 190 countries and is made up of more than 220,000 passionate employees worldwide.
           industry: "Software Development"
           phone: null
@@ -1014,7 +1155,7 @@ components:
           tagline: null
           description: |
             Every company has a mission. What's ours? To empower every person and every organization to achieve more. We believe technology can and should be a force for good and that meaningful innovation contributes to a brighter world in the future and today. Our culture doesn't just encourage curiosity; it embraces it. Each day we make progress together by showing up as our authentic selves. We show up with a learn-it-all mentality. We show up cheering on others, knowing their success doesn't diminish our own. We show up every day open to learning our own biases, changing our behavior, and inviting in differences. Because impact matters.
-        
+
             Microsoft operates in 190 countries and is made up of more than 220,000 passionate employees worldwide.
           industry: "Software Development"
           phone: null
@@ -1051,13 +1192,6 @@ components:
             street1: "1 Microsoft Way"
             street2: null
           logo: "https://media.licdn.com/dms/image/C560BAQE88xCsONDULQ/company-logo_400_400/0/1630652622688/microsoft_logo?e=1725494400&v=beta&t=joSXHhDAEare7f9gk8MwXr2sOr84zX7HDx2h5znXEYI"
-    CompanyNotFound:
-      summary: Company Not Found
-      value:
-        success: true
-        credits_left: 90000
-        rate_limit_left: 19000
-        company: false
     CompanyProfileExtracted:
       summary: Company Profile Extracted
       value:
@@ -1077,7 +1211,7 @@ components:
           tagline: null
           description: |
             Every company has a mission. What's ours? To empower every person and every organization to achieve more. We believe technology can and should be a force for good and that meaningful innovation contributes to a brighter world in the future and today. Our culture doesn't just encourage curiosity; it embraces it. Each day we make progress together by showing up as our authentic selves. We show up with a learn-it-all mentality. We show up cheering on others, knowing their success doesn't diminish our own. We show up every day open to learning our own biases, changing our behavior, and inviting in differences. Because impact matters.
-        
+
             Microsoft operates in 190 countries and is made up of more than 220,000 passionate employees worldwide.
           industry: "Software Development"
           phone: null
@@ -1114,6 +1248,84 @@ components:
             street1: "1 Microsoft Way"
             street2: null
           logo: "https://media.licdn.com/dms/image/C560BAQE88xCsONDULQ/company-logo_400_400/0/1630652622688/microsoft_logo?e=1725494400&v=beta&t=joSXHhDAEare7f9gk8MwXr2sOr84zX7HDx2h5znXEYI"
+    JobListExtracted:
+      summary: Job List Example
+      value:
+        success: true
+        credits_left: 90000
+        rate_limit_left: 19000
+        metadata:
+          current_page: 1
+          per_page: 100
+          total: 500
+        jobs:
+          - linkedinIdentifier: "4081332168"
+            title: Software Engineer, Back-End, Data Center Network Planning
+            companyName: Google
+            companyLogo: https://media.licdn.com/dms/image/v2/C4D0BAQHiNSL4Or29cg/company-logo_400_400/company-logo_400_400/0/1631311446380?e=1742428800&v=beta&t=fRFa5F7PMhVSlTNmwx1Ow2_FkX-GdS1E8zV52c433eo
+            location: Sunnyvale
+            url: https://www.linkedin.com/jobs/view/4081332168
+            creationDate:
+            repostDate:
+            experienceLevel:
+            contractType:
+          - linkedinIdentifier: "4093221619"
+            title: Data Center Mechanical/Thermal Cooling Engineer
+            companyName: Google
+            companyLogo: https://media.licdn.com/dms/image/v2/C4D0BAQHiNSL4Or29cg/company-logo_400_400/company-logo_400_400/0/1631311446380?e=1742428800&v=beta&t=fRFa5F7PMhVSlTNmwx1Ow2_FkX-GdS1E8zV52c433eo
+            location: Sunnyvale
+            url: https://www.linkedin.com/jobs/view/4093221619
+            creationDate:
+            repostDate:
+            experienceLevel:
+            contractType:
+    JobExtracted:
+      summary: Company Profile Extracted
+      value:
+        success: true
+        credits_left: 90000
+        rate_limit_left: 19000
+        job:
+          linkedinIdentifier: "4102642841"
+          title: Senior Software Engineer, Full Stack, Learning & Education
+          companyName: Google
+          companyLogo: https://media.licdn.com/dms/image/v2/C4D0BAQHiNSL4Or29cg/company-logo_400_400/company-logo_400_400/0/1631311446380?e=1742428800&v=beta&t=fRFa5F7PMhVSlTNmwx1Ow2_FkX-GdS1E8zV52c433eo
+          description: |-
+            Minimum qualifications:
+
+            Bachelor’s degree or equivalent practical experience. 5 years of experience with software development in one or more programming languages, and with data structures/algorithms.3 years of experience with full stack development, across back-end such as Java, Python, GO, and/or C++ codebases, and front-end experience including JavaScript and/or TypeScript, HTML, CSS or equivalent.3 years of experience testing, maintaining, and/or launching software products, and 1 year of experience with software design and architecture.
+
+            Preferred qualifications:
+
+            Master's degree or PhD in Computer Science or related technical field. 1 year of experience in a technical leadership role. Experience developing accessible technologies.
+
+            About The Job
+
+            Google's software engineers develop the next-generation technologies that change how billions of users connect, explore, and interact with information and one another. Our products need to handle information at massive scale, and extend well beyond web search. We're looking for engineers who bring fresh ideas from all areas, including information retrieval, distributed computing, large-scale system design, networking and data storage, security, artificial intelligence, natural language processing, UI design and mobile; the list goes on and is growing every day. As a software engineer, you will work on a specific project critical to Google’s needs with opportunities to switch teams and projects as you and our fast-paced business grow and evolve. We need our engineers to be versatile, display leadership qualities and be enthusiastic to take on new problems across the full-stack as we continue to push technology forward.
+
+            With your technical expertise you will manage project priorities, deadlines, and deliverables. You will design, develop, test, deploy, maintain, and enhance software solutions.
+
+            Learning is the ongoing quest for understanding, and we made it our mission more than 20 years ago to organize the world’s information to make it universally accessible and useful. The learning landscape is changing, and the Learning and Education team's mission is to help everyone in the world learn anything in the world. We provide the information, tools, and services that help people gain knowledge, fuel curiosity, and prepare for what’s next. We focus our work to add the most value for users to enable learning for school, work, and life. We believe everyone can and should have access to quality learning experiences to reach their full potential.
+
+            The US base salary range for this full-time position is $161,000-$239,000 + bonus + equity + benefits. Our salary ranges are determined by role, level, and location. The range displayed on each job posting reflects the minimum and maximum target salaries for the position across all US locations. Within the range, individual pay is determined by work location and additional factors, including job-related skills, experience, and relevant education or training. Your recruiter can share more about the specific salary range for your preferred location during the hiring process.
+
+            Please note that the compensation details listed in US role postings reflect the base salary only, and do not include bonus, equity, or benefits. Learn more about benefits at Google .
+
+            Responsibilities
+
+            Write and test product or system development code. Participate in, or lead design reviews with peers and stakeholders to decide amongst available technologies. Review code developed by other developers and provide feedback to ensure best practices (e.g., style guidelines, checking code in, accuracy, testability, and efficiency). Contribute to existing documentation or educational content and adapt content based on product/program updates and user feedback. Triage product or system issues and debug/track/resolve by analyzing the sources of issues and the impact on hardware, network, or service operations and quality.
+
+            Google is proud to be an equal opportunity workplace and is an affirmative action employer. We are committed to equal employment opportunity regardless of race, color, ancestry, religion, sex, national origin, sexual orientation, age, citizenship, marital status, disability, gender identity or Veteran status. We also consider qualified applicants regardless of criminal histories, consistent with legal requirements. See also Google's EEO Policy and EEO is the Law. If you have a disability or special need that requires accommodation, please let us know by completing our Accommodations for Applicants form .
+          location: Mountain View, California, United States of America
+          url: https://www.linkedin.com/jobs/view/4102642841
+          creationDate: "2024-12-18T03:13:03.000Z"
+          repostedJob: false
+          repostDate:
+          applicantsCount: 15
+          flexibility: On-site
+          experienceLevel: Mid-Senior level
+          contractType: Full-time
+
     NoApiKey:
       summary: No Api Key
       value:
@@ -1156,58 +1368,58 @@ components:
         success: false
         title: An error has occurred 🚒
         msg: 🚨 Internal Server Error, you will not be credit debited.
-  
+
   responses:
     BadRequest:
       description: Bad Request
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ErrorResponseSchema'
+            $ref: "#/components/schemas/ErrorResponseSchema"
           examples:
             NoApiKey:
-              $ref: '#/components/examples/NoApiKey'
+              $ref: "#/components/examples/NoApiKey"
             MissingEmail:
-              $ref: '#/components/examples/MissingEmail'
+              $ref: "#/components/examples/MissingEmail"
             InvalidEmail:
-              $ref: '#/components/examples/InvalidEmail'
+              $ref: "#/components/examples/InvalidEmail"
     Unauthorized:
       description: Unauthorized
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ErrorResponseSchema'
+            $ref: "#/components/schemas/ErrorResponseSchema"
           examples:
             InvalidApiKey:
-              $ref: '#/components/examples/InvalidApiKey'
+              $ref: "#/components/examples/InvalidApiKey"
     PaymentRequired:
       description: Insufficient Account Balance
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ErrorResponseSchema'
+            $ref: "#/components/schemas/ErrorResponseSchema"
           examples:
             PaymentRequired:
-              $ref: '#/components/examples/PaymentRequired'
+              $ref: "#/components/examples/PaymentRequired"
     NotFound:
       description: Page Not Found
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ErrorResponseSchema'
+            $ref: "#/components/schemas/ErrorResponseSchema"
           examples:
             PageNotFound:
-              $ref: '#/components/examples/PageNotFound'
+              $ref: "#/components/examples/PageNotFound"
     ServerError:
       description: Server Error
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ErrorResponseSchema'
+            $ref: "#/components/schemas/ErrorResponseSchema"
           examples:
             ServerError:
-              $ref: '#/components/examples/ServerError'
-  
+              $ref: "#/components/examples/ServerError"
+
   securitySchemes:
     apiKey:
       name: apikey
