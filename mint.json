@@ -26,13 +26,9 @@
     "url": "https://www.scrapin.io/"
   },
   "navigation": [
-    
     {
       "group": "Getting Started",
-      "pages": [
-        "introduction",
-        "quickstart"
-      ]
+      "pages": ["introduction", "quickstart"]
     },
     {
       "group": "Person",
@@ -44,17 +40,17 @@
     },
     {
       "group": "Company",
-      "pages": [
-        "endpoint/ExtractCompanyDataProfile",
-        "endpoint/CompanySearch"
-      ]
+      "pages": ["endpoint/ExtractCompanyDataProfile", "endpoint/CompanySearch"]
+    },
+    {
+      "group": "Job",
+      "pages": ["endpoint/ExtractJobData", "endpoint/JobSearch"]
     }
   ],
-  "footerSocials": {
-  },
+  "footerSocials": {},
   "analytics": {
     "segment": {
-        "key": "scZ4B7bSTMfdxY3LZlFmQy3hqTUH3iei"
+      "key": "scZ4B7bSTMfdxY3LZlFmQy3hqTUH3iei"
     }
   }
 }
