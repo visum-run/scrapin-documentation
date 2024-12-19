@@ -744,7 +744,19 @@ components:
         rate_limit_left:
           type: integer
           description: Represents the usable daily request limit available for the user account after this query.
-        hobs:
+        metadata:
+          type: object
+          properties:
+            current_page:
+              type: integer
+              description: This indicates the current page of the results you are fetching.
+            per_page:
+              type: integer
+              description: This indicates the number of the jobs fetched at each call, a page contains 100 jobs by default. (It can not be modified for now.)
+            total:
+              type: integer
+              description: The total number of matching jobs found on LinkedIn Jobs Search Engine. The number can be over 1000, but we do not provide any data to more than the first 1000 jobs.
+        jobs:
           type: array
           items:
             $ref: "#/components/schemas/Job"
