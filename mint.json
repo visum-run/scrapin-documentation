@@ -45,6 +45,10 @@
     {
       "group": "Job",
       "pages": ["endpoint/ExtractJobData", "endpoint/JobSearch"]
+    },
+    {
+      "group": "Workspaces",
+      "pages": ["endpoint/WorkspacesQuotas"]
     }
   ],
   "footerSocials": {},

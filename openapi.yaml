@@ -10,6 +10,7 @@ tags:
   - name: Person
   - name: Company
   - name: Job
+  - name: Workspaces
 paths:
   "/enrichment":
     get:
@@ -276,6 +277,34 @@ paths:
               examples:
                 JobFound:
                   $ref: "#/components/examples/JobExtracted"
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        402:
+          $ref: "#/components/responses/PaymentRequired"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/ServerError"
+
+  "/workspaces/quotas":
+    get:
+      tags:
+        - Workspaces
+      operationId: WorkspacesQuotas
+      summary: Workspaces Quotas
+      description: This endpoint retrieves the quotas for a specific workspace, including the remaining credits (credits_left) and rate limit (rate_limit_left). It is designed to help monitor resource availability and ensure proper usage within the workspace.
+      responses:
+        200:
+          description: "The endpoint returns information about the workspace quotas, including remaining credits (credits_left) and rate limit (rate_limit_left)."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/WorkspacesQuotas"
+              examples:
+                QuotasFound:
+                  $ref: "#/components/examples/QuotasFound"
         400:
           $ref: "#/components/responses/BadRequest"
         401:
@@ -779,6 +808,25 @@ components:
             - type: boolean
               enum:
                 - false
+    Quotas:
+      type: object
+      properties:
+        credits_left:
+          type: integer
+          description: Represents the usable credits available for the user account after this query.
+        rate_limit_left:
+          type: integer
+          description: Represents the usable daily request limit available for the user account after this query.
+    WorkspacesQuotas:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Indicates whether the API request was successful.
+        data:
+          type: object
+          $ref: "#/components/schemas/Quotas"
+          description: Contains the quotas information for the workspace.
 
     ErrorResponseSchema:
       type: object
@@ -1325,6 +1373,13 @@ components:
           flexibility: On-site
           experienceLevel: Mid-Senior level
           contractType: Full-time
+    QuotasFound:
+      summary: Quotas Found
+      value:
+        status: "success"
+        data:
+          credits_left: 90000
+          rate_limit_left: 19000
 
     NoApiKey:
       summary: No Api Key
