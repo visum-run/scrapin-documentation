@@ -391,15 +391,19 @@ components:
           type: string
           format: date-time
           description: Date and time when the post was created
-        authorId:
-          type: string
-          description: Unique identifier of the post author
-        authorPublicIdentifier:
-          type: string
-          description: Public identifier of the post author
-        authorName:
-          type: string
-          description: Name of the post author
+        author:
+          type: object
+          description: Information about the post author
+          properties:
+            authorId:
+              type: string
+              description: Unique identifier of the post author
+            authorName:
+              type: string
+              description: Name of the post author
+            authorPublicIdentifier:
+              type: string
+              description: Public identifier of the post author
         activityUrl:
           type: string
           description: URL of the post on LinkedIn
@@ -994,9 +998,10 @@ components:
             likesCount: 2449
             commentsCount: 372
             activityDate: "2024-10-23T17:50:18.799Z"
-            authorId: "ACoAAA8BYqEBCGLg_vT_ca6mMEqkpp9nVffJ3hc"
-            authorPublicIdentifier: "williamhgates"
-            authorName: "Bill Gates"
+            author:
+              authorId: "ACoAAA8BYqEBCGLg_vT_ca6mMEqkpp9nVffJ3hc"
+              authorName: "Bill Gates"
+              authorPublicIdentifier: "williamhgates"
             activityUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7254912034612379648"
             isRepublishedPost: true
             relatedPost:
