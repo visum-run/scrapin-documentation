@@ -316,6 +316,417 @@ paths:
         500:
           $ref: "#/components/responses/ServerError"
 
+  "/enrichment/persons/activities/post":
+    get:
+      tags:
+        - Person
+      operationId: PersonsActivitiesPost
+      summary: Get Person Activities Post
+      description: This operation allows you to retrieve the LinkedIn activity post details of a person based on their activity post ID. This operation consumes 1 credit.
+      parameters:
+        - name: activityId
+          in: query
+          required: true
+          schema:
+            type: string
+          description: This required parameter is a string. It represents the ID of the activitiy post you want to retrieve.
+      responses:
+        200:
+          description: "The endpoint returns the LinkedIn activity post from activityId"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ActivitiesPost"
+              examples:
+                Activities Post Found:
+                  $ref: "#/components/examples/ActivitiesPost"
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        402:
+          $ref: "#/components/responses/PaymentRequired"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/ServerError"
+  "/enrichment/persons/activities/posts":
+    get:
+      tags:
+        - Person
+      operationId: PersonsActivitiesPosts
+      summary: Get Person Activities Posts
+      description: This operation allows you to retrieve all LinkedIn activity posts of a person based on their LinkedIn Profile URL. This operation consumes 1 credit.
+      parameters:
+        - name: linkedInUrl
+          in: query
+          required: true
+          schema:
+            type: string
+          description: This required parameter is a string. It represents LinkedIn Profile URL you want to retrieve all LinkedIn activity posts.
+      responses:
+        200:
+          description: "The endpoint returns the LinkedIn activity posts from LinkedIn Profile URL"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ActivitiesPosts"
+              examples:
+                Activities Posts Found:
+                  $ref: "#/components/examples/ActivitiesPosts"
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        402:
+          $ref: "#/components/responses/PaymentRequired"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/ServerError"
+  "/enrichment/persons/activities/comments":
+    get:
+      tags:
+        - Person
+      operationId: PersonsActivitiesComments
+      summary: Get Person Activities Comments
+      description: This operation allows you to retrieve all LinkedIn activity comments of a person based on their LinkedIn Profile URL. This operation consumes 1 credit.
+      parameters:
+        - name: linkedInUrl
+          in: query
+          required: true
+          schema:
+            type: string
+          description: This required parameter is a string. It represents LinkedIn Profile URL you want to retrieve all LinkedIn activity comments.
+      responses:
+        200:
+          description: "The endpoint returns the LinkedIn activity comments from LinkedIn Profile URL"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ActivitiesComments"
+              examples:
+                Activities Comments Found:
+                  $ref: "#/components/examples/ActivitiesComments"
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        402:
+          $ref: "#/components/responses/PaymentRequired"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/ServerError"
+  "/enrichment/persons/activities/reactions":
+    get:
+      tags:
+        - Person
+      operationId: PersonsActivitiesReactions
+      summary: Get Person Activities Reactions
+      description: This operation allows you to retrieve all LinkedIn activity reactions of a person based on their LinkedIn Profile URL. This operation consumes 1 credit.
+      parameters:
+        - name: linkedInUrl
+          in: query
+          required: true
+          schema:
+            type: string
+          description: This required parameter is a string. It represents LinkedIn Profile URL you want to retrieve all LinkedIn activity reactions.
+      responses:
+        200:
+          description: "The endpoint returns the LinkedIn activity reactions from LinkedIn Profile URL"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ActivitiesReactions"
+              examples:
+                Activities Reactions Found:
+                  $ref: "#/components/examples/ActivitiesReactions"
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        402:
+          $ref: "#/components/responses/PaymentRequired"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/ServerError"
+
+  "/enrichment/persons/activities/post/comments":
+    get:
+      tags:
+        - Person
+      operationId: PersonsActivitiesPostComments
+      summary: Get Person Activities Post Comments
+      description: This operation allows you to retrieve all comments on LinkedIn activity post of a person based on their activity post ID. This operation consumes 1 credit.
+      parameters:
+        - name: activityId
+          in: query
+          required: true
+          schema:
+            type: string
+          description: This required parameter is a string. It represents the ID of the activity post you want to retrieve comments.
+      responses:
+        200:
+          description: "The endpoint returns the LinkedIn activity post comments from activityId"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ActivitiesComment"
+              examples:
+                Activities Post Comments Found:
+                  $ref: "#/components/examples/ActivitiesComment"
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        402:
+          $ref: "#/components/responses/PaymentRequired"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/ServerError"
+  "/enrichment/persons/activities/post/reactions":
+    get:
+      tags:
+        - Person
+      operationId: PersonsActivitiesPostReactions
+      summary: Get Person Activities Post Reactions
+      description: This operation allows you to retrieve all reactions on LinkedIn activity post of a person based on their activity post ID. This operation consumes 1 credit.
+      parameters:
+        - name: activityId
+          in: query
+          required: true
+          schema:
+            type: string
+          description: This required parameter is a string. It represents the ID of the activity post you want to retrieve reactions.
+      responses:
+        200:
+          description: "The endpoint returns the LinkedIn activity post reactions from activityId"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ActivitiesReaction"
+              examples:
+                Activities Post Reactions Found:
+                  $ref: "#/components/examples/ActivitiesReaction"
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        402:
+          $ref: "#/components/responses/PaymentRequired"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/ServerError"
+  "/enrichment/persons/activities/post/reposts":
+    get:
+      tags:
+        - Person
+      operationId: PersonsActivitiesPostReposts
+      summary: Get Person Activities Post Reposts
+      description: This operation allows you to retrieve all reposts on LinkedIn activity post of a person based on their activity post ID. This operation consumes 1 credit.
+      parameters:
+        - name: activityId
+          in: query
+          required: true
+          schema:
+            type: string
+          description: This required parameter is a string. It represents the ID of the activity post you want to retrieve reposts.
+      responses:
+        200:
+          description: "The endpoint returns the LinkedIn activity post reposts from activityId"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ActivitiesRepost"
+              examples:
+                Activities Post Reposts Found:
+                  $ref: "#/components/examples/ActivitiesRepost"
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        402:
+          $ref: "#/components/responses/PaymentRequired"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/ServerError"
+
+  "/enrichment/companies/activities/post":
+    get:
+      tags:
+        - Company
+      operationId: CompaniesActivitiesPost
+      summary: Get Company Activities Post
+      description: This operation allows you to retrieve the LinkedIn activity post details of a company based on their activity post ID. This operation consumes 1 credit.
+      parameters:
+        - name: activityId
+          in: query
+          required: true
+          schema:
+            type: string
+          description: This required parameter is a string. It represents the ID of the activitiy post you want to retrieve.
+      responses:
+        200:
+          description: "The endpoint returns the LinkedIn activity post from activityId"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ActivitiesPost"
+              examples:
+                Activities Post Found:
+                  $ref: "#/components/examples/ActivitiesPost"
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        402:
+          $ref: "#/components/responses/PaymentRequired"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/ServerError"
+  "/enrichment/companies/activities/posts":
+    get:
+      tags:
+        - Company
+      operationId: CompaniesActivitiesPosts
+      summary: Get Company Activities Posts
+      description: This operation allows you to retrieve all LinkedIn activity posts of a company based on their LinkedIn Profile URL. This operation consumes 1 credit.
+      parameters:
+        - name: linkedInUrl
+          in: query
+          required: true
+          schema:
+            type: string
+          description: This required parameter is a string. It represents LinkedIn Profile URL you want to retrieve all LinkedIn activity posts.
+      responses:
+        200:
+          description: "The endpoint returns the LinkedIn activity posts from LinkedIn Profile URL"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ActivitiesPosts"
+              examples:
+                Activities Posts Found:
+                  $ref: "#/components/examples/ActivitiesPosts"
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        402:
+          $ref: "#/components/responses/PaymentRequired"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/ServerError"
+  "/enrichment/companies/activities/post/comments":
+    get:
+      tags:
+        - Company
+      operationId: CompaniesActivitiesPostComments
+      summary: Get Company Activities Post Comments
+      description: This operation allows you to retrieve all comments on LinkedIn activity post of a company based on their activity post ID. This operation consumes 1 credit.
+      parameters:
+        - name: activityId
+          in: query
+          required: true
+          schema:
+            type: string
+          description: This required parameter is a string. It represents the ID of the activity post you want to retrieve comments.
+      responses:
+        200:
+          description: "The endpoint returns the LinkedIn activity post comments from activityId"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ActivitiesComment"
+              examples:
+                Activities Post Comments Found:
+                  $ref: "#/components/examples/ActivitiesComment"
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        402:
+          $ref: "#/components/responses/PaymentRequired"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/ServerError"
+  "/enrichment/companies/activities/post/reactions":
+    get:
+      tags:
+        - Company
+      operationId: CompaniesActivitiesPostReactions
+      summary: Get Company Activities Post Reactions
+      description: This operation allows you to retrieve all reactions on LinkedIn activity post of a company based on their activity post ID. This operation consumes 1 credit.
+      parameters:
+        - name: activityId
+          in: query
+          required: true
+          schema:
+            type: string
+          description: This required parameter is a string. It represents the ID of the activity post you want to retrieve reactions.
+      responses:
+        200:
+          description: "The endpoint returns the LinkedIn activity post reactions from activityId"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ActivitiesReaction"
+              examples:
+                Activities Post Reactions Found:
+                  $ref: "#/components/examples/ActivitiesReaction"
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        402:
+          $ref: "#/components/responses/PaymentRequired"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/ServerError"
+  "/enrichment/companies/activities/post/reposts":
+    get:
+      tags:
+        - Company
+      operationId: CompaniesActivitiesPostReposts
+      summary: Get Company Activities Post Reposts
+      description: This operation allows you to retrieve all reposts on LinkedIn activity post of a company based on their activity post ID. This operation consumes 1 credit.
+      parameters:
+        - name: activityId
+          in: query
+          required: true
+          schema:
+            type: string
+          description: This required parameter is a string. It represents the ID of the activity post you want to retrieve reposts.
+      responses:
+        200:
+          description: "The endpoint returns the LinkedIn activity post reposts from activityId"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ActivitiesRepost"
+              examples:
+                Activities Post Reposts Found:
+                  $ref: "#/components/examples/ActivitiesRepost"
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        402:
+          $ref: "#/components/responses/PaymentRequired"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/ServerError"
+
 components:
   schemas:
     PersonSearch:
@@ -831,6 +1242,513 @@ components:
           type: object
           $ref: "#/components/schemas/Quotas"
           description: Contains the quotas information for the workspace.
+
+    Metadata:
+      type: object
+      properties:
+        currentPage:
+          type: integer
+          description: The current page number being viewed.
+        pageNumber:
+          type: integer
+          description: The zero-based index of the current page.
+        perPage:
+          type: integer
+          description: The number of items displayed per page.
+        total:
+          type: integer
+          description: The total number of items available.
+    PostV2:
+      properties:
+        activityId:
+          type: string
+          description: Unique identifier of the activity.
+        text:
+          type: string
+          description: Content of the post.
+        reactionsCount:
+          type: integer
+          description: Number of reactions on the post.
+        commentsCount:
+          type: integer
+          description: Number of comments on the post.
+        activityDate:
+          type: string
+          format: date-time
+          description: Date and time of the activity.
+        author:
+          type: object
+          description: Information about the author of the post.
+          properties:
+            authorId:
+              type: string
+              description: Unique identifier of the author.
+            authorName:
+              type: string
+              description: Full name of the author.
+            authorPublicIdentifier:
+              type: string
+              description: Public identifier of the author.
+            authorHeadline:
+              type: string
+              description: Headline or title of the author.
+            authorImage:
+              type: string
+              format: uri
+              description: URL to the author's profile image.
+            authorUrl:
+              type: string
+              format: uri
+              description: URL to the author's LinkedIn profile.
+        activityUrl:
+          type: string
+          format: uri
+          description: URL of the activity on LinkedIn.
+        relatedPost:
+          type: object
+          description: Related post information.
+          properties:
+            text:
+              type: string
+              description: Content of the related post.
+            activityDate:
+              type: string
+              format: date-time
+              description: Date and time of the related post activity.
+            author:
+              type: object
+              description: Information about the author of the related post.
+              properties:
+                authorId:
+                  type: string
+                  description: Unique identifier of the author.
+                authorName:
+                  type: string
+                  description: Full name of the author.
+                authorPublicIdentifier:
+                  type: string
+                  description: Public identifier of the author.
+                authorHeadline:
+                  type: string
+                  description: Headline or description of the author.
+                authorUrl:
+                  type: string
+                  format: uri
+                  description: URL to the author's LinkedIn profile.
+            activityUrl:
+              type: string
+              format: uri
+              description: URL of the related post on LinkedIn.
+    PostsV2:
+      properties:
+        text:
+          type: string
+          description: The text content of the comment.
+        reactionsCount:
+          type: integer
+          description: The number of reactions on the comment.
+        commentsCount:
+          type: integer
+          description: The number of comments (replies) on the comment.
+        activityDate:
+          type: string
+          format: date-time
+          description: The date and time of the activity in ISO 8601 format.
+        author:
+          type: object
+          description: Information about the author of the comment.
+          properties:
+            authorId:
+              type: string
+              description: The unique identifier of the author.
+            authorName:
+              type: string
+              description: The full name of the author.
+            authorPublicIdentifier:
+              type: string
+              description: The public identifier of the author on LinkedIn.
+        activityUrl:
+          type: string
+          format: uri
+          description: The URL of the activity on LinkedIn.
+        relatedPost:
+          type: object
+          description: Information about the related post.
+          properties:
+            activityId:
+              type: string
+              description: The unique identifier of the related post.
+            text:
+              type: string
+              description: The text content of the related post.
+            reactionsCount:
+              type: integer
+              description: The number of reactions on the related post.
+            commentsCount:
+              type: integer
+              description: The number of comments on the related post.
+            activityDate:
+              type: string
+              format: date-time
+              description: The date and time of the related post activity in ISO 8601 format.
+            author:
+              type: object
+              description: Information about the author of the related post.
+              properties:
+                authorId:
+                  type: string
+                  description: The unique identifier of the author.
+                authorName:
+                  type: string
+                  description: The full name of the author.
+                authorPublicIdentifier:
+                  type: string
+                  description: The public identifier of the author on LinkedIn.
+            activityUrl:
+              type: string
+              format: uri
+              description: The URL of the related post on LinkedIn.
+            relatedPost:
+              type: object
+              nullable: true
+              description: Nested related post information, if any.
+    CommentV2:
+      properties:
+        text:
+          type: string
+          description: The content of the comment.
+        reactionsCount:
+          type: integer
+          description: Number of reactions on the comment.
+        commentsCount:
+          type: integer
+          description: Number of comments (replies) to this comment.
+        activityDate:
+          type: integer
+          format: int64
+          description: Timestamp (in milliseconds) of the comment activity.
+        author:
+          type: object
+          description: Information about the author of the comment.
+          properties:
+            authorId:
+              type: string
+              description: Unique identifier of the author.
+            authorName:
+              type: string
+              description: Full name of the author.
+            authorPublicIdentifier:
+              type: string
+              description: Public identifier of the author on LinkedIn.
+        activityUrl:
+          type: string
+          format: uri
+          description: URL to the LinkedIn activity or comment.
+    CommentsV2:
+      properties:
+        text:
+          type: string
+          description: The text content of the comment.
+        reactionsCount:
+          type: integer
+          description: The number of reactions on the comment.
+        commentsCount:
+          type: integer
+          description: The number of comments (replies) on the comment.
+        activityDate:
+          type: string
+          format: date-time
+          description: The date and time of the activity in ISO 8601 format.
+        author:
+          type: object
+          description: Information about the author of the comment.
+          properties:
+            authorId:
+              type: string
+              description: The unique identifier of the author.
+            authorName:
+              type: string
+              description: The full name of the author.
+            authorPublicIdentifier:
+              type: string
+              description: The public identifier of the author on LinkedIn.
+        activityUrl:
+          type: string
+          format: uri
+          description: The URL of the activity on LinkedIn.
+        relatedPost:
+          type: object
+          description: Information about the related post.
+          properties:
+            activityId:
+              type: string
+              description: The unique identifier of the related post.
+            text:
+              type: string
+              description: The text content of the related post.
+            reactionsCount:
+              type: integer
+              description: The number of reactions on the related post.
+            commentsCount:
+              type: integer
+              description: The number of comments on the related post.
+            activityDate:
+              type: string
+              format: date-time
+              description: The date and time of the related post activity in ISO 8601 format.
+            author:
+              type: object
+              description: Information about the author of the related post.
+              properties:
+                authorId:
+                  type: string
+                  description: The unique identifier of the author.
+                authorName:
+                  type: string
+                  description: The full name of the author.
+                authorPublicIdentifier:
+                  type: string
+                  description: The public identifier of the author on LinkedIn.
+            activityUrl:
+              type: string
+              format: uri
+              description: The URL of the related post on LinkedIn.
+            relatedPost:
+              type: object
+              nullable: true
+              description: Nested related post information, if any.
+    ReactionV2:
+      properties:
+        type:
+          type: string
+          description: The type of reaction.
+        author:
+          type: object
+          description: Information about the author who reacted.
+          properties:
+            authorId:
+              type: string
+              description: Unique identifier of the author.
+            authorName:
+              type: string
+              description: Full name of the author.
+    ReactionsV2:
+      properties:
+        type:
+          type: string
+          description: The type of reaction (e.g., LIKE, LOVE, etc.).
+        author:
+          type: object
+          description: Information about the author who reacted.
+          properties:
+            authorId:
+              type: string
+              description: Unique identifier of the author.
+            authorName:
+              type: string
+              description: Full name of the author.
+        relatedPost:
+          type: object
+          description: Information about the related post.
+          nullable: true
+          properties:
+            activityId:
+              type: string
+              description: Unique identifier of the related post activity.
+            text:
+              type: string
+              description: Content of the related post.
+            reactionsCount:
+              type: integer
+              description: Number of reactions on the related post.
+            commentsCount:
+              type: integer
+              description: Number of comments on the related post.
+            activityDate:
+              type: string
+              format: date-time
+              description: The date and time of the related post activity.
+            author:
+              type: object
+              description: Information about the author of the related post.
+              properties:
+                authorId:
+                  type: string
+                  description: Unique identifier of the related post author.
+                authorName:
+                  type: string
+                  description: Full name of the related post author.
+                authorPublicIdentifier:
+                  type: string
+                  description: Public identifier of the related post author on LinkedIn.
+            activityUrl:
+              type: string
+              format: uri
+              description: URL to the related post activity.
+            relatedPost:
+              type: object
+              nullable: true
+              description: Nested related post information, if any.
+    RepostV2:
+      properties:
+        activityDate:
+          type: string
+          format: date-time
+          description: The date and time when the repost activity occurred.
+        author:
+          type: object
+          description: Information about the author who reposted.
+          properties:
+            authorId:
+              type: string
+              description: Unique identifier of the author.
+            authorName:
+              type: string
+              description: Full name of the author.
+            authorPublicIdentifier:
+              type: string
+              description: Public identifier of the author on LinkedIn.
+        activityUrl:
+          type: string
+          format: uri
+          description: URL to the repost activity on LinkedIn.
+
+    ActivitiesPost:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Indicates success or failure of api request.
+        credits_left:
+          type: integer
+          description: Represents the usable credits available for the user account after this query.
+        rate_limit_left:
+          type: integer
+          description: Represents the usable daily request limit available for the user account after this query.
+        post:
+          type: object
+          description: Activity post of a person
+          $ref: "#/components/schemas/PostV2"
+    ActivitiesPosts:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Indicates success or failure of api request.
+        credits_left:
+          type: integer
+          description: Represents the usable credits available for the user account after this query.
+        rate_limit_left:
+          type: integer
+          description: Represents the usable daily request limit available for the user account after this query.
+        metadata:
+          description: Metadata information
+          $ref: "#/components/schemas/Metadata"
+        posts:
+          type: array
+          description: All activity posts of a person
+          items:
+            $ref: "#/components/schemas/PostV2"
+    ActivitiesComment:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Indicates success or failure of api request.
+        credits_left:
+          type: integer
+          description: Represents the usable credits available for the user account after this query.
+        rate_limit_left:
+          type: integer
+          description: Represents the usable daily request limit available for the user account after this query.
+        metadata:
+          description: Metadata information
+          $ref: "#/components/schemas/Metadata"
+        comments:
+          type: array
+          description: All comments of a person on a post
+          items:
+            $ref: "#/components/schemas/CommentV2"
+    ActivitiesComments:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Indicates success or failure of api request.
+        credits_left:
+          type: integer
+          description: Represents the usable credits available for the user account after this query.
+        rate_limit_left:
+          type: integer
+          description: Represents the usable daily request limit available for the user account after this query.
+        metadata:
+          description: Metadata information
+          $ref: "#/components/schemas/Metadata"
+        comments:
+          type: array
+          description: All comments of a linkedin profile
+          items:
+            $ref: "#/components/schemas/CommentsV2"
+    ActivitiesReaction:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Indicates success or failure of api request.
+        credits_left:
+          type: integer
+          description: Represents the usable credits available for the user account after this query.
+        rate_limit_left:
+          type: integer
+          description: Represents the usable daily request limit available for the user account after this query.
+        metadata:
+          description: Metadata information
+          $ref: "#/components/schemas/Metadata"
+        reactions:
+          type: array
+          description: All reactions of a person on a post
+          items:
+            $ref: "#/components/schemas/ReactionV2"
+    ActivitiesReactions:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Indicates success or failure of api request.
+        credits_left:
+          type: integer
+          description: Represents the usable credits available for the user account after this query.
+        rate_limit_left:
+          type: integer
+          description: Represents the usable daily request limit available for the user account after this query.
+        metadata:
+          description: Metadata information
+          $ref: "#/components/schemas/Metadata"
+        reactions:
+          type: array
+          description: All reactions of a person on a post
+          items:
+            $ref: "#/components/schemas/ReactionsV2"
+    ActivitiesRepost:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Indicates success or failure of api request.
+        credits_left:
+          type: integer
+          description: Represents the usable credits available for the user account after this query.
+        rate_limit_left:
+          type: integer
+          description: Represents the usable daily request limit available for the user account after this query.
+        metadata:
+          description: Metadata information
+          $ref: "#/components/schemas/Metadata"
+        reactions:
+          type: array
+          description: All reposts of a person on a post
+          items:
+            $ref: "#/components/schemas/RepostV2"
 
     ErrorResponseSchema:
       type: object
@@ -1386,6 +2304,267 @@ components:
           credits_left: 90000
           rate_limit_left: 19000
 
+    ActivitiesPost:
+      summary: Activities Post
+      value:
+        success: true
+        credits_left: 19934
+        rate_limit_left: 19999
+        post:
+          activityId: "6976499964512243712"
+          text: "Congrate to the team for this amazing milestone!"
+          reactionsCount: 16
+          commentsCount: 1
+          activityDate: "2022-09-16T11:20:08.641Z"
+          author:
+            authorId: "ACoAABJhN_YBN70Qb8TWu4GpxhJE1NqQ7PQEHQw"
+            authorName: "Alain Smith"
+            authorPublicIdentifier: "alainsmith"
+            authorHeadline: "Bank CEO"
+            authorImage: "https://media.licdn.com/dms/image/v2/D4E03AQFP5a_FoymQCA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1670785458261?e=1743033600&v=beta&t=ZQz5_CNMgUVUzuCTYvqUoV1xmXU4OLXun5zzvJkhktg"
+            authorUrl: "https://www.linkedin.com/in/alainsmith"
+          activityUrl: "https://www.linkedin.com/feed/update/urn:li:activity:6976499964512243712/"
+          relatedPost:
+            text: "Spoiler: 30M€ fundraising for Geegle (10M€ equity + 20M€ debt). New step for the fintech!"
+            activityDate: "2022-06-29T14:02:12.188Z"
+            author:
+              authorId: "11011480"
+              authorName: "geegle"
+              authorPublicIdentifier: "geegle"
+              authorHeadline: "3,923 followers"
+              authorUrl: "https://www.linkedin.com/company/geegle/"
+            activityUrl: "https://www.linkedin.com/feed/update/urn:li:activity:6949912435651493888/"
+    ActivitiesPosts:
+      summary: Activities Posts
+      value:
+        success: true
+        credits_left: 19934
+        rate_limit_left: 19999
+        metadata:
+          currentPage: 1
+          pageNumber: 1
+          perPage: 50
+          total: 10
+        posts:
+          - activityId: "6976499964512243712"
+            text: "Congrate to the team for this amazing milestone!"
+            reactionsCount: 16
+            commentsCount: 1
+            activityDate: "2022-09-16T11:20:08.641Z"
+            author:
+              authorId: "ACoZZBJhN_YBN70Qb8TWu4GpxhJE1NqQ7PQEHQw"
+              authorName: "Alain Smith"
+              authorPublicIdentifier: "alainsmith"
+              authorHeadline: "Bank CEO"
+              authorImage: "https://media.licdn.com/dms/image/v2/D4E03AQFP5a_FoymQCA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1670785458261?e=1743033600&v=beta&t=ZQz5_CNMgUVUzuCTYvqUoV1xmXU4OLXun5zzvJkhktg"
+              authorUrl: "https://www.linkedin.com/in/alainsmith"
+            activityUrl: "https://www.linkedin.com/feed/update/urn:li:activity:6976499964512243712/"
+            relatedPost:
+              text: "Spoiler: 30M€ fundraising for Geegle (10M€ equity + 20M€ debt). New step for the fintech!"
+              activityDate: "2022-06-29T14:02:12.188Z"
+              author:
+                authorId: "11011480"
+                authorName: "geegle"
+                authorPublicIdentifier: "geegle"
+                authorHeadline: "3,923 followers"
+                authorUrl: "https://www.linkedin.com/company/geegle/"
+              activityUrl: "https://www.linkedin.com/feed/update/urn:li:activity:6997912435651493888/"
+          - activityId: "6976499964512243714"
+            text: "Félicitations à toute l’équipe pour cette belle étape franchie. Le futur du financement est prometteur !"
+            reactionsCount: 42
+            commentsCount: 5
+            activityDate: "2022-09-20T14:15:32.111Z"
+            author:
+              authorId: "ACoAABXhN_ZC1234qW12XTU4F3NpYQ7PQRFGHS"
+              authorName: "Sophie Dubois"
+              authorPublicIdentifier: "sophiedubois"
+              authorHeadline: "Fintech Enthusiast | Product Manager"
+              authorImage: "https://example.com/images/sophie.jpg"
+              authorUrl: "https://www.linkedin.com/in/sophiedubois"
+            activityUrl: "https://www.linkedin.com/feed/update/urn:li:activity:6976499964512243714/"
+            relatedPost:
+              text: "Merci à nos investisseurs pour leur confiance. Nous sommes ravis de pouvoir développer des solutions plus innovantes et accessibles."
+              activityDate: "2022-07-01T10:30:00.000Z"
+              author:
+                authorId: "123456789"
+                authorName: "InnovFin"
+                authorPublicIdentifier: "innovfin"
+                authorHeadline: "1,200 followers"
+                authorUrl: "https://www.linkedin.com/company/innovfin/"
+              activityUrl: "https://www.linkedin.com/feed/update/urn:li:activity:6947912435651493890/"
+    ActivitiesComment:
+      summary: "Activities Comments"
+      value:
+        success: true
+        credits_left: 19934
+        rate_limit_left: 19999
+        metadata:
+          currentPage: 1
+          pageNumber: 1
+          perPage: 50
+          total: 10
+        comments:
+          - text: "Congrate to the team for this amazing milestone!"
+            reactionsCount: 2
+            commentsCount: 1
+            activityDate: 1675339386599
+            author:
+              authorId: "ACZxACJrg3QBOHYEx_zMaj2sF7IgUFOpF5LKkss"
+              authorName: "Julien Smith"
+              authorPublicIdentifier: "julien-smith"
+            activityUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7044876553418222512?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7026876553418432512%2C7026882690565963777%29&dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287026882690565963777%2Curn%3Ali%3Aactivity%3A7026876553418432512%29"
+          - text: "Bravo à toute l'équipe pour cette étape incroyable !"
+            reactionsCount: 5
+            commentsCount: 0
+            activityDate: 1675400000000
+            author:
+              authorId: "ACZxACJrg3QBOHYEx_zMaj2sF7IgUFOpF5LKkss"
+              authorName: "Claire Dubois"
+              authorPublicIdentifier: "claire-dubois-fintech"
+            activityUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7044876553418222512?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7026876553418432512%2C7026899999999999999%29&dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287026899999999999999%2Curn%3Ali%3Aactivity%3A7026876553418432512%29"
+    ActivitiesComments:
+      summary: "Activities Comments"
+      value:
+        success: true
+        credits_left: 19934
+        rate_limit_left: 19999
+        metadata:
+          currentPage: 1
+          pageNumber: 1
+          perPage: 50
+          total: 10
+        comments:
+          - text: "This is an excellent opportunity!"
+            reactionsCount: 12
+            commentsCount: 4
+            activityDate: "2025-01-15T10:20:30.000Z"
+            author:
+              authorId: "ACoAACZKXYMBEJLkU3PzN_XDp9YAUEZTJ9VBdQ1"
+              authorName: "Marie Dupont"
+              authorPublicIdentifier: "marie-dupont"
+            activityUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7283548161238761231"
+            relatedPost:
+              activityId: "7283548161238761231"
+              text: "We are launching a new product that will revolutionize the market! #Innovation"
+              reactionsCount: 20
+              commentsCount: 5
+              activityDate: "2025-01-14T14:10:00.000Z"
+              author:
+                authorId: "ACoAACYKLRQBOLOPQU9WV7F6DpTXAULWP5CDEF9"
+                authorName: "John Smith"
+                authorPublicIdentifier: "john-smith"
+              activityUrl: "https://www.linkedin.com/posts/john-smith_new-product-launch-activity-7283548161238761231"
+              relatedPost: null
+          - text: "Good luck to the team on this ambitious project!"
+            reactionsCount: 25
+            commentsCount: 2
+            activityDate: "2025-01-12T18:45:00.000Z"
+            author:
+              authorId: "ACoAAHJLKXTGBYOEMZ9CQPTWVOATSFYIJ8CVZW2"
+              authorName: "Lucas Morel"
+              authorPublicIdentifier: "lucas-morel"
+            activityUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7285567894563217890"
+            relatedPost:
+              activityId: "7285567894563217890"
+              text: "We are looking for experts to join our upcoming tech hackathon. Sign up now!"
+              reactionsCount: 40
+              commentsCount: 15
+              activityDate: "2025-01-10T15:00:00.000Z"
+              author:
+                authorId: "ACoAAKMZLYTBOLQQPV6TV9JDLPVZAWCXY5DGEFT"
+                authorName: "Nina Brown"
+                authorPublicIdentifier: "nina-brown"
+              activityUrl: "https://www.linkedin.com/posts/nina-brown_hackathon-tech-activity-7285567894563217890"
+              relatedPost: null
+    ActivitiesReaction:
+      summary: "Activities Reactions"
+      value:
+        success: true
+        credits_left: 19934
+        rate_limit_left: 19999
+        metadata:
+          currentPage: 1
+          pageNumber: 1
+          perPage: 50
+          total: 10
+        reactions:
+          - type: "LIKE"
+            author:
+              authorId: "XCoEECH1JL4BEFTG8OBXXuUTIOatyKpCH9AIGE0"
+              authorName: "Stefan Smith"
+          - type: "LIKE"
+            author:
+              authorId: "XCoEECH1JL4BEFTG8OBXXuUTIOatyKpCH9AIGE0"
+              authorName: "John Doe"
+    ActivitiesReactions:
+      summary: "Activities Reactions"
+      value:
+        success: true
+        credits_left: 19934
+        rate_limit_left: 19999
+        metadata:
+          currentPage: 1
+          pageNumber: 1
+          perPage: 50
+          total: 10
+        reactions:
+          - type: "LIKE"
+            author:
+              authorId: "ACoAAZ12345EFGHIJ6LMNO7PQRS8TU9VWXY"
+              authorName: "Emily Johnson"
+            relatedPost:
+              activityId: "7283749210384982025"
+              text: "🌟 Excited to announce that our team has launched a new feature for better data visualization! 🚀\n\n👉 A huge step forward for empowering businesses to make data-driven decisions with ease.\n\n📊 Explore more details here:"
+              reactionsCount: 102
+              commentsCount: 15
+              activityDate: "2024-11-10T10:45:00.000Z"
+              author:
+                authorId: "ACoAABc98765FGHIJKLMN4OPQRS3TUVWXY2Z"
+                authorName: "Alex Parker"
+                authorPublicIdentifier: "alex-parker-data"
+              activityUrl: "https://www.linkedin.com/posts/alex-parker_data-visualization-launch-activity-7283749210384982025"
+              relatedPost: null
+          - type: "LIKE"
+            author:
+              authorId: "ACoAAD12345JKL6789MNOPQRST0UVWXY"
+              authorName: "John Smith"
+            relatedPost:
+              activityId: "7289381238402947552"
+              text: "🎉 Join us in celebrating the 10th anniversary of our startup! A decade of innovation and growth wouldn't have been possible without our amazing team and supporters.\n\n🎂 Thank you for being part of our journey!"
+              reactionsCount: 250
+              commentsCount: 35
+              activityDate: "2024-12-01T14:20:00.000Z"
+              author:
+                authorId: "ACoAABd12345JKLMN6OPQRSTUV7WXYZ890"
+                authorName: "Sophia Taylor"
+                authorPublicIdentifier: "sophia-taylor"
+              activityUrl: "https://www.linkedin.com/posts/sophia-taylor_10th-anniversary-celebration-activity-7289381238402947552"
+              relatedPost: null
+    ActivitiesRepost:
+      summary: "Activities Reactions"
+      value:
+        success: true
+        credits_left: 19934
+        rate_limit_left: 19999
+        metadata:
+          currentPage: 1
+          pageNumber: 1
+          perPage: 50
+          total: 10
+        reposts:
+          - activityDate: "2025-01-20T17:34:18.194Z"
+            author:
+              authorId: "ACoEEErSbPQBkUq8jPzOZ-apr7bXDd04Q4-hIWX"
+              authorName: "John Doe"
+              authorPublicIdentifier: "john-doe-192b934"
+            activityUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7284160525581148869/"
+          - activityDate: "2025-01-20T17:08:27.433Z"
+            author:
+              authorId: "ACoEEErSbPQBkUq8jPzOZ-apr7bXDd04Q4-hIWX"
+              authorName: "Lucas Smith"
+              authorPublicIdentifier: "lucas-smith-192b934"
+            activityUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7284160525581148869/"
+
     NoApiKey:
       summary: No Api Key
       value:
@@ -1408,8 +2587,8 @@ components:
       summary: Invalid Api Key
       value:
         success: false
-        title: An error has occurred 🚒
-        msg: Unauthorized
+        title: Unauthorized
+        msg: API Key is invalid
     PaymentRequired:
       summary: Payment Required
       value:
@@ -1417,17 +2596,17 @@ components:
         title: You don't have enough credits on your account 💰
         msg: You have to upgrade to continue
     PageNotFound:
-      summary: Page Not Found
+      summary: Data Not Found
       value:
         success: false
-        title: An error has occurred 🚒
-        msg: This LinkedIn Profile is not available or does not exist.
+        title: Not Found
+        msg: No data found
     ServerError:
       summary: Server Error
       value:
         success: false
-        title: An error has occurred 🚒
-        msg: 🚨 Internal Server Error, you will not be credit debited.
+        title: Internal Server Error
+        msg: An internal server error has occurred
 
   responses:
     BadRequest:
@@ -1462,7 +2641,7 @@ components:
             PaymentRequired:
               $ref: "#/components/examples/PaymentRequired"
     NotFound:
-      description: Page Not Found
+      description: Data Not Found
       content:
         application/json:
           schema:

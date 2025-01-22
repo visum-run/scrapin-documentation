@@ -39,8 +39,30 @@
       ]
     },
     {
+      "group": "Persons Activities",
+      "pages": [
+        "endpoint/Persons/Activities/Posts",
+        "endpoint/Persons/Activities/Comments",
+        "endpoint/Persons/Activities/Reactions",
+        "endpoint/Persons/Activities/Post",
+        "endpoint/Persons/Activities/Post/Comments",
+        "endpoint/Persons/Activities/Post/Reactions",
+        "endpoint/Persons/Activities/Post/Reposts"
+      ]
+    },
+    {
       "group": "Company",
       "pages": ["endpoint/ExtractCompanyDataProfile", "endpoint/CompanySearch"]
+    },
+    {
+      "group": "Companies Activities",
+      "pages": [
+        "endpoint/Companies/Activities/Posts",
+        "endpoint/Companies/Activities/Post",
+        "endpoint/Companies/Activities/Post/Comments",
+        "endpoint/Companies/Activities/Post/Reactions",
+        "endpoint/Companies/Activities/Post/Reposts"
+      ]
     },
     {
       "group": "Job",
