@@ -364,6 +364,12 @@ paths:
           schema:
             type: string
           description: This required parameter is a string. It represents LinkedIn Profile URL you want to retrieve all LinkedIn activity posts.
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: string
+          description: This optional parameter is a string. It represents the page number of the results.
       responses:
         200:
           description: "The endpoint returns the LinkedIn activity posts from LinkedIn Profile URL"
@@ -398,6 +404,12 @@ paths:
           schema:
             type: string
           description: This required parameter is a string. It represents LinkedIn Profile URL you want to retrieve all LinkedIn activity comments.
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: string
+          description: This optional parameter is a string. It represents the page number of the results.
       responses:
         200:
           description: "The endpoint returns the LinkedIn activity comments from LinkedIn Profile URL"
@@ -432,6 +444,12 @@ paths:
           schema:
             type: string
           description: This required parameter is a string. It represents LinkedIn Profile URL you want to retrieve all LinkedIn activity reactions.
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: string
+          description: This optional parameter is a string. It represents the page number of the results.
       responses:
         200:
           description: "The endpoint returns the LinkedIn activity reactions from LinkedIn Profile URL"
@@ -467,6 +485,12 @@ paths:
           schema:
             type: string
           description: This required parameter is a string. It represents the ID of the activity post you want to retrieve comments.
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: string
+          description: This optional parameter is a string. It represents the page number of the results.
       responses:
         200:
           description: "The endpoint returns the LinkedIn activity post comments from activityId"
@@ -501,6 +525,12 @@ paths:
           schema:
             type: string
           description: This required parameter is a string. It represents the ID of the activity post you want to retrieve reactions.
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: string
+          description: This optional parameter is a string. It represents the page number of the results.
       responses:
         200:
           description: "The endpoint returns the LinkedIn activity post reactions from activityId"
@@ -535,6 +565,12 @@ paths:
           schema:
             type: string
           description: This required parameter is a string. It represents the ID of the activity post you want to retrieve reposts.
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: string
+          description: This optional parameter is a string. It represents the page number of the results.
       responses:
         200:
           description: "The endpoint returns the LinkedIn activity post reposts from activityId"
@@ -604,6 +640,12 @@ paths:
           schema:
             type: string
           description: This required parameter is a string. It represents LinkedIn Profile URL you want to retrieve all LinkedIn activity posts.
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: string
+          description: This optional parameter is a string. It represents the page number of the results.
       responses:
         200:
           description: "The endpoint returns the LinkedIn activity posts from LinkedIn Profile URL"
@@ -638,6 +680,12 @@ paths:
           schema:
             type: string
           description: This required parameter is a string. It represents the ID of the activity post you want to retrieve comments.
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: string
+          description: This optional parameter is a string. It represents the page number of the results.
       responses:
         200:
           description: "The endpoint returns the LinkedIn activity post comments from activityId"
@@ -672,6 +720,12 @@ paths:
           schema:
             type: string
           description: This required parameter is a string. It represents the ID of the activity post you want to retrieve reactions.
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: string
+          description: This optional parameter is a string. It represents the page number of the results.
       responses:
         200:
           description: "The endpoint returns the LinkedIn activity post reactions from activityId"
@@ -706,6 +760,12 @@ paths:
           schema:
             type: string
           description: This required parameter is a string. It represents the ID of the activity post you want to retrieve reposts.
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: string
+          description: This optional parameter is a string. It represents the page number of the results.
       responses:
         200:
           description: "The endpoint returns the LinkedIn activity post reposts from activityId"
