@@ -356,7 +356,7 @@ paths:
         - Person
       operationId: PersonsActivitiesPosts
       summary: Get Person Activities Posts
-      description: This operation allows you to retrieve all LinkedIn activity posts of a person based on their LinkedIn Profile URL. This operation consumes 1 credit.
+      description: This operation allows you to retrieve all LinkedIn activity posts of a person based on their LinkedIn Profile URL. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.
       parameters:
         - name: linkedInUrl
           in: query
@@ -396,7 +396,7 @@ paths:
         - Person
       operationId: PersonsActivitiesComments
       summary: Get Person Activities Comments
-      description: This operation allows you to retrieve all LinkedIn activity comments of a person based on their LinkedIn Profile URL. This operation consumes 1 credit.
+      description: This operation allows you to retrieve all LinkedIn activity comments of a person based on their LinkedIn Profile URL. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.
       parameters:
         - name: linkedInUrl
           in: query
@@ -436,7 +436,7 @@ paths:
         - Person
       operationId: PersonsActivitiesReactions
       summary: Get Person Activities Reactions
-      description: This operation allows you to retrieve all LinkedIn activity reactions of a person based on their LinkedIn Profile URL. This operation consumes 1 credit.
+      description: This operation allows you to retrieve all LinkedIn activity reactions of a person based on their LinkedIn Profile URL. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.
       parameters:
         - name: linkedInUrl
           in: query
@@ -477,7 +477,7 @@ paths:
         - Person
       operationId: PersonsActivitiesPostComments
       summary: Get Person Activities Post Comments
-      description: This operation allows you to retrieve all comments on LinkedIn activity post of a person based on their activity post ID. This operation consumes 1 credit.
+      description: This operation allows you to retrieve all comments on LinkedIn activity post of a person based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.
       parameters:
         - name: activityId
           in: query
@@ -517,7 +517,7 @@ paths:
         - Person
       operationId: PersonsActivitiesPostReactions
       summary: Get Person Activities Post Reactions
-      description: This operation allows you to retrieve all reactions on LinkedIn activity post of a person based on their activity post ID. This operation consumes 1 credit.
+      description: This operation allows you to retrieve all reactions on LinkedIn activity post of a person based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.
       parameters:
         - name: activityId
           in: query
@@ -557,7 +557,7 @@ paths:
         - Person
       operationId: PersonsActivitiesPostReposts
       summary: Get Person Activities Post Reposts
-      description: This operation allows you to retrieve all reposts on LinkedIn activity post of a person based on their activity post ID. This operation consumes 1 credit.
+      description: This operation allows you to retrieve all reposts on LinkedIn activity post of a person based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.
       parameters:
         - name: activityId
           in: query
@@ -632,7 +632,7 @@ paths:
         - Company
       operationId: CompaniesActivitiesPosts
       summary: Get Company Activities Posts
-      description: This operation allows you to retrieve all LinkedIn activity posts of a company based on their LinkedIn Profile URL. This operation consumes 1 credit.
+      description: This operation allows you to retrieve all LinkedIn activity posts of a company based on their LinkedIn Profile URL. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.
       parameters:
         - name: linkedInUrl
           in: query
@@ -672,7 +672,7 @@ paths:
         - Company
       operationId: CompaniesActivitiesPostComments
       summary: Get Company Activities Post Comments
-      description: This operation allows you to retrieve all comments on LinkedIn activity post of a company based on their activity post ID. This operation consumes 1 credit.
+      description: This operation allows you to retrieve all comments on LinkedIn activity post of a company based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.
       parameters:
         - name: activityId
           in: query
@@ -712,7 +712,7 @@ paths:
         - Company
       operationId: CompaniesActivitiesPostReactions
       summary: Get Company Activities Post Reactions
-      description: This operation allows you to retrieve all reactions on LinkedIn activity post of a company based on their activity post ID. This operation consumes 1 credit.
+      description: This operation allows you to retrieve all reactions on LinkedIn activity post of a company based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.
       parameters:
         - name: activityId
           in: query
@@ -752,7 +752,7 @@ paths:
         - Company
       operationId: CompaniesActivitiesPostReposts
       summary: Get Company Activities Post Reposts
-      description: This operation allows you to retrieve all reposts on LinkedIn activity post of a company based on their activity post ID. This operation consumes 1 credit.
+      description: This operation allows you to retrieve all reposts on LinkedIn activity post of a company based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.
       parameters:
         - name: activityId
           in: query
@@ -2402,9 +2402,9 @@ components:
         rate_limit_left: 19999
         metadata:
           currentPage: 1
-          pageNumber: 1
+          pageNumber: 10
           perPage: 50
-          total: 10
+          total: 500
         posts:
           - activityId: "6976499964512243712"
             text: "Congrate to the team for this amazing milestone!"
@@ -2460,9 +2460,9 @@ components:
         rate_limit_left: 19999
         metadata:
           currentPage: 1
-          pageNumber: 1
+          pageNumber: 10
           perPage: 50
-          total: 10
+          total: 500
         comments:
           - text: "Congrate to the team for this amazing milestone!"
             reactionsCount: 2
@@ -2490,9 +2490,9 @@ components:
         rate_limit_left: 19999
         metadata:
           currentPage: 1
-          pageNumber: 1
+          pageNumber: 10
           perPage: 50
-          total: 10
+          total: 500
         comments:
           - text: "This is an excellent opportunity!"
             reactionsCount: 12
@@ -2544,9 +2544,9 @@ components:
         rate_limit_left: 19999
         metadata:
           currentPage: 1
-          pageNumber: 1
+          pageNumber: 10
           perPage: 50
-          total: 10
+          total: 500
         reactions:
           - type: "LIKE"
             author:
@@ -2564,9 +2564,9 @@ components:
         rate_limit_left: 19999
         metadata:
           currentPage: 1
-          pageNumber: 1
+          pageNumber: 10
           perPage: 50
-          total: 10
+          total: 500
         reactions:
           - type: "LIKE"
             author:
@@ -2608,9 +2608,9 @@ components:
         rate_limit_left: 19999
         metadata:
           currentPage: 1
-          pageNumber: 1
+          pageNumber: 10
           perPage: 50
-          total: 10
+          total: 500
         reposts:
           - activityDate: "2025-01-20T17:34:18.194Z"
             author:
