@@ -232,6 +232,13 @@ paths:
             type: string
           description: "This required parameter is a string. It represents the LinkedIn URL of the company with this format: https://www.linkedin.com/company/xxxxxxxxxx/."
           required: false
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+            enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+          description: This optional parameter is a string. It represents the page number of the results.
       responses:
         200:
           description: "The endpoint returns a list of jobs."
@@ -368,7 +375,7 @@ paths:
           in: query
           required: false
           schema:
-            type: string
+            type: number
           description: This optional parameter is a string. It represents the page number of the results.
       responses:
         200:
@@ -408,7 +415,7 @@ paths:
           in: query
           required: false
           schema:
-            type: string
+            type: number
           description: This optional parameter is a string. It represents the page number of the results.
       responses:
         200:
@@ -448,7 +455,7 @@ paths:
           in: query
           required: false
           schema:
-            type: string
+            type: number
           description: This optional parameter is a string. It represents the page number of the results.
       responses:
         200:
@@ -489,7 +496,7 @@ paths:
           in: query
           required: false
           schema:
-            type: string
+            type: number
           description: This optional parameter is a string. It represents the page number of the results.
       responses:
         200:
@@ -529,7 +536,7 @@ paths:
           in: query
           required: false
           schema:
-            type: string
+            type: number
           description: This optional parameter is a string. It represents the page number of the results.
       responses:
         200:
@@ -569,7 +576,7 @@ paths:
           in: query
           required: false
           schema:
-            type: string
+            type: number
           description: This optional parameter is a string. It represents the page number of the results.
       responses:
         200:
@@ -644,7 +651,7 @@ paths:
           in: query
           required: false
           schema:
-            type: string
+            type: number
           description: This optional parameter is a string. It represents the page number of the results.
       responses:
         200:
@@ -684,7 +691,7 @@ paths:
           in: query
           required: false
           schema:
-            type: string
+            type: number
           description: This optional parameter is a string. It represents the page number of the results.
       responses:
         200:
@@ -724,7 +731,7 @@ paths:
           in: query
           required: false
           schema:
-            type: string
+            type: number
           description: This optional parameter is a string. It represents the page number of the results.
       responses:
         200:
@@ -764,7 +771,7 @@ paths:
           in: query
           required: false
           schema:
-            type: string
+            type: number
           description: This optional parameter is a string. It represents the page number of the results.
       responses:
         200:
