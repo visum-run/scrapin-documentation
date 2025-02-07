@@ -1364,6 +1364,10 @@ components:
           type: string
           format: uri
           description: URL of the activity on LinkedIn.
+        shareUrl:
+          type: string
+          format: uri
+          description: URL of the activity on LinkedIn share format.
         relatedPost:
           type: object
           description: Related post information.
@@ -1399,6 +1403,10 @@ components:
               type: string
               format: uri
               description: URL of the related post on LinkedIn.
+            shareUrl:
+              type: string
+              format: uri
+              description: URL of the activity on LinkedIn share format.
     PostsV2:
       properties:
         text:
@@ -1431,6 +1439,10 @@ components:
           type: string
           format: uri
           description: The URL of the activity on LinkedIn.
+        shareUrl:
+          type: string
+          format: uri
+          description: URL of the activity on LinkedIn share format.
         relatedPost:
           type: object
           description: Information about the related post.
@@ -1468,6 +1480,10 @@ components:
               type: string
               format: uri
               description: The URL of the related post on LinkedIn.
+            shareUrl:
+              type: string
+              format: uri
+              description: URL of the activity on LinkedIn share format.
             relatedPost:
               type: object
               nullable: true
@@ -1573,6 +1589,10 @@ components:
               type: string
               format: uri
               description: The URL of the related post on LinkedIn.
+            shareUrl:
+              type: string
+              format: uri
+              description: URL of the activity on LinkedIn share format.
             relatedPost:
               type: object
               nullable: true
@@ -1645,6 +1665,10 @@ components:
               type: string
               format: uri
               description: URL to the related post activity.
+            shareUrl:
+              type: string
+              format: uri
+              description: URL of the activity on LinkedIn share format.
             relatedPost:
               type: object
               nullable: true
@@ -2384,6 +2408,7 @@ components:
             authorImage: "https://media.licdn.com/dms/image/v2/D4E03AQFP5a_FoymQCA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1670785458261?e=1743033600&v=beta&t=ZQz5_CNMgUVUzuCTYvqUoV1xmXU4OLXun5zzvJkhktg"
             authorUrl: "https://www.linkedin.com/in/alainsmith"
           activityUrl: "https://www.linkedin.com/feed/update/urn:li:activity:6976499964512243712/"
+          shareUrl: "https://www.linkedin.com/posts/breaking-news-another-developer-turned-7293041906471596032-6sne"
           relatedPost:
             text: "Spoiler: 30M€ fundraising for Geegle (10M€ equity + 20M€ debt). New step for the fintech!"
             activityDate: "2022-06-29T14:02:12.188Z"
@@ -2393,7 +2418,8 @@ components:
               authorPublicIdentifier: "geegle"
               authorHeadline: "3,923 followers"
               authorUrl: "https://www.linkedin.com/company/geegle/"
-            activityUrl: "https://www.linkedin.com/feed/update/urn:li:activity:6949912435651493888/"
+              activityUrl: "https://www.linkedin.com/feed/update/urn:li:activity:6949912435651493888/"
+              shareUrl: "https://www.linkedin.com/posts/daily-dev-comparator-work-729304143471596032-4b0e"
     ActivitiesPosts:
       summary: Activities Posts
       value:
@@ -2419,6 +2445,7 @@ components:
               authorImage: "https://media.licdn.com/dms/image/v2/D4E03AQFP5a_FoymQCA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1670785458261?e=1743033600&v=beta&t=ZQz5_CNMgUVUzuCTYvqUoV1xmXU4OLXun5zzvJkhktg"
               authorUrl: "https://www.linkedin.com/in/alainsmith"
             activityUrl: "https://www.linkedin.com/feed/update/urn:li:activity:6976499964512243712/"
+            shareUrl: "https://www.linkedin.com/posts/breaking-news-another-developer-turned-7293041906471596032-6sne"
             relatedPost:
               text: "Spoiler: 30M€ fundraising for Geegle (10M€ equity + 20M€ debt). New step for the fintech!"
               activityDate: "2022-06-29T14:02:12.188Z"
@@ -2429,6 +2456,7 @@ components:
                 authorHeadline: "3,923 followers"
                 authorUrl: "https://www.linkedin.com/company/geegle/"
               activityUrl: "https://www.linkedin.com/feed/update/urn:li:activity:6997912435651493888/"
+              shareUrl: "https://www.linkedin.com/posts/daily-dev-comparator-work-729304143471596032-4b0e"
           - activityId: "6976499964512243714"
             text: "Félicitations à toute l’équipe pour cette belle étape franchie. Le futur du financement est prometteur !"
             reactionsCount: 42
@@ -2452,6 +2480,7 @@ components:
                 authorHeadline: "1,200 followers"
                 authorUrl: "https://www.linkedin.com/company/innovfin/"
               activityUrl: "https://www.linkedin.com/feed/update/urn:li:activity:6947912435651493890/"
+              shareUrl: "https://www.linkedin.com/posts/daily-dev-comparator-work-729304143471596032-4b0e"
     ActivitiesComment:
       summary: "Activities Comments"
       value:
@@ -2514,6 +2543,7 @@ components:
                 authorName: "John Smith"
                 authorPublicIdentifier: "john-smith"
               activityUrl: "https://www.linkedin.com/posts/john-smith_new-product-launch-activity-7283548161238761231"
+              shareUrl: "https://www.linkedin.com/posts/daily-dev-comparator-work-729304143471596032-4b0e"
               relatedPost: null
           - text: "Good luck to the team on this ambitious project!"
             reactionsCount: 25
@@ -2535,6 +2565,7 @@ components:
                 authorName: "Nina Brown"
                 authorPublicIdentifier: "nina-brown"
               activityUrl: "https://www.linkedin.com/posts/nina-brown_hackathon-tech-activity-7285567894563217890"
+              shareUrl: "https://www.linkedin.com/posts/daily-dev-comparator-work-729304143471596032-4b0e"
               relatedPost: null
     ActivitiesReaction:
       summary: "Activities Reactions"
@@ -2583,6 +2614,7 @@ components:
                 authorName: "Alex Parker"
                 authorPublicIdentifier: "alex-parker-data"
               activityUrl: "https://www.linkedin.com/posts/alex-parker_data-visualization-launch-activity-7283749210384982025"
+              shareUrl: "https://www.linkedin.com/posts/daily-dev-comparator-work-729304143471596032-4b0e"
               relatedPost: null
           - type: "LIKE"
             author:
@@ -2599,6 +2631,7 @@ components:
                 authorName: "Sophia Taylor"
                 authorPublicIdentifier: "sophia-taylor"
               activityUrl: "https://www.linkedin.com/posts/sophia-taylor_10th-anniversary-celebration-activity-7289381238402947552"
+              shareUrl: "https://www.linkedin.com/posts/daily-dev-comparator-work-729304143471596032-4b0e"
               relatedPost: null
     ActivitiesRepost:
       summary: "Activities Reactions"
