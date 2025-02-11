@@ -363,7 +363,7 @@ paths:
         - Person
       operationId: PersonsActivitiesPosts
       summary: Get Person Activities Posts
-      description: This operation allows you to retrieve all LinkedIn activity posts of a person based on their LinkedIn Profile URL. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.
+      description: This operation allows you to retrieve the last 50 LinkedIn activity posts of a person based on their LinkedIn Profile URL. This operation consumes 1 credit.
       parameters:
         - name: linkedInUrl
           in: query
@@ -403,7 +403,7 @@ paths:
         - Person
       operationId: PersonsActivitiesComments
       summary: Get Person Activities Comments
-      description: This operation allows you to retrieve all LinkedIn activity comments of a person based on their LinkedIn Profile URL. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.
+      description: This operation allows you to retrieve the last 50 LinkedIn activity comments of a person based on their LinkedIn Profile URL. This operation consumes 1 credit.
       parameters:
         - name: linkedInUrl
           in: query
@@ -443,7 +443,7 @@ paths:
         - Person
       operationId: PersonsActivitiesReactions
       summary: Get Person Activities Reactions
-      description: This operation allows you to retrieve all LinkedIn activity reactions of a person based on their LinkedIn Profile URL. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.
+      description: This operation allows you to retrieve the last 50 LinkedIn activity reactions of a person based on their LinkedIn Profile URL. This operation consumes 1 credit.
       parameters:
         - name: linkedInUrl
           in: query
@@ -659,10 +659,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ActivitiesPosts"
+                $ref: "#/components/schemas/CompanyActivitiesPosts"
               examples:
                 Activities Posts Found:
-                  $ref: "#/components/examples/ActivitiesPosts"
+                  $ref: "#/components/examples/CompanyActivitiesPosts"
         400:
           $ref: "#/components/responses/BadRequest"
         401:
@@ -1256,17 +1256,8 @@ components:
           type: integer
           description: Represents the usable daily request limit available for the user account after this query.
         metadata:
-          type: object
-          properties:
-            current_page:
-              type: integer
-              description: This indicates the current page of the results you are fetching.
-            per_page:
-              type: integer
-              description: This indicates the number of the jobs fetched at each call, a page contains 100 jobs by default. (It can not be modified for now.)
-            total:
-              type: integer
-              description: The total number of matching jobs found on LinkedIn Jobs Search Engine. The number can be over 1000, but we do not provide any data to more than the first 1000 jobs.
+          description: Metadata information
+          $ref: "#/components/schemas/Metadata"
         jobs:
           type: array
           items:
@@ -1318,7 +1309,7 @@ components:
           description: The current page number being viewed.
         pageNumber:
           type: integer
-          description: The zero-based index of the current page.
+          description: The total number of available pages.
         perPage:
           type: integer
           description: The number of items displayed per page.
@@ -1732,9 +1723,6 @@ components:
         rate_limit_left:
           type: integer
           description: Represents the usable daily request limit available for the user account after this query.
-        metadata:
-          description: Metadata information
-          $ref: "#/components/schemas/Metadata"
         posts:
           type: array
           description: All activity posts of a person
@@ -1772,9 +1760,6 @@ components:
         rate_limit_left:
           type: integer
           description: Represents the usable daily request limit available for the user account after this query.
-        metadata:
-          description: Metadata information
-          $ref: "#/components/schemas/Metadata"
         comments:
           type: array
           description: All comments of a linkedin profile
@@ -1812,9 +1797,6 @@ components:
         rate_limit_left:
           type: integer
           description: Represents the usable daily request limit available for the user account after this query.
-        metadata:
-          description: Metadata information
-          $ref: "#/components/schemas/Metadata"
         reactions:
           type: array
           description: All reactions of a person on a post
@@ -1840,6 +1822,26 @@ components:
           description: All reposts of a person on a post
           items:
             $ref: "#/components/schemas/RepostV2"
+    CompanyActivitiesPosts:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Indicates success or failure of api request.
+        credits_left:
+          type: integer
+          description: Represents the usable credits available for the user account after this query.
+        rate_limit_left:
+          type: integer
+          description: Represents the usable daily request limit available for the user account after this query.
+        metadata:
+          description: Metadata information
+          $ref: "#/components/schemas/Metadata"
+        posts:
+          type: array
+          description: All activity posts of a company
+          items:
+            $ref: "#/components/schemas/PostV2"
 
     ErrorResponseSchema:
       type: object
@@ -2317,8 +2319,9 @@ components:
         credits_left: 90000
         rate_limit_left: 19000
         metadata:
-          current_page: 1
-          per_page: 100
+          currentPage: 1
+          pageNumber: 10
+          perPage: 50
           total: 500
         jobs:
           - linkedinIdentifier: "4081332168"
@@ -2433,11 +2436,6 @@ components:
         success: true
         credits_left: 19934
         rate_limit_left: 19999
-        metadata:
-          currentPage: 1
-          pageNumber: 10
-          perPage: 50
-          total: 500
         posts:
           - activityId: "6976499964512243712"
             text: "Congrate to the team for this amazing milestone!"
@@ -2524,11 +2522,6 @@ components:
         success: true
         credits_left: 19934
         rate_limit_left: 19999
-        metadata:
-          currentPage: 1
-          pageNumber: 10
-          perPage: 50
-          total: 500
         comments:
           - text: "This is an excellent opportunity!"
             reactionsCount: 12
@@ -2600,11 +2593,6 @@ components:
         success: true
         credits_left: 19934
         rate_limit_left: 19999
-        metadata:
-          currentPage: 1
-          pageNumber: 10
-          perPage: 50
-          total: 500
         reactions:
           - type: "LIKE"
             author:
@@ -2664,7 +2652,67 @@ components:
               authorName: "Lucas Smith"
               authorPublicIdentifier: "lucas-smith-192b934"
             activityUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7284160525581148869/"
-
+    CompanyActivitiesPosts:
+      summary: Activities Posts
+      value:
+        success: true
+        credits_left: 19934
+        rate_limit_left: 19999
+        metadata:
+          currentPage: 1
+          pageNumber: 10
+          perPage: 50
+          total: 500
+        posts:
+          - activityId: "6976499964512243712"
+            text: "Congrate to the team for this amazing milestone!"
+            reactionsCount: 16
+            commentsCount: 1
+            activityDate: "2022-09-16T11:20:08.641Z"
+            author:
+              authorId: "ACoZZBJhN_YBN70Qb8TWu4GpxhJE1NqQ7PQEHQw"
+              authorName: "Alain Smith"
+              authorPublicIdentifier: "alainsmith"
+              authorHeadline: "Bank CEO"
+              authorImage: "https://media.licdn.com/dms/image/v2/D4E03AQFP5a_FoymQCA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1670785458261?e=1743033600&v=beta&t=ZQz5_CNMgUVUzuCTYvqUoV1xmXU4OLXun5zzvJkhktg"
+              authorUrl: "https://www.linkedin.com/in/alainsmith"
+            activityUrl: "https://www.linkedin.com/feed/update/urn:li:activity:6976499964512243712/"
+            shareUrl: "https://www.linkedin.com/posts/breaking-news-another-developer-turned-7293041906471596032-6sne"
+            relatedPost:
+              text: "Spoiler: 30M€ fundraising for Geegle (10M€ equity + 20M€ debt). New step for the fintech!"
+              activityDate: "2022-06-29T14:02:12.188Z"
+              author:
+                authorId: "11011480"
+                authorName: "geegle"
+                authorPublicIdentifier: "geegle"
+                authorHeadline: "3,923 followers"
+                authorUrl: "https://www.linkedin.com/company/geegle/"
+              activityUrl: "https://www.linkedin.com/feed/update/urn:li:activity:6997912435651493888/"
+              shareUrl: "https://www.linkedin.com/posts/daily-dev-comparator-work-729304143471596032-4b0e"
+          - activityId: "6976499964512243714"
+            text: "Félicitations à toute l’équipe pour cette belle étape franchie. Le futur du financement est prometteur !"
+            reactionsCount: 42
+            commentsCount: 5
+            activityDate: "2022-09-20T14:15:32.111Z"
+            author:
+              authorId: "ACoAABXhN_ZC1234qW12XTU4F3NpYQ7PQRFGHS"
+              authorName: "Sophie Dubois"
+              authorPublicIdentifier: "sophiedubois"
+              authorHeadline: "Fintech Enthusiast | Product Manager"
+              authorImage: "https://example.com/images/sophie.jpg"
+              authorUrl: "https://www.linkedin.com/in/sophiedubois"
+            activityUrl: "https://www.linkedin.com/feed/update/urn:li:activity:6976499964512243714/"
+            relatedPost:
+              text: "Merci à nos investisseurs pour leur confiance. Nous sommes ravis de pouvoir développer des solutions plus innovantes et accessibles."
+              activityDate: "2022-07-01T10:30:00.000Z"
+              author:
+                authorId: "123456789"
+                authorName: "InnovFin"
+                authorPublicIdentifier: "innovfin"
+                authorHeadline: "1,200 followers"
+                authorUrl: "https://www.linkedin.com/company/innovfin/"
+              activityUrl: "https://www.linkedin.com/feed/update/urn:li:activity:6947912435651493890/"
+              shareUrl: "https://www.linkedin.com/posts/daily-dev-comparator-work-729304143471596032-4b0e"
     NoApiKey:
       summary: No Api Key
       value:
