@@ -333,13 +333,19 @@ paths:
       parameters:
         - name: activityId
           in: query
-          required: true
+          required: false
           schema:
             type: string
-          description: This required parameter is a string. It represents the ID of the activitiy post you want to retrieve.
+          description: This parameter is a string. It represents the ID of the activitiy post you want to retrieve.
+        - name: postId
+          in: query
+          required: false
+          schema:
+            type: string
+          description: This parameter is a string. It represents the ID of the post you want to retrieve.
       responses:
         200:
-          description: "The endpoint returns the LinkedIn activity post from activityId"
+          description: "The endpoint returns the LinkedIn activity post from activityId or postId"
           content:
             application/json:
               schema:
