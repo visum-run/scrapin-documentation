@@ -18,7 +18,7 @@ paths:
         - Person
       operationId: PersonSearch
       summary: Person Search
-      description: This operation allows you to find a LinkedIn User based on first name, last name, company domain or email. It returns data profile and company information as the response. This operation consume 1 credit.
+      description: This operation allows you to find a LinkedIn User based on first name, last name, company domain or email. It returns data profile and company information as the response. This operation consumes 1 credit.
       parameters:
         - name: firstName
           in: query
@@ -107,7 +107,7 @@ paths:
         - Person
       operationId: ExtractPersonDataProfile
       summary: Extract Person Data Profile
-      description: This operation allows you to extract data from a Person LinkedIn URL. It returns profile data and current company data of the person as the response. This operation consume 1 credit.
+      description: This operation allows you to extract data from a Person LinkedIn URL. It returns profile data and current company data of the person as the response. This operation consumes 1 credit.
       parameters:
         - name: linkedInUrl
           in: query
@@ -117,7 +117,7 @@ paths:
           required: true
       responses:
         200:
-          description: "The endpoint returns informations about the LinkedIn URL owner and its company."
+          description: "The endpoint returns information about the LinkedIn URL owner and its company."
           content:
             application/json:
               schema:
@@ -142,7 +142,7 @@ paths:
         - Company
       operationId: CompanySearch
       summary: Company Search
-      description: This operation allows you to find a company from its domain name. It returns company information as the response. This operation consume 1 credit.
+      description: This operation allows you to find a company from its domain name. It returns company information as the response. This operation consumes 1 credit.
       parameters:
         - name: domain
           in: query
@@ -152,7 +152,7 @@ paths:
           required: true
       responses:
         200:
-          description: "The endpoint returns informations about the company."
+          description: "The endpoint returns information about the company."
           content:
             application/json:
               schema:
@@ -177,7 +177,7 @@ paths:
         - Company
       operationId: ExtractCompanyDataProfile
       summary: Extract Company Data Profile
-      description: This operation allows you to extract data from a Company LinkedIn URL. It returns company data as the response. This operation consume 1 credit.
+      description: This operation allows you to extract data from a Company LinkedIn URL. It returns company data as the response. This operation consumes 1 credit.
       parameters:
         - name: linkedInUrl
           in: query
@@ -187,7 +187,7 @@ paths:
           required: true
       responses:
         200:
-          description: "The endpoint returns informations about the company."
+          description: "The endpoint returns information about the company."
           content:
             application/json:
               schema:
@@ -212,7 +212,7 @@ paths:
         - Job
       operationId: JobSearch
       summary: Extract Job Search Data
-      description: This operation allows you to extract data from a Job Search by keywords, location and companyUrl filters. Atleast one of the input parameters is required. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. It returns a list of job data as the response. This operation consume 1 credit.
+      description: This operation allows you to extract data from a Job Search by keywords, location and companyUrl filters. At least one of the input parameters is required. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. It returns a list of job data as the response. This operation consumes 1 credit.
       parameters:
         - name: keywords
           in: query
@@ -266,7 +266,7 @@ paths:
         - Job
       operationId: ExtractJobData
       summary: Extract Job Data
-      description: This operation allows you to extract data from a Job LinkedIn URL. It returns job data as the response. This operation consume 1 credit.
+      description: This operation allows you to extract data from a Job LinkedIn URL. It returns job data as the response. This operation consumes 1 credit.
       parameters:
         - name: url
           in: query
@@ -276,7 +276,7 @@ paths:
           required: true
       responses:
         200:
-          description: "The endpoint returns informations about the job."
+          description: "The endpoint returns information about the job."
           content:
             application/json:
               schema:
@@ -336,7 +336,7 @@ paths:
           required: false
           schema:
             type: string
-          description: This parameter is a string. It represents the ID of the activitiy post you want to retrieve.
+          description: This parameter is a string. It represents the ID of the activity post you want to retrieve.
         - name: postId
           in: query
           required: false
@@ -600,7 +600,7 @@ paths:
           required: true
           schema:
             type: string
-          description: This required parameter is a string. It represents the ID of the activitiy post you want to retrieve.
+          description: This required parameter is a string. It represents the ID of the activity post you want to retrieve.
       responses:
         200:
           description: "The endpoint returns the LinkedIn activity post from activityId"
