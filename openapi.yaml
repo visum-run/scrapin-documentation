@@ -66,41 +66,6 @@ paths:
         500:
           $ref: "#/components/responses/ServerError"
 
-  "/enrichment/activities":
-    get:
-      tags:
-        - Person
-      operationId: ExtractPersonActivities
-      summary: Get Person LinkedIn Activities
-      description: This operation allows you to retrieve the LinkedIn activities (posts, comments, and likes) of a person based on their LinkedIn profile URL. This operation consumes 1 credit.
-      parameters:
-        - name: linkedInUrl
-          in: query
-          required: true
-          schema:
-            type: string
-          description: This required parameter is a string. It represents the LinkedIn profile URL of the person whose activities you want to retrieve.
-      responses:
-        200:
-          description: "The endpoint returns the LinkedIn activities of the person, including posts, comments, and reactions."
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ExtractPersonActivities"
-              examples:
-                ExtractedPersonActivitiesExample:
-                  $ref: "#/components/examples/ExtractedPersonActivitiesExample"
-        400:
-          $ref: "#/components/responses/BadRequest"
-        401:
-          $ref: "#/components/responses/Unauthorized"
-        402:
-          $ref: "#/components/responses/PaymentRequired"
-        404:
-          $ref: "#/components/responses/NotFound"
-        500:
-          $ref: "#/components/responses/ServerError"
-
   "/enrichment/profile":
     get:
       tags:
@@ -808,33 +773,6 @@ components:
             - type: boolean
               enum:
                 - false
-        credits_left:
-          type: integer
-          description: Represents the usable credits available for the user account after this query.
-        rate_limit_left:
-          type: integer
-          description: Represents the usable daily request limit available for the user account after this query.
-    ExtractPersonActivities:
-      type: object
-      properties:
-        success:
-          type: boolean
-          description: Indicates success or failure of api request.
-        posts:
-          type: array
-          items:
-            $ref: "#/components/schemas/Post"
-          description: Array of posts made by the person
-        comments:
-          type: array
-          items:
-            $ref: "#/components/schemas/Comment"
-          description: Array of comments made by the person
-        reactions:
-          type: array
-          items:
-            $ref: "#/components/schemas/Reaction"
-          description: Array of reactions made by the person
         credits_left:
           type: integer
           description: Represents the usable credits available for the user account after this query.

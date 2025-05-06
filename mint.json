@@ -32,11 +32,7 @@
     },
     {
       "group": "Person",
-      "pages": [
-        "endpoint/ExtractPersonDataProfile",
-        "endpoint/ExtractPersonActivities",
-        "endpoint/PersonSearch"
-      ]
+      "pages": ["endpoint/ExtractPersonDataProfile", "endpoint/PersonSearch"]
     },
     {
       "group": "Persons Activities",
