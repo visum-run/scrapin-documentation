@@ -32,41 +32,41 @@
     },
     {
       "group": "Person",
-      "pages": ["endpoint/ExtractPersonDataProfile", "endpoint/PersonSearch"]
+      "pages": ["endpoint/person/extract-profile", "endpoint/person/search"]
     },
     {
-      "group": "Persons Activities",
+      "group": "Person Activities",
       "pages": [
-        "endpoint/Persons/Activities/Posts",
-        "endpoint/Persons/Activities/Comments",
-        "endpoint/Persons/Activities/Reactions",
-        "endpoint/Persons/Activities/Post",
-        "endpoint/Persons/Activities/Post/Comments",
-        "endpoint/Persons/Activities/Post/Reactions",
-        "endpoint/Persons/Activities/Post/Reposts"
+        "endpoint/person/activities/posts",
+        "endpoint/person/activities/comments",
+        "endpoint/person/activities/reactions",
+        "endpoint/person/activities/post",
+        "endpoint/person/activities/post/comments",
+        "endpoint/person/activities/post/reactions",
+        "endpoint/person/activities/post/reposts"
       ]
     },
     {
       "group": "Company",
-      "pages": ["endpoint/ExtractCompanyDataProfile", "endpoint/CompanySearch"]
+      "pages": ["endpoint/company/extract-profile", "endpoint/company/search"]
     },
     {
-      "group": "Companies Activities",
+      "group": "Company Activities",
       "pages": [
-        "endpoint/Companies/Activities/Posts",
-        "endpoint/Companies/Activities/Post",
-        "endpoint/Companies/Activities/Post/Comments",
-        "endpoint/Companies/Activities/Post/Reactions",
-        "endpoint/Companies/Activities/Post/Reposts"
+        "endpoint/company/activities/posts",
+        "endpoint/company/activities/post",
+        "endpoint/company/activities/post/comments",
+        "endpoint/company/activities/post/reactions",
+        "endpoint/company/activities/post/reposts"
       ]
     },
     {
       "group": "Job",
-      "pages": ["endpoint/ExtractJobData", "endpoint/JobSearch"]
+      "pages": ["endpoint/job/extract-data", "endpoint/job/search"]
     },
     {
-      "group": "Workspaces",
-      "pages": ["endpoint/WorkspacesQuotas"]
+      "group": "Workspace",
+      "pages": ["endpoint/workspace/quotas"]
     }
   ],
   "footerSocials": {},

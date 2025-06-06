@@ -18,7 +18,7 @@ paths:
         - Person
       operationId: PersonSearch
       summary: Person Search
-      description: This operation allows you to find a LinkedIn User based on first name, last name, company domain or email. It returns data profile and company information as the response. This operation consumes 1 credit.
+      description: This operation allows you to find a LinkedIn User based on first name, last name, company domain, or email. It returns profile data and company information as the response. This operation consumes 1 credit.
       parameters:
         - name: firstName
           in: query
@@ -34,12 +34,12 @@ paths:
           in: query
           schema:
             type: string
-          description: This optional parameter is a string. It represents the company domain/URL to query
+          description: This optional parameter is a string. It represents the company domain/URL to query.
         - name: companyName
           in: query
           schema:
             type: string
-          description: This optional parameter is a string. It represents the company name to query
+          description: This optional parameter is a string. It represents the company name to query.
         - name: email
           in: query
           schema:
@@ -47,7 +47,7 @@ paths:
           description: This required parameter is a string. It represents the email to query.
       responses:
         200:
-          description: "The endpoint found and returns information about the query."
+          description: "The endpoint found and returned information about the query."
           content:
             application/json:
               schema:
@@ -82,7 +82,7 @@ paths:
           required: true
       responses:
         200:
-          description: "The endpoint returns information about the LinkedIn URL owner and its company."
+          description: "The endpoint returns information about the LinkedIn URL owner and their company."
           content:
             application/json:
               schema:
@@ -189,7 +189,7 @@ paths:
           in: query
           schema:
             type: string
-          description: "This required parameter is a string. It represents the location of the job. It can be the city, the region of the country name."
+          description: "This required parameter is a string. It represents the location of the job. It can be the city, the region, or the country name."
           required: false
         - name: companyUrl
           in: query
@@ -203,7 +203,7 @@ paths:
           schema:
             type: number
             enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-          description: This optional parameter is a string. It represents the page number of the results.
+          description: This optional parameter is a number. It represents the page number of the results.
       responses:
         200:
           description: "The endpoint returns a list of jobs."
@@ -341,7 +341,7 @@ paths:
           required: true
           schema:
             type: string
-          description: This required parameter is a string. It represents LinkedIn Profile URL you want to retrieve all LinkedIn activity posts.
+          description: This required parameter is a string. It represents the LinkedIn Profile URL from which you want to retrieve all LinkedIn activity posts.
       responses:
         200:
           description: "The endpoint returns the LinkedIn activity posts from LinkedIn Profile URL"
@@ -375,7 +375,7 @@ paths:
           required: true
           schema:
             type: string
-          description: This required parameter is a string. It represents LinkedIn Profile URL you want to retrieve all LinkedIn activity comments.
+          description: This required parameter is a string. It represents the LinkedIn Profile URL from which you want to retrieve all LinkedIn activity comments.
       responses:
         200:
           description: "The endpoint returns the LinkedIn activity comments from LinkedIn Profile URL"
@@ -409,7 +409,7 @@ paths:
           required: true
           schema:
             type: string
-          description: This required parameter is a string. It represents LinkedIn Profile URL you want to retrieve all LinkedIn activity reactions.
+          description: This required parameter is a string. It represents the LinkedIn Profile URL from which you want to retrieve all LinkedIn activity reactions.
       responses:
         200:
           description: "The endpoint returns the LinkedIn activity reactions from LinkedIn Profile URL"
@@ -444,13 +444,13 @@ paths:
           required: true
           schema:
             type: string
-          description: This required parameter is a string. It represents the ID of the activity post you want to retrieve comments.
+          description: This required parameter is a string. It represents the ID of the activity post from which you want to retrieve comments.
         - name: page
           in: query
           required: false
           schema:
             type: number
-          description: This optional parameter is a string. It represents the page number of the results.
+          description: This optional parameter is a number. It represents the page number of the results.
       responses:
         200:
           description: "The endpoint returns the LinkedIn activity post comments from activityId"
@@ -484,13 +484,13 @@ paths:
           required: true
           schema:
             type: string
-          description: This required parameter is a string. It represents the ID of the activity post you want to retrieve reactions.
+          description: This required parameter is a string. It represents the ID of the activity post from which you want to retrieve reactions.
         - name: page
           in: query
           required: false
           schema:
             type: number
-          description: This optional parameter is a string. It represents the page number of the results.
+          description: This optional parameter is a number. It represents the page number of the results.
       responses:
         200:
           description: "The endpoint returns the LinkedIn activity post reactions from activityId"
@@ -524,13 +524,13 @@ paths:
           required: true
           schema:
             type: string
-          description: This required parameter is a string. It represents the ID of the activity post you want to retrieve reposts.
+          description: This required parameter is a string. It represents the ID of the activity post from which you want to retrieve reposts.
         - name: page
           in: query
           required: false
           schema:
             type: number
-          description: This optional parameter is a string. It represents the page number of the results.
+          description: This optional parameter is a number. It represents the page number of the results.
       responses:
         200:
           description: "The endpoint returns the LinkedIn activity post reposts from activityId"
@@ -599,13 +599,13 @@ paths:
           required: true
           schema:
             type: string
-          description: This required parameter is a string. It represents LinkedIn Profile URL you want to retrieve all LinkedIn activity posts.
+          description: This required parameter is a string. It represents the LinkedIn Profile URL from which you want to retrieve all LinkedIn activity posts.
         - name: page
           in: query
           required: false
           schema:
             type: number
-          description: This optional parameter is a string. It represents the page number of the results.
+          description: This optional parameter is a number. It represents the page number of the results.
       responses:
         200:
           description: "The endpoint returns the LinkedIn activity posts from LinkedIn Profile URL"
@@ -639,13 +639,13 @@ paths:
           required: true
           schema:
             type: string
-          description: This required parameter is a string. It represents the ID of the activity post you want to retrieve comments.
+          description: This required parameter is a string. It represents the ID of the activity post from which you want to retrieve comments.
         - name: page
           in: query
           required: false
           schema:
             type: number
-          description: This optional parameter is a string. It represents the page number of the results.
+          description: This optional parameter is a number. It represents the page number of the results.
       responses:
         200:
           description: "The endpoint returns the LinkedIn activity post comments from activityId"
@@ -679,13 +679,13 @@ paths:
           required: true
           schema:
             type: string
-          description: This required parameter is a string. It represents the ID of the activity post you want to retrieve reactions.
+          description: This required parameter is a string. It represents the ID of the activity post from which you want to retrieve reactions.
         - name: page
           in: query
           required: false
           schema:
             type: number
-          description: This optional parameter is a string. It represents the page number of the results.
+          description: This optional parameter is a number. It represents the page number of the results.
       responses:
         200:
           description: "The endpoint returns the LinkedIn activity post reactions from activityId"
@@ -719,13 +719,13 @@ paths:
           required: true
           schema:
             type: string
-          description: This required parameter is a string. It represents the ID of the activity post you want to retrieve reposts.
+          description: This required parameter is a string. It represents the ID of the activity post from which you want to retrieve reposts.
         - name: page
           in: query
           required: false
           schema:
             type: number
-          description: This optional parameter is a string. It represents the page number of the results.
+          description: This optional parameter is a number. It represents the page number of the results.
       responses:
         200:
           description: "The endpoint returns the LinkedIn activity post reposts from activityId"
@@ -754,10 +754,10 @@ components:
       properties:
         success:
           type: boolean
-          description: Indicates success or failure of api request.
+          description: Indicates success or failure of API request.
         email:
           type: string
-          description: Represents the email of the person account that was queried
+          description: Represents the email of the person account that was queried.
         emailType:
           type: string
           description: Represents the type of account.
@@ -784,129 +784,129 @@ components:
       properties:
         text:
           type: string
-          description: Content of the post
+          description: Content of the post.
         likesCount:
           type: integer
-          description: Number of likes on the post
+          description: Number of likes on the post.
         commentsCount:
           type: integer
-          description: Number of comments on the post
+          description: Number of comments on the post.
         activityDate:
           type: string
           format: date-time
-          description: Date and time when the post was created
+          description: Date and time when the post was created.
         author:
           type: object
-          description: Information about the post author
+          description: Information about the post author.
           properties:
             authorId:
               type: string
-              description: Unique identifier of the post author
+              description: Unique identifier of the post author.
             authorName:
               type: string
-              description: Name of the post author
+              description: Name of the post author.
             authorPublicIdentifier:
               type: string
-              description: Public identifier of the post author
+              description: Public identifier of the post author.
         activityUrl:
           type: string
-          description: URL of the post on LinkedIn
+          description: URL of the post on LinkedIn.
         isRepublishedPost:
           type: boolean
-          description: Indicates if this post is a republished post from another user
+          description: Indicates if this post is a republished post from another user.
         relatedPost:
           type: object
-          description: Information about the original post if this is a republished post
+          description: Information about the original post if this is a republished post.
           properties:
             text:
               type: string
-              description: Content of the related post
+              description: Content of the related post.
             likesCount:
               type: integer
-              description: Number of likes on the related post
+              description: Number of likes on the related post.
             commentsCount:
               type: integer
-              description: Number of comments on the related post
+              description: Number of comments on the related post.
             activityDate:
               type: string
               format: date-time
-              description: Date and time when the related post was created
+              description: Date and time when the related post was created.
             authorId:
               type: string
-              description: Unique identifier of the related post author
+              description: Unique identifier of the related post author.
             authorPublicIdentifier:
               type: string
-              description: Public identifier of the related post author
+              description: Public identifier of the related post author.
             authorName:
               type: string
-              description: Name of the related post author
+              description: Name of the related post author.
             activityUrl:
               type: string
-              description: URL of the related post on LinkedIn
+              description: URL of the related post on LinkedIn.
             relatedPost:
               type: object
               nullable: true
-              description: Nested related post (if any)
+              description: Nested related post (if any).
     Comment:
       type: object
       properties:
         text:
           type: string
-          description: Content of the comment
+          description: Content of the comment.
         likesCount:
           type: integer
-          description: Number of likes on the comment
+          description: Number of likes on the comment.
         commentsCount:
           type: integer
-          description: Number of replies to the comment
+          description: Number of replies to the comment.
         activityDate:
           type: string
           format: date-time
-          description: Date and time when the comment was created
+          description: Date and time when the comment was created.
         authorId:
           type: string
-          description: Unique identifier of the comment author
+          description: Unique identifier of the comment author.
         authorName:
           type: string
-          description: Name of the comment author
+          description: Name of the comment author.
         authorPublicIdentifier:
           type: string
-          description: Public identifier of the comment author
+          description: Public identifier of the comment author.
         post:
           $ref: "#/components/schemas/Post"
-          description: The post on which this comment was made
+          description: The post on which this comment was made.
         activityUrl:
           type: string
-          description: URL of the comment on LinkedIn
+          description: URL of the comment on LinkedIn.
     Reaction:
       type: object
       properties:
         type:
           type: string
-          description: Type of reaction (e.g., "LIKE", "CELEBRATE", etc.)
+          description: Type of reaction (e.g., "LIKE", "CELEBRATE", etc.).
         activityDate:
           type: string
           format: date-time
-          description: Date and time when the reaction was made
+          description: Date and time when the reaction was made.
         authorId:
           type: string
-          description: Unique identifier of the person who made the reaction
+          description: Unique identifier of the person who made the reaction.
         authorName:
           type: string
-          description: Name of the person who made the reaction
+          description: Name of the person who made the reaction.
         authorPublicIdentifier:
           type: string
-          description: Public identifier of the person who made the reaction
+          description: Public identifier of the person who made the reaction.
         relatedPost:
           $ref: "#/components/schemas/Post"
-          description: The post on which this reaction was made
+          description: The post on which this reaction was made.
         relatedComment:
           $ref: "#/components/schemas/Comment"
           nullable: true
-          description: The comment on which this reaction was made (if applicable)
+          description: The comment on which this reaction was made (if applicable).
         activityUrl:
           type: string
-          description: URL of the reaction on LinkedIn
+          description: URL of the reaction on LinkedIn.
     Person:
       type: object
       properties:
@@ -1034,7 +1034,7 @@ components:
       properties:
         success:
           type: boolean
-          description: Indicates success or failure of api request.
+          description: Indicates success or failure of API request.
         credits_left:
           type: integer
           description: The usable credits available for the user account after this query.
@@ -1107,7 +1107,7 @@ components:
       properties:
         success:
           type: boolean
-          description: Indicates success or failure of api request.
+          description: Indicates success or failure of API request.
         credits_left:
           type: integer
           description: Represents the usable credits available for the user account after this query.
@@ -1125,7 +1125,7 @@ components:
       properties:
         success:
           type: boolean
-          description: Indicates success or failure of api request.
+          description: Indicates success or failure of API request.
         credits_left:
           type: integer
           description: Represents the usable credits available for the user account after this query.
@@ -1174,7 +1174,7 @@ components:
       properties:
         success:
           type: boolean
-          description: Indicates success or failure of api request.
+          description: Indicates success or failure of API request.
         credits_left:
           type: integer
           description: Represents the usable credits available for the user account after this query.
@@ -1182,19 +1182,19 @@ components:
           type: integer
           description: Represents the usable daily request limit available for the user account after this query.
         metadata:
-          description: Metadata information
+          description: Metadata information.
           $ref: "#/components/schemas/Metadata"
         jobs:
           type: array
           items:
             $ref: "#/components/schemas/Job"
-          description: Array of jobs
+          description: Array of jobs.
     ExtractJobData:
       type: object
       properties:
         success:
           type: boolean
-          description: Indicates success or failure of api request.
+          description: Indicates success or failure of API request.
         credits_left:
           type: integer
           description: Represents the usable credits available for the user account after this query.
@@ -1626,7 +1626,7 @@ components:
       properties:
         success:
           type: boolean
-          description: Indicates success or failure of api request.
+          description: Indicates success or failure of API request.
         credits_left:
           type: integer
           description: Represents the usable credits available for the user account after this query.
@@ -1635,14 +1635,14 @@ components:
           description: Represents the usable daily request limit available for the user account after this query.
         post:
           type: object
-          description: Activity post of a person
+          description: Activity post of a person.
           $ref: "#/components/schemas/PostV2"
     ActivitiesPosts:
       type: object
       properties:
         success:
           type: boolean
-          description: Indicates success or failure of api request.
+          description: Indicates success or failure of API request.
         credits_left:
           type: integer
           description: Represents the usable credits available for the user account after this query.
@@ -1651,7 +1651,7 @@ components:
           description: Represents the usable daily request limit available for the user account after this query.
         posts:
           type: array
-          description: All activity posts of a person
+          description: All activity posts of a person.
           items:
             $ref: "#/components/schemas/PostV2"
     ActivitiesComment:
@@ -1659,7 +1659,7 @@ components:
       properties:
         success:
           type: boolean
-          description: Indicates success or failure of api request.
+          description: Indicates success or failure of API request.
         credits_left:
           type: integer
           description: Represents the usable credits available for the user account after this query.
@@ -1667,11 +1667,11 @@ components:
           type: integer
           description: Represents the usable daily request limit available for the user account after this query.
         metadata:
-          description: Metadata information
+          description: Metadata information.
           $ref: "#/components/schemas/Metadata"
         comments:
           type: array
-          description: All comments of a person on a post
+          description: All comments of a person on a post.
           items:
             $ref: "#/components/schemas/CommentV2"
     ActivitiesComments:
@@ -1679,7 +1679,7 @@ components:
       properties:
         success:
           type: boolean
-          description: Indicates success or failure of api request.
+          description: Indicates success or failure of API request.
         credits_left:
           type: integer
           description: Represents the usable credits available for the user account after this query.
@@ -1688,7 +1688,7 @@ components:
           description: Represents the usable daily request limit available for the user account after this query.
         comments:
           type: array
-          description: All comments of a linkedin profile
+          description: All comments of a LinkedIn profile.
           items:
             $ref: "#/components/schemas/CommentsV2"
     ActivitiesReaction:
@@ -1696,7 +1696,7 @@ components:
       properties:
         success:
           type: boolean
-          description: Indicates success or failure of api request.
+          description: Indicates success or failure of API request.
         credits_left:
           type: integer
           description: Represents the usable credits available for the user account after this query.
@@ -1704,11 +1704,11 @@ components:
           type: integer
           description: Represents the usable daily request limit available for the user account after this query.
         metadata:
-          description: Metadata information
+          description: Metadata information.
           $ref: "#/components/schemas/Metadata"
         reactions:
           type: array
-          description: All reactions of a person on a post
+          description: All reactions of a person on a post.
           items:
             $ref: "#/components/schemas/ReactionV2"
     ActivitiesReactions:
@@ -1716,7 +1716,7 @@ components:
       properties:
         success:
           type: boolean
-          description: Indicates success or failure of api request.
+          description: Indicates success or failure of API request.
         credits_left:
           type: integer
           description: Represents the usable credits available for the user account after this query.
@@ -1725,7 +1725,7 @@ components:
           description: Represents the usable daily request limit available for the user account after this query.
         reactions:
           type: array
-          description: All reactions of a person on a post
+          description: All reactions of a person on a post.
           items:
             $ref: "#/components/schemas/ReactionsV2"
     ActivitiesRepost:
@@ -1733,7 +1733,7 @@ components:
       properties:
         success:
           type: boolean
-          description: Indicates success or failure of api request.
+          description: Indicates success or failure of API request.
         credits_left:
           type: integer
           description: Represents the usable credits available for the user account after this query.
@@ -1741,11 +1741,11 @@ components:
           type: integer
           description: Represents the usable daily request limit available for the user account after this query.
         metadata:
-          description: Metadata information
+          description: Metadata information.
           $ref: "#/components/schemas/Metadata"
-        reactions:
+        reposts:
           type: array
-          description: All reposts of a person on a post
+          description: All reposts of a person on a post.
           items:
             $ref: "#/components/schemas/RepostV2"
     CompanyActivitiesPosts:
@@ -1753,7 +1753,7 @@ components:
       properties:
         success:
           type: boolean
-          description: Indicates success or failure of api request.
+          description: Indicates success or failure of API request.
         credits_left:
           type: integer
           description: Represents the usable credits available for the user account after this query.
@@ -1761,11 +1761,11 @@ components:
           type: integer
           description: Represents the usable daily request limit available for the user account after this query.
         metadata:
-          description: Metadata information
+          description: Metadata information.
           $ref: "#/components/schemas/Metadata"
         posts:
           type: array
-          description: All activity posts of a company
+          description: All activity posts of a company.
           items:
             $ref: "#/components/schemas/PostV2"
 
@@ -2332,7 +2332,7 @@ components:
         rate_limit_left: 19999
         post:
           activityId: "6976499964512243712"
-          text: "Congrate to the team for this amazing milestone!"
+          text: "Congrats to the team for this amazing milestone!"
           reactionsCount: 16
           commentsCount: 1
           activityDate: "2022-09-16T11:20:08.641Z"
@@ -2364,7 +2364,7 @@ components:
         rate_limit_left: 19999
         posts:
           - activityId: "6976499964512243712"
-            text: "Congrate to the team for this amazing milestone!"
+            text: "Congrats to the team for this amazing milestone!"
             reactionsCount: 16
             commentsCount: 1
             activityDate: "2022-09-16T11:20:08.641Z"
@@ -2424,7 +2424,7 @@ components:
           perPage: 50
           total: 500
         comments:
-          - text: "Congrate to the team for this amazing milestone!"
+          - text: "Congrats to the team for this amazing milestone!"
             reactionsCount: 2
             commentsCount: 1
             activityDate: 1675339386599
@@ -2591,7 +2591,7 @@ components:
           total: 500
         posts:
           - activityId: "6976499964512243712"
-            text: "Congrate to the team for this amazing milestone!"
+            text: "Congrats to the team for this amazing milestone!"
             reactionsCount: 16
             commentsCount: 1
             activityDate: "2022-09-16T11:20:08.641Z"
