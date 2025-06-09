@@ -127,6 +127,45 @@
         }
       }
     },
+    "/enrichment/experience": {
+      "get": {
+        "tags": ["Person"],
+        "operationId": "GetExperience",
+        "summary": "Get Experience",
+        "description": "This operation allows you to get experience data including work positions. It returns experience information with credits and rate limit information. This operation consumes 1 credit.",
+        "parameters": [
+          {
+            "name": "linkedInUrl",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "This required parameter is a string. It represents the LinkedIn URL of the person with this format: https://www.linkedin.com/in/xxxxxxxxxxxxx/.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The endpoint returns experience information including work positions.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExperienceResponse"
+                },
+                "examples": {
+                  "ExperienceFound": {
+                    "$ref": "#/components/examples/ExperienceFound"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
+    },
     "/enrichment/company/domain": {
       "get": {
         "tags": ["Company"],
@@ -292,36 +331,6 @@
                 "examples": {
                   "JobFound": {
                     "$ref": "#/components/examples/JobExtracted"
-                  }
-                }
-              }
-            }
-          },
-          "400": { "$ref": "#/components/responses/BadRequest" },
-          "401": { "$ref": "#/components/responses/Unauthorized" },
-          "402": { "$ref": "#/components/responses/PaymentRequired" },
-          "404": { "$ref": "#/components/responses/NotFound" },
-          "500": { "$ref": "#/components/responses/ServerError" }
-        }
-      }
-    },
-    "/workspaces/quotas": {
-      "get": {
-        "tags": ["Workspaces"],
-        "operationId": "WorkspacesQuotas",
-        "summary": "Workspaces Quotas",
-        "description": "This endpoint retrieves the quotas for a specific workspace, including the remaining credits (credits_left) and rate limit (rate_limit_left). It is designed to help monitor resource availability and ensure proper usage within the workspace.",
-        "responses": {
-          "200": {
-            "description": "The endpoint returns information about the workspace quotas, including remaining credits (credits_left) and rate limit (rate_limit_left).",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/WorkspacesQuotas"
-                },
-                "examples": {
-                  "QuotasFound": {
-                    "$ref": "#/components/examples/QuotasFound"
                   }
                 }
               }
@@ -858,6 +867,36 @@
           "500": { "$ref": "#/components/responses/ServerError" }
         }
       }
+    },
+    "/workspaces/quotas": {
+      "get": {
+        "tags": ["Workspaces"],
+        "operationId": "WorkspacesQuotas",
+        "summary": "Workspaces Quotas",
+        "description": "This endpoint retrieves the quotas for a specific workspace, including the remaining credits (credits_left) and rate limit (rate_limit_left). It is designed to help monitor resource availability and ensure proper usage within the workspace.",
+        "responses": {
+          "200": {
+            "description": "The endpoint returns information about the workspace quotas, including remaining credits (credits_left) and rate limit (rate_limit_left).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkspacesQuotas"
+                },
+                "examples": {
+                  "QuotasFound": {
+                    "$ref": "#/components/examples/QuotasFound"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
     }
   },
   "components": {
@@ -970,6 +1009,14 @@
             "type": "boolean",
             "description": "Indicates success or failure of api request."
           },
+          "credits_left": {
+            "type": "integer",
+            "description": "Represents the usable credits available for the user account after this query."
+          },
+          "rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          },
           "summary": {
             "type": "string",
             "description": "A summary description of the person or entity."
@@ -983,9 +1030,90 @@
             "type": "boolean",
             "description": "Indicates success or failure of api request."
           },
+          "credits_left": {
+            "type": "integer",
+            "description": "Represents the usable credits available for the user account after this query."
+          },
+          "rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          },
           "followersCount": {
             "type": "string",
             "description": "The number of followers of the person."
+          }
+        }
+      },
+      "ExperienceResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Indicates success or failure of api request."
+          },
+          "credits_left": {
+            "type": "integer",
+            "description": "Represents the usable credits available for the user account after this query."
+          },
+          "rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "positions": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/Position" },
+            "description": "Array of work experience positions"
+          }
+        }
+      },
+      "Position": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Job title or position name"
+          },
+          "companyName": {
+            "type": "string",
+            "description": "Name of the company"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the position or role"
+          },
+          "startEndDate": {
+            "$ref": "#/components/schemas/StartEndDate",
+            "description": "Start and end dates of the position"
+          },
+          "companyLogo": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to the company logo image"
+          },
+          "linkedInUrl": {
+            "type": "string",
+            "format": "uri",
+            "description": "LinkedIn URL of the company"
+          },
+          "linkedInId": {
+            "type": "string",
+            "description": "LinkedIn identifier of the company"
+          }
+        }
+      },
+      "StartEndDate": {
+        "type": "object",
+        "properties": {
+          "start": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Start date of the position in ISO 8601 format"
+          },
+          "end": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "description": "End date of the position in ISO 8601 format, null if current position"
           }
         }
       },
@@ -1304,33 +1432,6 @@
               { "$ref": "#/components/schemas/Job" },
               { "type": "boolean", "enum": [false] }
             ]
-          }
-        }
-      },
-      "Quotas": {
-        "type": "object",
-        "properties": {
-          "credits_left": {
-            "type": "integer",
-            "description": "Represents the usable credits available for the user account after this query."
-          },
-          "rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          }
-        }
-      },
-      "WorkspacesQuotas": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "description": "Indicates whether the API request was successful."
-          },
-          "data": {
-            "type": "object",
-            "$ref": "#/components/schemas/Quotas",
-            "description": "Contains the quotas information for the workspace."
           }
         }
       },
@@ -2057,6 +2158,33 @@
           }
         }
       },
+      "Quotas": {
+        "type": "object",
+        "properties": {
+          "credits_left": {
+            "type": "integer",
+            "description": "Represents the usable credits available for the user account after this query."
+          },
+          "rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          }
+        }
+      },
+      "WorkspacesQuotas": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Indicates whether the API request was successful."
+          },
+          "data": {
+            "type": "object",
+            "$ref": "#/components/schemas/Quotas",
+            "description": "Contains the quotas information for the workspace."
+          }
+        }
+      },
       "ErrorResponseSchema": {
         "type": "object",
         "properties": {
@@ -2067,10 +2195,40 @@
       }
     },
     "examples": {
+      "ProfileFound": {
+        "summary": "Profile Found",
+        "value": {
+          "success": true,
+          "credits_left": 90000,
+          "rate_limit_left": 19000,
+          "person": {
+            "publicIdentifier": "williamhgates",
+            "linkedInIdentifier": "ACoAAA8BYqEBCGLg_vT_ca6mMEqkpp9nVffJ3hc",
+            "memberIdentifier": "251749025",
+            "linkedInUrl": "https://www.linkedin.com/in/williamhgates",
+            "firstName": "Bill",
+            "lastName": "Gates",
+            "headline": "Chair, Gates Foundation and Founder, Breakthrough Energy",
+            "location": {
+              "city": "Seattle",
+              "state": "Washington",
+              "country": "United States of America",
+              "countryCode": "US"
+            },
+            "photoUrl": "https://media.licdn.com/dms/image/v2/D5603AQF-RYZP55jmXA/profile-displayphoto-shrink_800_800/B56ZRi8g.aGsAc-/0/1736826818808?e=1754524800&v=beta&t=le9XxRzxHP_NudRLS-N_0JzubTD5YFtDAICWwXbzlmY",
+            "backgroundUrl": "https://media.licdn.com/dms/image/v2/D5616AQEjhPbTCeblYg/profile-displaybackgroundimage-shrink_200_800/B56ZcytR5SGsAc-/0/1748902420393?e=1754524800&v=beta&t=oehCgWLrQpK-Ucnc2-IrRzMe2I0gWNoiVdc-yUw0UJs",
+            "openToWork": false,
+            "premium": true,
+            "showVerificationBadge": false
+          }
+        }
+      },
       "SummaryFound": {
         "summary": "Summary Found",
         "value": {
           "success": true,
+          "credits_left": 90000,
+          "rate_limit_left": 19000,
           "summary": "Chair of the Gates Foundation. Founder of Breakthrough Energy. Co-founder of Microsoft. Voracious reader. Avid traveler. Active blogger."
         }
       },
@@ -2078,30 +2236,55 @@
         "summary": "Followers Count Found",
         "value": {
           "success": true,
+          "credits_left": 90000,
+          "rate_limit_left": 19000,
           "followersCount": 38002464
         }
       },
-      "ProfileFound": {
-        "summary": "Profile Found",
+      "ExperienceFound": {
+        "summary": "Experience Found",
         "value": {
-          "publicIdentifier": "williamhgates",
-          "linkedInIdentifier": "ACoAAA8BYqEBCGLg_vT_ca6mMEqkpp9nVffJ3hc",
-          "memberIdentifier": "251749025",
-          "linkedInUrl": "https://www.linkedin.com/in/williamhgates",
-          "firstName": "Bill",
-          "lastName": "Gates",
-          "headline": "Chair, Gates Foundation and Founder, Breakthrough Energy",
-          "location": {
-            "city": "Seattle",
-            "state": "Washington",
-            "country": "United States of America",
-            "countryCode": "US"
-          },
-          "photoUrl": "https://media.licdn.com/dms/image/v2/D5603AQF-RYZP55jmXA/profile-displayphoto-shrink_800_800/B56ZRi8g.aGsAc-/0/1736826818808?e=1754524800&v=beta&t=le9XxRzxHP_NudRLS-N_0JzubTD5YFtDAICWwXbzlmY",
-          "backgroundUrl": "https://media.licdn.com/dms/image/v2/D5616AQEjhPbTCeblYg/profile-displaybackgroundimage-shrink_200_800/B56ZcytR5SGsAc-/0/1748902420393?e=1754524800&v=beta&t=oehCgWLrQpK-Ucnc2-IrRzMe2I0gWNoiVdc-yUw0UJs",
-          "openToWork": false,
-          "premium": true,
-          "showVerificationBadge": false
+          "success": true,
+          "credits_left": 90000,
+          "rate_limit_left": 19000,
+          "positions": [
+            {
+              "title": "Co-chair",
+              "companyName": "Gates Foundation",
+              "description": "",
+              "startEndDate": {
+                "start": "2000-01-01T12:00:00.000Z",
+                "end": null
+              },
+              "companyLogo": "https://media.licdn.com/dms/image/v2/D560BAQEgMqqFTd40Tg/company-logo_400_400/company-logo_400_400/0/1736784969376/bill__melinda_gates_foundation_logo?e=1755129600&v=beta&t=ZXJ00Nwe2RTcAZX7QEKeuJHuG-w3Q7v4HQD1QDlakQw",
+              "linkedInUrl": "https://www.linkedin.com/company/8736/",
+              "linkedInId": "8736"
+            },
+            {
+              "title": "Founder",
+              "companyName": "Breakthrough Energy",
+              "description": "",
+              "startEndDate": {
+                "start": "2015-01-01T12:00:00.000Z",
+                "end": null
+              },
+              "companyLogo": "https://media.licdn.com/dms/image/v2/C4D0BAQGwD9vNu044FA/company-logo_400_400/company-logo_400_400/0/1630531940051/breakthrough_energy_ventures_logo?e=1755129600&v=beta&t=lEGVHYB2nFCDHTsDnBy3-5OTP07-7JWb6_6fPF_ptjE",
+              "linkedInUrl": "https://www.linkedin.com/company/19141006/",
+              "linkedInId": "19141006"
+            },
+            {
+              "title": "Co-founder",
+              "companyName": "Microsoft",
+              "description": "Microsoft Corporation is an American multinational corporation and technology conglomerate headquartered in Redmond, Washington. Founded in 1975, the company became influential in the rise of personal computers through software like Windows, and the company has since expanded to Internet services, cloud computing, video gaming and other fields. Microsoft is the largest software maker, one of the most valuable public U.S. companies, and one of the most valuable brands globally.",
+              "startEndDate": {
+                "start": "1975-01-01T12:00:00.000Z",
+                "end": null
+              },
+              "companyLogo": "https://media.licdn.com/dms/image/v2/D560BAQH32RJQCl3dDQ/company-logo_200_200/B56ZYQ0mrGGoAM-/0/1744038948046/microsoft_logo?e=1755129600&v=beta&t=T-1y5wA1htO8TaKUS0owvF0mgkTLj6IAv18eQDLzW_8",
+              "linkedInUrl": "https://www.linkedin.com/company/1035/",
+              "linkedInId": "1035"
+            }
+          ]
         }
       },
       "CompanyFound": {
@@ -2278,13 +2461,6 @@
             "experienceLevel": "Mid-Senior level",
             "contractType": "Full-time"
           }
-        }
-      },
-      "QuotasFound": {
-        "summary": "Quotas Found",
-        "value": {
-          "status": "success",
-          "data": { "credits_left": 90000, "rate_limit_left": 19000 }
         }
       },
       "ActivitiesPost": {
@@ -2689,6 +2865,13 @@
               }
             }
           ]
+        }
+      },
+      "QuotasFound": {
+        "summary": "Quotas Found",
+        "value": {
+          "status": "success",
+          "data": { "credits_left": 90000, "rate_limit_left": 19000 }
         }
       },
       "NoApiKey": {
