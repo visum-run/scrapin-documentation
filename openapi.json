@@ -166,6 +166,123 @@
         }
       }
     },
+    "/enrichment/education": {
+      "get": {
+        "tags": ["Person"],
+        "operationId": "GetEducation",
+        "summary": "Get Education",
+        "description": "This operation allows you to get education data including schools and degrees. It returns education information with credits and rate limit information. This operation consumes 1 credit.",
+        "parameters": [
+          {
+            "name": "linkedInUrl",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "This required parameter is a string. It represents the LinkedIn URL of the person with this format: https://www.linkedin.com/in/xxxxxxxxxxxxx/.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The endpoint returns education information including schools and degrees.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EducationResponse"
+                },
+                "examples": {
+                  "EducationFound": {
+                    "$ref": "#/components/examples/EducationFound"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
+    },
+    "/enrichment/skills": {
+      "get": {
+        "tags": ["Person"],
+        "operationId": "GetSkills",
+        "summary": "Get Skills",
+        "description": "This operation allows you to get skills data including endorsement counts. It returns skills information with credits and rate limit information. This operation consumes 1 credit.",
+        "parameters": [
+          {
+            "name": "linkedInUrl",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "This required parameter is a string. It represents the LinkedIn URL of the person with this format: https://www.linkedin.com/in/xxxxxxxxxxxxx/.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The endpoint returns skills information including endorsement counts.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SkillsResponse"
+                },
+                "examples": {
+                  "SkillsFound": {
+                    "$ref": "#/components/examples/SkillsFound"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
+    },
+    "/enrichment/languages": {
+      "get": {
+        "tags": ["Person"],
+        "operationId": "GetLanguages",
+        "summary": "Get Languages",
+        "description": "This operation allows you to get languages data including proficiency levels. It returns languages information with credits and rate limit information. This operation consumes 1 credit.",
+        "parameters": [
+          {
+            "name": "linkedInUrl",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "This required parameter is a string. It represents the LinkedIn URL of the person with this format: https://www.linkedin.com/in/xxxxxxxxxxxxx/.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The endpoint returns languages information including proficiency levels.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LanguagesResponse"
+                },
+                "examples": {
+                  "LanguagesFound": {
+                    "$ref": "#/components/examples/LanguagesFound"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
+    },
     "/enrichment/company/domain": {
       "get": {
         "tags": ["Company"],
@@ -1116,6 +1233,135 @@
             "description": "End date of the position in ISO 8601 format, null if current position"
           }
         }
+      },
+      "EducationResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Indicates success or failure of api request."
+          },
+          "credits_left": {
+            "type": "integer",
+            "description": "Represents the usable credits available for the user account after this query."
+          },
+          "rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "schools": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/School" },
+            "description": "Array of education schools and degrees"
+          }
+        }
+      },
+      "School": {
+        "type": "object",
+        "properties": {
+          "degreeName": {
+            "type": "string",
+            "description": "Name of the degree or program"
+          },
+          "fieldOfStudy": {
+            "type": "string",
+            "description": "Field of study or specialization"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the degree or program"
+          },
+          "linkedInUrl": {
+            "type": "string",
+            "format": "uri",
+            "description": "LinkedIn URL of the school"
+          },
+          "schoolLogo": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to the school logo image"
+          },
+          "schoolName": {
+            "type": "string",
+            "description": "Name of the educational institution"
+          },
+          "startEndDate": {
+            "$ref": "#/components/schemas/StartEndDate",
+            "description": "Start and end dates of the education period"
+          }
+        }
+      },
+      "SkillsResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Indicates success or failure of api request."
+          },
+          "credits_left": {
+            "type": "integer",
+            "description": "Represents the usable credits available for the user account after this query."
+          },
+          "rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "skills": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/Skill" },
+            "description": "Array of skills with endorsement counts"
+          }
+        }
+      },
+      "Skill": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the skill"
+          },
+          "endorsementCount": {
+            "type": "integer",
+            "description": "Number of endorsements for this skill"
+          }
+        },
+        "required": ["name"]
+      },
+      "LanguagesResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Indicates success or failure of api request."
+          },
+          "credits_left": {
+            "type": "integer",
+            "description": "Represents the usable credits available for the user account after this query."
+          },
+          "rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "languages": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/Language" },
+            "description": "Array of languages with proficiency levels"
+          }
+        }
+      },
+      "Language": {
+        "type": "object",
+        "properties": {
+          "language": {
+            "type": "string",
+            "description": "Name of the language"
+          },
+          "proficiency": {
+            "type": "string",
+            "description": "Proficiency level in the language"
+          }
+        },
+        "required": ["language", "proficiency"]
       },
       "Post": {
         "type": "object",
@@ -2283,6 +2529,113 @@
               "companyLogo": "https://media.licdn.com/dms/image/v2/D560BAQH32RJQCl3dDQ/company-logo_200_200/B56ZYQ0mrGGoAM-/0/1744038948046/microsoft_logo?e=1755129600&v=beta&t=T-1y5wA1htO8TaKUS0owvF0mgkTLj6IAv18eQDLzW_8",
               "linkedInUrl": "https://www.linkedin.com/company/1035/",
               "linkedInId": "1035"
+            }
+          ]
+        }
+      },
+      "EducationFound": {
+        "summary": "Education Found",
+        "value": {
+          "success": true,
+          "credits_left": 90000,
+          "rate_limit_left": 19000,
+          "schools": [
+            {
+              "degreeName": "Engineering degree",
+              "fieldOfStudy": "Computers, Big Data and Connected Objects",
+              "description": "The IBO Major trains general IT engineers, able to master all components of information processing. To meet the changing strategic needs of the company, the future engineer will be trained in information systems, database architecture, mobility and application development.\n\nComputers, Big Data and Connected Objects.",
+              "linkedInUrl": "https://www.linkedin.com/company/15142508/",
+              "schoolLogo": "https://media.licdn.com/dms/image/v2/D4E0BAQFQCZFaAoQmKw/company-logo_400_400/company-logo_400_400/0/1725378371996/esilvparis_logo?e=1755129600&v=beta&t=bPVcaWC42d3OMjQOmErZ_YBkJ5lg2EoscC6sAev0Juo",
+              "schoolName": "ESILV - Ecole Supérieure d'Ingénieurs Léonard de Vinci",
+              "startEndDate": {
+                "start": "2017-02-01T12:00:00.000Z",
+                "end": "2020-06-01T12:00:00.000Z"
+              }
+            },
+            {
+              "degreeName": "Summer School Program",
+              "fieldOfStudy": "Programme d'échange international",
+              "linkedInUrl": "https://www.linkedin.com/company/15093901/",
+              "schoolLogo": "https://media.licdn.com/dms/image/v2/C560BAQGhFlIwwrPy5Q/company-logo_400_400/company-logo_400_400/0/1630625706195/_logo?e=1755129600&v=beta&t=c83EX-78tGZGlXfKvJ8gjl_vQUems29kKKI2475ye4s",
+              "schoolName": "Shanghai Normal University",
+              "startEndDate": {
+                "start": "2018-01-01T12:00:00.000Z",
+                "end": "2019-01-01T12:00:00.000Z"
+              }
+            },
+            {
+              "degreeName": " Professional License Computer Systems and Database",
+              "fieldOfStudy": "Analyst-Designer in Information and Decision System (ACSID)",
+              "description": "This degree offers a professional training in the business of information systems engineering and decision making. Its purpose is to facilitate the professional insertion in IT fields in continuous growth.",
+              "linkedInUrl": "https://www.linkedin.com/company/15091873/",
+              "schoolLogo": "https://media.licdn.com/dms/image/v2/C4D0BAQGRQuv1v-KRxQ/company-logo_400_400/company-logo_400_400/0/1630557231474/conservatoire_national_des_arts_et_mtiers_logo?e=1755129600&v=beta&t=j64Zzlo-W6LMZ3i6qthMVH6xoFxLcMtxRejnEDhObao",
+              "schoolName": "Conservatoire National des Arts et Métiers",
+              "startEndDate": {
+                "start": "2015-01-01T12:00:00.000Z",
+                "end": "2016-01-01T12:00:00.000Z"
+              }
+            }
+          ]
+        }
+      },
+      "SkillsFound": {
+        "summary": "Skills Found",
+        "value": {
+          "success": true,
+          "credits_left": 90000,
+          "rate_limit_left": 19000,
+          "skills": [
+            {
+              "name": "AngularJS",
+              "endorsementCount": 15
+            },
+            {
+              "name": "PHP",
+              "endorsementCount": 14
+            },
+            {
+              "name": "Java",
+              "endorsementCount": 13
+            },
+            {
+              "name": "JavaScript",
+              "endorsementCount": 8
+            },
+            {
+              "name": "SQL",
+              "endorsementCount": 6
+            },
+            {
+              "name": "HTML5"
+            },
+            {
+              "name": "CSS"
+            }
+          ]
+        }
+      },
+      "LanguagesFound": {
+        "summary": "Languages Found",
+        "value": {
+          "success": true,
+          "credits_left": 90000,
+          "rate_limit_left": 19000,
+          "languages": [
+            {
+              "language": "Chinese",
+              "proficiency": "Native or bilingual proficiency"
+            },
+            {
+              "language": "English",
+              "proficiency": "Full professional proficiency"
+            },
+            {
+              "language": "French",
+              "proficiency": "Native or bilingual proficiency"
+            },
+            {
+              "language": "Japanese",
+              "proficiency": "Elementary proficiency"
             }
           ]
         }

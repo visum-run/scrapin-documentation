@@ -36,7 +36,10 @@
         "endpoint/person/extract-profile",
         "endpoint/person/summary",
         "endpoint/person/followers-count",
-        "endpoint/person/experience"
+        "endpoint/person/experience",
+        "endpoint/person/education",
+        "endpoint/person/skills",
+        "endpoint/person/languages"
       ]
     },
     {
