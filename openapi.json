@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": { "title": "ScrapIn API", "version": "1.1.0" },
-  "servers": [{ "url": "https://api.scrapin.io" }],
+  "servers": [{ "url": "https://api.scrapin.io/v1" }],
   "security": [{ "apiKey": [] }],
   "tags": [
     { "name": "Person" },
