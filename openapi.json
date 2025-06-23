@@ -2448,24 +2448,24 @@
           "credits_left": 90000,
           "rate_limit_left": 19000,
           "person": {
-            "publicIdentifier": "williamhgates",
-            "linkedInIdentifier": "ACoAAA8BYqEBCGLg_vT_ca6mMEqkpp9nVffJ3hc",
-            "memberIdentifier": "251749025",
-            "linkedInUrl": "https://www.linkedin.com/in/williamhgates",
-            "firstName": "Bill",
-            "lastName": "Gates",
-            "headline": "Chair, Gates Foundation and Founder, Breakthrough Energy",
+            "publicIdentifier": "michaelriedler",
+            "linkedInIdentifier": "ACoAABTEFqYBfjGaiNRy5ITKaPzcBEBDdR1SrhU",
+            "memberIdentifier": "348395174",
+            "linkedInUrl": "https://www.linkedin.com/in/michaelriedler",
+            "firstName": "Michael",
+            "lastName": "Riedler",
+            "headline": "VP Sales Scrapin.io - B2B Data for AI",
             "location": {
-              "city": "Seattle",
-              "state": "Washington",
-              "country": "United States of America",
-              "countryCode": "US"
+              "city": "London",
+              "state": "England",
+              "country": "United Kingdom",
+              "countryCode": "GB"
             },
-            "photoUrl": "https://media.licdn.com/dms/image/v2/D5603AQF-RYZP55jmXA/profile-displayphoto-shrink_800_800/B56ZRi8g.aGsAc-/0/1736826818808?e=1754524800&v=beta&t=le9XxRzxHP_NudRLS-N_0JzubTD5YFtDAICWwXbzlmY",
-            "backgroundUrl": "https://media.licdn.com/dms/image/v2/D5616AQEjhPbTCeblYg/profile-displaybackgroundimage-shrink_200_800/B56ZcytR5SGsAc-/0/1748902420393?e=1754524800&v=beta&t=oehCgWLrQpK-Ucnc2-IrRzMe2I0gWNoiVdc-yUw0UJs",
+            "photoUrl": "https://media.licdn.com/dms/image/v2/D4E03AQG5S0X4QKtN5A/profile-displayphoto-shrink_200_200/B4EZRgQ6wZGYAY-/0/1736781836053?e=1756339200&v=beta&t=phxC3jRwoDG_zQ8QY4Iu6OduHPUM-abbrEHkJZPP9fM",
+            "backgroundUrl": "https://media.licdn.com/dms/image/v2/C4E16AQGba4BhpCykTA/profile-displaybackgroundimage-shrink_350_1400/profile-displaybackgroundimage-shrink_350_1400/0/1516880563413?e=1756339200&v=beta&t=fdimLlwIIQEke73CfLZWvq0T367YxZajvtmMwynSIiU",
             "openToWork": false,
             "premium": true,
-            "showVerificationBadge": false
+            "showVerificationBadge": true
           }
         }
       },
@@ -2475,7 +2475,7 @@
           "success": true,
           "credits_left": 90000,
           "rate_limit_left": 19000,
-          "summary": "Chair of the Gates Foundation. Founder of Breakthrough Energy. Co-founder of Microsoft. Voracious reader. Avid traveler. Active blogger."
+          "summary": "Hi there! My name is Julien and I'm an entrepreneur with a hacker mindset. 🏴‍☠️\n\nI am passionate about finding creative solutions to complex problems and am always looking for ways to optimize and improve processes. 🧠\n\nI am proud to have founded a company that build SaaS products to helps companies enrich their business data, and I am excited to continue driving innovation in the business world.\n\nThank you for visiting my LinkedIn profile and I hope to connect with you soon!"
         }
       },
       "FollowersCountFound": {
@@ -2484,7 +2484,7 @@
           "success": true,
           "credits_left": 90000,
           "rate_limit_left": 19000,
-          "followersCount": 38002464
+          "followersCount": 646
         }
       },
       "ExperienceFound": {
@@ -2495,40 +2495,55 @@
           "rate_limit_left": 19000,
           "positions": [
             {
-              "title": "Co-chair",
-              "companyName": "Gates Foundation",
-              "description": "",
+              "title": "VP of Sales",
+              "companyName": "ScrapIn",
+              "description": "B2B Data for AI +",
               "startEndDate": {
-                "start": "2000-01-01T12:00:00.000Z",
+                "start": "2024-01-01T12:00:00.000Z",
                 "end": null
               },
-              "companyLogo": "https://media.licdn.com/dms/image/v2/D560BAQEgMqqFTd40Tg/company-logo_400_400/company-logo_400_400/0/1736784969376/bill__melinda_gates_foundation_logo?e=1755129600&v=beta&t=ZXJ00Nwe2RTcAZX7QEKeuJHuG-w3Q7v4HQD1QDlakQw",
-              "linkedInUrl": "https://www.linkedin.com/company/8736/",
-              "linkedInId": "8736"
+              "companyLogo": "https://media.licdn.com/dms/image/v2/D4E0BAQF-Z-m2ZKv6qQ/company-logo_200_200/B4EZcRELezHcAM-/0/1748337998127/scrapin_api_logo?e=1756339200&v=beta&t=GjTJ9cgDP2iBYJCx8GxXEg8V2hZjnNBOtvXe58eiqJ0",
+              "linkedInUrl": "https://www.linkedin.com/company/100602385/",
+              "linkedInId": "100602385"
             },
             {
-              "title": "Founder",
-              "companyName": "Breakthrough Energy",
-              "description": "",
+              "title": "Co-Founder & CEO",
+              "companyName": "LukaHQ",
+              "companyLocation": "Greater London, England, United Kingdom",
+              "description": "AI accounting for the mid-market",
               "startEndDate": {
-                "start": "2015-01-01T12:00:00.000Z",
-                "end": null
+                "start": "2023-01-01T12:00:00.000Z",
+                "end": "2023-12-01T12:00:00.000Z"
               },
-              "companyLogo": "https://media.licdn.com/dms/image/v2/C4D0BAQGwD9vNu044FA/company-logo_400_400/company-logo_400_400/0/1630531940051/breakthrough_energy_ventures_logo?e=1755129600&v=beta&t=lEGVHYB2nFCDHTsDnBy3-5OTP07-7JWb6_6fPF_ptjE",
-              "linkedInUrl": "https://www.linkedin.com/company/19141006/",
-              "linkedInId": "19141006"
+              "companyLogo": "https://media.licdn.com/dms/image/v2/C4E0BAQHUbWeUxkGCfw/company-logo_400_400/company-logo_400_400/0/1677251426049?e=1756339200&v=beta&t=qQuFuWn2EsyNX-kqmN166nzxW-DxXD66cPph71e3F7g",
+              "linkedInUrl": "https://www.linkedin.com/company/93128145/",
+              "linkedInId": "93128145"
             },
             {
-              "title": "Co-founder",
-              "companyName": "Microsoft",
-              "description": "Microsoft Corporation is an American multinational corporation and technology conglomerate headquartered in Redmond, Washington. Founded in 1975, the company became influential in the rise of personal computers through software like Windows, and the company has since expanded to Internet services, cloud computing, video gaming and other fields. Microsoft is the largest software maker, one of the most valuable public U.S. companies, and one of the most valuable brands globally.",
+              "title": "Consultant to COO",
+              "companyName": "MoonPay",
+              "companyLocation": "London Area, United Kingdom",
+              "description": "Ad-hoc strategic projects in the lead-up to a $555M fundraise",
               "startEndDate": {
-                "start": "1975-01-01T12:00:00.000Z",
-                "end": null
+                "start": "2021-04-01T12:00:00.000Z",
+                "end": "2021-10-01T12:00:00.000Z"
               },
-              "companyLogo": "https://media.licdn.com/dms/image/v2/D560BAQH32RJQCl3dDQ/company-logo_200_200/B56ZYQ0mrGGoAM-/0/1744038948046/microsoft_logo?e=1755129600&v=beta&t=T-1y5wA1htO8TaKUS0owvF0mgkTLj6IAv18eQDLzW_8",
-              "linkedInUrl": "https://www.linkedin.com/company/1035/",
-              "linkedInId": "1035"
+              "companyLogo": "https://media.licdn.com/dms/image/v2/D560BAQHlaph_qWt7MA/company-logo_400_400/company-logo_400_400/0/1702140517386/moonpay_logo?e=1756339200&v=beta&t=leju-4Av8a6pKxzvk0pr9OOEjNWruMeDGbS_RE437ek",
+              "linkedInUrl": "https://www.linkedin.com/company/12596773/",
+              "linkedInId": "12596773"
+            },
+            {
+              "title": "Co-Founder & CEO",
+              "companyName": "Telleroo",
+              "companyLocation": "London",
+              "description": "Leading SME payments platform for bill and payroll payments in the UK 💪",
+              "startEndDate": {
+                "start": "2016-04-01T12:00:00.000Z",
+                "end": "2020-10-01T12:00:00.000Z"
+              },
+              "companyLogo": "https://media.licdn.com/dms/image/v2/D4E0BAQFg65EK-q7guw/company-logo_100_100/B4EZdkSAIuHsAQ-/0/1749734130592/telleroo_logo?e=1756339200&v=beta&t=4rKb656EJBg9K3ewqcB0_Gjt9Z2roK_8B5ABHX7Qvjg",
+              "linkedInUrl": "https://www.linkedin.com/company/10820464/",
+              "linkedInId": "10820464"
             }
           ]
         }
@@ -2647,52 +2662,42 @@
           "credits_left": 90000,
           "rate_limit_left": 19000,
           "company": {
-            "linkedInId": "1035",
-            "name": "Microsoft",
-            "universalName": "microsoft",
-            "linkedInUrl": "https://www.linkedin.com/company/1035",
-            "employeeCount": 228581,
-            "employeeCountRange": { "start": 10001, "end": 1 },
-            "websiteUrl": "https://news.microsoft.com/",
-            "tagline": null,
-            "description": "Every company has a mission. What's ours? To empower every person and every organization to achieve more. We believe technology can and should be a force for good and that meaningful innovation contributes to a brighter world in the future and today. Our culture doesn't just encourage curiosity; it embraces it. Each day we make progress together by showing up as our authentic selves. We show up with a learn-it-all mentality. We show up cheering on others, knowing their success doesn't diminish our own. We show up every day open to learning our own biases, changing our behavior, and inviting in differences. Because impact matters.\n\nMicrosoft operates in 190 countries and is made up of more than 220,000 passionate employees worldwide.\n",
+            "linkedInId": "71234370",
+            "name": "Visum",
+            "universalName": "visum-run",
+            "linkedInUrl": "https://www.linkedin.com/company/71234370",
+            "employeeCount": 14,
+            "followerCount": 806,
+            "employeeCountRange": {
+              "start": 11,
+              "end": 50
+            },
+            "websiteUrl": "https://visum.run",
+            "tagline": "We Provide Data for AI-driven technologies",
+            "description": "We are pioneers in live web scraping and data solutions, empowering AI applications to harness the power of real-time information.\n‍\nOur mission is to provide the most accurate and reliable web data, empowering AI applications to thrive in this new era of computing.\n‍\nAt Visum, we enable AI systems to access the freshest knowledge from the web, preparing for a future where AI-driven searches will exponentially surpass human searches.\n\nWe are committed to delivering unparalleled accuracy, scalability, and reliability, elevating the global AI ecosystem.‍",
             "industry": "Software Development",
             "phone": null,
             "specialities": [
-              "Business Software",
-              "Developer Tools",
-              "Home & Educational Software",
-              "Tablets",
-              "Search",
-              "Advertising",
-              "Servers",
-              "Windows Operating System",
-              "Windows Applications & Platforms",
-              "Smartphones",
-              "Cloud Computing",
-              "Quantum Computing",
-              "Future of Work",
-              "Productivity",
-              "AI",
-              "Artificial Intelligence",
-              "Machine Learning",
-              "Laptops",
-              "Mixed Reality",
-              "Virtual Reality",
-              "Gaming",
-              "Developers",
-              "IT Professional"
+              "Lead Generation",
+              "Lead Qualification",
+              "Market Search",
+              "Competitor analysis",
+              "CRM enrichment"
             ],
-            "followerCount": 22736947,
             "headquarter": {
-              "city": "Redmond",
-              "country": "US",
-              "postalCode": "98052",
-              "geographicArea": "Washington",
-              "street1": "1 Microsoft Way",
-              "street2": null
+              "city": "Paris",
+              "country": "FR",
+              "postalCode": "75013",
+              "geographicArea": "Île-de-France",
+              "street1": "25, Rue de Tolbiac",
+              "street2": "VISUM mailbox"
             },
-            "logo": "https://media.licdn.com/dms/image/C560BAQE88xCsONDULQ/company-logo_400_400/0/1630652622688/microsoft_logo?e=1725494400&v=beta&t=joSXHhDAEare7f9gk8MwXr2sOr84zX7HDx2h5znXEYI"
+            "logo": "https://media.licdn.com/dms/image/v2/D4E0BAQGj-Nfob0e55g/company-logo_400_400/company-logo_400_400/0/1702166267344/visum_run_logo?e=1756339200&v=beta&t=99eMIcY7IX2cLI-YkJOBdfg16aCwmd7Tpk8BrSXaJHg",
+            "foundedOn": {
+              "year": 2020
+            },
+            "fundingData": null,
+            "backgroundUrl": "https://media.licdn.com/dms/image/v2/D4E1BAQEldpeB551LZA/company-background_10000/company-background_10000/0/1678715803339/visum_run_cover?e=1751288400&v=beta&t=gA-h6dpu8MRhpok9BoeVM5A0aPxGcM-9O7BqdOG8uRM"
           }
         }
       },
@@ -2703,52 +2708,42 @@
           "credits_left": 90000,
           "rate_limit_left": 19000,
           "company": {
-            "linkedInId": "1035",
-            "name": "Microsoft",
-            "universalName": "microsoft",
-            "linkedInUrl": "https://www.linkedin.com/company/1035",
-            "employeeCount": 228581,
-            "employeeCountRange": { "start": 10001, "end": 1 },
-            "websiteUrl": "https://news.microsoft.com/",
-            "tagline": null,
-            "description": "Every company has a mission. What's ours? To empower every person and every organization to achieve more. We believe technology can and should be a force for good and that meaningful innovation contributes to a brighter world in the future and today. Our culture doesn't just encourage curiosity; it embraces it. Each day we make progress together by showing up as our authentic selves. We show up with a learn-it-all mentality. We show up cheering on others, knowing their success doesn't diminish our own. We show up every day open to learning our own biases, changing our behavior, and inviting in differences. Because impact matters.\n\nMicrosoft operates in 190 countries and is made up of more than 220,000 passionate employees worldwide.\n",
+            "linkedInId": "71234370",
+            "name": "Visum",
+            "universalName": "visum-run",
+            "linkedInUrl": "https://www.linkedin.com/company/71234370",
+            "employeeCount": 14,
+            "followerCount": 806,
+            "employeeCountRange": {
+              "start": 11,
+              "end": 50
+            },
+            "websiteUrl": "https://visum.run",
+            "tagline": "We Provide Data for AI-driven technologies",
+            "description": "We are pioneers in live web scraping and data solutions, empowering AI applications to harness the power of real-time information.\n‍\nOur mission is to provide the most accurate and reliable web data, empowering AI applications to thrive in this new era of computing.\n‍\nAt Visum, we enable AI systems to access the freshest knowledge from the web, preparing for a future where AI-driven searches will exponentially surpass human searches.\n\nWe are committed to delivering unparalleled accuracy, scalability, and reliability, elevating the global AI ecosystem.‍",
             "industry": "Software Development",
             "phone": null,
             "specialities": [
-              "Business Software",
-              "Developer Tools",
-              "Home & Educational Software",
-              "Tablets",
-              "Search",
-              "Advertising",
-              "Servers",
-              "Windows Operating System",
-              "Windows Applications & Platforms",
-              "Smartphones",
-              "Cloud Computing",
-              "Quantum Computing",
-              "Future of Work",
-              "Productivity",
-              "AI",
-              "Artificial Intelligence",
-              "Machine Learning",
-              "Laptops",
-              "Mixed Reality",
-              "Virtual Reality",
-              "Gaming",
-              "Developers",
-              "IT Professional"
+              "Lead Generation",
+              "Lead Qualification",
+              "Market Search",
+              "Competitor analysis",
+              "CRM enrichment"
             ],
-            "followerCount": 22736947,
             "headquarter": {
-              "city": "Redmond",
-              "country": "US",
-              "postalCode": "98052",
-              "geographicArea": "Washington",
-              "street1": "1 Microsoft Way",
-              "street2": null
+              "city": "Paris",
+              "country": "FR",
+              "postalCode": "75013",
+              "geographicArea": "Île-de-France",
+              "street1": "25, Rue de Tolbiac",
+              "street2": "VISUM mailbox"
             },
-            "logo": "https://media.licdn.com/dms/image/C560BAQE88xCsONDULQ/company-logo_400_400/0/1630652622688/microsoft_logo?e=1725494400&v=beta&t=joSXHhDAEare7f9gk8MwXr2sOr84zX7HDx2h5znXEYI"
+            "logo": "https://media.licdn.com/dms/image/v2/D4E0BAQGj-Nfob0e55g/company-logo_400_400/company-logo_400_400/0/1702166267344/visum_run_logo?e=1756339200&v=beta&t=99eMIcY7IX2cLI-YkJOBdfg16aCwmd7Tpk8BrSXaJHg",
+            "foundedOn": {
+              "year": 2020
+            },
+            "fundingData": null,
+            "backgroundUrl": "https://media.licdn.com/dms/image/v2/D4E1BAQEldpeB551LZA/company-background_10000/company-background_10000/0/1678715803339/visum_run_cover?e=1751288400&v=beta&t=gA-h6dpu8MRhpok9BoeVM5A0aPxGcM-9O7BqdOG8uRM"
           }
         }
       },
