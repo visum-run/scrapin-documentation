@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
-  "info": { "title": "ScrapIn API", "version": "1.0.0" },
-  "servers": [{ "url": "https://api.scrapin.io" }],
+  "info": { "title": "ScrapIn API", "version": "1.1.0" },
+  "servers": [{ "url": "https://api.scrapin.io/v1" }],
   "security": [{ "apiKey": [] }],
   "tags": [
     { "name": "Person" },
@@ -10,50 +10,29 @@
     { "name": "Workspaces" }
   ],
   "paths": {
-    "/enrichment": {
+    "/enrichment/profile": {
       "get": {
         "tags": ["Person"],
-        "operationId": "PersonSearch",
-        "summary": "Person Search",
-        "description": "This operation allows you to find a LinkedIn User based on first name, last name, company domain or email. It returns data profile and company information as the response. This operation consumes 1 credit.",
+        "operationId": "GetProfile",
+        "summary": "Get Profile",
+        "description": "This operation allows you to get profile data. It returns profile data with credits and rate limit information. This operation consumes 1 credit.",
         "parameters": [
           {
-            "name": "firstName",
+            "name": "linkedInUrl",
             "in": "query",
             "schema": { "type": "string" },
-            "description": "This optional parameter is a string. It represents the first name to query."
-          },
-          {
-            "name": "lastName",
-            "in": "query",
-            "schema": { "type": "string" },
-            "description": "This optional parameter is a string. It represents the last name to query."
-          },
-          {
-            "name": "companyDomain",
-            "in": "query",
-            "schema": { "type": "string" },
-            "description": "This optional parameter is a string. It represents the company domain/URL to query"
-          },
-          {
-            "name": "companyName",
-            "in": "query",
-            "schema": { "type": "string" },
-            "description": "This optional parameter is a string. It represents the company name to query"
-          },
-          {
-            "name": "email",
-            "in": "query",
-            "schema": { "type": "string" },
-            "description": "This required parameter is a string. It represents the email to query."
+            "description": "This required parameter is a string. It represents the LinkedIn URL of the person with this format: https://www.linkedin.com/in/xxxxxxxxxxxxx/.",
+            "required": true
           }
         ],
         "responses": {
           "200": {
-            "description": "The endpoint found and returns information about the query.",
+            "description": "The endpoint returns profile information.",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/PersonSearch" },
+                "schema": {
+                  "$ref": "#/components/schemas/ProfileResponse"
+                },
                 "examples": {
                   "ProfileFound": {
                     "$ref": "#/components/examples/ProfileFound"
@@ -70,12 +49,12 @@
         }
       }
     },
-    "/enrichment/profile": {
+    "/enrichment/summary": {
       "get": {
         "tags": ["Person"],
-        "operationId": "ExtractPersonDataProfile",
-        "summary": "Extract Person Data Profile",
-        "description": "This operation allows you to extract data from a Person LinkedIn URL. It returns profile data and current company data of the person as the response. This operation consumes 1 credit.",
+        "operationId": "GetSummary",
+        "summary": "Get Summary",
+        "description": "This operation allows you to get summary data. It returns a summary description with success status. This operation consumes 1 credit.",
         "parameters": [
           {
             "name": "linkedInUrl",
@@ -87,15 +66,210 @@
         ],
         "responses": {
           "200": {
-            "description": "The endpoint returns information about the LinkedIn URL owner and its company.",
+            "description": "The endpoint returns summary information.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ExtractPersonDataProfile"
+                  "$ref": "#/components/schemas/SummaryResponse"
                 },
                 "examples": {
-                  "ProfileFound": {
-                    "$ref": "#/components/examples/PersonProfileExtracted"
+                  "SummaryFound": {
+                    "$ref": "#/components/examples/SummaryFound"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
+    },
+    "/enrichment/followers-count": {
+      "get": {
+        "tags": ["Person"],
+        "operationId": "GetFollowersCount",
+        "summary": "Get Followers Count",
+        "description": "This operation allows you to get the followers count data. It returns the followers count with success status. This operation consumes 1 credit.",
+        "parameters": [
+          {
+            "name": "linkedInUrl",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "This required parameter is a string. It represents the LinkedIn URL of the person with this format: https://www.linkedin.com/in/xxxxxxxxxxxxx/.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The endpoint returns the followers count information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FollowersCountResponse"
+                },
+                "examples": {
+                  "FollowersCountFound": {
+                    "$ref": "#/components/examples/FollowersCountFound"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
+    },
+    "/enrichment/experience": {
+      "get": {
+        "tags": ["Person"],
+        "operationId": "GetExperience",
+        "summary": "Get Experience",
+        "description": "This operation allows you to get experience data including work positions. It returns experience information with credits and rate limit information. This operation consumes 1 credit.",
+        "parameters": [
+          {
+            "name": "linkedInUrl",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "This required parameter is a string. It represents the LinkedIn URL of the person with this format: https://www.linkedin.com/in/xxxxxxxxxxxxx/.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The endpoint returns experience information including work positions.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExperienceResponse"
+                },
+                "examples": {
+                  "ExperienceFound": {
+                    "$ref": "#/components/examples/ExperienceFound"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
+    },
+    "/enrichment/education": {
+      "get": {
+        "tags": ["Person"],
+        "operationId": "GetEducation",
+        "summary": "Get Education",
+        "description": "This operation allows you to get education data including schools and degrees. It returns education information with credits and rate limit information. This operation consumes 1 credit.",
+        "parameters": [
+          {
+            "name": "linkedInUrl",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "This required parameter is a string. It represents the LinkedIn URL of the person with this format: https://www.linkedin.com/in/xxxxxxxxxxxxx/.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The endpoint returns education information including schools and degrees.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EducationResponse"
+                },
+                "examples": {
+                  "EducationFound": {
+                    "$ref": "#/components/examples/EducationFound"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
+    },
+    "/enrichment/skills": {
+      "get": {
+        "tags": ["Person"],
+        "operationId": "GetSkills",
+        "summary": "Get Skills",
+        "description": "This operation allows you to get skills data including endorsement counts. It returns skills information with credits and rate limit information. This operation consumes 1 credit.",
+        "parameters": [
+          {
+            "name": "linkedInUrl",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "This required parameter is a string. It represents the LinkedIn URL of the person with this format: https://www.linkedin.com/in/xxxxxxxxxxxxx/.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The endpoint returns skills information including endorsement counts.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SkillsResponse"
+                },
+                "examples": {
+                  "SkillsFound": {
+                    "$ref": "#/components/examples/SkillsFound"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
+    },
+    "/enrichment/languages": {
+      "get": {
+        "tags": ["Person"],
+        "operationId": "GetLanguages",
+        "summary": "Get Languages",
+        "description": "This operation allows you to get languages data including proficiency levels. It returns languages information with credits and rate limit information. This operation consumes 1 credit.",
+        "parameters": [
+          {
+            "name": "linkedInUrl",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "This required parameter is a string. It represents the LinkedIn URL of the person with this format: https://www.linkedin.com/in/xxxxxxxxxxxxx/.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The endpoint returns languages information including proficiency levels.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LanguagesResponse"
+                },
+                "examples": {
+                  "LanguagesFound": {
+                    "$ref": "#/components/examples/LanguagesFound"
                   }
                 }
               }
@@ -274,36 +448,6 @@
                 "examples": {
                   "JobFound": {
                     "$ref": "#/components/examples/JobExtracted"
-                  }
-                }
-              }
-            }
-          },
-          "400": { "$ref": "#/components/responses/BadRequest" },
-          "401": { "$ref": "#/components/responses/Unauthorized" },
-          "402": { "$ref": "#/components/responses/PaymentRequired" },
-          "404": { "$ref": "#/components/responses/NotFound" },
-          "500": { "$ref": "#/components/responses/ServerError" }
-        }
-      }
-    },
-    "/workspaces/quotas": {
-      "get": {
-        "tags": ["Workspaces"],
-        "operationId": "WorkspacesQuotas",
-        "summary": "Workspaces Quotas",
-        "description": "This endpoint retrieves the quotas for a specific workspace, including the remaining credits (credits_left) and rate limit (rate_limit_left). It is designed to help monitor resource availability and ensure proper usage within the workspace.",
-        "responses": {
-          "200": {
-            "description": "The endpoint returns information about the workspace quotas, including remaining credits (credits_left) and rate limit (rate_limit_left).",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/WorkspacesQuotas"
-                },
-                "examples": {
-                  "QuotasFound": {
-                    "$ref": "#/components/examples/QuotasFound"
                   }
                 }
               }
@@ -840,36 +984,46 @@
           "500": { "$ref": "#/components/responses/ServerError" }
         }
       }
+    },
+    "/workspaces/quotas": {
+      "get": {
+        "tags": ["Workspaces"],
+        "operationId": "WorkspacesQuotas",
+        "summary": "Workspaces Quotas",
+        "description": "This endpoint retrieves the quotas for a specific workspace, including the remaining credits (credits_left) and rate limit (rate_limit_left). It is designed to help monitor resource availability and ensure proper usage within the workspace.",
+        "responses": {
+          "200": {
+            "description": "The endpoint returns information about the workspace quotas, including remaining credits (credits_left) and rate limit (rate_limit_left).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkspacesQuotas"
+                },
+                "examples": {
+                  "QuotasFound": {
+                    "$ref": "#/components/examples/QuotasFound"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
-      "PersonSearch": {
+      "ProfileResponse": {
         "type": "object",
         "properties": {
           "success": {
             "type": "boolean",
             "description": "Indicates success or failure of api request."
-          },
-          "email": {
-            "type": "string",
-            "description": "Represents the email of the person account that was queried"
-          },
-          "emailType": {
-            "type": "string",
-            "description": "Represents the type of account."
-          },
-          "person": {
-            "oneOf": [
-              { "$ref": "#/components/schemas/Person" },
-              { "type": "boolean", "enum": [false] }
-            ]
-          },
-          "company": {
-            "oneOf": [
-              { "$ref": "#/components/schemas/Company" },
-              { "type": "boolean", "enum": [false] }
-            ]
           },
           "credits_left": {
             "type": "integer",
@@ -878,8 +1032,336 @@
           "rate_limit_left": {
             "type": "integer",
             "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "person": {
+            "$ref": "#/components/schemas/PersonProfile"
           }
         }
+      },
+      "PersonProfile": {
+        "type": "object",
+        "properties": {
+          "publicIdentifier": {
+            "type": "string",
+            "description": "Public identifier of the person on LinkedIn"
+          },
+          "linkedInIdentifier": {
+            "type": "string",
+            "description": "LinkedIn identifier of the person"
+          },
+          "memberIdentifier": {
+            "type": "string",
+            "description": "Member identifier of the person"
+          },
+          "linkedInUrl": {
+            "type": "string",
+            "description": "LinkedIn URL of the person"
+          },
+          "firstName": {
+            "type": "string",
+            "description": "First name of the person"
+          },
+          "lastName": {
+            "type": "string",
+            "description": "Last name of the person"
+          },
+          "headline": {
+            "type": "string",
+            "description": "Professional headline of the person"
+          },
+          "location": {
+            "$ref": "#/components/schemas/PersonLocation"
+          },
+          "photoUrl": {
+            "type": "string",
+            "description": "URL to the person's profile photo"
+          },
+          "backgroundUrl": {
+            "type": "string",
+            "description": "URL to the person's background image"
+          },
+          "openToWork": {
+            "type": "boolean",
+            "description": "Indicates if the person is open to work"
+          },
+          "premium": {
+            "type": "boolean",
+            "description": "Indicates if the person has a premium LinkedIn account"
+          },
+          "pronoun": {
+            "type": "string",
+            "description": "Preferred pronoun of the person"
+          },
+          "showVerificationBadge": {
+            "type": "boolean",
+            "description": "Indicates if the person shows verification badge"
+          }
+        }
+      },
+      "PersonLocation": {
+        "type": "object",
+        "properties": {
+          "city": {
+            "type": "string",
+            "description": "City where the person is located"
+          },
+          "state": {
+            "type": "string",
+            "description": "State where the person is located"
+          },
+          "country": {
+            "type": "string",
+            "description": "Country where the person is located"
+          },
+          "countryCode": {
+            "type": "string",
+            "description": "Country code where the person is located"
+          }
+        }
+      },
+      "SummaryResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Indicates success or failure of api request."
+          },
+          "credits_left": {
+            "type": "integer",
+            "description": "Represents the usable credits available for the user account after this query."
+          },
+          "rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "summary": {
+            "type": "string",
+            "description": "A summary description of the person or entity."
+          }
+        }
+      },
+      "FollowersCountResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Indicates success or failure of api request."
+          },
+          "credits_left": {
+            "type": "integer",
+            "description": "Represents the usable credits available for the user account after this query."
+          },
+          "rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "followersCount": {
+            "type": "string",
+            "description": "The number of followers of the person."
+          }
+        }
+      },
+      "ExperienceResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Indicates success or failure of api request."
+          },
+          "credits_left": {
+            "type": "integer",
+            "description": "Represents the usable credits available for the user account after this query."
+          },
+          "rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "positions": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/Position" },
+            "description": "Array of work experience positions"
+          }
+        }
+      },
+      "Position": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Job title or position name"
+          },
+          "companyName": {
+            "type": "string",
+            "description": "Name of the company"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the position or role"
+          },
+          "startEndDate": {
+            "$ref": "#/components/schemas/StartEndDate",
+            "description": "Start and end dates of the position"
+          },
+          "companyLogo": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to the company logo image"
+          },
+          "linkedInUrl": {
+            "type": "string",
+            "format": "uri",
+            "description": "LinkedIn URL of the company"
+          },
+          "linkedInId": {
+            "type": "string",
+            "description": "LinkedIn identifier of the company"
+          }
+        }
+      },
+      "StartEndDate": {
+        "type": "object",
+        "properties": {
+          "start": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Start date of the position in ISO 8601 format"
+          },
+          "end": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "description": "End date of the position in ISO 8601 format, null if current position"
+          }
+        }
+      },
+      "EducationResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Indicates success or failure of api request."
+          },
+          "credits_left": {
+            "type": "integer",
+            "description": "Represents the usable credits available for the user account after this query."
+          },
+          "rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "schools": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/School" },
+            "description": "Array of education schools and degrees"
+          }
+        }
+      },
+      "School": {
+        "type": "object",
+        "properties": {
+          "degreeName": {
+            "type": "string",
+            "description": "Name of the degree or program"
+          },
+          "fieldOfStudy": {
+            "type": "string",
+            "description": "Field of study or specialization"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the degree or program"
+          },
+          "linkedInUrl": {
+            "type": "string",
+            "format": "uri",
+            "description": "LinkedIn URL of the school"
+          },
+          "schoolLogo": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to the school logo image"
+          },
+          "schoolName": {
+            "type": "string",
+            "description": "Name of the educational institution"
+          },
+          "startEndDate": {
+            "$ref": "#/components/schemas/StartEndDate",
+            "description": "Start and end dates of the education period"
+          }
+        }
+      },
+      "SkillsResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Indicates success or failure of api request."
+          },
+          "credits_left": {
+            "type": "integer",
+            "description": "Represents the usable credits available for the user account after this query."
+          },
+          "rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "skills": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/Skill" },
+            "description": "Array of skills with endorsement counts"
+          }
+        }
+      },
+      "Skill": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the skill"
+          },
+          "endorsementCount": {
+            "type": "integer",
+            "description": "Number of endorsements for this skill"
+          }
+        },
+        "required": ["name"]
+      },
+      "LanguagesResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Indicates success or failure of api request."
+          },
+          "credits_left": {
+            "type": "integer",
+            "description": "Represents the usable credits available for the user account after this query."
+          },
+          "rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "languages": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/Language" },
+            "description": "Array of languages with proficiency levels"
+          }
+        }
+      },
+      "Language": {
+        "type": "object",
+        "properties": {
+          "language": {
+            "type": "string",
+            "description": "Name of the language"
+          },
+          "proficiency": {
+            "type": "string",
+            "description": "Proficiency level in the language"
+          }
+        },
+        "required": ["language", "proficiency"]
       },
       "Post": {
         "type": "object",
@@ -1051,140 +1533,6 @@
           }
         }
       },
-      "Person": {
-        "type": "object",
-        "properties": {
-          "creationDate": {
-            "type": "object",
-            "properties": {
-              "month": { "type": "number" },
-              "year": { "type": "number" }
-            }
-          },
-          "firstName": { "type": "string" },
-          "followerCount": { "type": "number" },
-          "headline": { "type": "string" },
-          "summary": { "type": "string" },
-          "languages": { "type": "array", "items": { "type": "string" } },
-          "lastName": { "type": "string" },
-          "linkedInIdentifier": { "type": "string" },
-          "linkedInUrl": { "type": "string" },
-          "location": { "type": "string" },
-          "photoUrl": { "type": "string" },
-          "backgroundUrl": { "type": "string" },
-          "openToWork": { "type": "boolean" },
-          "premium": { "type": "boolean" },
-          "positions": {
-            "type": "object",
-            "properties": {
-              "positionHistory": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "companyLocation": { "type": "string" },
-                    "companyLogo": { "type": "string" },
-                    "companyName": { "type": "string" },
-                    "description": { "type": "string" },
-                    "linkedInUrl": { "type": "string" },
-                    "startEndDate": {
-                      "type": "object",
-                      "properties": {
-                        "start": {
-                          "type": "object",
-                          "properties": {
-                            "month": { "type": "number" },
-                            "year": { "type": "number" }
-                          }
-                        },
-                        "end": {
-                          "type": "object",
-                          "properties": {
-                            "month": { "type": "number" },
-                            "year": { "type": "number" }
-                          }
-                        }
-                      }
-                    },
-                    "title": { "type": "string" },
-                    "contractType": { "type": "string" }
-                  }
-                }
-              },
-              "positionsCount": { "type": "number" }
-            }
-          },
-          "publicIdentifier": { "type": "string" },
-          "memberIdentifier": { "type": "string" },
-          "schools": {
-            "type": "object",
-            "properties": {
-              "educationHistory": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "degreeName": { "type": "string" },
-                    "description": { "type": "string" },
-                    "fieldOfStudy": { "type": "string" },
-                    "linkedInUrl": { "type": "string" },
-                    "schoolLogo": { "type": "string" },
-                    "schoolName": { "type": "string" },
-                    "startEndDate": {
-                      "type": "object",
-                      "properties": {
-                        "end": {
-                          "type": "object",
-                          "properties": {
-                            "year": { "type": "number" }
-                          }
-                        },
-                        "start": {
-                          "type": "object",
-                          "properties": {
-                            "year": { "type": "number" }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              },
-              "educationsCount": { "type": "number" }
-            }
-          },
-          "skills": { "type": "array", "items": { "type": "string" } }
-        }
-      },
-      "ExtractPersonDataProfile": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "description": "Indicates success or failure of api request."
-          },
-          "credits_left": {
-            "type": "integer",
-            "description": "The usable credits available for the user account after this query."
-          },
-          "rate_limit_left": {
-            "type": "integer",
-            "description": "The usable daily request limit available for the user account after this query."
-          },
-          "person": {
-            "oneOf": [
-              { "$ref": "#/components/schemas/Person" },
-              { "type": "boolean", "enum": [false] }
-            ]
-          },
-          "company": {
-            "oneOf": [
-              { "$ref": "#/components/schemas/Company" },
-              { "type": "boolean", "enum": [false] }
-            ]
-          }
-        }
-      },
       "Company": {
         "type": "object",
         "properties": {
@@ -1330,33 +1678,6 @@
               { "$ref": "#/components/schemas/Job" },
               { "type": "boolean", "enum": [false] }
             ]
-          }
-        }
-      },
-      "Quotas": {
-        "type": "object",
-        "properties": {
-          "credits_left": {
-            "type": "integer",
-            "description": "Represents the usable credits available for the user account after this query."
-          },
-          "rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          }
-        }
-      },
-      "WorkspacesQuotas": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "description": "Indicates whether the API request was successful."
-          },
-          "data": {
-            "type": "object",
-            "$ref": "#/components/schemas/Quotas",
-            "description": "Contains the quotas information for the workspace."
           }
         }
       },
@@ -2083,6 +2404,33 @@
           }
         }
       },
+      "Quotas": {
+        "type": "object",
+        "properties": {
+          "credits_left": {
+            "type": "integer",
+            "description": "Represents the usable credits available for the user account after this query."
+          },
+          "rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          }
+        }
+      },
+      "WorkspacesQuotas": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Indicates whether the API request was successful."
+          },
+          "data": {
+            "type": "object",
+            "$ref": "#/components/schemas/Quotas",
+            "description": "Contains the quotas information for the workspace."
+          }
+        }
+      },
       "ErrorResponseSchema": {
         "type": "object",
         "properties": {
@@ -2097,367 +2445,214 @@
         "summary": "Profile Found",
         "value": {
           "success": true,
-          "email": "bill.gates@microsoft.com",
-          "emailType": "professional",
           "credits_left": 90000,
           "rate_limit_left": 19000,
           "person": {
-            "publicIdentifier": "williamhgates",
-            "memberIdentifier": "251749025",
-            "linkedInIdentifier": "ACoAAA8BYqEBCGLg_vT_ca6mMEqkpp9nVffJ3hc",
-            "linkedInUrl": "https://www.linkedin.com/in/williamhgates",
-            "firstName": "Bill",
-            "lastName": "Gates",
-            "headline": "Co-chair, Bill & Melinda Gates Foundation",
-            "location": "Seattle, Washington, United States of America",
-            "summary": "Co-chair of the Bill & Melinda Gates Foundation. Founder of Breakthrough Energy. Co-founder of Microsoft. Voracious reader. Avid traveler. Active blogger.",
-            "photoUrl": "https://media.licdn.com/dms/image/D5603AQHv6LsdiUg1kw/profile-displayphoto-shrink_800_800/0/1695167344576?e=1723680000&v=beta&t=NcEpysYwCpQ_NBg0QTz_a265pEOhfGICFJUX92-KNpw",
-            "backgroundUrl": "https://media.licdn.com/dms/image/v2/D5616AQHy2R5tyt2YUA/profile-displaybackgroundimage-shrink_350_1400/profile-displaybackgroundimage-shrink_350_1400/0/1672782785474?e=1731542400&v=beta&t=0HWY04xeK0kEQngJOje3yNudJ6eTvNz2Q2HrTRB4hO8",
+            "publicIdentifier": "michaelriedler",
+            "linkedInIdentifier": "ACoAABTEFqYBfjGaiNRy5ITKaPzcBEBDdR1SrhU",
+            "memberIdentifier": "348395174",
+            "linkedInUrl": "https://www.linkedin.com/in/michaelriedler",
+            "firstName": "Michael",
+            "lastName": "Riedler",
+            "headline": "VP Sales Scrapin.io - B2B Data for AI",
+            "location": {
+              "city": "London",
+              "state": "England",
+              "country": "United Kingdom",
+              "countryCode": "GB"
+            },
+            "photoUrl": "https://media.licdn.com/dms/image/v2/D4E03AQG5S0X4QKtN5A/profile-displayphoto-shrink_200_200/B4EZRgQ6wZGYAY-/0/1736781836053?e=1756339200&v=beta&t=phxC3jRwoDG_zQ8QY4Iu6OduHPUM-abbrEHkJZPP9fM",
+            "backgroundUrl": "https://media.licdn.com/dms/image/v2/C4E16AQGba4BhpCykTA/profile-displaybackgroundimage-shrink_350_1400/profile-displaybackgroundimage-shrink_350_1400/0/1516880563413?e=1756339200&v=beta&t=fdimLlwIIQEke73CfLZWvq0T367YxZajvtmMwynSIiU",
             "openToWork": false,
-            "premium": false,
-            "creationDate": { "month": 5, "year": 2013 },
-            "followerCount": 35415,
-            "positions": {
-              "positionsCount": 3,
-              "positionHistory": [
-                {
-                  "title": "Co-chair",
-                  "companyName": "Bill & Melinda Gates Foundation",
-                  "description": "",
-                  "startEndDate": {
-                    "start": { "month": 1, "year": 2000 },
-                    "end": null
-                  },
-                  "companyLogo": "https://media.licdn.com/dms/image/C4E0BAQE7Na_mKQhIJg/company-logo_400_400/0/1633731811337/bill__melinda_gates_foundation_logo?e=1726099200&v=beta&t=LIgstVg1oR5LmBl9u1kolb_xeOqs5kX1ZTcUpaEtsE4",
-                  "linkedInUrl": "https://www.linkedin.com/company/8736/",
-                  "linkedInId": "8736"
-                },
-                {
-                  "title": "Founder",
-                  "companyName": "Breakthrough Energy",
-                  "description": "",
-                  "startEndDate": {
-                    "start": { "month": 1, "year": 2015 },
-                    "end": null
-                  },
-                  "companyLogo": "https://media.licdn.com/dms/image/C4D0BAQGwD9vNu044FA/company-logo_400_400/0/1630531940051/breakthrough_energy_ventures_logo?e=1726099200&v=beta&t=DIU32ElAkeY4aqcq_9uJTAhiZI-v0GoOX77409cLZRE",
-                  "linkedInUrl": "https://www.linkedin.com/company/19141006/",
-                  "linkedInId": "19141006"
-                },
-                {
-                  "title": "Co-founder",
-                  "companyName": "Microsoft",
-                  "description": "",
-                  "startEndDate": {
-                    "start": { "month": 1, "year": 1975 },
-                    "end": null
-                  },
-                  "companyLogo": "https://media.licdn.com/dms/image/C560BAQE88xCsONDULQ/company-logo_400_400/0/1630652622688/microsoft_logo?e=1726099200&v=beta&t=zueWlWXcJ4WjwGSzlUWgPOnjoAm8C2KfSIcWWHxWrGg",
-                  "linkedInUrl": "https://www.linkedin.com/company/1035/",
-                  "linkedInId": "1035"
-                }
-              ]
-            },
-            "schools": {
-              "educationsCount": 2,
-              "educationHistory": [
-                {
-                  "degreeName": "",
-                  "fieldOfStudy": "",
-                  "description": null,
-                  "linkedInUrl": "https://www.linkedin.com/company/1646/",
-                  "schoolLogo": "https://media.licdn.com/dms/image/C4E0BAQF5t62bcL0e9g/company-logo_400_400/0/1631318058235?e=1726099200&v=beta&t=tSGQKfAlig70DD9n2_xkYR54yBTf7K3aKsau8PMQSVM",
-                  "schoolName": "Harvard University",
-                  "startEndDate": {
-                    "start": { "month": 1, "year": 1973 },
-                    "end": { "month": 1, "year": 1975 }
-                  }
-                },
-                {
-                  "degreeName": "",
-                  "fieldOfStudy": "",
-                  "description": null,
-                  "linkedInUrl": "https://www.linkedin.com/company/30288/",
-                  "schoolLogo": "https://media.licdn.com/dms/image/D560BAQGFmOQmzpxg9A/company-logo_400_400/0/1683732883164/lakeside_school_logo?e=1726099200&v=beta&t=cylwvrQe7Q4N8oU1hotzPfrae8yxPuzdtG1ocBSuEmA",
-                  "schoolName": "Lakeside School",
-                  "startEndDate": {
-                    "start": { "month": null, "year": null },
-                    "end": { "month": null, "year": null }
-                  }
-                }
-              ]
-            },
-            "skills": [],
-            "languages": []
-          },
-          "company": {
-            "linkedInId": "1035",
-            "name": "Microsoft",
-            "universalName": "microsoft",
-            "linkedInUrl": "https://www.linkedin.com/company/1035",
-            "employeeCount": 228581,
-            "employeeCountRange": { "start": 10001, "end": 1 },
-            "websiteUrl": "https://news.microsoft.com/",
-            "tagline": null,
-            "description": "Every company has a mission. What's ours? To empower every person and every organization to achieve more. We believe technology can and should be a force for good and that meaningful innovation contributes to a brighter world in the future and today. Our culture doesn't just encourage curiosity; it embraces it. Each day we make progress together by showing up as our authentic selves. We show up with a learn-it-all mentality. We show up cheering on others, knowing their success doesn't diminish our own. We show up every day open to learning our own biases, changing our behavior, and inviting in differences. Because impact matters.\n\nMicrosoft operates in 190 countries and is made up of more than 220,000 passionate employees worldwide.\n",
-            "industry": "Software Development",
-            "phone": null,
-            "specialities": [
-              "Business Software",
-              "Developer Tools",
-              "Home & Educational Software",
-              "Tablets",
-              "Search",
-              "Advertising",
-              "Servers",
-              "Windows Operating System",
-              "Windows Applications & Platforms",
-              "Smartphones",
-              "Cloud Computing",
-              "Quantum Computing",
-              "Future of Work",
-              "Productivity",
-              "AI",
-              "Artificial Intelligence",
-              "Machine Learning",
-              "Laptops",
-              "Mixed Reality",
-              "Virtual Reality",
-              "Gaming",
-              "Developers",
-              "IT Professional"
-            ],
-            "followerCount": 22736947,
-            "headquarter": {
-              "city": "Redmond",
-              "country": "US",
-              "postalCode": "98052",
-              "geographicArea": "Washington",
-              "street1": "1 Microsoft Way",
-              "street2": null
-            },
-            "logo": "https://media.licdn.com/dms/image/C560BAQE88xCsONDULQ/company-logo_400_400/0/1630652622688/microsoft_logo?e=1725494400&v=beta&t=joSXHhDAEare7f9gk8MwXr2sOr84zX7HDx2h5znXEYI"
+            "premium": true,
+            "showVerificationBadge": true
           }
         }
       },
-      "ExtractedPersonActivitiesExample": {
-        "summary": "Person LinkedIn Activities Example",
-        "value": {
-          "success": true,
-          "posts": [
-            {
-              "id": "7254912034612379648",
-              "text": "I'm proud that the Gates Foundation is opening a new office in Dakar, Senegal. Africa's development progress is a priority for the foundation, and I'm grateful for all our partners and staff who have worked so hard to make this happen.",
-              "likesCount": 2449,
-              "commentsCount": 372,
-              "activityDate": "2024-10-23T17:50:18.799Z",
-              "author": {
-                "authorId": "ACoAAA8BYqEBCGLg_vT_ca6mMEqkpp9nVffJ3hc",
-                "authorName": "Bill Gates",
-                "authorPublicIdentifier": "williamhgates"
-              },
-              "activityUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7254912034612379648",
-              "isRepublishedPost": true,
-              "relatedPost": {
-                "text": "We recently celebrated a momentous occasion with the official launch of the Bill & Melinda Gates Foundation's Senegal office! This significant step underscores our ongoing dedication to Africa's development goals and our commitment to collaborating with local partners.\n\nThe launch isn't just about opening doors—it's about forging pathways to innovative solutions that will save millions of lives across the continent. \n\nIt was great to have you with us Chris Elias and Paulin BASINGA and thanks for moderating a great discussion Raïssa OKOÏ !\n\nAs we move forward, we continue to learn, co-create, and deepen our relationships with key stakeholders, driving meaningful change for communities in Senegal and beyond.\n\n#BMGFSenegalLaunch #AfricaDevelopment #PartnershipForImpact",
-                "activityDate": "2024-10-22T13:09:42.578Z",
-                "authorId": "104421531",
-                "authorPublicIdentifier": "gates-foundation-africa",
-                "authorName": "Gates Foundation Africa",
-                "activityUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7254479030517698560"
-              }
-            }
-          ],
-          "comments": [
-            {
-              "text": "Thanks for having me. It's inspiring to see how far research for Alzheimer's has come.",
-              "likesCount": 38,
-              "commentsCount": 19,
-              "activityDate": "2024-08-29T16:25:17.386Z",
-              "authorId": "ACoAAA8BYqEBCGLg_vT_ca6mMEqkpp9nVffJ3hc",
-              "authorName": "Bill Gates",
-              "authorPublicIdentifier": "williamhgates",
-              "post": {
-                "text": "This afternoon, we welcomed Bill Gates as he toured labs at the Indiana University School of Medicine and met with key faculty members to learn more about the expansive Alzheimer's disease research happening right here in Indianapolis.",
-                "likesCount": 3257,
-                "commentsCount": 118,
-                "activityDate": "2024-08-29T16:25:17.386Z",
-                "authorId": "3323",
-                "authorPublicIdentifier": "indiana-university-school-of-medicine",
-                "authorName": "Indiana University School of Medicine",
-                "activityUrl": "https://www.linkedin.com/posts/indiana-university-school-of-medicine_this-afternoon-we-welcomed-bill-gates-as-ugcPost-7231813250051383296-24DS?utm_source=combined_share_message&utm_medium=member_desktop_web",
-                "relatedPost": null
-              },
-              "activityUrl": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7231813250051383296?commentUrn=urn%3Ali%3Acomment%3A%28ugcPost%3A7231813250051383296%2C7234959305127444481%29&dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287234959305127444481%2Curn%3Ali%3AugcPost%3A7231813250051383296%29"
-            }
-          ],
-          "reactions": [
-            {
-              "type": "LIKE",
-              "authorId": "ACoAAA8BYqEBCGLg_vT_ca6mMEqkpp9nVffJ3hc",
-              "authorName": "Bill Gates",
-              "authorPublicIdentifier": "williamhgates",
-              "relatedComment": null,
-              "relatedPost": {
-                "text": "What an incredible week at Climate Week NYC! Climate Week brings together an ecosystem of people and organizations committed to building a sustainable future. I felt a sense of urgency combined with a strong commitment to change and getting the work done.\n\nOne highlight was my conversation with Bill Gates at an event hosted by Breakthrough Energy and CBRE focused on the Clean Industrial Revolution and the critical role of emerging climate technologies. Our partnership with Breakthrough Energy to decarbonize buildings, highlighted by our work with Luxwall, is a significant step forward in our net-zero commitment. \n\nWe further demonstrated the opportunity to decarbonize the built environment by honoring our work with the Javits Center. The Javits Centers' innovative microgrid featuring the largest rooftop solar array and battery storage system in Manhattan is an inspiring example of the solutions available now that can be scaled to any built environment. \n\nAnother memorable moment was speaking at Carnegie Hall during the Siemens Arts Program and Atlantik-Brücke e.V. event. It was an honor to reflect on the power of technology and culture to change the world, and to celebrate the enduring German-American friendship that has been pivotal in our journey. \n\nAs we move forward, the message is clear: partnerships are essential. No company can do this alone. The ecosystem of partners we have at #ClimateWeekNYC is crucial to delivering impact with greater speed and scale. \n\nThank you to everyone who made this week possible. Let's continue to push boundaries and take bold actions together. The future is ours to shape.  \n\n#Sustainability #NetZero #Innovation #CleanEnergy",
-                "likesCount": 341,
-                "commentsCount": 13,
-                "activityDate": "2024-10-02T17:33:47.405Z",
-                "authorId": "ACoAAARuJH4BUfWDnLosZmlFyNr6SrDaRFmmBK4",
-                "authorPublicIdentifier": "barbara-humpton",
-                "authorName": "Barbara Humpton",
-                "activityUrl": "https://www.linkedin.com/posts/barbara-humpton_climateweeknyc-sustainability-netzero-ugcPost-7245556119614496768-Sufh?utm_source=combined_share_message&utm_medium=member_desktop_web",
-                "relatedPost": null
-              }
-            }
-          ],
-          "credits_left": 15,
-          "rate_limit_left": 19
-        }
-      },
-      "PersonProfileExtracted": {
-        "summary": "Person Profile Extracted",
+      "SummaryFound": {
+        "summary": "Summary Found",
         "value": {
           "success": true,
           "credits_left": 90000,
           "rate_limit_left": 19000,
-          "person": {
-            "publicIdentifier": "williamhgates",
-            "memberIdentifier": "251749025",
-            "linkedInIdentifier": "ACoAAA8BYqEBCGLg_vT_ca6mMEqkpp9nVffJ3hc",
-            "linkedInUrl": "https://www.linkedin.com/in/williamhgates",
-            "firstName": "Bill",
-            "lastName": "Gates",
-            "headline": "Co-chair, Bill & Melinda Gates Foundation",
-            "location": "Seattle, Washington, United States of America",
-            "summary": "Co-chair of the Bill & Melinda Gates Foundation. Founder of Breakthrough Energy. Co-founder of Microsoft. Voracious reader. Avid traveler. Active blogger.",
-            "photoUrl": "https://media.licdn.com/dms/image/D5603AQHv6LsdiUg1kw/profile-displayphoto-shrink_800_800/0/1695167344576?e=1723680000&v=beta&t=NcEpysYwCpQ_NBg0QTz_a265pEOhfGICFJUX92-KNpw",
-            "backgroundUrl": "https://media.licdn.com/dms/image/v2/D5616AQHy2R5tyt2YUA/profile-displaybackgroundimage-shrink_350_1400/profile-displaybackgroundimage-shrink_350_1400/0/1672782785474?e=1731542400&v=beta&t=0HWY04xeK0kEQngJOje3yNudJ6eTvNz2Q2HrTRB4hO8",
-            "openToWork": false,
-            "premium": false,
-            "creationDate": { "month": 5, "year": 2013 },
-            "followerCount": 35415,
-            "positions": {
-              "positionsCount": 3,
-              "positionHistory": [
-                {
-                  "title": "Co-chair",
-                  "companyName": "Bill & Melinda Gates Foundation",
-                  "description": "",
-                  "startEndDate": {
-                    "start": { "month": 1, "year": 2000 },
-                    "end": null
-                  },
-                  "companyLogo": "https://media.licdn.com/dms/image/C4E0BAQE7Na_mKQhIJg/company-logo_400_400/0/1633731811337/bill__melinda_gates_foundation_logo?e=1726099200&v=beta&t=LIgstVg1oR5LmBl9u1kolb_xeOqs5kX1ZTcUpaEtsE4",
-                  "linkedInUrl": "https://www.linkedin.com/company/8736/",
-                  "linkedInId": "8736"
-                },
-                {
-                  "title": "Founder",
-                  "companyName": "Breakthrough Energy",
-                  "description": "",
-                  "startEndDate": {
-                    "start": { "month": 1, "year": 2015 },
-                    "end": null
-                  },
-                  "companyLogo": "https://media.licdn.com/dms/image/C4D0BAQGwD9vNu044FA/company-logo_400_400/0/1630531940051/breakthrough_energy_ventures_logo?e=1726099200&v=beta&t=DIU32ElAkeY4aqcq_9uJTAhiZI-v0GoOX77409cLZRE",
-                  "linkedInUrl": "https://www.linkedin.com/company/19141006/",
-                  "linkedInId": "19141006"
-                },
-                {
-                  "title": "Co-founder",
-                  "companyName": "Microsoft",
-                  "description": "",
-                  "startEndDate": {
-                    "start": { "month": 1, "year": 1975 },
-                    "end": null
-                  },
-                  "companyLogo": "https://media.licdn.com/dms/image/C560BAQE88xCsONDULQ/company-logo_400_400/0/1630652622688/microsoft_logo?e=1726099200&v=beta&t=zueWlWXcJ4WjwGSzlUWgPOnjoAm8C2KfSIcWWHxWrGg",
-                  "linkedInUrl": "https://www.linkedin.com/company/1035/",
-                  "linkedInId": "1035"
-                }
-              ]
+          "summary": "Hi there! My name is Julien and I'm an entrepreneur with a hacker mindset. 🏴‍☠️\n\nI am passionate about finding creative solutions to complex problems and am always looking for ways to optimize and improve processes. 🧠\n\nI am proud to have founded a company that build SaaS products to helps companies enrich their business data, and I am excited to continue driving innovation in the business world.\n\nThank you for visiting my LinkedIn profile and I hope to connect with you soon!"
+        }
+      },
+      "FollowersCountFound": {
+        "summary": "Followers Count Found",
+        "value": {
+          "success": true,
+          "credits_left": 90000,
+          "rate_limit_left": 19000,
+          "followersCount": 646
+        }
+      },
+      "ExperienceFound": {
+        "summary": "Experience Found",
+        "value": {
+          "success": true,
+          "credits_left": 90000,
+          "rate_limit_left": 19000,
+          "positions": [
+            {
+              "title": "VP of Sales",
+              "companyName": "ScrapIn",
+              "description": "B2B Data for AI +",
+              "startEndDate": {
+                "start": "2024-01-01T12:00:00.000Z",
+                "end": null
+              },
+              "companyLogo": "https://media.licdn.com/dms/image/v2/D4E0BAQF-Z-m2ZKv6qQ/company-logo_200_200/B4EZcRELezHcAM-/0/1748337998127/scrapin_api_logo?e=1756339200&v=beta&t=GjTJ9cgDP2iBYJCx8GxXEg8V2hZjnNBOtvXe58eiqJ0",
+              "linkedInUrl": "https://www.linkedin.com/company/100602385/",
+              "linkedInId": "100602385"
             },
-            "schools": {
-              "educationsCount": 2,
-              "educationHistory": [
-                {
-                  "degreeName": "",
-                  "fieldOfStudy": "",
-                  "description": null,
-                  "linkedInUrl": "https://www.linkedin.com/company/1646/",
-                  "schoolLogo": "https://media.licdn.com/dms/image/C4E0BAQF5t62bcL0e9g/company-logo_400_400/0/1631318058235?e=1726099200&v=beta&t=tSGQKfAlig70DD9n2_xkYR54yBTf7K3aKsau8PMQSVM",
-                  "schoolName": "Harvard University",
-                  "startEndDate": {
-                    "start": { "month": 1, "year": 1973 },
-                    "end": { "month": 1, "year": 1975 }
-                  }
-                },
-                {
-                  "degreeName": "",
-                  "fieldOfStudy": "",
-                  "description": null,
-                  "linkedInUrl": "https://www.linkedin.com/company/30288/",
-                  "schoolLogo": "https://media.licdn.com/dms/image/D560BAQGFmOQmzpxg9A/company-logo_400_400/0/1683732883164/lakeside_school_logo?e=1726099200&v=beta&t=cylwvrQe7Q4N8oU1hotzPfrae8yxPuzdtG1ocBSuEmA",
-                  "schoolName": "Lakeside School",
-                  "startEndDate": {
-                    "start": { "month": null, "year": null },
-                    "end": { "month": null, "year": null }
-                  }
-                }
-              ]
+            {
+              "title": "Co-Founder & CEO",
+              "companyName": "LukaHQ",
+              "companyLocation": "Greater London, England, United Kingdom",
+              "description": "AI accounting for the mid-market",
+              "startEndDate": {
+                "start": "2023-01-01T12:00:00.000Z",
+                "end": "2023-12-01T12:00:00.000Z"
+              },
+              "companyLogo": "https://media.licdn.com/dms/image/v2/C4E0BAQHUbWeUxkGCfw/company-logo_400_400/company-logo_400_400/0/1677251426049?e=1756339200&v=beta&t=qQuFuWn2EsyNX-kqmN166nzxW-DxXD66cPph71e3F7g",
+              "linkedInUrl": "https://www.linkedin.com/company/93128145/",
+              "linkedInId": "93128145"
             },
-            "skills": [],
-            "languages": []
-          },
-          "company": {
-            "linkedInId": "1035",
-            "name": "Microsoft",
-            "universalName": "microsoft",
-            "linkedInUrl": "https://www.linkedin.com/company/1035",
-            "employeeCount": 228581,
-            "employeeCountRange": { "start": 10001, "end": 1 },
-            "websiteUrl": "https://news.microsoft.com/",
-            "tagline": null,
-            "description": "Every company has a mission. What's ours? To empower every person and every organization to achieve more. We believe technology can and should be a force for good and that meaningful innovation contributes to a brighter world in the future and today. Our culture doesn't just encourage curiosity; it embraces it. Each day we make progress together by showing up as our authentic selves. We show up with a learn-it-all mentality. We show up cheering on others, knowing their success doesn't diminish our own. We show up every day open to learning our own biases, changing our behavior, and inviting in differences. Because impact matters.\n\nMicrosoft operates in 190 countries and is made up of more than 220,000 passionate employees worldwide.\n",
-            "industry": "Software Development",
-            "phone": null,
-            "specialities": [
-              "Business Software",
-              "Developer Tools",
-              "Home & Educational Software",
-              "Tablets",
-              "Search",
-              "Advertising",
-              "Servers",
-              "Windows Operating System",
-              "Windows Applications & Platforms",
-              "Smartphones",
-              "Cloud Computing",
-              "Quantum Computing",
-              "Future of Work",
-              "Productivity",
-              "AI",
-              "Artificial Intelligence",
-              "Machine Learning",
-              "Laptops",
-              "Mixed Reality",
-              "Virtual Reality",
-              "Gaming",
-              "Developers",
-              "IT Professional"
-            ],
-            "followerCount": 22736947,
-            "headquarter": {
-              "city": "Redmond",
-              "country": "US",
-              "postalCode": "98052",
-              "geographicArea": "Washington",
-              "street1": "1 Microsoft Way",
-              "street2": null
+            {
+              "title": "Consultant to COO",
+              "companyName": "MoonPay",
+              "companyLocation": "London Area, United Kingdom",
+              "description": "Ad-hoc strategic projects in the lead-up to a $555M fundraise",
+              "startEndDate": {
+                "start": "2021-04-01T12:00:00.000Z",
+                "end": "2021-10-01T12:00:00.000Z"
+              },
+              "companyLogo": "https://media.licdn.com/dms/image/v2/D560BAQHlaph_qWt7MA/company-logo_400_400/company-logo_400_400/0/1702140517386/moonpay_logo?e=1756339200&v=beta&t=leju-4Av8a6pKxzvk0pr9OOEjNWruMeDGbS_RE437ek",
+              "linkedInUrl": "https://www.linkedin.com/company/12596773/",
+              "linkedInId": "12596773"
             },
-            "logo": "https://media.licdn.com/dms/image/C560BAQE88xCsONDULQ/company-logo_400_400/0/1630652622688/microsoft_logo?e=1725494400&v=beta&t=joSXHhDAEare7f9gk8MwXr2sOr84zX7HDx2h5znXEYI"
-          }
+            {
+              "title": "Co-Founder & CEO",
+              "companyName": "Telleroo",
+              "companyLocation": "London",
+              "description": "Leading SME payments platform for bill and payroll payments in the UK 💪",
+              "startEndDate": {
+                "start": "2016-04-01T12:00:00.000Z",
+                "end": "2020-10-01T12:00:00.000Z"
+              },
+              "companyLogo": "https://media.licdn.com/dms/image/v2/D4E0BAQFg65EK-q7guw/company-logo_100_100/B4EZdkSAIuHsAQ-/0/1749734130592/telleroo_logo?e=1756339200&v=beta&t=4rKb656EJBg9K3ewqcB0_Gjt9Z2roK_8B5ABHX7Qvjg",
+              "linkedInUrl": "https://www.linkedin.com/company/10820464/",
+              "linkedInId": "10820464"
+            }
+          ]
+        }
+      },
+      "EducationFound": {
+        "summary": "Education Found",
+        "value": {
+          "success": true,
+          "credits_left": 90000,
+          "rate_limit_left": 19000,
+          "schools": [
+            {
+              "degreeName": "Engineering degree",
+              "fieldOfStudy": "Computers, Big Data and Connected Objects",
+              "description": "The IBO Major trains general IT engineers, able to master all components of information processing. To meet the changing strategic needs of the company, the future engineer will be trained in information systems, database architecture, mobility and application development.\n\nComputers, Big Data and Connected Objects.",
+              "linkedInUrl": "https://www.linkedin.com/company/15142508/",
+              "schoolLogo": "https://media.licdn.com/dms/image/v2/D4E0BAQFQCZFaAoQmKw/company-logo_400_400/company-logo_400_400/0/1725378371996/esilvparis_logo?e=1755129600&v=beta&t=bPVcaWC42d3OMjQOmErZ_YBkJ5lg2EoscC6sAev0Juo",
+              "schoolName": "ESILV - Ecole Supérieure d'Ingénieurs Léonard de Vinci",
+              "startEndDate": {
+                "start": "2017-02-01T12:00:00.000Z",
+                "end": "2020-06-01T12:00:00.000Z"
+              }
+            },
+            {
+              "degreeName": "Summer School Program",
+              "fieldOfStudy": "Programme d'échange international",
+              "linkedInUrl": "https://www.linkedin.com/company/15093901/",
+              "schoolLogo": "https://media.licdn.com/dms/image/v2/C560BAQGhFlIwwrPy5Q/company-logo_400_400/company-logo_400_400/0/1630625706195/_logo?e=1755129600&v=beta&t=c83EX-78tGZGlXfKvJ8gjl_vQUems29kKKI2475ye4s",
+              "schoolName": "Shanghai Normal University",
+              "startEndDate": {
+                "start": "2018-01-01T12:00:00.000Z",
+                "end": "2019-01-01T12:00:00.000Z"
+              }
+            },
+            {
+              "degreeName": " Professional License Computer Systems and Database",
+              "fieldOfStudy": "Analyst-Designer in Information and Decision System (ACSID)",
+              "description": "This degree offers a professional training in the business of information systems engineering and decision making. Its purpose is to facilitate the professional insertion in IT fields in continuous growth.",
+              "linkedInUrl": "https://www.linkedin.com/company/15091873/",
+              "schoolLogo": "https://media.licdn.com/dms/image/v2/C4D0BAQGRQuv1v-KRxQ/company-logo_400_400/company-logo_400_400/0/1630557231474/conservatoire_national_des_arts_et_mtiers_logo?e=1755129600&v=beta&t=j64Zzlo-W6LMZ3i6qthMVH6xoFxLcMtxRejnEDhObao",
+              "schoolName": "Conservatoire National des Arts et Métiers",
+              "startEndDate": {
+                "start": "2015-01-01T12:00:00.000Z",
+                "end": "2016-01-01T12:00:00.000Z"
+              }
+            }
+          ]
+        }
+      },
+      "SkillsFound": {
+        "summary": "Skills Found",
+        "value": {
+          "success": true,
+          "credits_left": 90000,
+          "rate_limit_left": 19000,
+          "skills": [
+            {
+              "name": "AngularJS",
+              "endorsementCount": 15
+            },
+            {
+              "name": "PHP",
+              "endorsementCount": 14
+            },
+            {
+              "name": "Java",
+              "endorsementCount": 13
+            },
+            {
+              "name": "JavaScript",
+              "endorsementCount": 8
+            },
+            {
+              "name": "SQL",
+              "endorsementCount": 6
+            },
+            {
+              "name": "HTML5"
+            },
+            {
+              "name": "CSS"
+            }
+          ]
+        }
+      },
+      "LanguagesFound": {
+        "summary": "Languages Found",
+        "value": {
+          "success": true,
+          "credits_left": 90000,
+          "rate_limit_left": 19000,
+          "languages": [
+            {
+              "language": "Chinese",
+              "proficiency": "Native or bilingual proficiency"
+            },
+            {
+              "language": "English",
+              "proficiency": "Full professional proficiency"
+            },
+            {
+              "language": "French",
+              "proficiency": "Native or bilingual proficiency"
+            },
+            {
+              "language": "Japanese",
+              "proficiency": "Elementary proficiency"
+            }
+          ]
         }
       },
       "CompanyFound": {
@@ -2467,52 +2662,42 @@
           "credits_left": 90000,
           "rate_limit_left": 19000,
           "company": {
-            "linkedInId": "1035",
-            "name": "Microsoft",
-            "universalName": "microsoft",
-            "linkedInUrl": "https://www.linkedin.com/company/1035",
-            "employeeCount": 228581,
-            "employeeCountRange": { "start": 10001, "end": 1 },
-            "websiteUrl": "https://news.microsoft.com/",
-            "tagline": null,
-            "description": "Every company has a mission. What's ours? To empower every person and every organization to achieve more. We believe technology can and should be a force for good and that meaningful innovation contributes to a brighter world in the future and today. Our culture doesn't just encourage curiosity; it embraces it. Each day we make progress together by showing up as our authentic selves. We show up with a learn-it-all mentality. We show up cheering on others, knowing their success doesn't diminish our own. We show up every day open to learning our own biases, changing our behavior, and inviting in differences. Because impact matters.\n\nMicrosoft operates in 190 countries and is made up of more than 220,000 passionate employees worldwide.\n",
+            "linkedInId": "71234370",
+            "name": "Visum",
+            "universalName": "visum-run",
+            "linkedInUrl": "https://www.linkedin.com/company/71234370",
+            "employeeCount": 14,
+            "followerCount": 806,
+            "employeeCountRange": {
+              "start": 11,
+              "end": 50
+            },
+            "websiteUrl": "https://visum.run",
+            "tagline": "We Provide Data for AI-driven technologies",
+            "description": "We are pioneers in live web scraping and data solutions, empowering AI applications to harness the power of real-time information.\n‍\nOur mission is to provide the most accurate and reliable web data, empowering AI applications to thrive in this new era of computing.\n‍\nAt Visum, we enable AI systems to access the freshest knowledge from the web, preparing for a future where AI-driven searches will exponentially surpass human searches.\n\nWe are committed to delivering unparalleled accuracy, scalability, and reliability, elevating the global AI ecosystem.‍",
             "industry": "Software Development",
             "phone": null,
             "specialities": [
-              "Business Software",
-              "Developer Tools",
-              "Home & Educational Software",
-              "Tablets",
-              "Search",
-              "Advertising",
-              "Servers",
-              "Windows Operating System",
-              "Windows Applications & Platforms",
-              "Smartphones",
-              "Cloud Computing",
-              "Quantum Computing",
-              "Future of Work",
-              "Productivity",
-              "AI",
-              "Artificial Intelligence",
-              "Machine Learning",
-              "Laptops",
-              "Mixed Reality",
-              "Virtual Reality",
-              "Gaming",
-              "Developers",
-              "IT Professional"
+              "Lead Generation",
+              "Lead Qualification",
+              "Market Search",
+              "Competitor analysis",
+              "CRM enrichment"
             ],
-            "followerCount": 22736947,
             "headquarter": {
-              "city": "Redmond",
-              "country": "US",
-              "postalCode": "98052",
-              "geographicArea": "Washington",
-              "street1": "1 Microsoft Way",
-              "street2": null
+              "city": "Paris",
+              "country": "FR",
+              "postalCode": "75013",
+              "geographicArea": "Île-de-France",
+              "street1": "25, Rue de Tolbiac",
+              "street2": "VISUM mailbox"
             },
-            "logo": "https://media.licdn.com/dms/image/C560BAQE88xCsONDULQ/company-logo_400_400/0/1630652622688/microsoft_logo?e=1725494400&v=beta&t=joSXHhDAEare7f9gk8MwXr2sOr84zX7HDx2h5znXEYI"
+            "logo": "https://media.licdn.com/dms/image/v2/D4E0BAQGj-Nfob0e55g/company-logo_400_400/company-logo_400_400/0/1702166267344/visum_run_logo?e=1756339200&v=beta&t=99eMIcY7IX2cLI-YkJOBdfg16aCwmd7Tpk8BrSXaJHg",
+            "foundedOn": {
+              "year": 2020
+            },
+            "fundingData": null,
+            "backgroundUrl": "https://media.licdn.com/dms/image/v2/D4E1BAQEldpeB551LZA/company-background_10000/company-background_10000/0/1678715803339/visum_run_cover?e=1751288400&v=beta&t=gA-h6dpu8MRhpok9BoeVM5A0aPxGcM-9O7BqdOG8uRM"
           }
         }
       },
@@ -2523,52 +2708,42 @@
           "credits_left": 90000,
           "rate_limit_left": 19000,
           "company": {
-            "linkedInId": "1035",
-            "name": "Microsoft",
-            "universalName": "microsoft",
-            "linkedInUrl": "https://www.linkedin.com/company/1035",
-            "employeeCount": 228581,
-            "employeeCountRange": { "start": 10001, "end": 1 },
-            "websiteUrl": "https://news.microsoft.com/",
-            "tagline": null,
-            "description": "Every company has a mission. What's ours? To empower every person and every organization to achieve more. We believe technology can and should be a force for good and that meaningful innovation contributes to a brighter world in the future and today. Our culture doesn't just encourage curiosity; it embraces it. Each day we make progress together by showing up as our authentic selves. We show up with a learn-it-all mentality. We show up cheering on others, knowing their success doesn't diminish our own. We show up every day open to learning our own biases, changing our behavior, and inviting in differences. Because impact matters.\n\nMicrosoft operates in 190 countries and is made up of more than 220,000 passionate employees worldwide.\n",
+            "linkedInId": "71234370",
+            "name": "Visum",
+            "universalName": "visum-run",
+            "linkedInUrl": "https://www.linkedin.com/company/71234370",
+            "employeeCount": 14,
+            "followerCount": 806,
+            "employeeCountRange": {
+              "start": 11,
+              "end": 50
+            },
+            "websiteUrl": "https://visum.run",
+            "tagline": "We Provide Data for AI-driven technologies",
+            "description": "We are pioneers in live web scraping and data solutions, empowering AI applications to harness the power of real-time information.\n‍\nOur mission is to provide the most accurate and reliable web data, empowering AI applications to thrive in this new era of computing.\n‍\nAt Visum, we enable AI systems to access the freshest knowledge from the web, preparing for a future where AI-driven searches will exponentially surpass human searches.\n\nWe are committed to delivering unparalleled accuracy, scalability, and reliability, elevating the global AI ecosystem.‍",
             "industry": "Software Development",
             "phone": null,
             "specialities": [
-              "Business Software",
-              "Developer Tools",
-              "Home & Educational Software",
-              "Tablets",
-              "Search",
-              "Advertising",
-              "Servers",
-              "Windows Operating System",
-              "Windows Applications & Platforms",
-              "Smartphones",
-              "Cloud Computing",
-              "Quantum Computing",
-              "Future of Work",
-              "Productivity",
-              "AI",
-              "Artificial Intelligence",
-              "Machine Learning",
-              "Laptops",
-              "Mixed Reality",
-              "Virtual Reality",
-              "Gaming",
-              "Developers",
-              "IT Professional"
+              "Lead Generation",
+              "Lead Qualification",
+              "Market Search",
+              "Competitor analysis",
+              "CRM enrichment"
             ],
-            "followerCount": 22736947,
             "headquarter": {
-              "city": "Redmond",
-              "country": "US",
-              "postalCode": "98052",
-              "geographicArea": "Washington",
-              "street1": "1 Microsoft Way",
-              "street2": null
+              "city": "Paris",
+              "country": "FR",
+              "postalCode": "75013",
+              "geographicArea": "Île-de-France",
+              "street1": "25, Rue de Tolbiac",
+              "street2": "VISUM mailbox"
             },
-            "logo": "https://media.licdn.com/dms/image/C560BAQE88xCsONDULQ/company-logo_400_400/0/1630652622688/microsoft_logo?e=1725494400&v=beta&t=joSXHhDAEare7f9gk8MwXr2sOr84zX7HDx2h5znXEYI"
+            "logo": "https://media.licdn.com/dms/image/v2/D4E0BAQGj-Nfob0e55g/company-logo_400_400/company-logo_400_400/0/1702166267344/visum_run_logo?e=1756339200&v=beta&t=99eMIcY7IX2cLI-YkJOBdfg16aCwmd7Tpk8BrSXaJHg",
+            "foundedOn": {
+              "year": 2020
+            },
+            "fundingData": null,
+            "backgroundUrl": "https://media.licdn.com/dms/image/v2/D4E1BAQEldpeB551LZA/company-background_10000/company-background_10000/0/1678715803339/visum_run_cover?e=1751288400&v=beta&t=gA-h6dpu8MRhpok9BoeVM5A0aPxGcM-9O7BqdOG8uRM"
           }
         }
       },
@@ -2634,13 +2809,6 @@
             "experienceLevel": "Mid-Senior level",
             "contractType": "Full-time"
           }
-        }
-      },
-      "QuotasFound": {
-        "summary": "Quotas Found",
-        "value": {
-          "status": "success",
-          "data": { "credits_left": 90000, "rate_limit_left": 19000 }
         }
       },
       "ActivitiesPost": {
@@ -3045,6 +3213,13 @@
               }
             }
           ]
+        }
+      },
+      "QuotasFound": {
+        "summary": "Quotas Found",
+        "value": {
+          "status": "success",
+          "data": { "credits_left": 90000, "rate_limit_left": 19000 }
         }
       },
       "NoApiKey": {

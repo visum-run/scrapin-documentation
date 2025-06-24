@@ -1,0 +1,98 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "ScrapIn API",
+  "colors": {
+    "primary": "#0D9373",
+    "light": "#07C983",
+    "dark": "#0D9373"
+  },
+  "favicon": "icon.png",
+  "navigation": {
+    "versions": [
+      {
+        "version": "1.0.0",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": ["introduction", "quickstart"]
+          },
+          {
+            "group": "Person",
+            "pages": [
+              "endpoint/person/extract-profile",
+              "endpoint/person/summary",
+              "endpoint/person/followers-count",
+              "endpoint/person/experience",
+              "endpoint/person/education",
+              "endpoint/person/skills",
+              "endpoint/person/languages"
+            ]
+          },
+          {
+            "group": "Person Activities",
+            "pages": [
+              "endpoint/person/activities/posts",
+              "endpoint/person/activities/comments",
+              "endpoint/person/activities/reactions",
+              "endpoint/person/activities/post",
+              "endpoint/person/activities/post/comments",
+              "endpoint/person/activities/post/reactions",
+              "endpoint/person/activities/post/reposts"
+            ]
+          },
+          {
+            "group": "Company",
+            "pages": [
+              "endpoint/company/extract-profile",
+              "endpoint/company/search"
+            ]
+          },
+          {
+            "group": "Company Activities",
+            "pages": [
+              "endpoint/company/activities/posts",
+              "endpoint/company/activities/post",
+              "endpoint/company/activities/post/comments",
+              "endpoint/company/activities/post/reactions",
+              "endpoint/company/activities/post/reposts"
+            ]
+          },
+          {
+            "group": "Job",
+            "pages": ["endpoint/job/extract-data", "endpoint/job/search"]
+          },
+          {
+            "group": "Workspace",
+            "pages": ["endpoint/workspace/quotas"]
+          }
+        ]
+      }
+    ]
+  },
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Support",
+        "href": "mailto:support@scrapin.io"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Homepage",
+      "href": "https://www.scrapin.io/"
+    }
+  },
+  "footer": {
+    "socials": {}
+  },
+  "integrations": {
+    "segment": {
+      "key": "scZ4B7bSTMfdxY3LZlFmQy3hqTUH3iei"
+    }
+  }
+}
