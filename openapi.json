@@ -13,15 +13,54 @@
     "/enrichment/profile": {
       "get": {
         "tags": ["Person"],
-        "operationId": "GetProfile",
-        "summary": "Get Profile",
-        "description": "This operation allows you to get profile data. It returns profile data with credits and rate limit information. This operation consumes 1 credit.",
+        "operationId": "GetProfileData",
+        "summary": "Get Profile Data",
+        "description": "This operation allows you to get profile data from an url. It returns profile data with credits and rate limit information. This operation consumes 1 credit.",
         "parameters": [
           {
             "name": "linkedInUrl",
             "in": "query",
             "schema": { "type": "string" },
             "description": "This required parameter is a string. It represents the LinkedIn URL of the person with this format: https://www.linkedin.com/in/xxxxxxxxxxxxx/.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The endpoint returns profile information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfileResponse"
+                },
+                "examples": {
+                  "ProfileFound": {
+                    "$ref": "#/components/examples/ProfileFound"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
+    },
+    "/enrichment/resolve/email": {
+      "get": {
+        "tags": ["Person"],
+        "operationId": "GetProfileDataFromEmail",
+        "summary": "Get Profile Data From Email Address",
+        "description": "This operation allows you to get profile data from email address. It returns profile data with credits and rate limit information. This operation consumes 5 credit.",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "This required parameter is a string. It represents the email to query.",
             "required": true
           }
         ],
