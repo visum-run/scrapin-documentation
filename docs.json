@@ -27,7 +27,10 @@
               "endpoint/person/experience",
               "endpoint/person/education",
               "endpoint/person/skills",
-              "endpoint/person/languages"
+              "endpoint/person/languages",
+              "endpoint/person/recommendations",
+              "endpoint/person/certifications",
+              "endpoint/person/volunteering-experiences"
             ]
           },
           {
