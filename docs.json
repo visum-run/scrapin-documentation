@@ -11,7 +11,7 @@
   "navigation": {
     "versions": [
       {
-        "version": "1.0.0",
+        "version": "v1.0.0",
         "groups": [
           {
             "group": "Getting Started",
@@ -31,6 +31,59 @@
               "endpoint/person/recommendations",
               "endpoint/person/certifications",
               "endpoint/person/volunteering-experiences"
+            ]
+          },
+          {
+            "group": "Person Activities",
+            "pages": [
+              "endpoint/person/activities/posts",
+              "endpoint/person/activities/comments",
+              "endpoint/person/activities/reactions",
+              "endpoint/person/activities/post",
+              "endpoint/person/activities/post/comments",
+              "endpoint/person/activities/post/reactions",
+              "endpoint/person/activities/post/reposts"
+            ]
+          },
+          {
+            "group": "Company",
+            "pages": [
+              "endpoint/company/extract-profile",
+              "endpoint/company/search"
+            ]
+          },
+          {
+            "group": "Company Activities",
+            "pages": [
+              "endpoint/company/activities/posts",
+              "endpoint/company/activities/post",
+              "endpoint/company/activities/post/comments",
+              "endpoint/company/activities/post/reactions",
+              "endpoint/company/activities/post/reposts"
+            ]
+          },
+          {
+            "group": "Job",
+            "pages": ["endpoint/job/extract-data", "endpoint/job/search"]
+          },
+          {
+            "group": "Workspace",
+            "pages": ["endpoint/workspace/quotas"]
+          }
+        ]
+      },
+      {
+        "version": "v0(deprecated)",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": ["introduction", "quickstart"]
+          },
+          {
+            "group": "Person",
+            "pages": [
+              "endpoint/person/extract-profile",
+              "endpoint/person/search"
             ]
           },
           {
