@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": { "title": "ScrapIn API", "version": "1.1.0" },
-  "servers": [{ "url": "https://api.scrapin.io/v1" }],
+  "servers": [{ "url": "https://api.scrapin.io" }],
   "security": [{ "apiKey": [] }],
   "tags": [
     { "name": "Person" },
@@ -10,6 +10,68 @@
     { "name": "Workspaces" }
   ],
   "paths": {
+    "/enrichment": {
+      "get": {
+        "tags": ["Person"],
+        "operationId": "PersonSearch",
+        "summary": "Person Search",
+        "description": "This operation allows you to find a LinkedIn User based on first name, last name, company domain or email. It returns data profile and company information as the response. This operation consumes 1 credit.",
+        "parameters": [
+          {
+            "name": "firstName",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "This optional parameter is a string. It represents the first name to query."
+          },
+          {
+            "name": "lastName",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "This optional parameter is a string. It represents the last name to query."
+          },
+          {
+            "name": "companyDomain",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "This optional parameter is a string. It represents the company domain/URL to query"
+          },
+          {
+            "name": "companyName",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "This optional parameter is a string. It represents the company name to query"
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "This required parameter is a string. It represents the email to query."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The endpoint returns profile information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfileSearchResponseV0"
+                },
+                "examples": {
+                  "ProfileFound": {
+                    "$ref": "#/components/examples/ProfileSearchFoundV0"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
+    },
     "/enrichment/profile": {
       "get": {
         "tags": ["Person"],
@@ -31,284 +93,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProfileResponse"
+                  "$ref": "#/components/schemas/ProfileResponseV0"
                 },
                 "examples": {
                   "ProfileFound": {
-                    "$ref": "#/components/examples/ProfileFound"
-                  }
-                }
-              }
-            }
-          },
-          "400": { "$ref": "#/components/responses/BadRequest" },
-          "401": { "$ref": "#/components/responses/Unauthorized" },
-          "402": { "$ref": "#/components/responses/PaymentRequired" },
-          "404": { "$ref": "#/components/responses/NotFound" },
-          "500": { "$ref": "#/components/responses/ServerError" }
-        }
-      }
-    },
-    "/enrichment/resolve/email": {
-      "get": {
-        "tags": ["Person"],
-        "operationId": "GetProfileDataFromEmail",
-        "summary": "Get Profile Data From Email Address",
-        "description": "This operation allows you to get profile data from email address. It returns profile data with credits and rate limit information. This operation consumes 5 credit.",
-        "parameters": [
-          {
-            "name": "email",
-            "in": "query",
-            "schema": { "type": "string" },
-            "description": "This required parameter is a string. It represents the email to query.",
-            "required": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "The endpoint returns profile information.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProfileResponse"
-                },
-                "examples": {
-                  "ProfileFound": {
-                    "$ref": "#/components/examples/ProfileFound"
-                  }
-                }
-              }
-            }
-          },
-          "400": { "$ref": "#/components/responses/BadRequest" },
-          "401": { "$ref": "#/components/responses/Unauthorized" },
-          "402": { "$ref": "#/components/responses/PaymentRequired" },
-          "404": { "$ref": "#/components/responses/NotFound" },
-          "500": { "$ref": "#/components/responses/ServerError" }
-        }
-      }
-    },
-    "/enrichment/summary": {
-      "get": {
-        "tags": ["Person"],
-        "operationId": "GetSummary",
-        "summary": "Get Summary",
-        "description": "This operation allows you to get summary data. It returns a summary description with success status. This operation consumes 1 credit.",
-        "parameters": [
-          {
-            "name": "linkedInUrl",
-            "in": "query",
-            "schema": { "type": "string" },
-            "description": "This required parameter is a string. It represents the LinkedIn URL of the person with this format: https://www.linkedin.com/in/xxxxxxxxxxxxx/.",
-            "required": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "The endpoint returns summary information.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SummaryResponse"
-                },
-                "examples": {
-                  "SummaryFound": {
-                    "$ref": "#/components/examples/SummaryFound"
-                  }
-                }
-              }
-            }
-          },
-          "400": { "$ref": "#/components/responses/BadRequest" },
-          "401": { "$ref": "#/components/responses/Unauthorized" },
-          "402": { "$ref": "#/components/responses/PaymentRequired" },
-          "404": { "$ref": "#/components/responses/NotFound" },
-          "500": { "$ref": "#/components/responses/ServerError" }
-        }
-      }
-    },
-    "/enrichment/followers-count": {
-      "get": {
-        "tags": ["Person"],
-        "operationId": "GetFollowersCount",
-        "summary": "Get Followers Count",
-        "description": "This operation allows you to get the followers count data. It returns the followers count with success status. This operation consumes 1 credit.",
-        "parameters": [
-          {
-            "name": "linkedInUrl",
-            "in": "query",
-            "schema": { "type": "string" },
-            "description": "This required parameter is a string. It represents the LinkedIn URL of the person with this format: https://www.linkedin.com/in/xxxxxxxxxxxxx/.",
-            "required": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "The endpoint returns the followers count information.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/FollowersCountResponse"
-                },
-                "examples": {
-                  "FollowersCountFound": {
-                    "$ref": "#/components/examples/FollowersCountFound"
-                  }
-                }
-              }
-            }
-          },
-          "400": { "$ref": "#/components/responses/BadRequest" },
-          "401": { "$ref": "#/components/responses/Unauthorized" },
-          "402": { "$ref": "#/components/responses/PaymentRequired" },
-          "404": { "$ref": "#/components/responses/NotFound" },
-          "500": { "$ref": "#/components/responses/ServerError" }
-        }
-      }
-    },
-    "/enrichment/experience": {
-      "get": {
-        "tags": ["Person"],
-        "operationId": "GetExperience",
-        "summary": "Get Experience",
-        "description": "This operation allows you to get experience data including work positions. It returns experience information with credits and rate limit information. This operation consumes 1 credit.",
-        "parameters": [
-          {
-            "name": "linkedInUrl",
-            "in": "query",
-            "schema": { "type": "string" },
-            "description": "This required parameter is a string. It represents the LinkedIn URL of the person with this format: https://www.linkedin.com/in/xxxxxxxxxxxxx/.",
-            "required": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "The endpoint returns experience information including work positions.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ExperienceResponse"
-                },
-                "examples": {
-                  "ExperienceFound": {
-                    "$ref": "#/components/examples/ExperienceFound"
-                  }
-                }
-              }
-            }
-          },
-          "400": { "$ref": "#/components/responses/BadRequest" },
-          "401": { "$ref": "#/components/responses/Unauthorized" },
-          "402": { "$ref": "#/components/responses/PaymentRequired" },
-          "404": { "$ref": "#/components/responses/NotFound" },
-          "500": { "$ref": "#/components/responses/ServerError" }
-        }
-      }
-    },
-    "/enrichment/education": {
-      "get": {
-        "tags": ["Person"],
-        "operationId": "GetEducation",
-        "summary": "Get Education",
-        "description": "This operation allows you to get education data including schools and degrees. It returns education information with credits and rate limit information. This operation consumes 1 credit.",
-        "parameters": [
-          {
-            "name": "linkedInUrl",
-            "in": "query",
-            "schema": { "type": "string" },
-            "description": "This required parameter is a string. It represents the LinkedIn URL of the person with this format: https://www.linkedin.com/in/xxxxxxxxxxxxx/.",
-            "required": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "The endpoint returns education information including schools and degrees.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/EducationResponse"
-                },
-                "examples": {
-                  "EducationFound": {
-                    "$ref": "#/components/examples/EducationFound"
-                  }
-                }
-              }
-            }
-          },
-          "400": { "$ref": "#/components/responses/BadRequest" },
-          "401": { "$ref": "#/components/responses/Unauthorized" },
-          "402": { "$ref": "#/components/responses/PaymentRequired" },
-          "404": { "$ref": "#/components/responses/NotFound" },
-          "500": { "$ref": "#/components/responses/ServerError" }
-        }
-      }
-    },
-    "/enrichment/skills": {
-      "get": {
-        "tags": ["Person"],
-        "operationId": "GetSkills",
-        "summary": "Get Skills",
-        "description": "This operation allows you to get skills data including endorsement counts. It returns skills information with credits and rate limit information. This operation consumes 1 credit.",
-        "parameters": [
-          {
-            "name": "linkedInUrl",
-            "in": "query",
-            "schema": { "type": "string" },
-            "description": "This required parameter is a string. It represents the LinkedIn URL of the person with this format: https://www.linkedin.com/in/xxxxxxxxxxxxx/.",
-            "required": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "The endpoint returns skills information including endorsement counts.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SkillsResponse"
-                },
-                "examples": {
-                  "SkillsFound": {
-                    "$ref": "#/components/examples/SkillsFound"
-                  }
-                }
-              }
-            }
-          },
-          "400": { "$ref": "#/components/responses/BadRequest" },
-          "401": { "$ref": "#/components/responses/Unauthorized" },
-          "402": { "$ref": "#/components/responses/PaymentRequired" },
-          "404": { "$ref": "#/components/responses/NotFound" },
-          "500": { "$ref": "#/components/responses/ServerError" }
-        }
-      }
-    },
-    "/enrichment/languages": {
-      "get": {
-        "tags": ["Person"],
-        "operationId": "GetLanguages",
-        "summary": "Get Languages",
-        "description": "This operation allows you to get languages data including proficiency levels. It returns languages information with credits and rate limit information. This operation consumes 1 credit.",
-        "parameters": [
-          {
-            "name": "linkedInUrl",
-            "in": "query",
-            "schema": { "type": "string" },
-            "description": "This required parameter is a string. It represents the LinkedIn URL of the person with this format: https://www.linkedin.com/in/xxxxxxxxxxxxx/.",
-            "required": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "The endpoint returns languages information including proficiency levels.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/LanguagesResponse"
-                },
-                "examples": {
-                  "LanguagesFound": {
-                    "$ref": "#/components/examples/LanguagesFound"
+                    "$ref": "#/components/examples/ProfileFoundV0"
                   }
                 }
               }
@@ -1053,10 +842,1237 @@
           "500": { "$ref": "#/components/responses/ServerError" }
         }
       }
+    },
+    "/v1/enrichment/profile": {
+      "get": {
+        "tags": ["Person"],
+        "operationId": "GetProfileData",
+        "summary": "Get Profile Data",
+        "description": "This operation allows you to get profile data from an url. It returns profile data with credits and rate limit information. This operation consumes 1 credit.",
+        "parameters": [
+          {
+            "name": "linkedInUrl",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "This required parameter is a string. It represents the LinkedIn URL of the person with this format: https://www.linkedin.com/in/xxxxxxxxxxxxx/.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The endpoint returns profile information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfileResponse"
+                },
+                "examples": {
+                  "ProfileFound": {
+                    "$ref": "#/components/examples/ProfileFound"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
+    },
+    "/v1/enrichment/resolve/email": {
+      "get": {
+        "tags": ["Person"],
+        "operationId": "GetProfileDataFromEmail",
+        "summary": "Get Profile Data From Email Address",
+        "description": "This operation allows you to get profile data from email address. It returns profile data with credits and rate limit information. This operation consumes 5 credit.",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "This required parameter is a string. It represents the email to query.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The endpoint returns profile information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfileResponse"
+                },
+                "examples": {
+                  "ProfileFound": {
+                    "$ref": "#/components/examples/ProfileFound"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
+    },
+    "/v1/enrichment/summary": {
+      "get": {
+        "tags": ["Person"],
+        "operationId": "GetSummary",
+        "summary": "Get Summary",
+        "description": "This operation allows you to get summary data. It returns a summary description with success status. This operation consumes 1 credit.",
+        "parameters": [
+          {
+            "name": "linkedInUrl",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "This required parameter is a string. It represents the LinkedIn URL of the person with this format: https://www.linkedin.com/in/xxxxxxxxxxxxx/.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The endpoint returns summary information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SummaryResponse"
+                },
+                "examples": {
+                  "SummaryFound": {
+                    "$ref": "#/components/examples/SummaryFound"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
+    },
+    "/v1/enrichment/followers-count": {
+      "get": {
+        "tags": ["Person"],
+        "operationId": "GetFollowersCount",
+        "summary": "Get Followers Count",
+        "description": "This operation allows you to get the followers count data. It returns the followers count with success status. This operation consumes 1 credit.",
+        "parameters": [
+          {
+            "name": "linkedInUrl",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "This required parameter is a string. It represents the LinkedIn URL of the person with this format: https://www.linkedin.com/in/xxxxxxxxxxxxx/.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The endpoint returns the followers count information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FollowersCountResponse"
+                },
+                "examples": {
+                  "FollowersCountFound": {
+                    "$ref": "#/components/examples/FollowersCountFound"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
+    },
+    "/v1/enrichment/experience": {
+      "get": {
+        "tags": ["Person"],
+        "operationId": "GetExperience",
+        "summary": "Get Experience",
+        "description": "This operation allows you to get experience data including work positions. It returns experience information with credits and rate limit information. This operation consumes 1 credit.",
+        "parameters": [
+          {
+            "name": "linkedInUrl",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "This required parameter is a string. It represents the LinkedIn URL of the person with this format: https://www.linkedin.com/in/xxxxxxxxxxxxx/.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The endpoint returns experience information including work positions.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExperienceResponse"
+                },
+                "examples": {
+                  "ExperienceFound": {
+                    "$ref": "#/components/examples/ExperienceFound"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
+    },
+    "/v1/enrichment/education": {
+      "get": {
+        "tags": ["Person"],
+        "operationId": "GetEducation",
+        "summary": "Get Education",
+        "description": "This operation allows you to get education data including schools and degrees. It returns education information with credits and rate limit information. This operation consumes 1 credit.",
+        "parameters": [
+          {
+            "name": "linkedInUrl",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "This required parameter is a string. It represents the LinkedIn URL of the person with this format: https://www.linkedin.com/in/xxxxxxxxxxxxx/.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The endpoint returns education information including schools and degrees.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EducationResponse"
+                },
+                "examples": {
+                  "EducationFound": {
+                    "$ref": "#/components/examples/EducationFound"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
+    },
+    "/v1/enrichment/skills": {
+      "get": {
+        "tags": ["Person"],
+        "operationId": "GetSkills",
+        "summary": "Get Skills",
+        "description": "This operation allows you to get skills data including endorsement counts. It returns skills information with credits and rate limit information. This operation consumes 1 credit.",
+        "parameters": [
+          {
+            "name": "linkedInUrl",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "This required parameter is a string. It represents the LinkedIn URL of the person with this format: https://www.linkedin.com/in/xxxxxxxxxxxxx/.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The endpoint returns skills information including endorsement counts.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SkillsResponse"
+                },
+                "examples": {
+                  "SkillsFound": {
+                    "$ref": "#/components/examples/SkillsFound"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
+    },
+    "/v1/enrichment/languages": {
+      "get": {
+        "tags": ["Person"],
+        "operationId": "GetLanguages",
+        "summary": "Get Languages",
+        "description": "This operation allows you to get languages data including proficiency levels. It returns languages information with credits and rate limit information. This operation consumes 1 credit.",
+        "parameters": [
+          {
+            "name": "linkedInUrl",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "This required parameter is a string. It represents the LinkedIn URL of the person with this format: https://www.linkedin.com/in/xxxxxxxxxxxxx/.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The endpoint returns languages information including proficiency levels.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LanguagesResponse"
+                },
+                "examples": {
+                  "LanguagesFound": {
+                    "$ref": "#/components/examples/LanguagesFound"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
+    },
+    "/v1/enrichment/recommendations": {
+      "get": {
+        "tags": ["Person"],
+        "operationId": "GetRecommendations",
+        "summary": "Get Recommendations",
+        "description": "This operation allows you to get recommendations data from a LinkedIn profile. It returns recommendations information with credits and rate limit information. This operation consumes 1 credit.",
+        "parameters": [
+          {
+            "name": "linkedInUrl",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "This required parameter is a string. It represents the LinkedIn URL of the person with this format: https://www.linkedin.com/in/xxxxxxxxxxxxx/.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The endpoint returns recommendations information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RecommendationsResponse"
+                },
+                "examples": {
+                  "RecommendationsFound": {
+                    "$ref": "#/components/examples/RecommendationsFound"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
+    },
+    "/v1/enrichment/certifications": {
+      "get": {
+        "tags": ["Person"],
+        "operationId": "GetCertifications",
+        "summary": "Get Certifications",
+        "description": "This operation allows you to get certifications data from a LinkedIn profile. It returns certifications information with credits and rate limit information. This operation consumes 1 credit.",
+        "parameters": [
+          {
+            "name": "linkedInUrl",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "This required parameter is a string. It represents the LinkedIn URL of the person with this format: https://www.linkedin.com/in/xxxxxxxxxxxxx/.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The endpoint returns certifications information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CertificationsResponse"
+                },
+                "examples": {
+                  "CertificationsFound": {
+                    "$ref": "#/components/examples/CertificationsFound"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
+    },
+    "/v1/enrichment/volunteering-experiences": {
+      "get": {
+        "tags": ["Person"],
+        "operationId": "GetVolunteeringExperiences",
+        "summary": "Get Volunteering Experiences",
+        "description": "This operation allows you to get volunteering experiences data from a LinkedIn profile. It returns volunteering experiences information with credits and rate limit information. This operation consumes 1 credit.",
+        "parameters": [
+          {
+            "name": "linkedInUrl",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "This required parameter is a string. It represents the LinkedIn URL of the person with this format: https://www.linkedin.com/in/xxxxxxxxxxxxx/.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The endpoint returns volunteering experiences information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VolunteeringExperiencesResponse"
+                },
+                "examples": {
+                  "VolunteeringExperiencesFound": {
+                    "$ref": "#/components/examples/VolunteeringExperiencesFound"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
+    },
+    "/v1/enrichment/company/domain": {
+      "get": {
+        "tags": ["Company"],
+        "operationId": "CompanySearch",
+        "summary": "Company Search",
+        "description": "This operation allows you to find a company from its domain name. It returns company information as the response. This operation consumes 1 credit.",
+        "parameters": [
+          {
+            "name": "domain",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "This required parameter is a string. It represents the domain name of the company to query.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The endpoint returns information about the company.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CompanySearch"
+                },
+                "examples": {
+                  "CompanyFound": {
+                    "$ref": "#/components/examples/CompanyFound"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
+    },
+    "/v1/enrichment/company": {
+      "get": {
+        "tags": ["Company"],
+        "operationId": "ExtractCompanyDataProfile",
+        "summary": "Extract Company Data Profile",
+        "description": "This operation allows you to extract data from a Company LinkedIn URL. It returns company data as the response. This operation consumes 1 credit.",
+        "parameters": [
+          {
+            "name": "linkedInUrl",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "This required parameter is a string. It represents the LinkedIn URL of the company with this format: https://www.linkedin.com/company/xxxxxxxxxx/.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The endpoint returns information about the company.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExtractCompanyDataProfile"
+                },
+                "examples": {
+                  "CompanyFound": {
+                    "$ref": "#/components/examples/CompanyProfileExtracted"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
+    },
+    "/v1/enrichment/jobs/search": {
+      "get": {
+        "tags": ["Job"],
+        "operationId": "JobSearch",
+        "summary": "Extract Job Search Data",
+        "description": "This operation allows you to extract data from a Job Search by keywords, location and companyUrl filters. At least one of the input parameters is required. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. It returns a list of job data as the response. This operation consumes 1 credit.",
+        "parameters": [
+          {
+            "name": "keywords",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "This required parameter is a string. It represents the keywords contained by the job title.",
+            "required": false
+          },
+          {
+            "name": "location",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "This required parameter is a string. It represents the location of the job. It can be the city, the region of the country name.",
+            "required": false
+          },
+          {
+            "name": "companyUrl",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "This required parameter is a string. It represents the LinkedIn URL of the company with this format: https://www.linkedin.com/company/xxxxxxxxxx/.",
+            "required": false
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "enum": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+            },
+            "description": "This optional parameter is a string. It represents the page number of the results."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The endpoint returns a list of jobs.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/JobSearch" },
+                "examples": {
+                  "JobFound": {
+                    "$ref": "#/components/examples/JobListExtracted"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
+    },
+    "/v1/enrichment/jobs/details": {
+      "get": {
+        "tags": ["Job"],
+        "operationId": "ExtractJobData",
+        "summary": "Extract Job Data",
+        "description": "This operation allows you to extract data from a Job LinkedIn URL. It returns job data as the response. This operation consumes 1 credit.",
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "This required parameter is a string. It represents the LinkedIn URL of the job with the following formats: https://www.linkedin.com/jobs/collections/recommended/?currentJobId=XXXXXXXXXX, https://www.linkedin.com/jobs/search/?currentJobId=XXXXXXXXXX or https://www.linkedin.com/jobs/view/XXXXXXXXXX/.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The endpoint returns information about the job.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExtractJobData"
+                },
+                "examples": {
+                  "JobFound": {
+                    "$ref": "#/components/examples/JobExtracted"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
+    },
+    "/v1/enrichment/persons/activities/post": {
+      "get": {
+        "tags": ["Person"],
+        "operationId": "PersonsActivitiesPost",
+        "summary": "Get Person Activities Post",
+        "description": "This operation allows you to retrieve the LinkedIn activity post details of a person based on their activity post ID. This operation consumes 1 credit.",
+        "parameters": [
+          {
+            "name": "activityId",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "string" },
+            "description": "This parameter is a string. It represents the ID of the activity post you want to retrieve."
+          },
+          {
+            "name": "postId",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "string" },
+            "description": "This parameter is a string. It represents the ID of the post you want to retrieve."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The endpoint returns the LinkedIn activity post from activityId or postId",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ActivitiesPost"
+                },
+                "examples": {
+                  "Activities Post Found": {
+                    "$ref": "#/components/examples/ActivitiesPost"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
+    },
+    "/v1/enrichment/persons/activities/posts": {
+      "get": {
+        "tags": ["Person"],
+        "operationId": "PersonsActivitiesPosts",
+        "summary": "Get Person Activities Posts",
+        "description": "This operation allows you to retrieve the last 50 LinkedIn activity posts of a person based on their LinkedIn Profile URL. This operation consumes 1 credit.",
+        "parameters": [
+          {
+            "name": "linkedInUrl",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "This required parameter is a string. It represents LinkedIn Profile URL you want to retrieve all LinkedIn activity posts."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The endpoint returns the LinkedIn activity posts from LinkedIn Profile URL",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ActivitiesPosts"
+                },
+                "examples": {
+                  "Activities Posts Found": {
+                    "$ref": "#/components/examples/ActivitiesPosts"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
+    },
+    "/v1/enrichment/persons/activities/comments": {
+      "get": {
+        "tags": ["Person"],
+        "operationId": "PersonsActivitiesComments",
+        "summary": "Get Person Activities Comments",
+        "description": "This operation allows you to retrieve the last 50 LinkedIn activity comments of a person based on their LinkedIn Profile URL. This operation consumes 1 credit.",
+        "parameters": [
+          {
+            "name": "linkedInUrl",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "This required parameter is a string. It represents LinkedIn Profile URL you want to retrieve all LinkedIn activity comments."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The endpoint returns the LinkedIn activity comments from LinkedIn Profile URL",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ActivitiesComments"
+                },
+                "examples": {
+                  "Activities Comments Found": {
+                    "$ref": "#/components/examples/ActivitiesComments"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
+    },
+    "/v1/enrichment/persons/activities/reactions": {
+      "get": {
+        "tags": ["Person"],
+        "operationId": "PersonsActivitiesReactions",
+        "summary": "Get Person Activities Reactions",
+        "description": "This operation allows you to retrieve the last 50 LinkedIn activity reactions of a person based on their LinkedIn Profile URL. This operation consumes 1 credit.",
+        "parameters": [
+          {
+            "name": "linkedInUrl",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "This required parameter is a string. It represents LinkedIn Profile URL you want to retrieve all LinkedIn activity reactions."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The endpoint returns the LinkedIn activity reactions from LinkedIn Profile URL",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ActivitiesReactions"
+                },
+                "examples": {
+                  "Activities Reactions Found": {
+                    "$ref": "#/components/examples/ActivitiesReactions"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
+    },
+    "/v1/enrichment/persons/activities/post/comments": {
+      "get": {
+        "tags": ["Person"],
+        "operationId": "PersonsActivitiesPostComments",
+        "summary": "Get Person Activities Post Comments",
+        "description": "This operation allows you to retrieve all comments on LinkedIn activity post of a person based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.",
+        "parameters": [
+          {
+            "name": "activityId",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "This required parameter is a string. It represents the ID of the activity post you want to retrieve comments."
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "number" },
+            "description": "This optional parameter is a string. It represents the page number of the results."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The endpoint returns the LinkedIn activity post comments from activityId",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ActivitiesComment"
+                },
+                "examples": {
+                  "Activities Post Comments Found": {
+                    "$ref": "#/components/examples/ActivitiesComment"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
+    },
+    "/v1/enrichment/persons/activities/post/reactions": {
+      "get": {
+        "tags": ["Person"],
+        "operationId": "PersonsActivitiesPostReactions",
+        "summary": "Get Person Activities Post Reactions",
+        "description": "This operation allows you to retrieve all reactions on LinkedIn activity post of a person based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.",
+        "parameters": [
+          {
+            "name": "activityId",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "This required parameter is a string. It represents the ID of the activity post you want to retrieve reactions."
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "number" },
+            "description": "This optional parameter is a string. It represents the page number of the results."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The endpoint returns the LinkedIn activity post reactions from activityId",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ActivitiesReaction"
+                },
+                "examples": {
+                  "Activities Post Reactions Found": {
+                    "$ref": "#/components/examples/ActivitiesReaction"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
+    },
+    "/v1/enrichment/persons/activities/post/reposts": {
+      "get": {
+        "tags": ["Person"],
+        "operationId": "PersonsActivitiesPostReposts",
+        "summary": "Get Person Activities Post Reposts",
+        "description": "This operation allows you to retrieve all reposts on LinkedIn activity post of a person based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.",
+        "parameters": [
+          {
+            "name": "activityId",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "This required parameter is a string. It represents the ID of the activity post you want to retrieve reposts."
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "number" },
+            "description": "This optional parameter is a string. It represents the page number of the results."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The endpoint returns the LinkedIn activity post reposts from activityId",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ActivitiesRepost"
+                },
+                "examples": {
+                  "Activities Post Reposts Found": {
+                    "$ref": "#/components/examples/ActivitiesRepost"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
+    },
+    "/v1/enrichment/companies/activities/post": {
+      "get": {
+        "tags": ["Company"],
+        "operationId": "CompaniesActivitiesPost",
+        "summary": "Get Company Activities Post",
+        "description": "This operation allows you to retrieve the LinkedIn activity post details of a company based on their activity post ID. This operation consumes 1 credit.",
+        "parameters": [
+          {
+            "name": "activityId",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "This required parameter is a string. It represents the ID of the activity post you want to retrieve."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The endpoint returns the LinkedIn activity post from activityId",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ActivitiesPost"
+                },
+                "examples": {
+                  "Activities Post Found": {
+                    "$ref": "#/components/examples/ActivitiesPost"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
+    },
+    "/v1/enrichment/companies/activities/posts": {
+      "get": {
+        "tags": ["Company"],
+        "operationId": "CompaniesActivitiesPosts",
+        "summary": "Get Company Activities Posts",
+        "description": "This operation allows you to retrieve all LinkedIn activity posts of a company based on their LinkedIn Profile URL. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.",
+        "parameters": [
+          {
+            "name": "linkedInUrl",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "This required parameter is a string. It represents LinkedIn Profile URL you want to retrieve all LinkedIn activity posts."
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "number" },
+            "description": "This optional parameter is a string. It represents the page number of the results."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The endpoint returns the LinkedIn activity posts from LinkedIn Profile URL",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CompanyActivitiesPosts"
+                },
+                "examples": {
+                  "Activities Posts Found": {
+                    "$ref": "#/components/examples/CompanyActivitiesPosts"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
+    },
+    "/v1/enrichment/companies/activities/post/comments": {
+      "get": {
+        "tags": ["Company"],
+        "operationId": "CompaniesActivitiesPostComments",
+        "summary": "Get Company Activities Post Comments",
+        "description": "This operation allows you to retrieve all comments on LinkedIn activity post of a company based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.",
+        "parameters": [
+          {
+            "name": "activityId",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "This required parameter is a string. It represents the ID of the activity post you want to retrieve comments."
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "number" },
+            "description": "This optional parameter is a string. It represents the page number of the results."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The endpoint returns the LinkedIn activity post comments from activityId",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ActivitiesComment"
+                },
+                "examples": {
+                  "Activities Post Comments Found": {
+                    "$ref": "#/components/examples/ActivitiesComment"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
+    },
+    "/v1/enrichment/companies/activities/post/reactions": {
+      "get": {
+        "tags": ["Company"],
+        "operationId": "CompaniesActivitiesPostReactions",
+        "summary": "Get Company Activities Post Reactions",
+        "description": "This operation allows you to retrieve all reactions on LinkedIn activity post of a company based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.",
+        "parameters": [
+          {
+            "name": "activityId",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "This required parameter is a string. It represents the ID of the activity post you want to retrieve reactions."
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "number" },
+            "description": "This optional parameter is a string. It represents the page number of the results."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The endpoint returns the LinkedIn activity post reactions from activityId",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ActivitiesReaction"
+                },
+                "examples": {
+                  "Activities Post Reactions Found": {
+                    "$ref": "#/components/examples/ActivitiesReaction"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
+    },
+    "/v1/enrichment/companies/activities/post/reposts": {
+      "get": {
+        "tags": ["Company"],
+        "operationId": "CompaniesActivitiesPostReposts",
+        "summary": "Get Company Activities Post Reposts",
+        "description": "This operation allows you to retrieve all reposts on LinkedIn activity post of a company based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.",
+        "parameters": [
+          {
+            "name": "activityId",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "This required parameter is a string. It represents the ID of the activity post you want to retrieve reposts."
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "number" },
+            "description": "This optional parameter is a string. It represents the page number of the results."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The endpoint returns the LinkedIn activity post reposts from activityId",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ActivitiesRepost"
+                },
+                "examples": {
+                  "Activities Post Reposts Found": {
+                    "$ref": "#/components/examples/ActivitiesRepost"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
+    },
+    "/v1/workspaces/quotas": {
+      "get": {
+        "tags": ["Workspaces"],
+        "operationId": "WorkspacesQuotas",
+        "summary": "Workspaces Quotas",
+        "description": "This endpoint retrieves the quotas for a specific workspace, including the remaining credits (credits_left) and rate limit (rate_limit_left). It is designed to help monitor resource availability and ensure proper usage within the workspace.",
+        "responses": {
+          "200": {
+            "description": "The endpoint returns information about the workspace quotas, including remaining credits (credits_left) and rate limit (rate_limit_left).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkspacesQuotas"
+                },
+                "examples": {
+                  "QuotasFound": {
+                    "$ref": "#/components/examples/QuotasFound"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
+      "ProfileSearchResponseV0": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Indicates success or failure of api request."
+          },
+          "email": {
+            "type": "string",
+            "description": "Represents the email of the person account that was queried"
+          },
+          "emailType": {
+            "type": "string",
+            "description": "Represents the type of account."
+          },
+          "person": {
+            "oneOf": [
+              { "$ref": "#/components/schemas/Person" },
+              { "type": "boolean", "enum": [false] }
+            ]
+          },
+          "company": {
+            "oneOf": [
+              { "$ref": "#/components/schemas/Company" },
+              { "type": "boolean", "enum": [false] }
+            ]
+          },
+          "credits_left": {
+            "type": "integer",
+            "description": "Represents the usable credits available for the user account after this query."
+          },
+          "rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          }
+        }
+      },
+      "ProfileResponseV0": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Indicates success or failure of api request."
+          },
+          "credits_left": {
+            "type": "integer",
+            "description": "The usable credits available for the user account after this query."
+          },
+          "rate_limit_left": {
+            "type": "integer",
+            "description": "The usable daily request limit available for the user account after this query."
+          },
+          "person": {
+            "oneOf": [
+              { "$ref": "#/components/schemas/Person" },
+              { "type": "boolean", "enum": [false] }
+            ]
+          },
+          "company": {
+            "oneOf": [
+              { "$ref": "#/components/schemas/Company" },
+              { "type": "boolean", "enum": [false] }
+            ]
+          }
+        }
+      },
       "ProfileResponse": {
         "type": "object",
         "properties": {
@@ -2219,6 +3235,50 @@
           }
         }
       },
+      "Recommendation": {
+        "type": "object",
+        "properties": {
+          "caption": {
+            "type": "string",
+            "description": "Caption or context of the recommendation"
+          },
+          "description": {
+            "type": "string",
+            "description": "Full text of the recommendation"
+          },
+          "authorFullname": {
+            "type": "string",
+            "description": "Full name of the recommendation author"
+          },
+          "authorUrl": {
+            "type": "string",
+            "format": "uri",
+            "description": "LinkedIn URL of the recommendation author"
+          }
+        }
+      },
+      "RecommendationsResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Indicates success or failure of api request."
+          },
+          "credits_left": {
+            "type": "integer",
+            "description": "Represents the usable credits available for the user account after this query."
+          },
+          "rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "recommendations": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/Recommendation" },
+            "description": "Array of recommendations"
+          }
+        }
+      },
       "RepostV2": {
         "properties": {
           "activityDate": {
@@ -2477,9 +3537,388 @@
           "title": { "type": "string" },
           "msg": { "type": "string" }
         }
+      },
+      "Certification": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the certification"
+          },
+          "organizationName": {
+            "type": "string",
+            "description": "Name of the organization that issued the certification"
+          },
+          "organizationUrl": {
+            "type": "string",
+            "format": "uri",
+            "description": "LinkedIn URL of the organization"
+          },
+          "issuedDate": {
+            "type": "string",
+            "description": "Date when the certification was issued"
+          }
+        }
+      },
+      "CertificationsResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Indicates success or failure of api request."
+          },
+          "credits_left": {
+            "type": "integer",
+            "description": "Represents the usable credits available for the user account after this query."
+          },
+          "rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "certifications": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/Certification" },
+            "description": "Array of certifications"
+          }
+        }
+      },
+      "VolunteeringExperience": {
+        "type": "object",
+        "properties": {
+          "organizationName": {
+            "type": "string",
+            "description": "Name of the organization where volunteering took place"
+          },
+          "role": {
+            "type": "string",
+            "description": "Role or position held during volunteering"
+          },
+          "cause": {
+            "type": "string",
+            "description": "Cause or area of focus for the volunteering work"
+          },
+          "period": {
+            "type": "string",
+            "description": "Time period of the volunteering experience"
+          }
+        }
+      },
+      "VolunteeringExperiencesResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Indicates success or failure of api request."
+          },
+          "credits_left": {
+            "type": "integer",
+            "description": "Represents the usable credits available for the user account after this query."
+          },
+          "rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "volunteeringExperiences": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/VolunteeringExperience" },
+            "description": "Array of volunteering experiences"
+          }
+        }
       }
     },
     "examples": {
+      "ProfileSearchFoundV0": {
+        "summary": "Profile Found",
+        "value": {
+          "success": true,
+          "email": "bill.gates@microsoft.com",
+          "emailType": "professional",
+          "credits_left": 90000,
+          "rate_limit_left": 19000,
+          "person": {
+            "publicIdentifier": "williamhgates",
+            "memberIdentifier": "251749025",
+            "linkedInIdentifier": "ACoAAA8BYqEBCGLg_vT_ca6mMEqkpp9nVffJ3hc",
+            "linkedInUrl": "https://www.linkedin.com/in/williamhgates",
+            "firstName": "Bill",
+            "lastName": "Gates",
+            "headline": "Co-chair, Bill & Melinda Gates Foundation",
+            "location": "Seattle, Washington, United States of America",
+            "summary": "Co-chair of the Bill & Melinda Gates Foundation. Founder of Breakthrough Energy. Co-founder of Microsoft. Voracious reader. Avid traveler. Active blogger.",
+            "photoUrl": "https://media.licdn.com/dms/image/D5603AQHv6LsdiUg1kw/profile-displayphoto-shrink_800_800/0/1695167344576?e=1723680000&v=beta&t=NcEpysYwCpQ_NBg0QTz_a265pEOhfGICFJUX92-KNpw",
+            "backgroundUrl": "https://media.licdn.com/dms/image/v2/D5616AQHy2R5tyt2YUA/profile-displaybackgroundimage-shrink_350_1400/profile-displaybackgroundimage-shrink_350_1400/0/1672782785474?e=1731542400&v=beta&t=0HWY04xeK0kEQngJOje3yNudJ6eTvNz2Q2HrTRB4hO8",
+            "openToWork": false,
+            "premium": false,
+            "creationDate": { "month": 5, "year": 2013 },
+            "followerCount": 35415,
+            "positions": {
+              "positionsCount": 3,
+              "positionHistory": [
+                {
+                  "title": "Co-chair",
+                  "companyName": "Bill & Melinda Gates Foundation",
+                  "description": "",
+                  "startEndDate": {
+                    "start": { "month": 1, "year": 2000 },
+                    "end": null
+                  },
+                  "companyLogo": "https://media.licdn.com/dms/image/C4E0BAQE7Na_mKQhIJg/company-logo_400_400/0/1633731811337/bill__melinda_gates_foundation_logo?e=1726099200&v=beta&t=LIgstVg1oR5LmBl9u1kolb_xeOqs5kX1ZTcUpaEtsE4",
+                  "linkedInUrl": "https://www.linkedin.com/company/8736/",
+                  "linkedInId": "8736"
+                },
+                {
+                  "title": "Founder",
+                  "companyName": "Breakthrough Energy",
+                  "description": "",
+                  "startEndDate": {
+                    "start": { "month": 1, "year": 2015 },
+                    "end": null
+                  },
+                  "companyLogo": "https://media.licdn.com/dms/image/C4D0BAQGwD9vNu044FA/company-logo_400_400/0/1630531940051/breakthrough_energy_ventures_logo?e=1726099200&v=beta&t=DIU32ElAkeY4aqcq_9uJTAhiZI-v0GoOX77409cLZRE",
+                  "linkedInUrl": "https://www.linkedin.com/company/19141006/",
+                  "linkedInId": "19141006"
+                },
+                {
+                  "title": "Co-founder",
+                  "companyName": "Microsoft",
+                  "description": "",
+                  "startEndDate": {
+                    "start": { "month": 1, "year": 1975 },
+                    "end": null
+                  },
+                  "companyLogo": "https://media.licdn.com/dms/image/C560BAQE88xCsONDULQ/company-logo_400_400/0/1630652622688/microsoft_logo?e=1726099200&v=beta&t=zueWlWXcJ4WjwGSzlUWgPOnjoAm8C2KfSIcWWHxWrGg",
+                  "linkedInUrl": "https://www.linkedin.com/company/1035/",
+                  "linkedInId": "1035"
+                }
+              ]
+            },
+            "schools": {
+              "educationsCount": 2,
+              "educationHistory": [
+                {
+                  "degreeName": "",
+                  "fieldOfStudy": "",
+                  "description": null,
+                  "linkedInUrl": "https://www.linkedin.com/company/1646/",
+                  "schoolLogo": "https://media.licdn.com/dms/image/C4E0BAQF5t62bcL0e9g/company-logo_400_400/0/1631318058235?e=1726099200&v=beta&t=tSGQKfAlig70DD9n2_xkYR54yBTf7K3aKsau8PMQSVM",
+                  "schoolName": "Harvard University",
+                  "startEndDate": {
+                    "start": { "month": 1, "year": 1973 },
+                    "end": { "month": 1, "year": 1975 }
+                  }
+                },
+                {
+                  "degreeName": "",
+                  "fieldOfStudy": "",
+                  "description": null,
+                  "linkedInUrl": "https://www.linkedin.com/company/30288/",
+                  "schoolLogo": "https://media.licdn.com/dms/image/D560BAQGFmOQmzpxg9A/company-logo_400_400/0/1683732883164/lakeside_school_logo?e=1726099200&v=beta&t=cylwvrQe7Q4N8oU1hotzPfrae8yxPuzdtG1ocBSuEmA",
+                  "schoolName": "Lakeside School",
+                  "startEndDate": {
+                    "start": { "month": null, "year": null },
+                    "end": { "month": null, "year": null }
+                  }
+                }
+              ]
+            },
+            "skills": [],
+            "languages": []
+          },
+          "company": {
+            "linkedInId": "1035",
+            "name": "Microsoft",
+            "universalName": "microsoft",
+            "linkedInUrl": "https://www.linkedin.com/company/1035",
+            "employeeCount": 228581,
+            "employeeCountRange": { "start": 10001, "end": 1 },
+            "websiteUrl": "https://news.microsoft.com/",
+            "tagline": null,
+            "description": "Every company has a mission. What's ours? To empower every person and every organization to achieve more. We believe technology can and should be a force for good and that meaningful innovation contributes to a brighter world in the future and today. Our culture doesn't just encourage curiosity; it embraces it. Each day we make progress together by showing up as our authentic selves. We show up with a learn-it-all mentality. We show up cheering on others, knowing their success doesn't diminish our own. We show up every day open to learning our own biases, changing our behavior, and inviting in differences. Because impact matters.\n\nMicrosoft operates in 190 countries and is made up of more than 220,000 passionate employees worldwide.\n",
+            "industry": "Software Development",
+            "phone": null,
+            "specialities": [
+              "Business Software",
+              "Developer Tools",
+              "Home & Educational Software",
+              "Tablets",
+              "Search",
+              "Advertising",
+              "Servers",
+              "Windows Operating System",
+              "Windows Applications & Platforms",
+              "Smartphones",
+              "Cloud Computing",
+              "Quantum Computing",
+              "Future of Work",
+              "Productivity",
+              "AI",
+              "Artificial Intelligence",
+              "Machine Learning",
+              "Laptops",
+              "Mixed Reality",
+              "Virtual Reality",
+              "Gaming",
+              "Developers",
+              "IT Professional"
+            ],
+            "followerCount": 22736947,
+            "headquarter": {
+              "city": "Redmond",
+              "country": "US",
+              "postalCode": "98052",
+              "geographicArea": "Washington",
+              "street1": "1 Microsoft Way",
+              "street2": null
+            },
+            "logo": "https://media.licdn.com/dms/image/C560BAQE88xCsONDULQ/company-logo_400_400/0/1630652622688/microsoft_logo?e=1725494400&v=beta&t=joSXHhDAEare7f9gk8MwXr2sOr84zX7HDx2h5znXEYI"
+          }
+        }
+      },
+      "ProfileFoundV0": {
+        "summary": "Person Profile Extracted",
+        "value": {
+          "success": true,
+          "credits_left": 90000,
+          "rate_limit_left": 19000,
+          "person": {
+            "publicIdentifier": "williamhgates",
+            "memberIdentifier": "251749025",
+            "linkedInIdentifier": "ACoAAA8BYqEBCGLg_vT_ca6mMEqkpp9nVffJ3hc",
+            "linkedInUrl": "https://www.linkedin.com/in/williamhgates",
+            "firstName": "Bill",
+            "lastName": "Gates",
+            "headline": "Co-chair, Bill & Melinda Gates Foundation",
+            "location": "Seattle, Washington, United States of America",
+            "summary": "Co-chair of the Bill & Melinda Gates Foundation. Founder of Breakthrough Energy. Co-founder of Microsoft. Voracious reader. Avid traveler. Active blogger.",
+            "photoUrl": "https://media.licdn.com/dms/image/D5603AQHv6LsdiUg1kw/profile-displayphoto-shrink_800_800/0/1695167344576?e=1723680000&v=beta&t=NcEpysYwCpQ_NBg0QTz_a265pEOhfGICFJUX92-KNpw",
+            "backgroundUrl": "https://media.licdn.com/dms/image/v2/D5616AQHy2R5tyt2YUA/profile-displaybackgroundimage-shrink_350_1400/profile-displaybackgroundimage-shrink_350_1400/0/1672782785474?e=1731542400&v=beta&t=0HWY04xeK0kEQngJOje3yNudJ6eTvNz2Q2HrTRB4hO8",
+            "openToWork": false,
+            "premium": false,
+            "creationDate": { "month": 5, "year": 2013 },
+            "followerCount": 35415,
+            "positions": {
+              "positionsCount": 3,
+              "positionHistory": [
+                {
+                  "title": "Co-chair",
+                  "companyName": "Bill & Melinda Gates Foundation",
+                  "description": "",
+                  "startEndDate": {
+                    "start": { "month": 1, "year": 2000 },
+                    "end": null
+                  },
+                  "companyLogo": "https://media.licdn.com/dms/image/C4E0BAQE7Na_mKQhIJg/company-logo_400_400/0/1633731811337/bill__melinda_gates_foundation_logo?e=1726099200&v=beta&t=LIgstVg1oR5LmBl9u1kolb_xeOqs5kX1ZTcUpaEtsE4",
+                  "linkedInUrl": "https://www.linkedin.com/company/8736/",
+                  "linkedInId": "8736"
+                },
+                {
+                  "title": "Founder",
+                  "companyName": "Breakthrough Energy",
+                  "description": "",
+                  "startEndDate": {
+                    "start": { "month": 1, "year": 2015 },
+                    "end": null
+                  },
+                  "companyLogo": "https://media.licdn.com/dms/image/C4D0BAQGwD9vNu044FA/company-logo_400_400/0/1630531940051/breakthrough_energy_ventures_logo?e=1726099200&v=beta&t=DIU32ElAkeY4aqcq_9uJTAhiZI-v0GoOX77409cLZRE",
+                  "linkedInUrl": "https://www.linkedin.com/company/19141006/",
+                  "linkedInId": "19141006"
+                },
+                {
+                  "title": "Co-founder",
+                  "companyName": "Microsoft",
+                  "description": "",
+                  "startEndDate": {
+                    "start": { "month": 1, "year": 1975 },
+                    "end": null
+                  },
+                  "companyLogo": "https://media.licdn.com/dms/image/C560BAQE88xCsONDULQ/company-logo_400_400/0/1630652622688/microsoft_logo?e=1726099200&v=beta&t=zueWlWXcJ4WjwGSzlUWgPOnjoAm8C2KfSIcWWHxWrGg",
+                  "linkedInUrl": "https://www.linkedin.com/company/1035/",
+                  "linkedInId": "1035"
+                }
+              ]
+            },
+            "schools": {
+              "educationsCount": 2,
+              "educationHistory": [
+                {
+                  "degreeName": "",
+                  "fieldOfStudy": "",
+                  "description": null,
+                  "linkedInUrl": "https://www.linkedin.com/company/1646/",
+                  "schoolLogo": "https://media.licdn.com/dms/image/C4E0BAQF5t62bcL0e9g/company-logo_400_400/0/1631318058235?e=1726099200&v=beta&t=tSGQKfAlig70DD9n2_xkYR54yBTf7K3aKsau8PMQSVM",
+                  "schoolName": "Harvard University",
+                  "startEndDate": {
+                    "start": { "month": 1, "year": 1973 },
+                    "end": { "month": 1, "year": 1975 }
+                  }
+                },
+                {
+                  "degreeName": "",
+                  "fieldOfStudy": "",
+                  "description": null,
+                  "linkedInUrl": "https://www.linkedin.com/company/30288/",
+                  "schoolLogo": "https://media.licdn.com/dms/image/D560BAQGFmOQmzpxg9A/company-logo_400_400/0/1683732883164/lakeside_school_logo?e=1726099200&v=beta&t=cylwvrQe7Q4N8oU1hotzPfrae8yxPuzdtG1ocBSuEmA",
+                  "schoolName": "Lakeside School",
+                  "startEndDate": {
+                    "start": { "month": null, "year": null },
+                    "end": { "month": null, "year": null }
+                  }
+                }
+              ]
+            },
+            "skills": [],
+            "languages": []
+          },
+          "company": {
+            "linkedInId": "1035",
+            "name": "Microsoft",
+            "universalName": "microsoft",
+            "linkedInUrl": "https://www.linkedin.com/company/1035",
+            "employeeCount": 228581,
+            "employeeCountRange": { "start": 10001, "end": 1 },
+            "websiteUrl": "https://news.microsoft.com/",
+            "tagline": null,
+            "description": "Every company has a mission. What's ours? To empower every person and every organization to achieve more. We believe technology can and should be a force for good and that meaningful innovation contributes to a brighter world in the future and today. Our culture doesn't just encourage curiosity; it embraces it. Each day we make progress together by showing up as our authentic selves. We show up with a learn-it-all mentality. We show up cheering on others, knowing their success doesn't diminish our own. We show up every day open to learning our own biases, changing our behavior, and inviting in differences. Because impact matters.\n\nMicrosoft operates in 190 countries and is made up of more than 220,000 passionate employees worldwide.\n",
+            "industry": "Software Development",
+            "phone": null,
+            "specialities": [
+              "Business Software",
+              "Developer Tools",
+              "Home & Educational Software",
+              "Tablets",
+              "Search",
+              "Advertising",
+              "Servers",
+              "Windows Operating System",
+              "Windows Applications & Platforms",
+              "Smartphones",
+              "Cloud Computing",
+              "Quantum Computing",
+              "Future of Work",
+              "Productivity",
+              "AI",
+              "Artificial Intelligence",
+              "Machine Learning",
+              "Laptops",
+              "Mixed Reality",
+              "Virtual Reality",
+              "Gaming",
+              "Developers",
+              "IT Professional"
+            ],
+            "followerCount": 22736947,
+            "headquarter": {
+              "city": "Redmond",
+              "country": "US",
+              "postalCode": "98052",
+              "geographicArea": "Washington",
+              "street1": "1 Microsoft Way",
+              "street2": null
+            },
+            "logo": "https://media.licdn.com/dms/image/C560BAQE88xCsONDULQ/company-logo_400_400/0/1630652622688/microsoft_logo?e=1725494400&v=beta&t=joSXHhDAEare7f9gk8MwXr2sOr84zX7HDx2h5znXEYI"
+          }
+        }
+      },
       "ProfileFound": {
         "summary": "Profile Found",
         "value": {
@@ -2690,6 +4129,72 @@
             {
               "language": "Japanese",
               "proficiency": "Elementary proficiency"
+            }
+          ]
+        }
+      },
+      "RecommendationsFound": {
+        "summary": "Recommendations Found",
+        "value": {
+          "success": true,
+          "credits_left": 90000,
+          "rate_limit_left": 19000,
+          "recommendations": [
+            {
+              "caption": "August 18, 2020, Michael was Tom's client",
+              "description": "Michael is very talented when it comes to founding and growing tech businesses, it's very impressive what he has achieved to date. I worked with him to implement a number of outbound marketing campaigns that delivered on both new leads and revenue. He was a joy to work with, his energy and enthusiasm was infectious. I'm sure we'll work together again in the near future.",
+              "authorFullname": "Tom Kelly",
+              "authorUrl": "https://www.linkedin.com/in/tomkelly25"
+            },
+            {
+              "caption": "February 4, 2016, Catalina worked with Michael on the same team",
+              "description": "Michael is an exceptionally well skilled business and sales person. His ability to make people feel good, comfortable and cared for, during the sales process, is truly remarkable. The social skills, combined with a genuine curiosity and passion for his job, also make him a great co-worker. I would personally recommend him to any growing startup who needs a truly talented biz dev guy, with a passion for all things tech. I hope to work with Michael in the future, but above all, I will be grateful for having learned from him what it is like to be highly engaging and personable as a professional.",
+              "authorFullname": "Catalina B.",
+              "authorUrl": "https://www.linkedin.com/in/catalinabutnaru"
+            },
+            {
+              "caption": "October 28, 2015, Dr. Christian worked with Michael on the same team",
+              "description": "I had the pleasure to work with Michael in a team for commodity market analysis. Michael takes a holistic way of thinking but keeps an eye on specific details of a topic. He is not afraid to take unknown paths and think in new directions. Very impressive is his continuous motivation, which supports the overall team spirit. It is simply inspiring to work with such a collaborative and diligent personality. Michael is an enrichment for every employer.",
+              "authorFullname": "Dr. Christian Muntz, CFA",
+              "authorUrl": "https://www.linkedin.com/in/dr-christian-muntz-cfa-b4b16b92"
+            }
+          ]
+        }
+      },
+      "CertificationsFound": {
+        "summary": "Certifications Found",
+        "value": {
+          "success": true,
+          "credits_left": 90000,
+          "rate_limit_left": 19000,
+          "certifications": [
+            {
+              "name": "AWS Certified Solutions Architect",
+              "organizationName": "Amazon Web Services (AWS)",
+              "organizationUrl": "https://www.linkedin.com/company/amazon-web-services/",
+              "issuedDate": "Jan 2023"
+            },
+            {
+              "name": "Google Cloud Professional Data Engineer",
+              "organizationName": "Google Cloud",
+              "organizationUrl": "https://www.linkedin.com/company/google-cloud/",
+              "issuedDate": "Mar 2022"
+            }
+          ]
+        }
+      },
+      "VolunteeringExperiencesFound": {
+        "summary": "Volunteering Experiences Found",
+        "value": {
+          "success": true,
+          "credits_left": 90000,
+          "rate_limit_left": 19000,
+          "volunteeringExperiences": [
+            {
+              "organizationName": "Humanitarian Aid NGO",
+              "role": "Volunteer",
+              "cause": "Arts and Culture",
+              "period": "Jan 2014 - Present · 11 yrs 7 mos"
             }
           ]
         }
