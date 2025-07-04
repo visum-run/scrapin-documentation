@@ -73,7 +73,7 @@
         ]
       },
       {
-        "version": "v0(deprecated)",
+        "version": "v0",
         "groups": [
           {
             "group": "Getting Started",
