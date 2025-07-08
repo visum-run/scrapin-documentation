@@ -2041,6 +2041,18 @@
           "rate_limit_left": {
             "type": "integer",
             "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "daily_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "minute_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable minute request limit available for the user account after this query."
+          },
+          "next_minute_rate_limit_reset": {
+            "type": "integer",
+            "description": "Represents the next minute rate limit reset for the user account after this query."
           }
         }
       },
@@ -2058,6 +2070,18 @@
           "rate_limit_left": {
             "type": "integer",
             "description": "The usable daily request limit available for the user account after this query."
+          },
+          "daily_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "minute_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable minute request limit available for the user account after this query."
+          },
+          "next_minute_rate_limit_reset": {
+            "type": "integer",
+            "description": "Represents the next minute rate limit reset for the user account after this query."
           },
           "person": {
             "oneOf": [
@@ -2087,6 +2111,18 @@
           "rate_limit_left": {
             "type": "integer",
             "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "daily_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "minute_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable minute request limit available for the user account after this query."
+          },
+          "next_minute_rate_limit_reset": {
+            "type": "integer",
+            "description": "Represents the next minute rate limit reset for the user account after this query."
           },
           "person": {
             "$ref": "#/components/schemas/PersonProfile"
@@ -2189,6 +2225,18 @@
             "type": "integer",
             "description": "Represents the usable daily request limit available for the user account after this query."
           },
+          "daily_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "minute_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable minute request limit available for the user account after this query."
+          },
+          "next_minute_rate_limit_reset": {
+            "type": "integer",
+            "description": "Represents the next minute rate limit reset for the user account after this query."
+          },
           "summary": {
             "type": "string",
             "description": "A summary description of the person or entity."
@@ -2210,6 +2258,18 @@
             "type": "integer",
             "description": "Represents the usable daily request limit available for the user account after this query."
           },
+          "daily_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "minute_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable minute request limit available for the user account after this query."
+          },
+          "next_minute_rate_limit_reset": {
+            "type": "integer",
+            "description": "Represents the next minute rate limit reset for the user account after this query."
+          },
           "followersCount": {
             "type": "string",
             "description": "The number of followers of the person."
@@ -2230,6 +2290,18 @@
           "rate_limit_left": {
             "type": "integer",
             "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "daily_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "minute_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable minute request limit available for the user account after this query."
+          },
+          "next_minute_rate_limit_reset": {
+            "type": "integer",
+            "description": "Represents the next minute rate limit reset for the user account after this query."
           },
           "positions": {
             "type": "array",
@@ -2304,6 +2376,18 @@
             "type": "integer",
             "description": "Represents the usable daily request limit available for the user account after this query."
           },
+          "daily_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "minute_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable minute request limit available for the user account after this query."
+          },
+          "next_minute_rate_limit_reset": {
+            "type": "integer",
+            "description": "Represents the next minute rate limit reset for the user account after this query."
+          },
           "schools": {
             "type": "array",
             "items": { "$ref": "#/components/schemas/School" },
@@ -2361,6 +2445,18 @@
             "type": "integer",
             "description": "Represents the usable daily request limit available for the user account after this query."
           },
+          "daily_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "minute_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable minute request limit available for the user account after this query."
+          },
+          "next_minute_rate_limit_reset": {
+            "type": "integer",
+            "description": "Represents the next minute rate limit reset for the user account after this query."
+          },
           "skills": {
             "type": "array",
             "items": { "$ref": "#/components/schemas/Skill" },
@@ -2396,6 +2492,18 @@
           "rate_limit_left": {
             "type": "integer",
             "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "daily_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "minute_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable minute request limit available for the user account after this query."
+          },
+          "next_minute_rate_limit_reset": {
+            "type": "integer",
+            "description": "Represents the next minute rate limit reset for the user account after this query."
           },
           "languages": {
             "type": "array",
@@ -2637,6 +2745,18 @@
             "type": "integer",
             "description": "Represents the usable daily request limit available for the user account after this query."
           },
+          "daily_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "minute_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable minute request limit available for the user account after this query."
+          },
+          "next_minute_rate_limit_reset": {
+            "type": "integer",
+            "description": "Represents the next minute rate limit reset for the user account after this query."
+          },
           "company": {
             "oneOf": [
               { "$ref": "#/components/schemas/Company" },
@@ -2659,6 +2779,18 @@
           "rate_limit_left": {
             "type": "integer",
             "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "daily_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "minute_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable minute request limit available for the user account after this query."
+          },
+          "next_minute_rate_limit_reset": {
+            "type": "integer",
+            "description": "Represents the next minute rate limit reset for the user account after this query."
           },
           "company": {
             "oneOf": [
@@ -2702,6 +2834,18 @@
             "type": "integer",
             "description": "Represents the usable daily request limit available for the user account after this query."
           },
+          "daily_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "minute_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable minute request limit available for the user account after this query."
+          },
+          "next_minute_rate_limit_reset": {
+            "type": "integer",
+            "description": "Represents the next minute rate limit reset for the user account after this query."
+          },
           "metadata": {
             "description": "Metadata information",
             "$ref": "#/components/schemas/Metadata"
@@ -2727,6 +2871,18 @@
           "rate_limit_left": {
             "type": "integer",
             "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "daily_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "minute_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable minute request limit available for the user account after this query."
+          },
+          "next_minute_rate_limit_reset": {
+            "type": "integer",
+            "description": "Represents the next minute rate limit reset for the user account after this query."
           },
           "job": {
             "oneOf": [
@@ -3272,6 +3428,18 @@
             "type": "integer",
             "description": "Represents the usable daily request limit available for the user account after this query."
           },
+          "daily_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "minute_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable minute request limit available for the user account after this query."
+          },
+          "next_minute_rate_limit_reset": {
+            "type": "integer",
+            "description": "Represents the next minute rate limit reset for the user account after this query."
+          },
           "recommendations": {
             "type": "array",
             "items": { "$ref": "#/components/schemas/Recommendation" },
@@ -3326,6 +3494,18 @@
             "type": "integer",
             "description": "Represents the usable daily request limit available for the user account after this query."
           },
+          "daily_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "minute_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable minute request limit available for the user account after this query."
+          },
+          "next_minute_rate_limit_reset": {
+            "type": "integer",
+            "description": "Represents the next minute rate limit reset for the user account after this query."
+          },
           "post": {
             "type": "object",
             "description": "Activity post of a person",
@@ -3348,6 +3528,18 @@
             "type": "integer",
             "description": "Represents the usable daily request limit available for the user account after this query."
           },
+          "daily_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "minute_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable minute request limit available for the user account after this query."
+          },
+          "next_minute_rate_limit_reset": {
+            "type": "integer",
+            "description": "Represents the next minute rate limit reset for the user account after this query."
+          },
           "posts": {
             "type": "array",
             "description": "All activity posts of a person",
@@ -3369,6 +3561,18 @@
           "rate_limit_left": {
             "type": "integer",
             "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "daily_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "minute_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable minute request limit available for the user account after this query."
+          },
+          "next_minute_rate_limit_reset": {
+            "type": "integer",
+            "description": "Represents the next minute rate limit reset for the user account after this query."
           },
           "metadata": {
             "description": "Metadata information",
@@ -3396,6 +3600,18 @@
             "type": "integer",
             "description": "Represents the usable daily request limit available for the user account after this query."
           },
+          "daily_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "minute_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable minute request limit available for the user account after this query."
+          },
+          "next_minute_rate_limit_reset": {
+            "type": "integer",
+            "description": "Represents the next minute rate limit reset for the user account after this query."
+          },
           "comments": {
             "type": "array",
             "description": "All comments of a linkedin profile",
@@ -3417,6 +3633,18 @@
           "rate_limit_left": {
             "type": "integer",
             "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "daily_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "minute_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable minute request limit available for the user account after this query."
+          },
+          "next_minute_rate_limit_reset": {
+            "type": "integer",
+            "description": "Represents the next minute rate limit reset for the user account after this query."
           },
           "metadata": {
             "description": "Metadata information",
@@ -3444,6 +3672,18 @@
             "type": "integer",
             "description": "Represents the usable daily request limit available for the user account after this query."
           },
+          "daily_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "minute_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable minute request limit available for the user account after this query."
+          },
+          "next_minute_rate_limit_reset": {
+            "type": "integer",
+            "description": "Represents the next minute rate limit reset for the user account after this query."
+          },
           "reactions": {
             "type": "array",
             "description": "All reactions of a person on a post",
@@ -3465,6 +3705,18 @@
           "rate_limit_left": {
             "type": "integer",
             "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "daily_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "minute_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable minute request limit available for the user account after this query."
+          },
+          "next_minute_rate_limit_reset": {
+            "type": "integer",
+            "description": "Represents the next minute rate limit reset for the user account after this query."
           },
           "metadata": {
             "description": "Metadata information",
@@ -3491,6 +3743,18 @@
           "rate_limit_left": {
             "type": "integer",
             "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "daily_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "minute_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable minute request limit available for the user account after this query."
+          },
+          "next_minute_rate_limit_reset": {
+            "type": "integer",
+            "description": "Represents the next minute rate limit reset for the user account after this query."
           },
           "metadata": {
             "description": "Metadata information",
@@ -3575,6 +3839,18 @@
             "type": "integer",
             "description": "Represents the usable daily request limit available for the user account after this query."
           },
+          "daily_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "minute_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable minute request limit available for the user account after this query."
+          },
+          "next_minute_rate_limit_reset": {
+            "type": "integer",
+            "description": "Represents the next minute rate limit reset for the user account after this query."
+          },
           "certifications": {
             "type": "array",
             "items": { "$ref": "#/components/schemas/Certification" },
@@ -3618,6 +3894,18 @@
             "type": "integer",
             "description": "Represents the usable daily request limit available for the user account after this query."
           },
+          "daily_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "minute_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable minute request limit available for the user account after this query."
+          },
+          "next_minute_rate_limit_reset": {
+            "type": "integer",
+            "description": "Represents the next minute rate limit reset for the user account after this query."
+          },
           "volunteeringExperiences": {
             "type": "array",
             "items": { "$ref": "#/components/schemas/VolunteeringExperience" },
@@ -3635,6 +3923,9 @@
           "emailType": "professional",
           "credits_left": 90000,
           "rate_limit_left": 19000,
+          "daily_rate_limit_left": 19000,
+          "minute_rate_limit_left": 499,
+          "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
           "person": {
             "publicIdentifier": "williamhgates",
             "memberIdentifier": "251749025",
@@ -3780,6 +4071,9 @@
           "success": true,
           "credits_left": 90000,
           "rate_limit_left": 19000,
+          "daily_rate_limit_left": 19000,
+          "minute_rate_limit_left": 499,
+          "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
           "person": {
             "publicIdentifier": "williamhgates",
             "memberIdentifier": "251749025",
@@ -3925,6 +4219,9 @@
           "success": true,
           "credits_left": 90000,
           "rate_limit_left": 19000,
+          "daily_rate_limit_left": 19000,
+          "minute_rate_limit_left": 499,
+          "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
           "person": {
             "publicIdentifier": "michaelriedler",
             "linkedInIdentifier": "ACoAABTEFqYBfjGaiNRy5ITKaPzcBEBDdR1SrhU",
@@ -3953,6 +4250,9 @@
           "success": true,
           "credits_left": 90000,
           "rate_limit_left": 19000,
+          "daily_rate_limit_left": 19000,
+          "minute_rate_limit_left": 499,
+          "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
           "summary": "Hi there! My name is Julien and I'm an entrepreneur with a hacker mindset. 🏴‍☠️\n\nI am passionate about finding creative solutions to complex problems and am always looking for ways to optimize and improve processes. 🧠\n\nI am proud to have founded a company that build SaaS products to helps companies enrich their business data, and I am excited to continue driving innovation in the business world.\n\nThank you for visiting my LinkedIn profile and I hope to connect with you soon!"
         }
       },
@@ -3962,6 +4262,9 @@
           "success": true,
           "credits_left": 90000,
           "rate_limit_left": 19000,
+          "daily_rate_limit_left": 19000,
+          "minute_rate_limit_left": 499,
+          "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
           "followersCount": 646
         }
       },
@@ -3971,6 +4274,9 @@
           "success": true,
           "credits_left": 90000,
           "rate_limit_left": 19000,
+          "daily_rate_limit_left": 19000,
+          "minute_rate_limit_left": 499,
+          "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
           "positions": [
             {
               "title": "VP of Sales",
@@ -4032,6 +4338,9 @@
           "success": true,
           "credits_left": 90000,
           "rate_limit_left": 19000,
+          "daily_rate_limit_left": 19000,
+          "minute_rate_limit_left": 499,
+          "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
           "schools": [
             {
               "degreeName": "Engineering degree",
@@ -4077,6 +4386,9 @@
           "success": true,
           "credits_left": 90000,
           "rate_limit_left": 19000,
+          "daily_rate_limit_left": 19000,
+          "minute_rate_limit_left": 499,
+          "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
           "skills": [
             {
               "name": "AngularJS",
@@ -4113,6 +4425,9 @@
           "success": true,
           "credits_left": 90000,
           "rate_limit_left": 19000,
+          "daily_rate_limit_left": 19000,
+          "minute_rate_limit_left": 499,
+          "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
           "languages": [
             {
               "language": "Chinese",
@@ -4139,6 +4454,9 @@
           "success": true,
           "credits_left": 90000,
           "rate_limit_left": 19000,
+          "daily_rate_limit_left": 19000,
+          "minute_rate_limit_left": 499,
+          "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
           "recommendations": [
             {
               "caption": "August 18, 2020, Michael was Tom's client",
@@ -4167,6 +4485,9 @@
           "success": true,
           "credits_left": 90000,
           "rate_limit_left": 19000,
+          "daily_rate_limit_left": 19000,
+          "minute_rate_limit_left": 499,
+          "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
           "certifications": [
             {
               "name": "AWS Certified Solutions Architect",
@@ -4189,6 +4510,9 @@
           "success": true,
           "credits_left": 90000,
           "rate_limit_left": 19000,
+          "daily_rate_limit_left": 19000,
+          "minute_rate_limit_left": 499,
+          "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
           "volunteeringExperiences": [
             {
               "organizationName": "Humanitarian Aid NGO",
@@ -4205,6 +4529,9 @@
           "success": true,
           "credits_left": 90000,
           "rate_limit_left": 19000,
+          "daily_rate_limit_left": 19000,
+          "minute_rate_limit_left": 499,
+          "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
           "company": {
             "linkedInId": "71234370",
             "name": "Visum",
@@ -4251,6 +4578,9 @@
           "success": true,
           "credits_left": 90000,
           "rate_limit_left": 19000,
+          "daily_rate_limit_left": 19000,
+          "minute_rate_limit_left": 499,
+          "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
           "company": {
             "linkedInId": "71234370",
             "name": "Visum",
@@ -4297,6 +4627,9 @@
           "success": true,
           "credits_left": 90000,
           "rate_limit_left": 19000,
+          "daily_rate_limit_left": 19000,
+          "minute_rate_limit_left": 499,
+          "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
           "metadata": {
             "currentPage": 1,
             "pageNumber": 10,
@@ -4337,6 +4670,9 @@
           "success": true,
           "credits_left": 90000,
           "rate_limit_left": 19000,
+          "daily_rate_limit_left": 19000,
+          "minute_rate_limit_left": 499,
+          "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
           "job": {
             "linkedinIdentifier": "4102642841",
             "title": "Senior Software Engineer, Full Stack, Learning & Education",
@@ -4361,6 +4697,9 @@
           "success": true,
           "credits_left": 19934,
           "rate_limit_left": 19999,
+          "daily_rate_limit_left": 19999,
+          "minute_rate_limit_left": 499,
+          "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
           "post": {
             "activityId": "6976499964512243712",
             "text": "Congrate to the team for this amazing milestone!",
@@ -4399,6 +4738,9 @@
           "success": true,
           "credits_left": 19934,
           "rate_limit_left": 19999,
+          "daily_rate_limit_left": 19999,
+          "minute_rate_limit_left": 499,
+          "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
           "posts": [
             {
               "activityId": "6976499964512243712",
@@ -4468,6 +4810,9 @@
           "success": true,
           "credits_left": 19934,
           "rate_limit_left": 19999,
+          "daily_rate_limit_left": 19999,
+          "minute_rate_limit_left": 499,
+          "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
           "metadata": {
             "currentPage": 1,
             "pageNumber": 10,
@@ -4508,6 +4853,9 @@
           "success": true,
           "credits_left": 19934,
           "rate_limit_left": 19999,
+          "daily_rate_limit_left": 19999,
+          "minute_rate_limit_left": 499,
+          "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
           "comments": [
             {
               "text": "This is an excellent opportunity!",
@@ -4572,6 +4920,9 @@
           "success": true,
           "credits_left": 19934,
           "rate_limit_left": 19999,
+          "daily_rate_limit_left": 19999,
+          "minute_rate_limit_left": 499,
+          "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
           "metadata": {
             "currentPage": 1,
             "pageNumber": 10,
@@ -4602,6 +4953,9 @@
           "success": true,
           "credits_left": 19934,
           "rate_limit_left": 19999,
+          "daily_rate_limit_left": 19999,
+          "minute_rate_limit_left": 499,
+          "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
           "reactions": [
             {
               "type": "LIKE",
@@ -4656,6 +5010,9 @@
           "success": true,
           "credits_left": 19934,
           "rate_limit_left": 19999,
+          "daily_rate_limit_left": 19999,
+          "minute_rate_limit_left": 499,
+          "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
           "metadata": {
             "currentPage": 1,
             "pageNumber": 10,
@@ -4690,6 +5047,9 @@
           "success": true,
           "credits_left": 19934,
           "rate_limit_left": 19999,
+          "daily_rate_limit_left": 19999,
+          "minute_rate_limit_left": 499,
+          "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
           "metadata": {
             "currentPage": 1,
             "pageNumber": 10,
