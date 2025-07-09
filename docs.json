@@ -29,8 +29,7 @@
               "endpoint/v1/person/skills",
               "endpoint/v1/person/languages",
               "endpoint/v1/person/recommendations",
-              "endpoint/v1/person/certifications",
-              "endpoint/v1/person/volunteering-experiences"
+              "endpoint/v1/person/certifications"
             ]
           },
           {
