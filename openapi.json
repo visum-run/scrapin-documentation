@@ -899,67 +899,57 @@
                   },
                   "includes": {
                     "type": "object",
+                    "default": {},
+                    "additionalProperties": false,
                     "description": "This optional parameter is an object. It specifies which additional data to include in the response.",
                     "properties": {
                       "includeCompany": {
                         "type": "boolean",
-                        "description": "Include company information in the response.",
-                        "default": false
+                        "description": "Include company information in the response."
                       },
                       "includeSummary": {
                         "type": "boolean",
-                        "description": "Include summary information in the response.",
-                        "default": true
+                        "description": "Include summary information in the response."
                       },
                       "includeFollowersCount": {
                         "type": "boolean",
-                        "description": "Include followers count in the response.",
-                        "default": true
+                        "description": "Include followers count in the response."
                       },
                       "includeCreationDate": {
                         "type": "boolean",
-                        "description": "Include creation date in the response.",
-                        "default": true
+                        "description": "Include creation date in the response."
                       },
                       "includeSkills": {
                         "type": "boolean",
-                        "description": "Include skills information in the response.",
-                        "default": false
+                        "description": "Include skills information in the response."
                       },
                       "includeLanguages": {
                         "type": "boolean",
-                        "description": "Include languages information in the response.",
-                        "default": false
+                        "description": "Include languages information in the response."
                       },
                       "includeExperience": {
                         "type": "boolean",
-                        "description": "Include experience information in the response.",
-                        "default": false
+                        "description": "Include experience information in the response."
                       },
                       "includeEducation": {
                         "type": "boolean",
-                        "description": "Include education and schools information in the response.",
-                        "default": false
+                        "description": "Include education and schools information in the response."
                       },
                       "includeRecommendations": {
                         "type": "boolean",
-                        "description": "Include recommendations in the response.",
-                        "default": false
+                        "description": "Include recommendations in the response."
                       },
                       "includeCertifications": {
                         "type": "boolean",
-                        "description": "Include certifications in the response.",
-                        "default": false
+                        "description": "Include certifications in the response."
                       },
                       "includeTestScores": {
                         "type": "boolean",
-                        "description": "Include test scores in the response.",
-                        "default": false
+                        "description": "Include test scores in the response."
                       },
                       "includeVolunteeringExperiences": {
                         "type": "boolean",
-                        "description": "Include volunteering experiences in the response.",
-                        "default": false
+                        "description": "Include volunteering experiences in the response."
                       }
                     }
                   }
@@ -1067,67 +1057,57 @@
                   },
                   "includes": {
                     "type": "object",
+                    "default": {},
+                    "additionalProperties": false,
                     "description": "This optional parameter is an object. It specifies which additional data to include in the response.",
                     "properties": {
                       "includeCompany": {
                         "type": "boolean",
-                        "description": "Include company information in the response.",
-                        "default": false
+                        "description": "Include company information in the response."
                       },
                       "includeSummary": {
                         "type": "boolean",
-                        "description": "Include summary information in the response.",
-                        "default": true
+                        "description": "Include summary information in the response."
                       },
                       "includeFollowersCount": {
                         "type": "boolean",
-                        "description": "Include followers count in the response.",
-                        "default": true
+                        "description": "Include followers count in the response."
                       },
                       "includeCreationDate": {
                         "type": "boolean",
-                        "description": "Include creation date in the response.",
-                        "default": true
+                        "description": "Include creation date in the response."
                       },
                       "includeSkills": {
                         "type": "boolean",
-                        "description": "Include skills information in the response.",
-                        "default": false
+                        "description": "Include skills information in the response."
                       },
                       "includeLanguages": {
                         "type": "boolean",
-                        "description": "Include languages information in the response.",
-                        "default": false
+                        "description": "Include languages information in the response."
                       },
                       "includeExperience": {
                         "type": "boolean",
-                        "description": "Include experience information in the response.",
-                        "default": false
+                        "description": "Include experience information in the response."
                       },
                       "includeEducation": {
                         "type": "boolean",
-                        "description": "Include education and schools information in the response.",
-                        "default": false
+                        "description": "Include education and schools information in the response."
                       },
                       "includeRecommendations": {
                         "type": "boolean",
-                        "description": "Include recommendations in the response.",
-                        "default": false
+                        "description": "Include recommendations in the response."
                       },
                       "includeCertifications": {
                         "type": "boolean",
-                        "description": "Include certifications in the response.",
-                        "default": false
+                        "description": "Include certifications in the response."
                       },
                       "includeTestScores": {
                         "type": "boolean",
-                        "description": "Include test scores in the response.",
-                        "default": false
+                        "description": "Include test scores in the response."
                       },
                       "includeVolunteeringExperiences": {
                         "type": "boolean",
-                        "description": "Include volunteering experiences in the response.",
-                        "default": false
+                        "description": "Include volunteering experiences in the response."
                       }
                     }
                   }
