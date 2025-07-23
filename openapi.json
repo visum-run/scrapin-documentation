@@ -880,6 +880,105 @@
           "404": { "$ref": "#/components/responses/NotFound" },
           "500": { "$ref": "#/components/responses/ServerError" }
         }
+      },
+      "post": {
+        "tags": ["Person"],
+        "operationId": "GetProfileData",
+        "summary": "Get Profile Data",
+        "description": "This operation allows you to get profile data from an url. It returns profile data with credits and rate limit information. This operation consumes 1 credit.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "linkedInUrl": {
+                    "type": "string",
+                    "description": "This required parameter is a string. It represents the LinkedIn URL of the person with this format: https://www.linkedin.com/in/xxxxxxxxxxxxx/."
+                  },
+                  "includes": {
+                    "type": "object",
+                    "description": "This optional parameter is an object. It specifies which additional data to include in the response.",
+                    "properties": {
+                      "includeCompany": {
+                        "type": "boolean",
+                        "description": "Include company information in the response."
+                      },
+                      "includeSummary": {
+                        "type": "boolean",
+                        "description": "Include summary information in the response."
+                      },
+                      "includeFollowersCount": {
+                        "type": "boolean",
+                        "description": "Include followers count in the response."
+                      },
+                      "includeCreationDate": {
+                        "type": "boolean",
+                        "description": "Include creation date in the response."
+                      },
+                      "includeSkills": {
+                        "type": "boolean",
+                        "description": "Include skills information in the response."
+                      },
+                      "includeLanguages": {
+                        "type": "boolean",
+                        "description": "Include languages information in the response."
+                      },
+                      "includeExperience": {
+                        "type": "boolean",
+                        "description": "Include experience information in the response."
+                      },
+                      "includeSchools": {
+                        "type": "boolean",
+                        "description": "Include education ans schools information in the response."
+                      },
+                      "includeRecommendations": {
+                        "type": "boolean",
+                        "description": "Include recommendations in the response."
+                      },
+                      "includeCertifications": {
+                        "type": "boolean",
+                        "description": "Include certifications in the response."
+                      },
+                      "includeTestScores": {
+                        "type": "boolean",
+                        "description": "Include test scores in the response."
+                      },
+                      "includeVolunteeringExperiences": {
+                        "type": "boolean",
+                        "description": "Include volunteering experiences in the response."
+                      }
+                    }
+                  }
+                },
+                "required": ["linkedInUrl"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The endpoint returns profile information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfileResponse"
+                },
+                "examples": {
+                  "ProfileFound": {
+                    "$ref": "#/components/examples/ProfileFound"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
       }
     },
     "/v1/enrichment/resolve/email": {
@@ -908,6 +1007,123 @@
                 "examples": {
                   "ProfileFound": {
                     "$ref": "#/components/examples/ProfileFound"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
+    },
+    "/v1/enrichment/search": {
+      "post": {
+        "tags": ["Person"],
+        "operationId": "SearchProfile",
+        "summary": "Search Profile",
+        "description": "This operation allows you to search for a profile data from various parameters. It returns profile data with credits and rate limit information. This operation consumes 1 credit.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "firstName": {
+                    "type": "string",
+                    "description": "This optional parameter is a string. It represents the first name to body."
+                  },
+                  "lastName": {
+                    "type": "string",
+                    "description": "This optional parameter is a string. It represents the last name to body."
+                  },
+                  "companyDomain": {
+                    "type": "string",
+                    "description": "This optional parameter is a string. It represents the company domain/URL to body"
+                  },
+                  "companyName": {
+                    "type": "string",
+                    "description": "This optional parameter is a string. It represents the company name to body"
+                  },
+                  "email": {
+                    "type": "string",
+                    "description": "This required parameter is a string. It represents the email to body."
+                  },
+                  "includes": {
+                    "type": "object",
+                    "description": "This optional parameter is an object. It specifies which additional data to include in the response.",
+                    "properties": {
+                      "includeCompany": {
+                        "type": "boolean",
+                        "description": "Include company information in the response."
+                      },
+                      "includeSummary": {
+                        "type": "boolean",
+                        "description": "Include summary information in the response."
+                      },
+                      "includeFollowersCount": {
+                        "type": "boolean",
+                        "description": "Include followers count in the response."
+                      },
+                      "includeCreationDate": {
+                        "type": "boolean",
+                        "description": "Include creation date in the response."
+                      },
+                      "includeSkills": {
+                        "type": "boolean",
+                        "description": "Include skills information in the response."
+                      },
+                      "includeLanguages": {
+                        "type": "boolean",
+                        "description": "Include languages information in the response."
+                      },
+                      "includeExperience": {
+                        "type": "boolean",
+                        "description": "Include experience information in the response."
+                      },
+                      "includeSchools": {
+                        "type": "boolean",
+                        "description": "Include education ans schools information in the response."
+                      },
+                      "includeRecommendations": {
+                        "type": "boolean",
+                        "description": "Include recommendations in the response."
+                      },
+                      "includeCertifications": {
+                        "type": "boolean",
+                        "description": "Include certifications in the response."
+                      },
+                      "includeTestScores": {
+                        "type": "boolean",
+                        "description": "Include test scores in the response."
+                      },
+                      "includeVolunteeringExperiences": {
+                        "type": "boolean",
+                        "description": "Include volunteering experiences in the response."
+                      }
+                    }
+                  }
+                },
+                "required": ["email"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The endpoint returns profile information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfileResponseV0"
+                },
+                "examples": {
+                  "ProfileFound": {
+                    "$ref": "#/components/examples/ProfileFoundV0"
                   }
                 }
               }
