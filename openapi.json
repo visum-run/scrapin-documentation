@@ -1022,12 +1022,12 @@
         }
       }
     },
-    "/v1/enrichment/search": {
+    "/v1/enrichment/match": {
       "post": {
         "tags": ["Person"],
-        "operationId": "SearchProfile",
-        "summary": "Search Profile",
-        "description": "This operation allows you to search for a profile data from various parameters. It returns profile data with credits and rate limit information. This operation consumes 1 credit.",
+        "operationId": "MatchProfile",
+        "summary": "Match Profile",
+        "description": "This operation allows you to match a single person profile from various parameters. It returns profile data with credits and rate limit information. This operation consumes 1 credit.",
         "requestBody": {
           "required": true,
           "content": {

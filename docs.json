@@ -19,7 +19,7 @@
           },
           {
             "group": "Person",
-            "pages": ["endpoint/v1/person/profile", "endpoint/v1/person/search"]
+            "pages": ["endpoint/v1/person/profile", "endpoint/v1/person/match"]
           },
           {
             "group": "Person Activities",
@@ -37,7 +37,7 @@
             "group": "Company",
             "pages": [
               "endpoint/v1/company/extract-profile",
-              "endpoint/v1/company/search"
+              "endpoint/v1/company/match"
             ]
           },
           {
