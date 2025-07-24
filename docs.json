@@ -37,7 +37,7 @@
             "group": "Company",
             "pages": [
               "endpoint/v1/company/extract-profile",
-              "endpoint/v1/company/match"
+              "endpoint/v1/company/search"
             ]
           },
           {
