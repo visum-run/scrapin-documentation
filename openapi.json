@@ -880,6 +880,99 @@
           "404": { "$ref": "#/components/responses/NotFound" },
           "500": { "$ref": "#/components/responses/ServerError" }
         }
+      },
+      "post": {
+        "tags": ["Person"],
+        "operationId": "GetProfileData",
+        "summary": "Get Profile Data",
+        "description": "This operation allows you to get profile data from an url. It returns profile data with credits and rate limit information. This operation consumes 1 credit.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "linkedInUrl": {
+                    "type": "string",
+                    "description": "This required parameter is a string. It represents the LinkedIn URL of the person with this format: https://www.linkedin.com/in/xxxxxxxxxxxxx/."
+                  },
+                  "includes": {
+                    "type": "object",
+                    "default": {},
+                    "additionalProperties": false,
+                    "description": "This optional parameter is an object. It specifies which additional data to include in the response.",
+                    "properties": {
+                      "includeCompany": {
+                        "type": "boolean",
+                        "description": "Include company information in the response."
+                      },
+                      "includeSummary": {
+                        "type": "boolean",
+                        "description": "Include summary information in the response."
+                      },
+                      "includeFollowersCount": {
+                        "type": "boolean",
+                        "description": "Include followers count in the response."
+                      },
+                      "includeCreationDate": {
+                        "type": "boolean",
+                        "description": "Include creation date in the response."
+                      },
+                      "includeSkills": {
+                        "type": "boolean",
+                        "description": "Include skills information in the response."
+                      },
+                      "includeLanguages": {
+                        "type": "boolean",
+                        "description": "Include languages information in the response."
+                      },
+                      "includeExperience": {
+                        "type": "boolean",
+                        "description": "Include experience information in the response."
+                      },
+                      "includeEducation": {
+                        "type": "boolean",
+                        "description": "Include education and schools information in the response."
+                      },
+                      "includeRecommendations": {
+                        "type": "boolean",
+                        "description": "Include recommendations in the response."
+                      },
+                      "includeCertifications": {
+                        "type": "boolean",
+                        "description": "Include certifications in the response."
+                      }
+                    }
+                  }
+                },
+                "required": ["linkedInUrl"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The endpoint returns profile information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfileResponseV1"
+                },
+                "examples": {
+                  "ProfileFound": {
+                    "$ref": "#/components/examples/ProfileFoundV1"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
       }
     },
     "/v1/enrichment/resolve/email": {
@@ -908,6 +1001,117 @@
                 "examples": {
                   "ProfileFound": {
                     "$ref": "#/components/examples/ProfileFound"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
+    },
+    "/v1/enrichment/match": {
+      "post": {
+        "tags": ["Person"],
+        "operationId": "MatchProfile",
+        "summary": "Match Profile",
+        "description": "This operation allows you to match a single person profile from various parameters. It returns profile data with credits and rate limit information. This operation consumes 1 credit.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "firstName": {
+                    "type": "string",
+                    "description": "This optional parameter is a string. It represents the first name to body."
+                  },
+                  "lastName": {
+                    "type": "string",
+                    "description": "This optional parameter is a string. It represents the last name to body."
+                  },
+                  "companyDomain": {
+                    "type": "string",
+                    "description": "This optional parameter is a string. It represents the company domain/URL to body"
+                  },
+                  "companyName": {
+                    "type": "string",
+                    "description": "This optional parameter is a string. It represents the company name to body"
+                  },
+                  "email": {
+                    "type": "string",
+                    "description": "This required parameter is a string. It represents the email to body."
+                  },
+                  "includes": {
+                    "type": "object",
+                    "default": {},
+                    "additionalProperties": false,
+                    "description": "This optional parameter is an object. It specifies which additional data to include in the response.",
+                    "properties": {
+                      "includeCompany": {
+                        "type": "boolean",
+                        "description": "Include company information in the response."
+                      },
+                      "includeSummary": {
+                        "type": "boolean",
+                        "description": "Include summary information in the response."
+                      },
+                      "includeFollowersCount": {
+                        "type": "boolean",
+                        "description": "Include followers count in the response."
+                      },
+                      "includeCreationDate": {
+                        "type": "boolean",
+                        "description": "Include creation date in the response."
+                      },
+                      "includeSkills": {
+                        "type": "boolean",
+                        "description": "Include skills information in the response."
+                      },
+                      "includeLanguages": {
+                        "type": "boolean",
+                        "description": "Include languages information in the response."
+                      },
+                      "includeExperience": {
+                        "type": "boolean",
+                        "description": "Include experience information in the response."
+                      },
+                      "includeEducation": {
+                        "type": "boolean",
+                        "description": "Include education and schools information in the response."
+                      },
+                      "includeRecommendations": {
+                        "type": "boolean",
+                        "description": "Include recommendations in the response."
+                      },
+                      "includeCertifications": {
+                        "type": "boolean",
+                        "description": "Include certifications in the response."
+                      }
+                    }
+                  }
+                },
+                "required": ["email"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The endpoint returns profile information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfileResponseV1"
+                },
+                "examples": {
+                  "ProfileFound": {
+                    "$ref": "#/components/examples/ProfileFoundV1"
                   }
                 }
               }
@@ -4213,6 +4417,248 @@
           }
         }
       },
+      "ProfileFoundV1": {
+        "summary": "Person Profile Extracted",
+        "value": {
+          "success": true,
+          "credits_left": 90000,
+          "rate_limit_left": 19000,
+          "daily_rate_limit_left": 19000,
+          "minute_rate_limit_left": 499,
+          "next_minute_rate_limit_reset": "2025-07-24T12:11:01.000Z",
+          "person": {
+            "publicIdentifier": "michaelriedler",
+            "linkedInIdentifier": "ACoAABTEFqYBfjGaiNRy5ITKaPzcBEBDdR1SrhU",
+            "memberIdentifier": "348395174",
+            "linkedInUrl": "https://www.linkedin.com/in/michaelriedler",
+            "firstName": "Michael",
+            "lastName": "Riedler",
+            "headline": "VP Sales Scrapin.io - B2B Data for AI",
+            "location": {
+              "city": "London",
+              "state": "England",
+              "country": "United Kingdom",
+              "countryCode": "GB"
+            },
+            "photoUrl": "https://media.licdn.com/dms/image/v2/D4E03AQG5S0X4QKtN5A/profile-displayphoto-shrink_200_200/B4EZRgQ6wZGYAY-/0/1736781836053?e=1756339200&v=beta&t=phxC3jRwoDG_zQ8QY4Iu6OduHPUM-abbrEHkJZPP9fM",
+            "backgroundUrl": "https://media.licdn.com/dms/image/v2/C4E16AQGba4BhpCykTA/profile-displaybackgroundimage-shrink_350_1400/profile-displaybackgroundimage-shrink_350_1400/0/1516880563413?e=1756339200&v=beta&t=fdimLlwIIQEke73CfLZWvq0T367YxZajvtmMwynSIiU",
+            "openToWork": false,
+            "premium": true,
+            "showVerificationBadge": true,
+            "creationDate": {
+              "month": 6,
+              "year": 2014
+            },
+            "followerCount": 3735,
+            "positions": {
+              "positionsCount": 10,
+              "positionHistory": [
+                {
+                  "title": "VP of Sales",
+                  "companyName": "ScrapIn",
+                  "description": "B2B Data for AI +",
+                  "startEndDate": {
+                    "start": {
+                      "month": 1,
+                      "year": 2024
+                    },
+                    "end": null
+                  },
+                  "companyLogo": "https://media.licdn.com/dms/image/v2/D4E0BAQF-Z-m2ZKv6qQ/company-logo_200_200/B4EZcRELezHcAM-/0/1748337998127/scrapin_api_logo?e=1756339200&v=beta&t=GjTJ9cgDP2iBYJCx8GxXEg8V2hZjnNBOtvXe58eiqJ0",
+                  "linkedInUrl": "https://www.linkedin.com/company/100602385/",
+                  "linkedInId": "100602385"
+                },
+                {
+                  "title": "Co-Founder & CEO",
+                  "companyName": "LukaHQ",
+                  "companyLocation": "London, England, United Kingdom",
+                  "description": "AI accounting for the mid-market",
+                  "startEndDate": {
+                    "start": {
+                      "month": 1,
+                      "year": 2023
+                    },
+                    "end": {
+                      "month": 12,
+                      "year": 2023
+                    }
+                  },
+                  "companyLogo": "https://media.licdn.com/dms/image/v2/C4E0BAQHUbWeUxkGCfw/company-logo_400_400/company-logo_400_400/0/1677251426049?e=1756339200&v=beta&t=qQuFuWn2EsyNX-kqmN166nzxW-DxXD66cPph71e3F7g",
+                  "linkedInUrl": "https://www.linkedin.com/company/93128145/",
+                  "linkedInId": "93128145"
+                },
+                {
+                  "title": "Co-Founder & CEO",
+                  "companyName": "Telleroo",
+                  "companyLocation": "London",
+                  "description": "Leading SME payments platform for bill and payroll payments in the UK 💪",
+                  "startEndDate": {
+                    "start": {
+                      "month": 4,
+                      "year": 2016
+                    },
+                    "end": {
+                      "month": 10,
+                      "year": 2020
+                    }
+                  },
+                  "companyLogo": "https://media.licdn.com/dms/image/v2/D4E0BAQFg65EK-q7guw/company-logo_100_100/B4EZdkSAIuHsAQ-/0/1749734130592/telleroo_logo?e=1756339200&v=beta&t=4rKb656EJBg9K3ewqcB0_Gjt9Z2roK_8B5ABHX7Qvjg",
+                  "linkedInUrl": "https://www.linkedin.com/company/10820464/",
+                  "linkedInId": "10820464"
+                }
+              ]
+            },
+            "schools": {
+              "educationsCount": 2,
+              "educationHistory": [
+                {
+                  "degreeName": "Bachelor of Arts in Business (B.A.)",
+                  "fieldOfStudy": "Management & Economics",
+                  "linkedInUrl": "https://www.linkedin.com/company/628151/",
+                  "schoolLogo": "https://media.licdn.com/dms/image/v2/C4E0BAQHWOueQUCYM2w/company-logo_400_400/company-logo_400_400/0/1631321484128?e=1756339200&v=beta&t=D_3g7F10ojzXtq-dcHxFAvMR8ANmJN_rNb3ETPf9THM",
+                  "schoolName": "MCI | The Entrepreneurial School®",
+                  "startEndDate": {
+                    "start": {
+                      "month": 1,
+                      "year": 2011
+                    },
+                    "end": {
+                      "month": 1,
+                      "year": 2015
+                    }
+                  }
+                },
+                {
+                  "degreeName": "International Studies - Doing Business in Brazil",
+                  "fieldOfStudy": null,
+                  "linkedInUrl": "https://www.linkedin.com/company/8175/",
+                  "schoolLogo": "https://media.licdn.com/dms/image/v2/C4D0BAQFtDwxOTmj18Q/company-logo_400_400/company-logo_400_400/0/1657633907178/fgv_logo?e=1756339200&v=beta&t=Dfl7ag8K3dK8LeB2f_1AvexYw3QNaFWWsTK5KBDfIhk",
+                  "schoolName": "FGV - Fundação Getulio Vargas",
+                  "startEndDate": {
+                    "start": {
+                      "month": 1,
+                      "year": 2014
+                    },
+                    "end": {
+                      "month": 1,
+                      "year": 2014
+                    }
+                  }
+                }
+              ]
+            },
+            "skills": [
+              "Bubble.io",
+              "Changemaker",
+              "Decisionmaker",
+              "Big Picture View",
+              "Team Motivation",
+              "Public Speaking",
+              "Storytelling",
+              "Social Media Marketing",
+              "Portfolio Management",
+              "Assetmanagement",
+              "Financial Analysis",
+              "Asset Allocation",
+              "FinTech",
+              "Banking",
+              "Leadership",
+              "Investmentbank",
+              "Financial Modeling",
+              "Capital Markets",
+              "Creative Strategy",
+              "Corporate Finance",
+              "Systematic Thinking",
+              "Experimental Design",
+              "Bloomberg",
+              "WordPress",
+              "Podcasting",
+              "Content Marketing",
+              "Business Model Innovation",
+              "Email Marketing",
+              "Web Design",
+              "Blogging",
+              "Tech Application",
+              "Jack of all trades",
+              "Google Apps",
+              "Google Docs",
+              "Trading",
+              "Investment Strategies",
+              "Microsoft Excel",
+              "Commodity",
+              "Fixed Income",
+              "Equities"
+            ],
+            "languages": ["Deutsch", "Englisch"],
+            "recommendations": {
+              "recommendationsCount": 3,
+              "recommendationHistory": [
+                {
+                  "caption": "August 18, 2020, Michael was Tom’s client",
+                  "description": "Michael is very talented when it comes to founding and growing tech businesses, it's very impressive what he has achieved to date. I worked with him to implement a number of outbound marketing campaigns that delivered on both new leads and revenue. He was a joy to work with, his energy and enthusiasm was infectious. I'm sure we'll work together again in the near future.",
+                  "authorFullname": "Tom Kelly",
+                  "authorUrl": "https://www.linkedin.com/in/tomkelly25"
+                },
+                {
+                  "caption": "February 4, 2016, Catalina worked with Michael on the same team",
+                  "description": "Michael is an exceptionally well skilled business and sales person. His ability to make people feel good, comfortable and cared for, during the sales process, is truly remarkable. The social skills, combined with a genuine curiosity and passion for his job, also make him a great co-worker. I would personally recommend him to any growing startup who needs a truly talented biz dev guy, with a passion for all things tech. I hope to work with Michael in the future, but above all, I will be grateful for having learned from him what it is like to be highly engaging and personable as a professional.",
+                  "authorFullname": "Catalina B.",
+                  "authorUrl": "https://www.linkedin.com/in/catalinabutnaru"
+                },
+                {
+                  "caption": "October 28, 2015, Dr. Christian worked with Michael on the same team",
+                  "description": "I had the pleasure to work with Michael in a team for commodity market analysis. Michael takes a holistic way of thinking but keeps an eye on specific details of a topic. He is not afraid to take unknown paths and think in new directions. Very impressive is his continuous motivation, which supports the overall team spirit. It is simply inspiring to work with such a collaborative and diligent personality. Michael is an enrichment for every employer.",
+                  "authorFullname": "Dr. Christian Muntz, CFA",
+                  "authorUrl": "https://www.linkedin.com/in/dr-christian-muntz-cfa-b4b16b92"
+                }
+              ]
+            },
+            "certifications": {
+              "certificationsCount": 1,
+              "certificationHistory": [
+                {
+                  "name": "Trading Certificate Frankfurt Stock Exchange",
+                  "organizationName": "Deutsche Börse",
+                  "organizationUrl": "https://www.linkedin.com/company/163430/",
+                  "issuedDate": "Issued May 2012"
+                }
+              ]
+            }
+          },
+          "company": {
+            "linkedInId": "100602385",
+            "name": "ScrapIn",
+            "universalName": "scrapin-api",
+            "linkedInUrl": "https://www.linkedin.com/company/100602385",
+            "employeeCount": 12,
+            "followerCount": 1030,
+            "employeeCountRange": {
+              "start": 11,
+              "end": 50
+            },
+            "websiteUrl": "https://www.scrapin.io/partners?utm_source=linkedin&utm_medium=social&utm_campaign=company-page",
+            "tagline": "Powering AI products with Live B2B Data",
+            "description": "ScrapIn provides live B2B data with all necessary context you need to build a full-featured, scalable AI tool — We hide any data scraping complexity and infrastructure. Let us handle data collection and you focus on building.",
+            "industry": "Software Development",
+            "phone": null,
+            "specialities": [],
+            "headquarter": {
+              "city": "Paris",
+              "country": "FR",
+              "postalCode": "75013",
+              "geographicArea": null,
+              "street1": null,
+              "street2": null
+            },
+            "logo": "https://media.licdn.com/dms/image/v2/D4E0BAQF-Z-m2ZKv6qQ/company-logo_200_200/B4EZcRELezHcAM-/0/1748337998127/scrapin_api_logo?e=1756339200&v=beta&t=GjTJ9cgDP2iBYJCx8GxXEg8V2hZjnNBOtvXe58eiqJ0",
+            "foundedOn": {
+              "year": 2020
+            },
+            "fundingData": null,
+            "backgroundUrl": "https://media.licdn.com/dms/image/v2/D4E1BAQEnSV0NjtZSXA/company-background_200/B4EZcRNJq.HYAc-/0/1748340349995/scrapin_api_cover?e=1753966800&v=beta&t=PdbNUkpicYwyp6cn9tri20MLicIO_9ASua8ZUsJm5cg"
+          }
+        }
+      },
       "ProfileFound": {
         "summary": "Profile Found",
         "value": {
@@ -5249,7 +5695,7 @@
         "name": "apikey",
         "in": "query",
         "type": "apiKey",
-        "description": "This required parameter is a string. It represents the APIKEY obtained from the developer dashboard."
+        "description": "This required parameter is a string. It represents the APIKEY obtained from the developer dashboard. \nYou must use it in the query string of your request as ?apiKey=YOUR_API_KEY or in the headers as x-api-key: YOUR_API_KEY"
       }
     }
   }
