@@ -1045,7 +1045,7 @@
                   },
                   "email": {
                     "type": "string",
-                    "description": "This required parameter is a string. It represents the email to body."
+                    "description": "This optional parameter is a string. It represents the email to body."
                   },
                   "includes": {
                     "type": "object",
