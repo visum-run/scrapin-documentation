@@ -942,14 +942,6 @@
                       "includeCertifications": {
                         "type": "boolean",
                         "description": "Include certifications in the response."
-                      },
-                      "includeTestScores": {
-                        "type": "boolean",
-                        "description": "Include test scores in the response."
-                      },
-                      "includeVolunteeringExperiences": {
-                        "type": "boolean",
-                        "description": "Include volunteering experiences in the response."
                       }
                     }
                   }
@@ -1100,14 +1092,6 @@
                       "includeCertifications": {
                         "type": "boolean",
                         "description": "Include certifications in the response."
-                      },
-                      "includeTestScores": {
-                        "type": "boolean",
-                        "description": "Include test scores in the response."
-                      },
-                      "includeVolunteeringExperiences": {
-                        "type": "boolean",
-                        "description": "Include volunteering experiences in the response."
                       }
                     }
                   }
