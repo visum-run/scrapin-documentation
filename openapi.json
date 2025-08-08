@@ -207,7 +207,7 @@
             "name": "location",
             "in": "query",
             "schema": { "type": "string" },
-            "description": "This required parameter is a string. It represents the location of the job. It can be the city, the region of the country name.",
+            "description": "This required parameter is a string. It represents the location of the job. It can be the city, the region of the country name. \nSingle location string without separators or special characters. \nAllowed: letters, digits, spaces, and hyphens. \nExamples: \"France\", \"USA\", \"New York\", \"Saint-Etienne\". \nInvalid: \"USA; France\", \"Paris, France\", \"London;\".",
             "required": false
           },
           {
@@ -1571,7 +1571,7 @@
             "name": "location",
             "in": "query",
             "schema": { "type": "string" },
-            "description": "This required parameter is a string. It represents the location of the job. It can be the city, the region of the country name.",
+            "description": "This required parameter is a string. It represents the location of the job. It can be the city, the region of the country name. \nSingle location string without separators or special characters. \nAllowed: letters, digits, spaces, and hyphens. \nExamples: \"France\", \"USA\", \"New York\", \"Saint-Etienne\". \nInvalid: \"USA; France\", \"Paris, France\", \"London;\".",
             "required": false
           },
           {
