@@ -51,7 +51,7 @@
             ]
           },
           {
-            "group": "Job",
+            "group": "Job (Deprecated)",
             "pages": ["endpoint/v1/job/extract-data", "endpoint/v1/job/search"]
           },
           {
