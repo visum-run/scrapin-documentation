@@ -3506,6 +3506,11 @@
               "authorName": {
                 "type": "string",
                 "description": "Full name of the author."
+              },
+              "authorUrl": {
+                "type": "string",
+                "format": "uri",
+                "description": "URL to the author's profile."
               }
             }
           }
@@ -3528,6 +3533,11 @@
               "authorName": {
                 "type": "string",
                 "description": "Full name of the author."
+              },
+              "authorUrl": {
+                "type": "string",
+                "format": "uri",
+                "description": "URL to the author's profile."
               }
             }
           },
@@ -5379,14 +5389,16 @@
               "type": "LIKE",
               "author": {
                 "authorId": "XCoEECH1JL4BEFTG8OBXXuUTIOatyKpCH9AIGE0",
-                "authorName": "Stefan Smith"
+                "authorName": "Stefan Smith",
+                "authorUrl": "https://www.linkedin.com/in/XCoEECH1JL4BEFTG8OBXXuUTIOatyKpCH9AIGE0"
               }
             },
             {
               "type": "LIKE",
               "author": {
                 "authorId": "XCoEECH1JL4BEFTG8OBXXuUTIOatyKpCH9AIGE0",
-                "authorName": "John Doe"
+                "authorName": "John Doe",
+                "authorUrl": "https://www.linkedin.com/in/XCoEECH1JL4BEFTG8OBXXuUTIOatyKpCH9AIGE0"
               }
             }
           ]
