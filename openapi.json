@@ -935,10 +935,6 @@
                         "type": "boolean",
                         "description": "Include education and schools information in the response."
                       },
-                      "includeRecommendations": {
-                        "type": "boolean",
-                        "description": "Include recommendations in the response."
-                      },
                       "includeCertifications": {
                         "type": "boolean",
                         "description": "Include certifications in the response."
@@ -1084,10 +1080,6 @@
                       "includeEducation": {
                         "type": "boolean",
                         "description": "Include education and schools information in the response."
-                      },
-                      "includeRecommendations": {
-                        "type": "boolean",
-                        "description": "Include recommendations in the response."
                       },
                       "includeCertifications": {
                         "type": "boolean",
@@ -4598,30 +4590,7 @@
               "Fixed Income",
               "Equities"
             ],
-            "languages": ["Deutsch", "Englisch"],
-            "recommendations": {
-              "recommendationsCount": 3,
-              "recommendationHistory": [
-                {
-                  "caption": "August 18, 2020, Michael was Tom’s client",
-                  "description": "Michael is very talented when it comes to founding and growing tech businesses, it's very impressive what he has achieved to date. I worked with him to implement a number of outbound marketing campaigns that delivered on both new leads and revenue. He was a joy to work with, his energy and enthusiasm was infectious. I'm sure we'll work together again in the near future.",
-                  "authorFullname": "Tom Kelly",
-                  "authorUrl": "https://www.linkedin.com/in/tomkelly25"
-                },
-                {
-                  "caption": "February 4, 2016, Catalina worked with Michael on the same team",
-                  "description": "Michael is an exceptionally well skilled business and sales person. His ability to make people feel good, comfortable and cared for, during the sales process, is truly remarkable. The social skills, combined with a genuine curiosity and passion for his job, also make him a great co-worker. I would personally recommend him to any growing startup who needs a truly talented biz dev guy, with a passion for all things tech. I hope to work with Michael in the future, but above all, I will be grateful for having learned from him what it is like to be highly engaging and personable as a professional.",
-                  "authorFullname": "Catalina B.",
-                  "authorUrl": "https://www.linkedin.com/in/catalinabutnaru"
-                },
-                {
-                  "caption": "October 28, 2015, Dr. Christian worked with Michael on the same team",
-                  "description": "I had the pleasure to work with Michael in a team for commodity market analysis. Michael takes a holistic way of thinking but keeps an eye on specific details of a topic. He is not afraid to take unknown paths and think in new directions. Very impressive is his continuous motivation, which supports the overall team spirit. It is simply inspiring to work with such a collaborative and diligent personality. Michael is an enrichment for every employer.",
-                  "authorFullname": "Dr. Christian Muntz, CFA",
-                  "authorUrl": "https://www.linkedin.com/in/dr-christian-muntz-cfa-b4b16b92"
-                }
-              ]
-            },
+            "languages": ["Deutsch", "English"],
             "certifications": {
               "certificationsCount": 1,
               "certificationHistory": [
