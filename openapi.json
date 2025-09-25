@@ -1033,11 +1033,11 @@
                   },
                   "companyDomain": {
                     "type": "string",
-                    "description": "This optional parameter is a string. It represents the company domain/URL to body"
+                    "description": "This optional parameter is a string. It represents the company domain/URL to body. *You can use current or any previous company to that person."
                   },
                   "companyName": {
                     "type": "string",
-                    "description": "This optional parameter is a string. It represents the company name to body"
+                    "description": "This optional parameter is a string. It represents the company name to body. *You can use current or any previous company to that person."
                   },
                   "email": {
                     "type": "string",
