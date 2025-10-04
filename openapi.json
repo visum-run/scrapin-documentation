@@ -4428,12 +4428,12 @@
           "minute_rate_limit_left": 499,
           "next_minute_rate_limit_reset": "2025-07-24T12:11:01.000Z",
           "person": {
-            "publicIdentifier": "michaelriedler",
+            "publicIdentifier": "michael",
             "linkedInIdentifier": "ACoAABTEFqYBfjGaiNRy5ITKaPzcBEBDdR1SrhU",
             "memberIdentifier": "348395174",
-            "linkedInUrl": "https://www.social.com/in/michaelriedler",
+            "linkedInUrl": "https://www.social.com/in/michael",
             "firstName": "Michael",
-            "lastName": "Riedler",
+            "lastName": "Davis",
             "headline": "VP Sales Scrapin.io - B2B Data for AI",
             "location": {
               "city": "London",
@@ -4623,7 +4623,7 @@
             "headquarter": {
               "city": "Paris",
               "country": "FR",
-              "postalCode": "75013",
+              "postalCode": "75000",
               "geographicArea": null,
               "street1": null,
               "street2": null
@@ -4647,12 +4647,12 @@
           "minute_rate_limit_left": 499,
           "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
           "person": {
-            "publicIdentifier": "michaelriedler",
+            "publicIdentifier": "michael",
             "linkedInIdentifier": "ACoAABTEFqYBfjGaiNRy5ITKaPzcBEBDdR1SrhU",
             "memberIdentifier": "348395174",
-            "linkedInUrl": "https://www.social.com/in/michaelriedler",
+            "linkedInUrl": "https://www.social.com/in/michael",
             "firstName": "Michael",
-            "lastName": "Riedler",
+            "lastName": "David",
             "headline": "VP Sales Scrapin.io - B2B Data for AI",
             "location": {
               "city": "London",
@@ -4677,7 +4677,7 @@
           "daily_rate_limit_left": 19000,
           "minute_rate_limit_left": 499,
           "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
-          "summary": "Hi there! My name is Julien and I'm an entrepreneur with a hacker mindset. 🏴‍☠️\n\nI am passionate about finding creative solutions to complex problems and am always looking for ways to optimize and improve processes. 🧠\n\nI am proud to have founded a company that build SaaS products to helps companies enrich their business data, and I am excited to continue driving innovation in the business world.\n\nThank you for visiting my profile and I hope to connect with you soon!"
+          "summary": "Hi there! My name is David and I'm an entrepreneur with a hacker mindset. 🏴‍☠️\n\nI am passionate about finding creative solutions to complex problems and am always looking for ways to optimize and improve processes. 🧠\n\nI am proud to have founded a company that build SaaS products to helps companies enrich their business data, and I am excited to continue driving innovation in the business world.\n\nThank you for visiting my profile and I hope to connect with you soon!"
         }
       },
       "FollowersCountFound": {
@@ -4958,18 +4958,18 @@
           "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
           "company": {
             "linkedInId": "71234370",
-            "name": "Visum",
-            "universalName": "visum-run",
-            "linkedInUrl": "https://www.social.com/company/71234370",
+            "name": "Data company",
+            "universalName": "data-company",
+            "linkedInUrl": "https://www.social.com/company/12345678",
             "employeeCount": 14,
             "followerCount": 806,
             "employeeCountRange": {
               "start": 11,
               "end": 50
             },
-            "websiteUrl": "https://visum.run",
-            "tagline": "We Provide Data for AI-driven technologies",
-            "description": "We are pioneers in live web scraping and data solutions, empowering AI applications to harness the power of real-time information.\n‍\nOur mission is to provide the most accurate and reliable web data, empowering AI applications to thrive in this new era of computing.\n‍\nAt Visum, we enable AI systems to access the freshest knowledge from the web, preparing for a future where AI-driven searches will exponentially surpass human searches.\n\nWe are committed to delivering unparalleled accuracy, scalability, and reliability, elevating the global AI ecosystem.‍",
+            "websiteUrl": "https://data.com",
+            "tagline": "We Provide Data for company",
+            "description": "Our mission is to provide the most accurate and reliable web data, empowering AI applications to thrive in this new era of computing.‍",
             "industry": "Software Development",
             "phone": null,
             "specialities": [
@@ -4982,17 +4982,17 @@
             "headquarter": {
               "city": "Paris",
               "country": "FR",
-              "postalCode": "75013",
+              "postalCode": "7500",
               "geographicArea": "Île-de-France",
-              "street1": "25, Rue de Tolbiac",
-              "street2": "VISUM mailbox"
+              "street1": "3, Paris street",
+              "street2": "mailbox 032"
             },
-            "logo": "https://media.licdn.com/dms/image/v2/D4E0BAQGj-Nfob0e55g/company-logo_400_400/company-logo_400_400/0/1702166267344/visum_run_logo?e=1756339200&v=beta&t=99eMIcY7IX2cLI-YkJOBdfg16aCwmd7Tpk8BrSXaJHg",
+            "logo": "https://media.licdn.com/dms/image/v2/D4E0BAQGj-Nfob0e55g/company-logo_400_400/company-logo_400_400/0/1702166267344/data_logo?e=1756339200&v=beta&t=99eMIcY7IX2cLI-YkJOBdfg16aCwmd7Tpk8BrSXaJHg",
             "foundedOn": {
               "year": 2020
             },
             "fundingData": null,
-            "backgroundUrl": "https://media.licdn.com/dms/image/v2/D4E1BAQEldpeB551LZA/company-background_10000/company-background_10000/0/1678715803339/visum_run_cover?e=1751288400&v=beta&t=gA-h6dpu8MRhpok9BoeVM5A0aPxGcM-9O7BqdOG8uRM"
+            "backgroundUrl": "https://media.licdn.com/dms/image/v2/D4E1BAQEldpeB551LZA/company-background_10000/company-background_10000/0/1678715803339/data_cover?e=1751288400&v=beta&t=gA-h6dpu8MRhpok9BoeVM5A0aPxGcM-9O7BqdOG8uRM"
           }
         }
       },
@@ -5007,18 +5007,18 @@
           "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
           "company": {
             "linkedInId": "71234370",
-            "name": "Visum",
-            "universalName": "visum-run",
-            "linkedInUrl": "https://www.social.com/company/71234370",
+            "name": "Data company",
+            "universalName": "data-company",
+            "linkedInUrl": "https://www.social.com/company/12345678",
             "employeeCount": 14,
             "followerCount": 806,
             "employeeCountRange": {
               "start": 11,
               "end": 50
             },
-            "websiteUrl": "https://visum.run",
-            "tagline": "We Provide Data for AI-driven technologies",
-            "description": "We are pioneers in live web scraping and data solutions, empowering AI applications to harness the power of real-time information.\n‍\nOur mission is to provide the most accurate and reliable web data, empowering AI applications to thrive in this new era of computing.\n‍\nAt Visum, we enable AI systems to access the freshest knowledge from the web, preparing for a future where AI-driven searches will exponentially surpass human searches.\n\nWe are committed to delivering unparalleled accuracy, scalability, and reliability, elevating the global AI ecosystem.‍",
+            "websiteUrl": "https://data.com",
+            "tagline": "We Provide Data for companies",
+            "description": "Our mission is to provide the most accurate and reliable web data, empowering AI applications to thrive in this new era of computing.",
             "industry": "Software Development",
             "phone": null,
             "specialities": [
@@ -5031,17 +5031,17 @@
             "headquarter": {
               "city": "Paris",
               "country": "FR",
-              "postalCode": "75013",
+              "postalCode": "75000",
               "geographicArea": "Île-de-France",
-              "street1": "25, Rue de Tolbiac",
-              "street2": "VISUM mailbox"
+              "street1": "3, Paris street",
+              "street2": "mailbox 003"
             },
-            "logo": "https://media.licdn.com/dms/image/v2/D4E0BAQGj-Nfob0e55g/company-logo_400_400/company-logo_400_400/0/1702166267344/visum_run_logo?e=1756339200&v=beta&t=99eMIcY7IX2cLI-YkJOBdfg16aCwmd7Tpk8BrSXaJHg",
+            "logo": "https://media.licdn.com/dms/image/v2/D4E0BAQGj-Nfob0e55g/company-logo_400_400/company-logo_400_400/0/1702166267344/data_logo?e=1756339200&v=beta&t=99eMIcY7IX2cLI-YkJOBdfg16aCwmd7Tpk8BrSXaJHg",
             "foundedOn": {
               "year": 2020
             },
             "fundingData": null,
-            "backgroundUrl": "https://media.licdn.com/dms/image/v2/D4E1BAQEldpeB551LZA/company-background_10000/company-background_10000/0/1678715803339/visum_run_cover?e=1751288400&v=beta&t=gA-h6dpu8MRhpok9BoeVM5A0aPxGcM-9O7BqdOG8uRM"
+            "backgroundUrl": "https://media.licdn.com/dms/image/v2/D4E1BAQEldpeB551LZA/company-background_10000/company-background_10000/0/1678715803339/data_cover?e=1751288400&v=beta&t=gA-h6dpu8MRhpok9BoeVM5A0aPxGcM-9O7BqdOG8uRM"
           }
         }
       },
