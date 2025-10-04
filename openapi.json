@@ -15,7 +15,7 @@
         "tags": ["Person"],
         "operationId": "PersonSearch",
         "summary": "Person Search",
-        "description": "This operation allows you to find a LinkedIn User based on first name, last name, company domain or email. It returns data profile and company information as the response. This operation consumes 1 credit.",
+        "description": "This operation allows you to find a Profile based on first name, last name, company domain or email. It returns data profile and company information as the response. This operation consumes 1 credit.",
         "parameters": [
           {
             "name": "firstName",
@@ -83,7 +83,7 @@
             "name": "linkedInUrl",
             "in": "query",
             "schema": { "type": "string" },
-            "description": "This required parameter is a string. It represents the LinkedIn URL of the person with this format: https://www.linkedin.com/in/xxxxxxxxxxxxx/.",
+            "description": "This required parameter is a string. It represents the Social URL of the person with this format: https://www.social.com/in/xxxxxxxxxxxxx/.",
             "required": true
           }
         ],
@@ -155,13 +155,13 @@
         "tags": ["Company"],
         "operationId": "ExtractCompanyDataProfile",
         "summary": "Extract Company Data Profile",
-        "description": "This operation allows you to extract data from a Company LinkedIn URL. It returns company data as the response. This operation consumes 1 credit.",
+        "description": "This operation allows you to extract data from a Company URL. It returns company data as the response. This operation consumes 1 credit.",
         "parameters": [
           {
             "name": "linkedInUrl",
             "in": "query",
             "schema": { "type": "string" },
-            "description": "This required parameter is a string. It represents the LinkedIn URL of the company with this format: https://www.linkedin.com/company/xxxxxxxxxx/.",
+            "description": "This required parameter is a string. It represents the Social URL of the company with this format: https://www.social.com/company/xxxxxxxxxx/.",
             "required": true
           }
         ],
@@ -214,7 +214,7 @@
             "name": "companyUrl",
             "in": "query",
             "schema": { "type": "string" },
-            "description": "This required parameter is a string. It represents the LinkedIn URL of the company with this format: https://www.linkedin.com/company/xxxxxxxxxx/.",
+            "description": "This required parameter is a string. It represents the Social URL of the company with this format: https://www.social.com/company/xxxxxxxxxx/.",
             "required": false
           },
           {
@@ -255,13 +255,13 @@
         "tags": ["Job"],
         "operationId": "ExtractJobData",
         "summary": "Extract Job Data",
-        "description": "This operation allows you to extract data from a Job LinkedIn URL. It returns job data as the response. This operation consumes 1 credit.",
+        "description": "This operation allows you to extract data from a Job URL. It returns job data as the response. This operation consumes 1 credit.",
         "parameters": [
           {
             "name": "url",
             "in": "query",
             "schema": { "type": "string" },
-            "description": "This required parameter is a string. It represents the LinkedIn URL of the job with the following formats: https://www.linkedin.com/jobs/collections/recommended/?currentJobId=XXXXXXXXXX, https://www.linkedin.com/jobs/search/?currentJobId=XXXXXXXXXX or https://www.linkedin.com/jobs/view/XXXXXXXXXX/.",
+            "description": "This required parameter is a string. It represents the Social URL of the job with the following formats: https://www.social.com/jobs/collections/recommended/?currentJobId=XXXXXXXXXX, https://www.social.com/jobs/search/?currentJobId=XXXXXXXXXX or https://www.social.com/jobs/view/XXXXXXXXXX/.",
             "required": true
           }
         ],
@@ -294,7 +294,7 @@
         "tags": ["Person"],
         "operationId": "PersonsActivitiesPost",
         "summary": "Get Person Activities Post",
-        "description": "This operation allows you to retrieve the LinkedIn activity post details of a person based on their activity post ID. This operation consumes 1 credit.",
+        "description": "This operation allows you to retrieve the activity post details of a person based on their activity post ID. This operation consumes 1 credit.",
         "parameters": [
           {
             "name": "activityId",
@@ -313,7 +313,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The endpoint returns the LinkedIn activity post from activityId or postId",
+            "description": "The endpoint returns the activity post from activityId or postId",
             "content": {
               "application/json": {
                 "schema": {
@@ -340,19 +340,19 @@
         "tags": ["Person"],
         "operationId": "PersonsActivitiesPosts",
         "summary": "Get Person Activities Posts",
-        "description": "This operation allows you to retrieve the last 50 LinkedIn activity posts of a person based on their LinkedIn Profile URL. This operation consumes 1 credit.",
+        "description": "This operation allows you to retrieve the last 50 activity posts of a person based on their Social Profile URL. This operation consumes 1 credit.",
         "parameters": [
           {
             "name": "linkedInUrl",
             "in": "query",
             "required": true,
             "schema": { "type": "string" },
-            "description": "This required parameter is a string. It represents LinkedIn Profile URL you want to retrieve all LinkedIn activity posts."
+            "description": "This required parameter is a string. It represents Social Profile URL you want to retrieve all activity posts."
           }
         ],
         "responses": {
           "200": {
-            "description": "The endpoint returns the LinkedIn activity posts from LinkedIn Profile URL",
+            "description": "The endpoint returns the activity posts from Profile URL",
             "content": {
               "application/json": {
                 "schema": {
@@ -379,19 +379,19 @@
         "tags": ["Person"],
         "operationId": "PersonsActivitiesComments",
         "summary": "Get Person Activities Comments",
-        "description": "This operation allows you to retrieve the last 50 LinkedIn activity comments of a person based on their LinkedIn Profile URL. This operation consumes 1 credit.",
+        "description": "This operation allows you to retrieve the last 50 activity comments of a person based on their Social Profile URL. This operation consumes 1 credit.",
         "parameters": [
           {
             "name": "linkedInUrl",
             "in": "query",
             "required": true,
             "schema": { "type": "string" },
-            "description": "This required parameter is a string. It represents LinkedIn Profile URL you want to retrieve all LinkedIn activity comments."
+            "description": "This required parameter is a string. It represents Profile URL you want to retrieve all activity comments."
           }
         ],
         "responses": {
           "200": {
-            "description": "The endpoint returns the LinkedIn activity comments from LinkedIn Profile URL",
+            "description": "The endpoint returns the activity comments from a Profile URL",
             "content": {
               "application/json": {
                 "schema": {
@@ -418,19 +418,19 @@
         "tags": ["Person"],
         "operationId": "PersonsActivitiesReactions",
         "summary": "Get Person Activities Reactions",
-        "description": "This operation allows you to retrieve the last 50 LinkedIn activity reactions of a person based on their LinkedIn Profile URL. This operation consumes 1 credit.",
+        "description": "This operation allows you to retrieve the last 50 activity reactions of a person based on their Social Profile URL. This operation consumes 1 credit.",
         "parameters": [
           {
             "name": "linkedInUrl",
             "in": "query",
             "required": true,
             "schema": { "type": "string" },
-            "description": "This required parameter is a string. It represents LinkedIn Profile URL you want to retrieve all LinkedIn activity reactions."
+            "description": "This required parameter is a string. It represents Profile URL you want to retrieve all activity reactions."
           }
         ],
         "responses": {
           "200": {
-            "description": "The endpoint returns the LinkedIn activity reactions from LinkedIn Profile URL",
+            "description": "The endpoint returns the activity reactions from Profile URL",
             "content": {
               "application/json": {
                 "schema": {
@@ -457,7 +457,7 @@
         "tags": ["Person"],
         "operationId": "PersonsActivitiesPostComments",
         "summary": "Get Person Activities Post Comments",
-        "description": "This operation allows you to retrieve all comments on LinkedIn activity post of a person based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.",
+        "description": "This operation allows you to retrieve all comments on activity post of a person based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.",
         "parameters": [
           {
             "name": "activityId",
@@ -476,7 +476,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The endpoint returns the LinkedIn activity post comments from activityId",
+            "description": "The endpoint returns the activity post comments from activityId",
             "content": {
               "application/json": {
                 "schema": {
@@ -503,7 +503,7 @@
         "tags": ["Person"],
         "operationId": "PersonsActivitiesPostReactions",
         "summary": "Get Person Activities Post Reactions",
-        "description": "This operation allows you to retrieve all reactions on LinkedIn activity post of a person based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.",
+        "description": "This operation allows you to retrieve all reactions on activity post of a person based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.",
         "parameters": [
           {
             "name": "activityId",
@@ -522,7 +522,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The endpoint returns the LinkedIn activity post reactions from activityId",
+            "description": "The endpoint returns the activity post reactions from activityId",
             "content": {
               "application/json": {
                 "schema": {
@@ -549,7 +549,7 @@
         "tags": ["Person"],
         "operationId": "PersonsActivitiesPostReposts",
         "summary": "Get Person Activities Post Reposts",
-        "description": "This operation allows you to retrieve all reposts on LinkedIn activity post of a person based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.",
+        "description": "This operation allows you to retrieve all reposts on activity post of a person based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.",
         "parameters": [
           {
             "name": "activityId",
@@ -568,7 +568,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The endpoint returns the LinkedIn activity post reposts from activityId",
+            "description": "The endpoint returns the activity post reposts from activityId",
             "content": {
               "application/json": {
                 "schema": {
@@ -595,7 +595,7 @@
         "tags": ["Company"],
         "operationId": "CompaniesActivitiesPost",
         "summary": "Get Company Activities Post",
-        "description": "This operation allows you to retrieve the LinkedIn activity post details of a company based on their activity post ID. This operation consumes 1 credit.",
+        "description": "This operation allows you to retrieve the activity post details of a company based on their activity post ID. This operation consumes 1 credit.",
         "parameters": [
           {
             "name": "activityId",
@@ -607,7 +607,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The endpoint returns the LinkedIn activity post from activityId",
+            "description": "The endpoint returns the activity post from activityId",
             "content": {
               "application/json": {
                 "schema": {
@@ -634,14 +634,14 @@
         "tags": ["Company"],
         "operationId": "CompaniesActivitiesPosts",
         "summary": "Get Company Activities Posts",
-        "description": "This operation allows you to retrieve all LinkedIn activity posts of a company based on their LinkedIn Profile URL. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.",
+        "description": "This operation allows you to retrieve all activity posts of a company based on their Profile URL. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.",
         "parameters": [
           {
             "name": "linkedInUrl",
             "in": "query",
             "required": true,
             "schema": { "type": "string" },
-            "description": "This required parameter is a string. It represents LinkedIn Profile URL you want to retrieve all LinkedIn activity posts."
+            "description": "This required parameter is a string. It represents the Profile URL you want to retrieve all activity posts."
           },
           {
             "name": "page",
@@ -653,7 +653,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The endpoint returns the LinkedIn activity posts from LinkedIn Profile URL",
+            "description": "The endpoint returns the activity posts from the Profile URL",
             "content": {
               "application/json": {
                 "schema": {
@@ -680,7 +680,7 @@
         "tags": ["Company"],
         "operationId": "CompaniesActivitiesPostComments",
         "summary": "Get Company Activities Post Comments",
-        "description": "This operation allows you to retrieve all comments on LinkedIn activity post of a company based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.",
+        "description": "This operation allows you to retrieve all comments on activity post of a company based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.",
         "parameters": [
           {
             "name": "activityId",
@@ -699,7 +699,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The endpoint returns the LinkedIn activity post comments from activityId",
+            "description": "The endpoint returns the activity post comments from activityId",
             "content": {
               "application/json": {
                 "schema": {
@@ -726,7 +726,7 @@
         "tags": ["Company"],
         "operationId": "CompaniesActivitiesPostReactions",
         "summary": "Get Company Activities Post Reactions",
-        "description": "This operation allows you to retrieve all reactions on LinkedIn activity post of a company based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.",
+        "description": "This operation allows you to retrieve all reactions on activity post of a company based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.",
         "parameters": [
           {
             "name": "activityId",
@@ -745,7 +745,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The endpoint returns the LinkedIn activity post reactions from activityId",
+            "description": "The endpoint returns the activity post reactions from activityId",
             "content": {
               "application/json": {
                 "schema": {
@@ -772,7 +772,7 @@
         "tags": ["Company"],
         "operationId": "CompaniesActivitiesPostReposts",
         "summary": "Get Company Activities Post Reposts",
-        "description": "This operation allows you to retrieve all reposts on LinkedIn activity post of a company based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.",
+        "description": "This operation allows you to retrieve all reposts on activity post of a company based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.",
         "parameters": [
           {
             "name": "activityId",
@@ -791,7 +791,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The endpoint returns the LinkedIn activity post reposts from activityId",
+            "description": "The endpoint returns the activity post reposts from activityId",
             "content": {
               "application/json": {
                 "schema": {
@@ -854,7 +854,7 @@
             "name": "linkedInUrl",
             "in": "query",
             "schema": { "type": "string" },
-            "description": "This required parameter is a string. It represents the LinkedIn URL of the person with this format: https://www.linkedin.com/in/xxxxxxxxxxxxx/.",
+            "description": "This required parameter is a string. It represents the Social URL of the person with this format: https://www.social.com/in/xxxxxxxxxxxxx/.",
             "required": true
           }
         ],
@@ -895,7 +895,7 @@
                 "properties": {
                   "linkedInUrl": {
                     "type": "string",
-                    "description": "This required parameter is a string. It represents the LinkedIn URL of the person with this format: https://www.linkedin.com/in/xxxxxxxxxxxxx/."
+                    "description": "This required parameter is a string. It represents the Social URL of the person with this format: https://www.social.com/in/xxxxxxxxxxxxx/."
                   },
                   "includes": {
                     "type": "object",
@@ -1127,7 +1127,7 @@
             "name": "linkedInUrl",
             "in": "query",
             "schema": { "type": "string" },
-            "description": "This required parameter is a string. It represents the LinkedIn URL of the person with this format: https://www.linkedin.com/in/xxxxxxxxxxxxx/.",
+            "description": "This required parameter is a string. It represents the Social URL of the person with this format: https://www.social.com/in/xxxxxxxxxxxxx/.",
             "required": true
           }
         ],
@@ -1166,7 +1166,7 @@
             "name": "linkedInUrl",
             "in": "query",
             "schema": { "type": "string" },
-            "description": "This required parameter is a string. It represents the LinkedIn URL of the person with this format: https://www.linkedin.com/in/xxxxxxxxxxxxx/.",
+            "description": "This required parameter is a string. It represents the Social URL of the person with this format: https://www.social.com/in/xxxxxxxxxxxxx/.",
             "required": true
           }
         ],
@@ -1205,7 +1205,7 @@
             "name": "linkedInUrl",
             "in": "query",
             "schema": { "type": "string" },
-            "description": "This required parameter is a string. It represents the LinkedIn URL of the person with this format: https://www.linkedin.com/in/xxxxxxxxxxxxx/.",
+            "description": "This required parameter is a string. It represents the Social URL of the person with this format: https://www.social.com/in/xxxxxxxxxxxxx/.",
             "required": true
           }
         ],
@@ -1244,7 +1244,7 @@
             "name": "linkedInUrl",
             "in": "query",
             "schema": { "type": "string" },
-            "description": "This required parameter is a string. It represents the LinkedIn URL of the person with this format: https://www.linkedin.com/in/xxxxxxxxxxxxx/.",
+            "description": "This required parameter is a string. It represents the Social URL of the person with this format: https://www.social.com/in/xxxxxxxxxxxxx/.",
             "required": true
           }
         ],
@@ -1283,7 +1283,7 @@
             "name": "linkedInUrl",
             "in": "query",
             "schema": { "type": "string" },
-            "description": "This required parameter is a string. It represents the LinkedIn URL of the person with this format: https://www.linkedin.com/in/xxxxxxxxxxxxx/.",
+            "description": "This required parameter is a string. It represents the Social URL of the person with this format: https://www.social.com/in/xxxxxxxxxxxxx/.",
             "required": true
           }
         ],
@@ -1322,7 +1322,7 @@
             "name": "linkedInUrl",
             "in": "query",
             "schema": { "type": "string" },
-            "description": "This required parameter is a string. It represents the LinkedIn URL of the person with this format: https://www.linkedin.com/in/xxxxxxxxxxxxx/.",
+            "description": "This required parameter is a string. It represents the Social URL of the person with this format: https://www.social.com/in/xxxxxxxxxxxxx/.",
             "required": true
           }
         ],
@@ -1355,13 +1355,13 @@
         "tags": ["Person"],
         "operationId": "GetRecommendations",
         "summary": "Get Recommendations",
-        "description": "This operation allows you to get recommendations data from a LinkedIn profile. It returns recommendations information with credits and rate limit information. This operation consumes 1 credit.",
+        "description": "This operation allows you to get recommendations data from a profile. It returns recommendations information with credits and rate limit information. This operation consumes 1 credit.",
         "parameters": [
           {
             "name": "linkedInUrl",
             "in": "query",
             "schema": { "type": "string" },
-            "description": "This required parameter is a string. It represents the LinkedIn URL of the person with this format: https://www.linkedin.com/in/xxxxxxxxxxxxx/.",
+            "description": "This required parameter is a string. It represents the Social URL of the person with this format: https://www.social.com/in/xxxxxxxxxxxxx/.",
             "required": true
           }
         ],
@@ -1394,13 +1394,13 @@
         "tags": ["Person"],
         "operationId": "GetCertifications",
         "summary": "Get Certifications",
-        "description": "This operation allows you to get certifications data from a LinkedIn profile. It returns certifications information with credits and rate limit information. This operation consumes 1 credit.",
+        "description": "This operation allows you to get certifications data from a Social profile. It returns certifications information with credits and rate limit information. This operation consumes 1 credit.",
         "parameters": [
           {
             "name": "linkedInUrl",
             "in": "query",
             "schema": { "type": "string" },
-            "description": "This required parameter is a string. It represents the LinkedIn URL of the person with this format: https://www.linkedin.com/in/xxxxxxxxxxxxx/.",
+            "description": "This required parameter is a string. It represents the Social URL of the person with this format: https://www.social.com/in/xxxxxxxxxxxxx/.",
             "required": true
           }
         ],
@@ -1433,13 +1433,13 @@
         "tags": ["Person"],
         "operationId": "GetVolunteeringExperiences",
         "summary": "Get Volunteering Experiences",
-        "description": "This operation allows you to get volunteering experiences data from a LinkedIn profile. It returns volunteering experiences information with credits and rate limit information. This operation consumes 1 credit.",
+        "description": "This operation allows you to get volunteering experiences data from a profile. It returns volunteering experiences information with credits and rate limit information. This operation consumes 1 credit.",
         "parameters": [
           {
             "name": "linkedInUrl",
             "in": "query",
             "schema": { "type": "string" },
-            "description": "This required parameter is a string. It represents the LinkedIn URL of the person with this format: https://www.linkedin.com/in/xxxxxxxxxxxxx/.",
+            "description": "This required parameter is a string. It represents the Social URL of the person with this format: https://www.social.com/in/xxxxxxxxxxxxx/.",
             "required": true
           }
         ],
@@ -1511,13 +1511,13 @@
         "tags": ["Company"],
         "operationId": "ExtractCompanyDataProfile",
         "summary": "Extract Company Data Profile",
-        "description": "This operation allows you to extract data from a Company LinkedIn URL. It returns company data as the response. This operation consumes 1 credit.",
+        "description": "This operation allows you to extract data from a Company URL. It returns company data as the response. This operation consumes 1 credit.",
         "parameters": [
           {
             "name": "linkedInUrl",
             "in": "query",
             "schema": { "type": "string" },
-            "description": "This required parameter is a string. It represents the LinkedIn URL of the company with this format: https://www.linkedin.com/company/xxxxxxxxxx/.",
+            "description": "This required parameter is a string. It represents the Social URL of the company with this format: https://www.social.com/company/xxxxxxxxxx/.",
             "required": true
           }
         ],
@@ -1570,7 +1570,7 @@
             "name": "companyUrl",
             "in": "query",
             "schema": { "type": "string" },
-            "description": "This required parameter is a string. It represents the LinkedIn URL of the company with this format: https://www.linkedin.com/company/xxxxxxxxxx/.",
+            "description": "This required parameter is a string. It represents the Social URL of the company with this format: https://www.social.com/company/xxxxxxxxxx/.",
             "required": false
           },
           {
@@ -1611,13 +1611,13 @@
         "tags": ["Job"],
         "operationId": "ExtractJobData",
         "summary": "Extract Job Data",
-        "description": "This operation allows you to extract data from a Job LinkedIn URL. It returns job data as the response. This operation consumes 1 credit.",
+        "description": "This operation allows you to extract data from a Job URL. It returns job data as the response. This operation consumes 1 credit.",
         "parameters": [
           {
             "name": "url",
             "in": "query",
             "schema": { "type": "string" },
-            "description": "This required parameter is a string. It represents the LinkedIn URL of the job with the following formats: https://www.linkedin.com/jobs/collections/recommended/?currentJobId=XXXXXXXXXX, https://www.linkedin.com/jobs/search/?currentJobId=XXXXXXXXXX or https://www.linkedin.com/jobs/view/XXXXXXXXXX/.",
+            "description": "This required parameter is a string. It represents the Social URL of the job with the following formats: https://www.social.com/jobs/collections/recommended/?currentJobId=XXXXXXXXXX, https://www.social.com/jobs/search/?currentJobId=XXXXXXXXXX or https://www.social.com/jobs/view/XXXXXXXXXX/.",
             "required": true
           }
         ],
@@ -1650,7 +1650,7 @@
         "tags": ["Person"],
         "operationId": "PersonsActivitiesPost",
         "summary": "Get Person Activities Post",
-        "description": "This operation allows you to retrieve the LinkedIn activity post details of a person based on their activity post ID. This operation consumes 1 credit.",
+        "description": "This operation allows you to retrieve the activity post details of a person based on their activity post ID. This operation consumes 1 credit.",
         "parameters": [
           {
             "name": "activityId",
@@ -1669,7 +1669,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The endpoint returns the LinkedIn activity post from activityId or postId",
+            "description": "The endpoint returns the activity post from activityId or postId",
             "content": {
               "application/json": {
                 "schema": {
@@ -1696,19 +1696,19 @@
         "tags": ["Person"],
         "operationId": "PersonsActivitiesPosts",
         "summary": "Get Person Activities Posts",
-        "description": "This operation allows you to retrieve the last 50 LinkedIn activity posts of a person based on their LinkedIn Profile URL. This operation consumes 1 credit.",
+        "description": "This operation allows you to retrieve the last 50 activity posts of a person based on their Profile URL. This operation consumes 1 credit.",
         "parameters": [
           {
             "name": "linkedInUrl",
             "in": "query",
             "required": true,
             "schema": { "type": "string" },
-            "description": "This required parameter is a string. It represents LinkedIn Profile URL you want to retrieve all LinkedIn activity posts."
+            "description": "This required parameter is a string. It represents Profile URL you want to retrieve all activity posts."
           }
         ],
         "responses": {
           "200": {
-            "description": "The endpoint returns the LinkedIn activity posts from LinkedIn Profile URL",
+            "description": "The endpoint returns the activity posts from the Profile URL",
             "content": {
               "application/json": {
                 "schema": {
@@ -1735,19 +1735,19 @@
         "tags": ["Person"],
         "operationId": "PersonsActivitiesComments",
         "summary": "Get Person Activities Comments",
-        "description": "This operation allows you to retrieve the last 50 LinkedIn activity comments of a person based on their LinkedIn Profile URL. This operation consumes 1 credit.",
+        "description": "This operation allows you to retrieve the last 50 activity comments of a person based on their Profile URL. This operation consumes 1 credit.",
         "parameters": [
           {
             "name": "linkedInUrl",
             "in": "query",
             "required": true,
             "schema": { "type": "string" },
-            "description": "This required parameter is a string. It represents LinkedIn Profile URL you want to retrieve all LinkedIn activity comments."
+            "description": "This required parameter is a string. It represents the Profile URL you want to retrieve all activity comments."
           }
         ],
         "responses": {
           "200": {
-            "description": "The endpoint returns the LinkedIn activity comments from LinkedIn Profile URL",
+            "description": "The endpoint returns the activity comments from the Profile URL",
             "content": {
               "application/json": {
                 "schema": {
@@ -1774,19 +1774,19 @@
         "tags": ["Person"],
         "operationId": "PersonsActivitiesReactions",
         "summary": "Get Person Activities Reactions",
-        "description": "This operation allows you to retrieve the last 50 LinkedIn activity reactions of a person based on their LinkedIn Profile URL. This operation consumes 1 credit.",
+        "description": "This operation allows you to retrieve the last 50 activity reactions of a person based on their Profile URL. This operation consumes 1 credit.",
         "parameters": [
           {
             "name": "linkedInUrl",
             "in": "query",
             "required": true,
             "schema": { "type": "string" },
-            "description": "This required parameter is a string. It represents LinkedIn Profile URL you want to retrieve all LinkedIn activity reactions."
+            "description": "This required parameter is a string. It represents the Profile URL you want to retrieve all activity reactions."
           }
         ],
         "responses": {
           "200": {
-            "description": "The endpoint returns the LinkedIn activity reactions from LinkedIn Profile URL",
+            "description": "The endpoint returns the activity reactions from the Profile URL",
             "content": {
               "application/json": {
                 "schema": {
@@ -1813,7 +1813,7 @@
         "tags": ["Person"],
         "operationId": "PersonsActivitiesPostComments",
         "summary": "Get Person Activities Post Comments",
-        "description": "This operation allows you to retrieve all comments on LinkedIn activity post of a person based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.",
+        "description": "This operation allows you to retrieve all comments on activity post of a person based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.",
         "parameters": [
           {
             "name": "activityId",
@@ -1832,7 +1832,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The endpoint returns the LinkedIn activity post comments from activityId",
+            "description": "The endpoint returns the activity post comments from activityId",
             "content": {
               "application/json": {
                 "schema": {
@@ -1859,7 +1859,7 @@
         "tags": ["Person"],
         "operationId": "PersonsActivitiesPostReactions",
         "summary": "Get Person Activities Post Reactions",
-        "description": "This operation allows you to retrieve all reactions on LinkedIn activity post of a person based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.",
+        "description": "This operation allows you to retrieve all reactions on activity post of a person based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.",
         "parameters": [
           {
             "name": "activityId",
@@ -1878,7 +1878,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The endpoint returns the LinkedIn activity post reactions from activityId",
+            "description": "The endpoint returns the activity post reactions from activityId",
             "content": {
               "application/json": {
                 "schema": {
@@ -1905,7 +1905,7 @@
         "tags": ["Person"],
         "operationId": "PersonsActivitiesPostReposts",
         "summary": "Get Person Activities Post Reposts",
-        "description": "This operation allows you to retrieve all reposts on LinkedIn activity post of a person based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.",
+        "description": "This operation allows you to retrieve all reposts on activity post of a person based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.",
         "parameters": [
           {
             "name": "activityId",
@@ -1924,7 +1924,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The endpoint returns the LinkedIn activity post reposts from activityId",
+            "description": "The endpoint returns the activity post reposts from activityId",
             "content": {
               "application/json": {
                 "schema": {
@@ -1951,7 +1951,7 @@
         "tags": ["Company"],
         "operationId": "CompaniesActivitiesPost",
         "summary": "Get Company Activities Post",
-        "description": "This operation allows you to retrieve the LinkedIn activity post details of a company based on their activity post ID. This operation consumes 1 credit.",
+        "description": "This operation allows you to retrieve the activity post details of a company based on their activity post ID. This operation consumes 1 credit.",
         "parameters": [
           {
             "name": "activityId",
@@ -1963,7 +1963,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The endpoint returns the LinkedIn activity post from activityId",
+            "description": "The endpoint returns the activity post from activityId",
             "content": {
               "application/json": {
                 "schema": {
@@ -1990,14 +1990,14 @@
         "tags": ["Company"],
         "operationId": "CompaniesActivitiesPosts",
         "summary": "Get Company Activities Posts",
-        "description": "This operation allows you to retrieve all LinkedIn activity posts of a company based on their LinkedIn Profile URL. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.",
+        "description": "This operation allows you to retrieve all activity posts of a company based on their Profile URL. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.",
         "parameters": [
           {
             "name": "linkedInUrl",
             "in": "query",
             "required": true,
             "schema": { "type": "string" },
-            "description": "This required parameter is a string. It represents LinkedIn Profile URL you want to retrieve all LinkedIn activity posts."
+            "description": "This required parameter is a string. It represents the Profile URL you want to retrieve all activity posts."
           },
           {
             "name": "page",
@@ -2009,7 +2009,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The endpoint returns the LinkedIn activity posts from LinkedIn Profile URL",
+            "description": "The endpoint returns the activity posts from the Profile URL",
             "content": {
               "application/json": {
                 "schema": {
@@ -2036,7 +2036,7 @@
         "tags": ["Company"],
         "operationId": "CompaniesActivitiesPostComments",
         "summary": "Get Company Activities Post Comments",
-        "description": "This operation allows you to retrieve all comments on LinkedIn activity post of a company based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.",
+        "description": "This operation allows you to retrieve all comments on activity post of a company based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.",
         "parameters": [
           {
             "name": "activityId",
@@ -2055,7 +2055,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The endpoint returns the LinkedIn activity post comments from activityId",
+            "description": "The endpoint returns the activity post comments from activityId",
             "content": {
               "application/json": {
                 "schema": {
@@ -2082,7 +2082,7 @@
         "tags": ["Company"],
         "operationId": "CompaniesActivitiesPostReactions",
         "summary": "Get Company Activities Post Reactions",
-        "description": "This operation allows you to retrieve all reactions on LinkedIn activity post of a company based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.",
+        "description": "This operation allows you to retrieve all reactions on activity post of a company based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.",
         "parameters": [
           {
             "name": "activityId",
@@ -2101,7 +2101,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The endpoint returns the LinkedIn activity post reactions from activityId",
+            "description": "The endpoint returns the activity post reactions from activityId",
             "content": {
               "application/json": {
                 "schema": {
@@ -2128,7 +2128,7 @@
         "tags": ["Company"],
         "operationId": "CompaniesActivitiesPostReposts",
         "summary": "Get Company Activities Post Reposts",
-        "description": "This operation allows you to retrieve all reposts on LinkedIn activity post of a company based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.",
+        "description": "This operation allows you to retrieve all reposts on activity post of a company based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.",
         "parameters": [
           {
             "name": "activityId",
@@ -2147,7 +2147,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The endpoint returns the LinkedIn activity post reposts from activityId",
+            "description": "The endpoint returns the activity post reposts from activityId",
             "content": {
               "application/json": {
                 "schema": {
@@ -2329,11 +2329,11 @@
         "properties": {
           "publicIdentifier": {
             "type": "string",
-            "description": "Public identifier of the person on LinkedIn"
+            "description": "Public identifier of the person"
           },
           "linkedInIdentifier": {
             "type": "string",
-            "description": "LinkedIn identifier of the person"
+            "description": "Social identifier of the person"
           },
           "memberIdentifier": {
             "type": "string",
@@ -2341,7 +2341,7 @@
           },
           "linkedInUrl": {
             "type": "string",
-            "description": "LinkedIn URL of the person"
+            "description": "Social URL of the person"
           },
           "firstName": {
             "type": "string",
@@ -2372,7 +2372,7 @@
           },
           "premium": {
             "type": "boolean",
-            "description": "Indicates if the person has a premium LinkedIn account"
+            "description": "Indicates if the person has a premium Social account"
           },
           "pronoun": {
             "type": "string",
@@ -2532,11 +2532,11 @@
           "linkedInUrl": {
             "type": "string",
             "format": "uri",
-            "description": "LinkedIn URL of the company"
+            "description": "Social URL of the company"
           },
           "linkedInId": {
             "type": "string",
-            "description": "LinkedIn identifier of the company"
+            "description": "Social identifier of the company"
           }
         }
       },
@@ -2608,7 +2608,7 @@
           "linkedInUrl": {
             "type": "string",
             "format": "uri",
-            "description": "LinkedIn URL of the school"
+            "description": "Social URL of the school"
           },
           "schoolLogo": {
             "type": "string",
@@ -2758,7 +2758,7 @@
           },
           "activityUrl": {
             "type": "string",
-            "description": "URL of the post on LinkedIn"
+            "description": "URL of the post"
           },
           "isRepublishedPost": {
             "type": "boolean",
@@ -2799,7 +2799,7 @@
               },
               "activityUrl": {
                 "type": "string",
-                "description": "URL of the related post on LinkedIn"
+                "description": "URL of the related post"
               },
               "relatedPost": {
                 "type": "object",
@@ -2848,7 +2848,7 @@
           },
           "activityUrl": {
             "type": "string",
-            "description": "URL of the comment on LinkedIn"
+            "description": "URL of the comment"
           }
         }
       },
@@ -2887,7 +2887,7 @@
           },
           "activityUrl": {
             "type": "string",
-            "description": "URL of the reaction on LinkedIn"
+            "description": "URL of the reaction"
           }
         }
       },
@@ -3156,19 +3156,19 @@
               "authorUrl": {
                 "type": "string",
                 "format": "uri",
-                "description": "URL to the author's LinkedIn profile."
+                "description": "URL to the author's Social profile."
               }
             }
           },
           "activityUrl": {
             "type": "string",
             "format": "uri",
-            "description": "URL of the activity on LinkedIn."
+            "description": "URL of the activity."
           },
           "shareUrl": {
             "type": "string",
             "format": "uri",
-            "description": "URL of the activity on LinkedIn share format."
+            "description": "URL of the activity share format."
           },
           "relatedPost": {
             "type": "object",
@@ -3206,19 +3206,19 @@
                   "authorUrl": {
                     "type": "string",
                     "format": "uri",
-                    "description": "URL to the author's LinkedIn profile."
+                    "description": "URL to the author's profile."
                   }
                 }
               },
               "activityUrl": {
                 "type": "string",
                 "format": "uri",
-                "description": "URL of the related post on LinkedIn."
+                "description": "URL of the related post."
               },
               "shareUrl": {
                 "type": "string",
                 "format": "uri",
-                "description": "URL of the activity on LinkedIn share format."
+                "description": "URL of the activity share format."
               }
             }
           }
@@ -3257,19 +3257,19 @@
               },
               "authorPublicIdentifier": {
                 "type": "string",
-                "description": "The public identifier of the author on LinkedIn."
+                "description": "The public identifier of the author."
               }
             }
           },
           "activityUrl": {
             "type": "string",
             "format": "uri",
-            "description": "The URL of the activity on LinkedIn."
+            "description": "The URL of the activity."
           },
           "shareUrl": {
             "type": "string",
             "format": "uri",
-            "description": "URL of the activity on LinkedIn share format."
+            "description": "URL of the activity share format."
           },
           "relatedPost": {
             "type": "object",
@@ -3310,19 +3310,19 @@
                   },
                   "authorPublicIdentifier": {
                     "type": "string",
-                    "description": "The public identifier of the author on LinkedIn."
+                    "description": "The public identifier of the author."
                   }
                 }
               },
               "activityUrl": {
                 "type": "string",
                 "format": "uri",
-                "description": "The URL of the related post on LinkedIn."
+                "description": "The URL of the related post."
               },
               "shareUrl": {
                 "type": "string",
                 "format": "uri",
-                "description": "URL of the activity on LinkedIn share format."
+                "description": "URL of the activity share format."
               },
               "relatedPost": {
                 "type": "object",
@@ -3366,14 +3366,14 @@
               },
               "authorPublicIdentifier": {
                 "type": "string",
-                "description": "Public identifier of the author on LinkedIn."
+                "description": "Public identifier of the author."
               }
             }
           },
           "activityUrl": {
             "type": "string",
             "format": "uri",
-            "description": "URL to the LinkedIn activity or comment."
+            "description": "URL to the activity or comment."
           }
         }
       },
@@ -3410,14 +3410,14 @@
               },
               "authorPublicIdentifier": {
                 "type": "string",
-                "description": "The public identifier of the author on LinkedIn."
+                "description": "The public identifier of the author."
               }
             }
           },
           "activityUrl": {
             "type": "string",
             "format": "uri",
-            "description": "The URL of the activity on LinkedIn."
+            "description": "The URL of the activity."
           },
           "relatedPost": {
             "type": "object",
@@ -3458,19 +3458,19 @@
                   },
                   "authorPublicIdentifier": {
                     "type": "string",
-                    "description": "The public identifier of the author on LinkedIn."
+                    "description": "The public identifier of the author."
                   }
                 }
               },
               "activityUrl": {
                 "type": "string",
                 "format": "uri",
-                "description": "The URL of the related post on LinkedIn."
+                "description": "The URL of the related post."
               },
               "shareUrl": {
                 "type": "string",
                 "format": "uri",
-                "description": "URL of the activity on LinkedIn share format."
+                "description": "URL of the activity share format."
               },
               "relatedPost": {
                 "type": "object",
@@ -3573,7 +3573,7 @@
                   },
                   "authorPublicIdentifier": {
                     "type": "string",
-                    "description": "Public identifier of the related post author on LinkedIn."
+                    "description": "Public identifier of the related post author."
                   }
                 }
               },
@@ -3585,7 +3585,7 @@
               "shareUrl": {
                 "type": "string",
                 "format": "uri",
-                "description": "URL of the activity on LinkedIn share format."
+                "description": "URL of the activity share format."
               },
               "relatedPost": {
                 "type": "object",
@@ -3614,7 +3614,7 @@
           "authorUrl": {
             "type": "string",
             "format": "uri",
-            "description": "LinkedIn URL of the recommendation author"
+            "description": "Social URL of the recommendation author"
           }
         }
       },
@@ -3673,14 +3673,14 @@
               },
               "authorPublicIdentifier": {
                 "type": "string",
-                "description": "Public identifier of the author on LinkedIn."
+                "description": "Public identifier of the author."
               }
             }
           },
           "activityUrl": {
             "type": "string",
             "format": "uri",
-            "description": "URL to the repost activity on LinkedIn."
+            "description": "URL to the repost activity."
           }
         }
       },
@@ -3819,7 +3819,7 @@
           },
           "comments": {
             "type": "array",
-            "description": "All comments of a linkedin profile",
+            "description": "All comments of a profile",
             "items": { "$ref": "#/components/schemas/CommentsV2" }
           }
         }
@@ -4021,7 +4021,7 @@
           "organizationUrl": {
             "type": "string",
             "format": "uri",
-            "description": "LinkedIn URL of the organization"
+            "description": "Social URL of the organization"
           },
           "issuedDate": {
             "type": "string",
@@ -4135,7 +4135,7 @@
             "publicIdentifier": "williamhgates",
             "memberIdentifier": "251749025",
             "linkedInIdentifier": "ACoAAA8BYqEBCGLg_vT_ca6mMEqkpp9nVffJ3hc",
-            "linkedInUrl": "https://www.linkedin.com/in/williamhgates",
+            "linkedInUrl": "https://www.social.com/in/williamhgates",
             "firstName": "Bill",
             "lastName": "Gates",
             "headline": "Co-chair, Bill & Melinda Gates Foundation",
@@ -4159,7 +4159,7 @@
                     "end": null
                   },
                   "companyLogo": "https://media.licdn.com/dms/image/C4E0BAQE7Na_mKQhIJg/company-logo_400_400/0/1633731811337/bill__melinda_gates_foundation_logo?e=1726099200&v=beta&t=LIgstVg1oR5LmBl9u1kolb_xeOqs5kX1ZTcUpaEtsE4",
-                  "linkedInUrl": "https://www.linkedin.com/company/8736/",
+                  "linkedInUrl": "https://www.social.com/company/8736/",
                   "linkedInId": "8736"
                 },
                 {
@@ -4171,7 +4171,7 @@
                     "end": null
                   },
                   "companyLogo": "https://media.licdn.com/dms/image/C4D0BAQGwD9vNu044FA/company-logo_400_400/0/1630531940051/breakthrough_energy_ventures_logo?e=1726099200&v=beta&t=DIU32ElAkeY4aqcq_9uJTAhiZI-v0GoOX77409cLZRE",
-                  "linkedInUrl": "https://www.linkedin.com/company/19141006/",
+                  "linkedInUrl": "https://www.social.com/company/19141006/",
                   "linkedInId": "19141006"
                 },
                 {
@@ -4183,7 +4183,7 @@
                     "end": null
                   },
                   "companyLogo": "https://media.licdn.com/dms/image/C560BAQE88xCsONDULQ/company-logo_400_400/0/1630652622688/microsoft_logo?e=1726099200&v=beta&t=zueWlWXcJ4WjwGSzlUWgPOnjoAm8C2KfSIcWWHxWrGg",
-                  "linkedInUrl": "https://www.linkedin.com/company/1035/",
+                  "linkedInUrl": "https://www.social.com/company/1035/",
                   "linkedInId": "1035"
                 }
               ]
@@ -4195,7 +4195,7 @@
                   "degreeName": "",
                   "fieldOfStudy": "",
                   "description": null,
-                  "linkedInUrl": "https://www.linkedin.com/company/1646/",
+                  "linkedInUrl": "https://www.social.com/company/1646/",
                   "schoolLogo": "https://media.licdn.com/dms/image/C4E0BAQF5t62bcL0e9g/company-logo_400_400/0/1631318058235?e=1726099200&v=beta&t=tSGQKfAlig70DD9n2_xkYR54yBTf7K3aKsau8PMQSVM",
                   "schoolName": "Harvard University",
                   "startEndDate": {
@@ -4207,7 +4207,7 @@
                   "degreeName": "",
                   "fieldOfStudy": "",
                   "description": null,
-                  "linkedInUrl": "https://www.linkedin.com/company/30288/",
+                  "linkedInUrl": "https://www.social.com/company/30288/",
                   "schoolLogo": "https://media.licdn.com/dms/image/D560BAQGFmOQmzpxg9A/company-logo_400_400/0/1683732883164/lakeside_school_logo?e=1726099200&v=beta&t=cylwvrQe7Q4N8oU1hotzPfrae8yxPuzdtG1ocBSuEmA",
                   "schoolName": "Lakeside School",
                   "startEndDate": {
@@ -4224,7 +4224,7 @@
             "linkedInId": "1035",
             "name": "Microsoft",
             "universalName": "microsoft",
-            "linkedInUrl": "https://www.linkedin.com/company/1035",
+            "linkedInUrl": "https://www.social.com/company/1035",
             "employeeCount": 228581,
             "employeeCountRange": { "start": 10001, "end": 1 },
             "websiteUrl": "https://news.microsoft.com/",
@@ -4283,7 +4283,7 @@
             "publicIdentifier": "williamhgates",
             "memberIdentifier": "251749025",
             "linkedInIdentifier": "ACoAAA8BYqEBCGLg_vT_ca6mMEqkpp9nVffJ3hc",
-            "linkedInUrl": "https://www.linkedin.com/in/williamhgates",
+            "linkedInUrl": "https://www.social.com/in/williamhgates",
             "firstName": "Bill",
             "lastName": "Gates",
             "headline": "Co-chair, Bill & Melinda Gates Foundation",
@@ -4307,7 +4307,7 @@
                     "end": null
                   },
                   "companyLogo": "https://media.licdn.com/dms/image/C4E0BAQE7Na_mKQhIJg/company-logo_400_400/0/1633731811337/bill__melinda_gates_foundation_logo?e=1726099200&v=beta&t=LIgstVg1oR5LmBl9u1kolb_xeOqs5kX1ZTcUpaEtsE4",
-                  "linkedInUrl": "https://www.linkedin.com/company/8736/",
+                  "linkedInUrl": "https://www.social.com/company/8736/",
                   "linkedInId": "8736"
                 },
                 {
@@ -4319,7 +4319,7 @@
                     "end": null
                   },
                   "companyLogo": "https://media.licdn.com/dms/image/C4D0BAQGwD9vNu044FA/company-logo_400_400/0/1630531940051/breakthrough_energy_ventures_logo?e=1726099200&v=beta&t=DIU32ElAkeY4aqcq_9uJTAhiZI-v0GoOX77409cLZRE",
-                  "linkedInUrl": "https://www.linkedin.com/company/19141006/",
+                  "linkedInUrl": "https://www.social.com/company/19141006/",
                   "linkedInId": "19141006"
                 },
                 {
@@ -4331,7 +4331,7 @@
                     "end": null
                   },
                   "companyLogo": "https://media.licdn.com/dms/image/C560BAQE88xCsONDULQ/company-logo_400_400/0/1630652622688/microsoft_logo?e=1726099200&v=beta&t=zueWlWXcJ4WjwGSzlUWgPOnjoAm8C2KfSIcWWHxWrGg",
-                  "linkedInUrl": "https://www.linkedin.com/company/1035/",
+                  "linkedInUrl": "https://www.social.com/company/1035/",
                   "linkedInId": "1035"
                 }
               ]
@@ -4343,7 +4343,7 @@
                   "degreeName": "",
                   "fieldOfStudy": "",
                   "description": null,
-                  "linkedInUrl": "https://www.linkedin.com/company/1646/",
+                  "linkedInUrl": "https://www.social.com/company/1646/",
                   "schoolLogo": "https://media.licdn.com/dms/image/C4E0BAQF5t62bcL0e9g/company-logo_400_400/0/1631318058235?e=1726099200&v=beta&t=tSGQKfAlig70DD9n2_xkYR54yBTf7K3aKsau8PMQSVM",
                   "schoolName": "Harvard University",
                   "startEndDate": {
@@ -4355,7 +4355,7 @@
                   "degreeName": "",
                   "fieldOfStudy": "",
                   "description": null,
-                  "linkedInUrl": "https://www.linkedin.com/company/30288/",
+                  "linkedInUrl": "https://www.social.com/company/30288/",
                   "schoolLogo": "https://media.licdn.com/dms/image/D560BAQGFmOQmzpxg9A/company-logo_400_400/0/1683732883164/lakeside_school_logo?e=1726099200&v=beta&t=cylwvrQe7Q4N8oU1hotzPfrae8yxPuzdtG1ocBSuEmA",
                   "schoolName": "Lakeside School",
                   "startEndDate": {
@@ -4372,7 +4372,7 @@
             "linkedInId": "1035",
             "name": "Microsoft",
             "universalName": "microsoft",
-            "linkedInUrl": "https://www.linkedin.com/company/1035",
+            "linkedInUrl": "https://www.social.com/company/1035",
             "employeeCount": 228581,
             "employeeCountRange": { "start": 10001, "end": 1 },
             "websiteUrl": "https://news.microsoft.com/",
@@ -4431,7 +4431,7 @@
             "publicIdentifier": "michaelriedler",
             "linkedInIdentifier": "ACoAABTEFqYBfjGaiNRy5ITKaPzcBEBDdR1SrhU",
             "memberIdentifier": "348395174",
-            "linkedInUrl": "https://www.linkedin.com/in/michaelriedler",
+            "linkedInUrl": "https://www.social.com/in/michaelriedler",
             "firstName": "Michael",
             "lastName": "Riedler",
             "headline": "VP Sales Scrapin.io - B2B Data for AI",
@@ -4466,7 +4466,7 @@
                     "end": null
                   },
                   "companyLogo": "https://media.licdn.com/dms/image/v2/D4E0BAQF-Z-m2ZKv6qQ/company-logo_200_200/B4EZcRELezHcAM-/0/1748337998127/scrapin_api_logo?e=1756339200&v=beta&t=GjTJ9cgDP2iBYJCx8GxXEg8V2hZjnNBOtvXe58eiqJ0",
-                  "linkedInUrl": "https://www.linkedin.com/company/100602385/",
+                  "linkedInUrl": "https://www.social.com/company/100602385/",
                   "linkedInId": "100602385"
                 },
                 {
@@ -4485,7 +4485,7 @@
                     }
                   },
                   "companyLogo": "https://media.licdn.com/dms/image/v2/C4E0BAQHUbWeUxkGCfw/company-logo_400_400/company-logo_400_400/0/1677251426049?e=1756339200&v=beta&t=qQuFuWn2EsyNX-kqmN166nzxW-DxXD66cPph71e3F7g",
-                  "linkedInUrl": "https://www.linkedin.com/company/93128145/",
+                  "linkedInUrl": "https://www.social.com/company/93128145/",
                   "linkedInId": "93128145"
                 },
                 {
@@ -4504,7 +4504,7 @@
                     }
                   },
                   "companyLogo": "https://media.licdn.com/dms/image/v2/D4E0BAQFg65EK-q7guw/company-logo_100_100/B4EZdkSAIuHsAQ-/0/1749734130592/telleroo_logo?e=1756339200&v=beta&t=4rKb656EJBg9K3ewqcB0_Gjt9Z2roK_8B5ABHX7Qvjg",
-                  "linkedInUrl": "https://www.linkedin.com/company/10820464/",
+                  "linkedInUrl": "https://www.social.com/company/10820464/",
                   "linkedInId": "10820464"
                 }
               ]
@@ -4515,7 +4515,7 @@
                 {
                   "degreeName": "Bachelor of Arts in Business (B.A.)",
                   "fieldOfStudy": "Management & Economics",
-                  "linkedInUrl": "https://www.linkedin.com/company/628151/",
+                  "linkedInUrl": "https://www.social.com/company/628151/",
                   "schoolLogo": "https://media.licdn.com/dms/image/v2/C4E0BAQHWOueQUCYM2w/company-logo_400_400/company-logo_400_400/0/1631321484128?e=1756339200&v=beta&t=D_3g7F10ojzXtq-dcHxFAvMR8ANmJN_rNb3ETPf9THM",
                   "schoolName": "MCI | The Entrepreneurial School®",
                   "startEndDate": {
@@ -4532,7 +4532,7 @@
                 {
                   "degreeName": "International Studies - Doing Business in Brazil",
                   "fieldOfStudy": null,
-                  "linkedInUrl": "https://www.linkedin.com/company/8175/",
+                  "linkedInUrl": "https://www.social.com/company/8175/",
                   "schoolLogo": "https://media.licdn.com/dms/image/v2/C4D0BAQFtDwxOTmj18Q/company-logo_400_400/company-logo_400_400/0/1657633907178/fgv_logo?e=1756339200&v=beta&t=Dfl7ag8K3dK8LeB2f_1AvexYw3QNaFWWsTK5KBDfIhk",
                   "schoolName": "FGV - Fundação Getulio Vargas",
                   "startEndDate": {
@@ -4597,7 +4597,7 @@
                 {
                   "name": "Trading Certificate Frankfurt Stock Exchange",
                   "organizationName": "Deutsche Börse",
-                  "organizationUrl": "https://www.linkedin.com/company/163430/",
+                  "organizationUrl": "https://www.social.com/company/163430/",
                   "issuedDate": "Issued May 2012"
                 }
               ]
@@ -4607,14 +4607,14 @@
             "linkedInId": "100602385",
             "name": "ScrapIn",
             "universalName": "scrapin-api",
-            "linkedInUrl": "https://www.linkedin.com/company/100602385",
+            "linkedInUrl": "https://www.social.com/company/100602385",
             "employeeCount": 12,
             "followerCount": 1030,
             "employeeCountRange": {
               "start": 11,
               "end": 50
             },
-            "websiteUrl": "https://www.scrapin.io/partners?utm_source=linkedin&utm_medium=social&utm_campaign=company-page",
+            "websiteUrl": "https://www.scrapin.io/",
             "tagline": "Powering AI products with Live B2B Data",
             "description": "ScrapIn provides live B2B data with all necessary context you need to build a full-featured, scalable AI tool — We hide any data scraping complexity and infrastructure. Let us handle data collection and you focus on building.",
             "industry": "Software Development",
@@ -4650,7 +4650,7 @@
             "publicIdentifier": "michaelriedler",
             "linkedInIdentifier": "ACoAABTEFqYBfjGaiNRy5ITKaPzcBEBDdR1SrhU",
             "memberIdentifier": "348395174",
-            "linkedInUrl": "https://www.linkedin.com/in/michaelriedler",
+            "linkedInUrl": "https://www.social.com/in/michaelriedler",
             "firstName": "Michael",
             "lastName": "Riedler",
             "headline": "VP Sales Scrapin.io - B2B Data for AI",
@@ -4711,7 +4711,7 @@
                 "end": null
               },
               "companyLogo": "https://media.licdn.com/dms/image/v2/D4E0BAQF-Z-m2ZKv6qQ/company-logo_200_200/B4EZcRELezHcAM-/0/1748337998127/scrapin_api_logo?e=1756339200&v=beta&t=GjTJ9cgDP2iBYJCx8GxXEg8V2hZjnNBOtvXe58eiqJ0",
-              "linkedInUrl": "https://www.linkedin.com/company/100602385/",
+              "linkedInUrl": "https://www.social.com/company/100602385/",
               "linkedInId": "100602385"
             },
             {
@@ -4724,7 +4724,7 @@
                 "end": "2023-12-01T12:00:00.000Z"
               },
               "companyLogo": "https://media.licdn.com/dms/image/v2/C4E0BAQHUbWeUxkGCfw/company-logo_400_400/company-logo_400_400/0/1677251426049?e=1756339200&v=beta&t=qQuFuWn2EsyNX-kqmN166nzxW-DxXD66cPph71e3F7g",
-              "linkedInUrl": "https://www.linkedin.com/company/93128145/",
+              "linkedInUrl": "https://www.social.com/company/93128145/",
               "linkedInId": "93128145"
             },
             {
@@ -4737,7 +4737,7 @@
                 "end": "2021-10-01T12:00:00.000Z"
               },
               "companyLogo": "https://media.licdn.com/dms/image/v2/D560BAQHlaph_qWt7MA/company-logo_400_400/company-logo_400_400/0/1702140517386/moonpay_logo?e=1756339200&v=beta&t=leju-4Av8a6pKxzvk0pr9OOEjNWruMeDGbS_RE437ek",
-              "linkedInUrl": "https://www.linkedin.com/company/12596773/",
+              "linkedInUrl": "https://www.social.com/company/12596773/",
               "linkedInId": "12596773"
             },
             {
@@ -4750,7 +4750,7 @@
                 "end": "2020-10-01T12:00:00.000Z"
               },
               "companyLogo": "https://media.licdn.com/dms/image/v2/D4E0BAQFg65EK-q7guw/company-logo_100_100/B4EZdkSAIuHsAQ-/0/1749734130592/telleroo_logo?e=1756339200&v=beta&t=4rKb656EJBg9K3ewqcB0_Gjt9Z2roK_8B5ABHX7Qvjg",
-              "linkedInUrl": "https://www.linkedin.com/company/10820464/",
+              "linkedInUrl": "https://www.social.com/company/10820464/",
               "linkedInId": "10820464"
             }
           ]
@@ -4770,7 +4770,7 @@
               "degreeName": "Engineering degree",
               "fieldOfStudy": "Computers, Big Data and Connected Objects",
               "description": "The IBO Major trains general IT engineers, able to master all components of information processing. To meet the changing strategic needs of the company, the future engineer will be trained in information systems, database architecture, mobility and application development.\n\nComputers, Big Data and Connected Objects.",
-              "linkedInUrl": "https://www.linkedin.com/company/15142508/",
+              "linkedInUrl": "https://www.social.com/company/15142508/",
               "schoolLogo": "https://media.licdn.com/dms/image/v2/D4E0BAQFQCZFaAoQmKw/company-logo_400_400/company-logo_400_400/0/1725378371996/esilvparis_logo?e=1755129600&v=beta&t=bPVcaWC42d3OMjQOmErZ_YBkJ5lg2EoscC6sAev0Juo",
               "schoolName": "ESILV - Ecole Supérieure d'Ingénieurs Léonard de Vinci",
               "startEndDate": {
@@ -4781,7 +4781,7 @@
             {
               "degreeName": "Summer School Program",
               "fieldOfStudy": "Programme d'échange international",
-              "linkedInUrl": "https://www.linkedin.com/company/15093901/",
+              "linkedInUrl": "https://www.social.com/company/15093901/",
               "schoolLogo": "https://media.licdn.com/dms/image/v2/C560BAQGhFlIwwrPy5Q/company-logo_400_400/company-logo_400_400/0/1630625706195/_logo?e=1755129600&v=beta&t=c83EX-78tGZGlXfKvJ8gjl_vQUems29kKKI2475ye4s",
               "schoolName": "Shanghai Normal University",
               "startEndDate": {
@@ -4793,7 +4793,7 @@
               "degreeName": " Professional License Computer Systems and Database",
               "fieldOfStudy": "Analyst-Designer in Information and Decision System (ACSID)",
               "description": "This degree offers a professional training in the business of information systems engineering and decision making. Its purpose is to facilitate the professional insertion in IT fields in continuous growth.",
-              "linkedInUrl": "https://www.linkedin.com/company/15091873/",
+              "linkedInUrl": "https://www.social.com/company/15091873/",
               "schoolLogo": "https://media.licdn.com/dms/image/v2/C4D0BAQGRQuv1v-KRxQ/company-logo_400_400/company-logo_400_400/0/1630557231474/conservatoire_national_des_arts_et_mtiers_logo?e=1755129600&v=beta&t=j64Zzlo-W6LMZ3i6qthMVH6xoFxLcMtxRejnEDhObao",
               "schoolName": "Conservatoire National des Arts et Métiers",
               "startEndDate": {
@@ -4886,19 +4886,19 @@
               "caption": "August 18, 2020, Michael was Tom's client",
               "description": "Michael is very talented when it comes to founding and growing tech businesses, it's very impressive what he has achieved to date. I worked with him to implement a number of outbound marketing campaigns that delivered on both new leads and revenue. He was a joy to work with, his energy and enthusiasm was infectious. I'm sure we'll work together again in the near future.",
               "authorFullname": "Tom Kelly",
-              "authorUrl": "https://www.linkedin.com/in/tomkelly25"
+              "authorUrl": "https://www.social.com/in/tomkelly25"
             },
             {
               "caption": "February 4, 2016, Catalina worked with Michael on the same team",
               "description": "Michael is an exceptionally well skilled business and sales person. His ability to make people feel good, comfortable and cared for, during the sales process, is truly remarkable. The social skills, combined with a genuine curiosity and passion for his job, also make him a great co-worker. I would personally recommend him to any growing startup who needs a truly talented biz dev guy, with a passion for all things tech. I hope to work with Michael in the future, but above all, I will be grateful for having learned from him what it is like to be highly engaging and personable as a professional.",
               "authorFullname": "Catalina B.",
-              "authorUrl": "https://www.linkedin.com/in/catalinabutnaru"
+              "authorUrl": "https://www.social.com/in/catalinabutnaru"
             },
             {
               "caption": "October 28, 2015, Dr. Christian worked with Michael on the same team",
               "description": "I had the pleasure to work with Michael in a team for commodity market analysis. Michael takes a holistic way of thinking but keeps an eye on specific details of a topic. He is not afraid to take unknown paths and think in new directions. Very impressive is his continuous motivation, which supports the overall team spirit. It is simply inspiring to work with such a collaborative and diligent personality. Michael is an enrichment for every employer.",
               "authorFullname": "Dr. Christian Muntz, CFA",
-              "authorUrl": "https://www.linkedin.com/in/dr-christian-muntz-cfa-b4b16b92"
+              "authorUrl": "https://www.social.com/in/dr-christian-muntz-cfa-b4b16b92"
             }
           ]
         }
@@ -4916,13 +4916,13 @@
             {
               "name": "AWS Certified Solutions Architect",
               "organizationName": "Amazon Web Services (AWS)",
-              "organizationUrl": "https://www.linkedin.com/company/amazon-web-services/",
+              "organizationUrl": "https://www.social.com/company/amazon-web-services/",
               "issuedDate": "Jan 2023"
             },
             {
               "name": "Google Cloud Professional Data Engineer",
               "organizationName": "Google Cloud",
-              "organizationUrl": "https://www.linkedin.com/company/google-cloud/",
+              "organizationUrl": "https://www.social.com/company/google-cloud/",
               "issuedDate": "Mar 2022"
             }
           ]
@@ -4960,7 +4960,7 @@
             "linkedInId": "71234370",
             "name": "Visum",
             "universalName": "visum-run",
-            "linkedInUrl": "https://www.linkedin.com/company/71234370",
+            "linkedInUrl": "https://www.social.com/company/71234370",
             "employeeCount": 14,
             "followerCount": 806,
             "employeeCountRange": {
@@ -5009,7 +5009,7 @@
             "linkedInId": "71234370",
             "name": "Visum",
             "universalName": "visum-run",
-            "linkedInUrl": "https://www.linkedin.com/company/71234370",
+            "linkedInUrl": "https://www.social.com/company/71234370",
             "employeeCount": 14,
             "followerCount": 806,
             "employeeCountRange": {
@@ -5067,7 +5067,7 @@
               "companyName": "Google",
               "companyLogo": "https://media.licdn.com/dms/image/v2/C4D0BAQHiNSL4Or29cg/company-logo_400_400/company-logo_400_400/0/1631311446380?e=1742428800&v=beta&t=fRFa5F7PMhVSlTNmwx1Ow2_FkX-GdS1E8zV52c433eo",
               "location": "Sunnyvale",
-              "url": "https://www.linkedin.com/jobs/view/4081332168",
+              "url": "https://www.social.com/jobs/view/4081332168",
               "creationDate": null,
               "repostDate": null,
               "experienceLevel": null,
@@ -5079,7 +5079,7 @@
               "companyName": "Google",
               "companyLogo": "https://media.licdn.com/dms/image/v2/C4D0BAQHiNSL4Or29cg/company-logo_400_400/company-logo_400_400/0/1631311446380?e=1742428800&v=beta&t=fRFa5F7PMhVSlTNmwx1Ow2_FkX-GdS1E8zV52c433eo",
               "location": "Sunnyvale",
-              "url": "https://www.linkedin.com/jobs/view/4093221619",
+              "url": "https://www.social.com/jobs/view/4093221619",
               "creationDate": null,
               "repostDate": null,
               "experienceLevel": null,
@@ -5104,7 +5104,7 @@
             "companyLogo": "https://media.licdn.com/dms/image/v2/C4D0BAQHiNSL4Or29cg/company-logo_400_400/company-logo_400_400/0/1631311446380?e=1742428800&v=beta&t=fRFa5F7PMhVSlTNmwx1Ow2_FkX-GdS1E8zV52c433eo",
             "description": "Minimum qualifications:\n\nBachelor’s degree or equivalent practical experience. 5 years of experience with software development in one or more programming languages, and with data structures/algorithms.3 years of experience with full stack development, across back-end such as Java, Python, GO, and/or C++ codebases, and front-end experience including JavaScript and/or TypeScript, HTML, CSS or equivalent.3 years of experience testing, maintaining, and/or launching software products, and 1 year of experience with software design and architecture.\n\nPreferred qualifications:\n\nMaster's degree or PhD in Computer Science or related technical field. 1 year of experience in a technical leadership role. Experience developing accessible technologies.\n\nAbout The Job\n\nGoogle's software engineers develop the next-generation technologies that change how billions of users connect, explore, and interact with information and one another. Our products need to handle information at massive scale, and extend well beyond web search. We're looking for engineers who bring fresh ideas from all areas, including information retrieval, distributed computing, large-scale system design, networking and data storage, security, artificial intelligence, natural language processing, UI design and mobile; the list goes on and is growing every day. As a software engineer, you will work on a specific project critical to Google’s needs with opportunities to switch teams and projects as you and our fast-paced business grow and evolve. We need our engineers to be versatile, display leadership qualities and be enthusiastic to take on new problems across the full-stack as we continue to push technology forward.\n\nWith your technical expertise you will manage project priorities, deadlines, and deliverables. You will design, develop, test, deploy, maintain, and enhance software solutions.\n\nLearning is the ongoing quest for understanding, and we made it our mission more than 20 years ago to organize the world’s information to make it universally accessible and useful. The learning landscape is changing, and the Learning and Education team's mission is to help everyone in the world learn anything in the world. We provide the information, tools, and services that help people gain knowledge, fuel curiosity, and prepare for what’s next. We focus our work to add the most value for users to enable learning for school, work, and life. We believe everyone can and should have access to quality learning experiences to reach their full potential.\n\nThe US base salary range for this full-time position is $161,000-$239,000 + bonus + equity + benefits. Our salary ranges are determined by role, level, and location. The range displayed on each job posting reflects the minimum and maximum target salaries for the position across all US locations. Within the range, individual pay is determined by work location and additional factors, including job-related skills, experience, and relevant education or training. Your recruiter can share more about the specific salary range for your preferred location during the hiring process.\n\nPlease note that the compensation details listed in US role postings reflect the base salary only, and do not include bonus, equity, or benefits. Learn more about benefits at Google .\n\nResponsibilities\n\nWrite and test product or system development code. Participate in, or lead design reviews with peers and stakeholders to decide amongst available technologies. Review code developed by other developers and provide feedback to ensure best practices (e.g., style guidelines, checking code in, accuracy, testability, and efficiency). Contribute to existing documentation or educational content and adapt content based on product/program updates and user feedback. Triage product or system issues and debug/track/resolve by analyzing the sources of issues and the impact on hardware, network, or service operations and quality.\n\nGoogle is proud to be an equal opportunity workplace and is an affirmative action employer. We are committed to equal employment opportunity regardless of race, color, ancestry, religion, sex, national origin, sexual orientation, age, citizenship, marital status, disability, gender identity or Veteran status. We also consider qualified applicants regardless of criminal histories, consistent with legal requirements. See also Google's EEO Policy and EEO is the Law. If you have a disability or special need that requires accommodation, please let us know by completing our Accommodations for Applicants form .",
             "location": "Mountain View, California, United States of America",
-            "url": "https://www.linkedin.com/jobs/view/4102642841",
+            "url": "https://www.social.com/jobs/view/4102642841",
             "creationDate": "2024-12-18T03:13:03.000Z",
             "repostedJob": false,
             "repostDate": null,
@@ -5136,10 +5136,10 @@
               "authorPublicIdentifier": "alainsmith",
               "authorHeadline": "Bank CEO",
               "authorImage": "https://media.licdn.com/dms/image/v2/D4E03AQFP5a_FoymQCA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1670785458261?e=1743033600&v=beta&t=ZQz5_CNMgUVUzuCTYvqUoV1xmXU4OLXun5zzvJkhktg",
-              "authorUrl": "https://www.linkedin.com/in/alainsmith"
+              "authorUrl": "https://www.social.com/in/alainsmith"
             },
-            "activityUrl": "https://www.linkedin.com/feed/update/urn:li:activity:6976499964512243712/",
-            "shareUrl": "https://www.linkedin.com/posts/breaking-news-another-developer-turned-7293041906471596032-6sne",
+            "activityUrl": "https://www.social.com/feed/update/urn:li:activity:6976499964512243712/",
+            "shareUrl": "https://www.social.com/posts/breaking-news-another-developer-turned-7293041906471596032-6sne",
             "relatedPost": {
               "text": "Spoiler: 30M€ fundraising for Geegle (10M€ equity + 20M€ debt). New step for the fintech!",
               "activityDate": "2022-06-29T14:02:12.188Z",
@@ -5148,9 +5148,9 @@
                 "authorName": "geegle",
                 "authorPublicIdentifier": "geegle",
                 "authorHeadline": "3,923 followers",
-                "authorUrl": "https://www.linkedin.com/company/geegle/",
-                "activityUrl": "https://www.linkedin.com/feed/update/urn:li:activity:6949912435651493888/",
-                "shareUrl": "https://www.linkedin.com/posts/daily-dev-comparator-work-729304143471596032-4b0e"
+                "authorUrl": "https://www.social.com/company/geegle/",
+                "activityUrl": "https://www.social.com/feed/update/urn:li:activity:6949912435651493888/",
+                "shareUrl": "https://www.social.com/posts/daily-dev-comparator-work-729304143471596032-4b0e"
               }
             }
           }
@@ -5178,10 +5178,10 @@
                 "authorPublicIdentifier": "alainsmith",
                 "authorHeadline": "Bank CEO",
                 "authorImage": "https://media.licdn.com/dms/image/v2/D4E03AQFP5a_FoymQCA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1670785458261?e=1743033600&v=beta&t=ZQz5_CNMgUVUzuCTYvqUoV1xmXU4OLXun5zzvJkhktg",
-                "authorUrl": "https://www.linkedin.com/in/alainsmith"
+                "authorUrl": "https://www.social.com/in/alainsmith"
               },
-              "activityUrl": "https://www.linkedin.com/feed/update/urn:li:activity:6976499964512243712/",
-              "shareUrl": "https://www.linkedin.com/posts/breaking-news-another-developer-turned-7293041906471596032-6sne",
+              "activityUrl": "https://www.social.com/feed/update/urn:li:activity:6976499964512243712/",
+              "shareUrl": "https://www.social.com/posts/breaking-news-another-developer-turned-7293041906471596032-6sne",
               "relatedPost": {
                 "text": "Spoiler: 30M€ fundraising for Geegle (10M€ equity + 20M€ debt). New step for the fintech!",
                 "activityDate": "2022-06-29T14:02:12.188Z",
@@ -5190,10 +5190,10 @@
                   "authorName": "geegle",
                   "authorPublicIdentifier": "geegle",
                   "authorHeadline": "3,923 followers",
-                  "authorUrl": "https://www.linkedin.com/company/geegle/"
+                  "authorUrl": "https://www.social.com/company/geegle/"
                 },
-                "activityUrl": "https://www.linkedin.com/feed/update/urn:li:activity:6997912435651493888/",
-                "shareUrl": "https://www.linkedin.com/posts/daily-dev-comparator-work-729304143471596032-4b0e"
+                "activityUrl": "https://www.social.com/feed/update/urn:li:activity:6997912435651493888/",
+                "shareUrl": "https://www.social.com/posts/daily-dev-comparator-work-729304143471596032-4b0e"
               }
             },
             {
@@ -5208,9 +5208,9 @@
                 "authorPublicIdentifier": "sophiedubois",
                 "authorHeadline": "Fintech Enthusiast | Product Manager",
                 "authorImage": "https://example.com/images/sophie.jpg",
-                "authorUrl": "https://www.linkedin.com/in/sophiedubois"
+                "authorUrl": "https://www.social.com/in/sophiedubois"
               },
-              "activityUrl": "https://www.linkedin.com/feed/update/urn:li:activity:6976499964512243714/",
+              "activityUrl": "https://www.social.com/feed/update/urn:li:activity:6976499964512243714/",
               "relatedPost": {
                 "text": "Merci à nos investisseurs pour leur confiance. Nous sommes ravis de pouvoir développer des solutions plus innovantes et accessibles.",
                 "activityDate": "2022-07-01T10:30:00.000Z",
@@ -5219,10 +5219,10 @@
                   "authorName": "InnovFin",
                   "authorPublicIdentifier": "innovfin",
                   "authorHeadline": "1,200 followers",
-                  "authorUrl": "https://www.linkedin.com/company/innovfin/"
+                  "authorUrl": "https://www.social.com/company/innovfin/"
                 },
-                "activityUrl": "https://www.linkedin.com/feed/update/urn:li:activity:6947912435651493890/",
-                "shareUrl": "https://www.linkedin.com/posts/daily-dev-comparator-work-729304143471596032-4b0e"
+                "activityUrl": "https://www.social.com/feed/update/urn:li:activity:6947912435651493890/",
+                "shareUrl": "https://www.social.com/posts/daily-dev-comparator-work-729304143471596032-4b0e"
               }
             }
           ]
@@ -5254,7 +5254,7 @@
                 "authorName": "Julien Smith",
                 "authorPublicIdentifier": "julien-smith"
               },
-              "activityUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7044876553418222512?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7026876553418432512%2C7026882690565963777%29&dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287026882690565963777%2Curn%3Ali%3Aactivity%3A7026876553418432512%29"
+              "activityUrl": "https://www.social.com/feed/update/urn:li:activity:7044876553418222512?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7026876553418432512%2C7026882690565963777%29&dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287026882690565963777%2Curn%3Ali%3Aactivity%3A7026876553418432512%29"
             },
             {
               "text": "Bravo à toute l'équipe pour cette étape incroyable !",
@@ -5266,7 +5266,7 @@
                 "authorName": "Claire Dubois",
                 "authorPublicIdentifier": "claire-dubois-fintech"
               },
-              "activityUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7044876553418222512?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7026876553418432512%2C7026899999999999999%29&dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287026899999999999999%2Curn%3Ali%3Aactivity%3A7026876553418432512%29"
+              "activityUrl": "https://www.social.com/feed/update/urn:li:activity:7044876553418222512?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7026876553418432512%2C7026899999999999999%29&dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287026899999999999999%2Curn%3Ali%3Aactivity%3A7026876553418432512%29"
             }
           ]
         }
@@ -5291,7 +5291,7 @@
                 "authorName": "Marie Dupont",
                 "authorPublicIdentifier": "marie-dupont"
               },
-              "activityUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7283548161238761231",
+              "activityUrl": "https://www.social.com/feed/update/urn:li:activity:7283548161238761231",
               "relatedPost": {
                 "activityId": "7283548161238761231",
                 "text": "We are launching a new product that will revolutionize the market! #Innovation",
@@ -5303,8 +5303,8 @@
                   "authorName": "John Smith",
                   "authorPublicIdentifier": "john-smith"
                 },
-                "activityUrl": "https://www.linkedin.com/posts/john-smith_new-product-launch-activity-7283548161238761231",
-                "shareUrl": "https://www.linkedin.com/posts/daily-dev-comparator-work-729304143471596032-4b0e",
+                "activityUrl": "https://www.social.com/posts/john-smith_new-product-launch-activity-7283548161238761231",
+                "shareUrl": "https://www.social.com/posts/daily-dev-comparator-work-729304143471596032-4b0e",
                 "relatedPost": null
               }
             },
@@ -5318,7 +5318,7 @@
                 "authorName": "Lucas Morel",
                 "authorPublicIdentifier": "lucas-morel"
               },
-              "activityUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7285567894563217890",
+              "activityUrl": "https://www.social.com/feed/update/urn:li:activity:7285567894563217890",
               "relatedPost": {
                 "activityId": "7285567894563217890",
                 "text": "We are looking for experts to join our upcoming tech hackathon. Sign up now!",
@@ -5330,8 +5330,8 @@
                   "authorName": "Nina Brown",
                   "authorPublicIdentifier": "nina-brown"
                 },
-                "activityUrl": "https://www.linkedin.com/posts/nina-brown_hackathon-tech-activity-7285567894563217890",
-                "shareUrl": "https://www.linkedin.com/posts/daily-dev-comparator-work-729304143471596032-4b0e",
+                "activityUrl": "https://www.social.com/posts/nina-brown_hackathon-tech-activity-7285567894563217890",
+                "shareUrl": "https://www.social.com/posts/daily-dev-comparator-work-729304143471596032-4b0e",
                 "relatedPost": null
               }
             }
@@ -5359,7 +5359,7 @@
               "author": {
                 "authorId": "XCoEECH1JL4BEFTG8OBXXuUTIOatyKpCH9AIGE0",
                 "authorName": "Stefan Smith",
-                "authorUrl": "https://www.linkedin.com/in/XCoEECH1JL4BEFTG8OBXXuUTIOatyKpCH9AIGE0"
+                "authorUrl": "https://www.social.com/in/XCoEECH1JL4BEFTG8OBXXuUTIOatyKpCH9AIGE0"
               }
             },
             {
@@ -5367,7 +5367,7 @@
               "author": {
                 "authorId": "XCoEECH1JL4BEFTG8OBXXuUTIOatyKpCH9AIGE0",
                 "authorName": "John Doe",
-                "authorUrl": "https://www.linkedin.com/in/XCoEECH1JL4BEFTG8OBXXuUTIOatyKpCH9AIGE0"
+                "authorUrl": "https://www.social.com/in/XCoEECH1JL4BEFTG8OBXXuUTIOatyKpCH9AIGE0"
               }
             }
           ]
@@ -5400,8 +5400,8 @@
                   "authorName": "Alex Parker",
                   "authorPublicIdentifier": "alex-parker-data"
                 },
-                "activityUrl": "https://www.linkedin.com/posts/alex-parker_data-visualization-launch-activity-7283749210384982025",
-                "shareUrl": "https://www.linkedin.com/posts/daily-dev-comparator-work-729304143471596032-4b0e",
+                "activityUrl": "https://www.social.com/posts/alex-parker_data-visualization-launch-activity-7283749210384982025",
+                "shareUrl": "https://www.social.com/posts/daily-dev-comparator-work-729304143471596032-4b0e",
                 "relatedPost": null
               }
             },
@@ -5422,8 +5422,8 @@
                   "authorName": "Sophia Taylor",
                   "authorPublicIdentifier": "sophia-taylor"
                 },
-                "activityUrl": "https://www.linkedin.com/posts/sophia-taylor_10th-anniversary-celebration-activity-7289381238402947552",
-                "shareUrl": "https://www.linkedin.com/posts/daily-dev-comparator-work-729304143471596032-4b0e",
+                "activityUrl": "https://www.social.com/posts/sophia-taylor_10th-anniversary-celebration-activity-7289381238402947552",
+                "shareUrl": "https://www.social.com/posts/daily-dev-comparator-work-729304143471596032-4b0e",
                 "relatedPost": null
               }
             }
@@ -5453,7 +5453,7 @@
                 "authorName": "John Doe",
                 "authorPublicIdentifier": "john-doe-192b934"
               },
-              "activityUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7284160525581148869/"
+              "activityUrl": "https://www.social.com/feed/update/urn:li:activity:7284160525581148869/"
             },
             {
               "activityDate": "2025-01-20T17:08:27.433Z",
@@ -5462,7 +5462,7 @@
                 "authorName": "Lucas Smith",
                 "authorPublicIdentifier": "lucas-smith-192b934"
               },
-              "activityUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7284160525581148869/"
+              "activityUrl": "https://www.social.com/feed/update/urn:li:activity:7284160525581148869/"
             }
           ]
         }
@@ -5495,10 +5495,10 @@
                 "authorPublicIdentifier": "alainsmith",
                 "authorHeadline": "Bank CEO",
                 "authorImage": "https://media.licdn.com/dms/image/v2/D4E03AQFP5a_FoymQCA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1670785458261?e=1743033600&v=beta&t=ZQz5_CNMgUVUzuCTYvqUoV1xmXU4OLXun5zzvJkhktg",
-                "authorUrl": "https://www.linkedin.com/in/alainsmith"
+                "authorUrl": "https://www.social.com/in/alainsmith"
               },
-              "activityUrl": "https://www.linkedin.com/feed/update/urn:li:activity:6976499964512243712/",
-              "shareUrl": "https://www.linkedin.com/posts/breaking-news-another-developer-turned-7293041906471596032-6sne",
+              "activityUrl": "https://www.social.com/feed/update/urn:li:activity:6976499964512243712/",
+              "shareUrl": "https://www.social.com/posts/breaking-news-another-developer-turned-7293041906471596032-6sne",
               "relatedPost": {
                 "text": "Spoiler: 30M€ fundraising for Geegle (10M€ equity + 20M€ debt). New step for the fintech!",
                 "activityDate": "2022-06-29T14:02:12.188Z",
@@ -5507,10 +5507,10 @@
                   "authorName": "geegle",
                   "authorPublicIdentifier": "geegle",
                   "authorHeadline": "3,923 followers",
-                  "authorUrl": "https://www.linkedin.com/company/geegle/"
+                  "authorUrl": "https://www.social.com/company/geegle/"
                 },
-                "activityUrl": "https://www.linkedin.com/feed/update/urn:li:activity:6997912435651493888/",
-                "shareUrl": "https://www.linkedin.com/posts/daily-dev-comparator-work-729304143471596032-4b0e"
+                "activityUrl": "https://www.social.com/feed/update/urn:li:activity:6997912435651493888/",
+                "shareUrl": "https://www.social.com/posts/daily-dev-comparator-work-729304143471596032-4b0e"
               }
             },
             {
@@ -5525,9 +5525,9 @@
                 "authorPublicIdentifier": "sophiedubois",
                 "authorHeadline": "Fintech Enthusiast | Product Manager",
                 "authorImage": "https://example.com/images/sophie.jpg",
-                "authorUrl": "https://www.linkedin.com/in/sophiedubois"
+                "authorUrl": "https://www.social.com/in/sophiedubois"
               },
-              "activityUrl": "https://www.linkedin.com/feed/update/urn:li:activity:6976499964512243714/",
+              "activityUrl": "https://www.social.com/feed/update/urn:li:activity:6976499964512243714/",
               "relatedPost": {
                 "text": "Merci à nos investisseurs pour leur confiance. Nous sommes ravis de pouvoir développer des solutions plus innovantes et accessibles.",
                 "activityDate": "2022-07-01T10:30:00.000Z",
@@ -5536,10 +5536,10 @@
                   "authorName": "InnovFin",
                   "authorPublicIdentifier": "innovfin",
                   "authorHeadline": "1,200 followers",
-                  "authorUrl": "https://www.linkedin.com/company/innovfin/"
+                  "authorUrl": "https://www.social.com/company/innovfin/"
                 },
-                "activityUrl": "https://www.linkedin.com/feed/update/urn:li:activity:6947912435651493890/",
-                "shareUrl": "https://www.linkedin.com/posts/daily-dev-comparator-work-729304143471596032-4b0e"
+                "activityUrl": "https://www.social.com/feed/update/urn:li:activity:6947912435651493890/",
+                "shareUrl": "https://www.social.com/posts/daily-dev-comparator-work-729304143471596032-4b0e"
               }
             }
           ]
