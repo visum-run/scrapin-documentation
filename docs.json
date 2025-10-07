@@ -2,6 +2,11 @@
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
   "name": "ScrapIn API",
+  "seo": {
+    "metatags": {
+      "robots": "noindex"
+    }
+  },
   "colors": {
     "primary": "#0D9373",
     "light": "#07C983",
