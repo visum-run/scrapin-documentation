@@ -899,9 +899,8 @@
                   },
                   "includes": {
                     "type": "object",
-                    "default": {},
                     "additionalProperties": false,
-                    "description": "This optional parameter is an object. It specifies which additional data to include in the response.",
+                    "description": "This required parameter is an object. It specifies which additional data to include in the response.",
                     "properties": {
                       "includeCompany": {
                         "type": "boolean",
@@ -942,7 +941,7 @@
                     }
                   }
                 },
-                "required": ["linkedInUrl"]
+                "required": ["linkedInUrl", "includes"]
               }
             }
           }
@@ -1045,9 +1044,8 @@
                   },
                   "includes": {
                     "type": "object",
-                    "default": {},
                     "additionalProperties": false,
-                    "description": "This optional parameter is an object. It specifies which additional data to include in the response.",
+                    "description": "This required parameter is an object. It specifies which additional data to include in the response.",
                     "properties": {
                       "includeCompany": {
                         "type": "boolean",
@@ -1087,7 +1085,8 @@
                       }
                     }
                   }
-                }
+                },
+                "required": ["includes"]
               }
             }
           }
