@@ -24,7 +24,11 @@
           },
           {
             "group": "Person",
-            "pages": ["endpoint/v1/person/profile", "endpoint/v1/person/match"]
+            "pages": [
+              "endpoint/v1/person/profile",
+              "endpoint/v1/person/match",
+              "endpoint/v1/person/webhooks"
+            ]
           },
           {
             "group": "Person Activities",
