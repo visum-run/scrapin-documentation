@@ -1,0 +1,320 @@
+---
+title: "Webhooks"
+description: "Subscribe to profile updates and receive notifications"
+---
+
+## Overview
+
+The webhook system allows you to subscribe to person profiles and receive notifications when they are updated. This eliminates the need for constant polling and enables real-time data synchronization with your application.
+
+<Info>Each webhook delivery consumes **0.50 credits**.</Info>
+
+## How it works
+
+1. **Configure** your webhook URL where you want to receive notifications
+2. **Subscribe** to person profiles (resourceURL) you want to monitor
+3. **Receive** automatic notifications when profiles are updated
+4. **Monitor** delivery logs and manage your subscriptions
+
+<Warning>
+  - Only **HTTPS URLs** are accepted for security reasons - You can configure
+  **one webhook URL per workspace**.
+</Warning>
+
+## Configuration Webhook URL
+
+<Tip>
+  You can also manage your webhook URL directly from the web app at
+  [https://app.scrapin.io/webhooks](https://app.scrapin.io/webhooks)
+</Tip>
+
+### Get Webhook URL Configuration
+
+Retrieve your current webhook URL configuration.
+
+<Card title="GET /api/webhooks/url">
+  Returns the webhook URL and status for your workspace.
+</Card>
+
+**Response Example:**
+
+```json
+{
+  "success": true,
+  "webhook": {
+    "id": "uuid",
+    "url": "https://your-domain.com/webhook",
+    "status": "active",
+    "createdAt": "2025-10-14T10:00:00Z",
+    "updatedAt": "2025-10-14T10:00:00Z"
+  }
+}
+```
+
+### Create or Update Webhook URL
+
+Configure the webhook URL where notifications will be sent.
+
+<Card title="POST /api/webhooks/url">
+  Create or update your webhook URL configuration.
+</Card>
+
+**Request Body:**
+
+```json
+{
+  "url": "https://your-domain.com/webhook",
+  "status": "active"
+}
+```
+
+**Parameters:**
+
+- `url` (string, required): Your HTTPS webhook endpoint
+- `status` (string, optional): `active` or `inactive` (default: `active`)
+
+**Response:**
+
+```json
+{
+  "success": true,
+  "webhook": {
+    "id": "uuid",
+    "url": "https://your-domain.com/webhook",
+    "status": "active",
+    "createdAt": "2025-10-14T10:00:00Z",
+    "updatedAt": "2025-10-14T10:00:00Z"
+  }
+}
+```
+
+<Warning>The URL must use HTTPS protocol. HTTP URLs will be rejected.</Warning>
+
+---
+
+## Subscriptions
+
+<Tip>
+  You can also manage your webhook subscriptions directly from the web app at
+  [https://app.scrapin.io/webhooks](https://app.scrapin.io/webhooks)
+</Tip>
+
+### List Subscriptions
+
+Get all your webhook subscriptions with filtering and pagination.
+
+<Card title="GET /api/webhooks/subscriptions">
+  Retrieve all subscriptions for your workspace.
+</Card>
+
+**Query Parameters:**
+
+- `status` (string, optional): Filter by status (`active`, `inactive`)
+- `resourceType` (string, optional): Filter by resource type (`person`)
+- `page` (number, optional): Page number for pagination (default: 1)
+- `limit` (number, optional): Results per page (default: 50)
+
+**Response Example:**
+
+```json
+{
+  "success": true,
+  "pagination": {
+    "page": 1,
+    "limit": 50,
+    "total": 1,
+    "totalPages": 1
+  },
+  "data": [
+    {
+      "id": "uuid",
+      "resourceType": "person",
+      "resourceIdentifier": "john-doe",
+      "resourceUrl": "https://www.linkedin.com/in/john-doe/",
+      "status": "active",
+      "webhookUrl": "https://your-domain.com/webhook",
+      "webhookStatus": "active",
+      "createdAt": "2025-10-14T10:00:00Z",
+      "updatedAt": "2025-10-15T08:30:00Z"
+    }
+  ]
+}
+```
+
+### Subscribe to a Profile
+
+Subscribe to a person profile to receive updates.
+
+<Card title="POST /api/webhooks/subscribe">
+  Create a new subscription to a person profile.
+</Card>
+
+**Request Body:**
+
+```json
+{
+  "resourceUrl": "https://www.linkedin.com/in/john-doe/"
+}
+```
+
+**Parameters:**
+
+- `resourceUrl` (string, required): Resource URL
+
+**Response:**
+
+```json
+{
+  "success": true,
+  "subscription": {
+    "id": "uuid",
+    "resourceIdentifier": "john-doe",
+    "resourceType": "person",
+    "resourceUrl": "https://www.linkedin.com/in/john-doe/",
+    "createdAt": "2025-10-14T10:00:00Z"
+  }
+}
+```
+
+<Note>Only one active subscription per profile per workspace is allowed.</Note>
+
+### Unsubscribe from a Profile
+
+Cancel a subscription to stop receiving updates.
+
+<Card title="POST /api/webhooks/unsubscribe">Deactivate a subscription.</Card>
+
+**Request Body:**
+
+```json
+{
+  "resourceUrl": "https://www.linkedin.com/in/john-doe/"
+}
+```
+
+**Parameters:**
+
+- `resourceUrl` (string, required): Resource URL
+
+**Response:**
+
+```json
+{
+  "success": true,
+  "subscription": {
+    "id": "uuid",
+    "resourceIdentifier": "john-doe",
+    "resourceUrl": "https://www.linkedin.com/in/john-doe/",
+    "status": "inactive",
+    "updatedAt": "2025-10-14T10:00:00Z"
+  }
+}
+```
+
+<Info>
+  Unsubscribing sets the status to `inactive` but keeps the subscription
+  history. You can reactivate by subscribing again to the same resource.
+</Info>
+
+---
+
+## Delivery Logs
+
+<Tip>
+  You can also manage your webhook deliveries directly from the web app at
+  [https://app.scrapin.io/webhooks](https://app.scrapin.io/webhooks)
+</Tip>
+
+### Get Webhook Deliveries
+
+Access detailed logs of all webhook deliveries for monitoring and debugging.
+
+<Card title="GET /api/webhooks/deliveries">
+  Retrieve webhook delivery history with filters.
+</Card>
+
+**Query Parameters:**
+
+- `resourceUrl` (string, optional): Filter by specific resource URL
+- `resourceType` (string, optional): Filter by specific resource type (`person`)
+- `status` (string, optional): Filter by HTTP status (`success`, `error`, `all`)
+- `page` (number, optional): Page number for pagination (default: 1)
+- `limit` (number, optional): Results per page (default: 50)
+
+**Response Example:**
+
+```json
+{
+  "success": true,
+  "pagination": {
+    "page": 1,
+    "limit": 50,
+    "total": 15,
+    "totalPages": 1
+  },
+  "data": [
+    {
+      "id": "uuid",
+      "subscriptionId": "uuid",
+      "resourceIdentifier": "john-doe",
+      "resourceType": "person",
+      "resourceUrl": "https://www.linkedin.com/in/john-doe/",
+      "statusCode": 200,
+      "responseTimeMs": 100,
+      "creditsCharged": 0.5,
+      "deliveredAt": "2025-10-15T08:30:00Z",
+      "deliveredAt": "2025-10-15T08:30:00Z"
+    }
+  ]
+}
+```
+
+---
+
+## Credit Consumption
+
+<CardGroup cols={1}>
+  <Card title="Per Delivery" icon="coins">
+    **0.50 credits** per successful webhook delivery
+  </Card>
+</CardGroup>
+
+---
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Webhook not receiving notifications">
+    **Check:**
+    - Your webhook URL is correctly configured and active.
+    - You have active subscriptions to profiles.
+    - Your workspace has sufficient credits.
+  </Accordion>
+
+{" "}
+
+<Accordion title="402 Payment Required errors">
+  **Solution:** Check your workspace credit balance and add more credits to your
+  account.
+</Accordion>
+</AccordionGroup>
+
+---
+
+## Next Steps
+
+<CardGroup cols={1}>
+  <Card
+    title="Quotas & Limits"
+    icon="gauge"
+    href="/endpoint/v1/workspace/quotas"
+  >
+    Check your workspace limits
+  </Card>
+  <Card title="API Reference" icon="book" href="/introduction">
+    Explore all API endpoints
+  </Card>
+  <Card title="Support" icon="life-ring" href="mailto:support@scrapin.io">
+    Contact our support team
+  </Card>
+</CardGroup>
