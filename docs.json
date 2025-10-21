@@ -121,59 +121,6 @@
             "pages": ["endpoint/v1/workspace/quotas"]
           }
         ]
-      },
-      {
-        "version": "v0 (Deprecated)",
-        "groups": [
-          {
-            "group": "Getting Started",
-            "pages": ["introduction", "quickstart"]
-          },
-          {
-            "group": "Person",
-            "pages": [
-              "endpoint/v0/person/extract-profile",
-              "endpoint/v0/person/search"
-            ]
-          },
-          {
-            "group": "Person Activities",
-            "pages": [
-              "endpoint/v0/person/activities/posts",
-              "endpoint/v0/person/activities/comments",
-              "endpoint/v0/person/activities/reactions",
-              "endpoint/v0/person/activities/post",
-              "endpoint/v0/person/activities/post/comments",
-              "endpoint/v0/person/activities/post/reactions",
-              "endpoint/v0/person/activities/post/reposts"
-            ]
-          },
-          {
-            "group": "Company",
-            "pages": [
-              "endpoint/v0/company/extract-profile",
-              "endpoint/v0/company/search"
-            ]
-          },
-          {
-            "group": "Company Activities",
-            "pages": [
-              "endpoint/v0/company/activities/posts",
-              "endpoint/v0/company/activities/post",
-              "endpoint/v0/company/activities/post/comments",
-              "endpoint/v0/company/activities/post/reactions",
-              "endpoint/v0/company/activities/post/reposts"
-            ]
-          },
-          {
-            "group": "Job",
-            "pages": ["endpoint/v0/job/extract-data", "endpoint/v0/job/search"]
-          },
-          {
-            "group": "Workspace",
-            "pages": ["endpoint/v0/workspace/quotas"]
-          }
-        ]
       }
     ]
   },
