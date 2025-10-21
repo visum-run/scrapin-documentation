@@ -16,7 +16,7 @@
   "navigation": {
     "versions": [
       {
-        "version": "v1.1.0 (NEW)",
+        "version": "v1",
         "groups": [
           {
             "group": "Getting Started",
@@ -54,67 +54,6 @@
               "endpoint/v1/company/activities/post/reactions",
               "endpoint/v1/company/activities/post/reposts"
             ]
-          },
-          {
-            "group": "Workspace",
-            "pages": ["endpoint/v1/workspace/quotas"]
-          }
-        ]
-      },
-      {
-        "version": "v1.0.0 (Deprecated)",
-        "groups": [
-          {
-            "group": "Getting Started",
-            "pages": ["introduction", "quickstart"]
-          },
-          {
-            "group": "Person",
-            "pages": [
-              "endpoint/v1/person/extract-profile",
-              "endpoint/v1/person/email",
-              "endpoint/v1/person/summary",
-              "endpoint/v1/person/followers-count",
-              "endpoint/v1/person/experience",
-              "endpoint/v1/person/education",
-              "endpoint/v1/person/skills",
-              "endpoint/v1/person/languages",
-              "endpoint/v1/person/recommendations",
-              "endpoint/v1/person/certifications"
-            ]
-          },
-          {
-            "group": "Person Activities",
-            "pages": [
-              "endpoint/v1/person/activities/posts",
-              "endpoint/v1/person/activities/comments",
-              "endpoint/v1/person/activities/reactions",
-              "endpoint/v1/person/activities/post",
-              "endpoint/v1/person/activities/post/comments",
-              "endpoint/v1/person/activities/post/reactions",
-              "endpoint/v1/person/activities/post/reposts"
-            ]
-          },
-          {
-            "group": "Company",
-            "pages": [
-              "endpoint/v1/company/extract-profile",
-              "endpoint/v1/company/search"
-            ]
-          },
-          {
-            "group": "Company Activities",
-            "pages": [
-              "endpoint/v1/company/activities/posts",
-              "endpoint/v1/company/activities/post",
-              "endpoint/v1/company/activities/post/comments",
-              "endpoint/v1/company/activities/post/reactions",
-              "endpoint/v1/company/activities/post/reposts"
-            ]
-          },
-          {
-            "group": "Job",
-            "pages": ["endpoint/v1/job/extract-data", "endpoint/v1/job/search"]
           },
           {
             "group": "Workspace",
