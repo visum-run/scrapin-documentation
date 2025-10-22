@@ -5,7 +5,13 @@ description: "Subscribe to profile updates and receive notifications"
 
 ## Overview
 
-The webhook system allows you to subscribe to person profiles and receive notifications when they are updated. This eliminates the need for constant polling and enables real-time data synchronization with your application.
+The webhook system allows you to subscribe to person profiles and receive notifications when they are updated. This eliminates the need for constant polling and enables data synchronization with your application.
+
+<Note>
+  **Near Real-Time:** Webhooks are triggered when our system detects profile
+  updates during periodic crawls. Expect some delay between the profile update
+  and the webhook notification.
+</Note>
 
 <Info>Each webhook delivery consumes **0.50 credits**.</Info>
 
