@@ -56,6 +56,10 @@
             ]
           },
           {
+            "group": "Job",
+            "pages": ["endpoint/v1/job/extract-data", "endpoint/v1/job/search"]
+          },
+          {
             "group": "Workspace",
             "pages": ["endpoint/v1/workspace/quotas"]
           }
