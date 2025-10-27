@@ -27,6 +27,10 @@
             "pages": ["endpoint/v1/person/profile", "endpoint/v1/person/match"]
           },
           {
+            "group": "Changes Alerts",
+            "pages": ["changes-alerts/person"]
+          },
+          {
             "group": "Person Activities",
             "pages": [
               "endpoint/v1/person/activities/posts",

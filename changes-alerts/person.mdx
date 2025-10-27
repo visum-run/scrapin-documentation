@@ -1,0 +1,550 @@
+---
+title: "Person Changes"
+description: "Subscribe to profile updates and receive notifications"
+---
+
+## Overview
+
+The Change Alerts feature lets you monitor profiles. When our system detects a change (new job, updated position, new data in the profile, etc.), Scrapin automatically sends a JSON payload to your Alert URL endpoint instantly.
+
+<Note>
+  **Near Real-Time:** Alerts are triggered when our system detects profile
+  updates during periodic crawls. Expect some delay between the profile update
+  and the Alerts notification.
+</Note>
+
+<Info>Each alert delivery consumes **0.50 credits**.</Info>
+
+## Authentication
+
+<Warning>
+  **All API requests require authentication.** You must include your API key as
+  a query parameter in every request.
+</Warning>
+
+Add your API key to each request using the `apikey` query parameter:
+
+```
+GET /api/v1/alerts/*endpoint*?apikey=YOUR_API_KEY
+POST /api/v1/alerts/*endpoint*?apikey=YOUR_API_KEY
+```
+
+**Get your API key:**
+
+- Visit [https://app.scrapin.io/api](https://app.scrapin.io/api) to find your API key
+- Keep your API key secure and never share it publicly
+
+**Example:**
+
+```bash
+curl "https://api.scrapin.io/api/v1/alerts/url?apikey=YOUR_API_KEY" \
+  -H "Content-Type: application/json"
+```
+
+## How it works
+
+1. **Configure** your Alert URL where you want to receive notifications
+2. **Subscribe** to person profiles (resourceURL) you want to monitor
+3. **Receive** automatic notifications when profiles are updated
+4. **Monitor** delivery logs and manage your subscriptions
+
+<Warning>
+  - Only **HTTPS URLs** are accepted for security reasons - You can configure
+  **one Alert URL per workspace**.
+</Warning>
+
+## Configuration Alert URL
+
+<Tip>
+  You can also manage your Alert URL directly from the web app at
+  [https://app.scrapin.io](https://app.scrapin.io/webhooks)
+</Tip>
+
+### Get Alert URL Configuration
+
+Retrieve your current Alert URL configuration.
+
+<Card title="GET /api/v1/alerts/url">
+  Returns the Alert URL and status for your workspace.
+</Card>
+
+**Response Example:**
+
+```json
+{
+  "success": true,
+  "alert": {
+    "id": "uuid",
+    "url": "https://your-domain.com/alert",
+    "status": "active",
+    "createdAt": "2025-10-14T10:00:00Z",
+    "updatedAt": "2025-10-14T10:00:00Z"
+  }
+}
+```
+
+### Create or Update Alert URL
+
+Configure the Alert URL where notifications will be sent.
+
+<Card title="POST /api/v1/alerts/url">
+  Create or update your Alert URL configuration.
+</Card>
+
+**Request Body:**
+
+```json
+{
+  "url": "https://your-domain.com/alert",
+  "status": "active"
+}
+```
+
+**Parameters:**
+
+- `url` (string, required): Your HTTPS Alert endpoint
+- `status` (string, optional): `active` or `inactive` (default: `active`)
+
+**Response:**
+
+```json
+{
+  "success": true,
+  "alert": {
+    "id": "uuid",
+    "url": "https://your-domain.com/alert",
+    "status": "active",
+    "createdAt": "2025-10-14T10:00:00Z",
+    "updatedAt": "2025-10-14T10:00:00Z"
+  }
+}
+```
+
+<Warning>The URL must use HTTPS protocol. HTTP URLs will be rejected.</Warning>
+
+---
+
+## Alert Payload Format
+
+When a profile change is detected, Scrapin sends a POST request to your configured Alert URL with the following JSON payload:
+
+**Payload Example:**
+
+```json expandable
+{
+  "subscriptionId": "uuid",
+  "data": {
+    "person": {
+      "publicIdentifier": "michael",
+      "linkedInIdentifier": "ACoAABTEFqYBfjGaiNAy5ITKaPacBEBDdR1Srhs",
+      "memberIdentifier": "248295112",
+      "linkedInUrl": "https://www.social.com/in/michael",
+      "firstName": "Michael",
+      "lastName": "Davis",
+      "headline": "VP Sales Scrapin.io - B2B Data for AI",
+      "location": {
+        "city": "London",
+        "state": "England",
+        "country": "United Kingdom",
+        "countryCode": "GB"
+      },
+      "summary": "I'm a software engineer with a passion for building scalable and efficient systems.",
+      "photoUrl": "https://media.licdn.com/dms/image/v2/D4E03AQG5S0X4QKtN5A/profile-displayphoto-shrink_200_200/B4EZRgQ6wZGYAY-/0/1736781836053?e=1756339200&v=beta&t=phxC3jRwoDG_zQ8QY4Iu6OduHPUM-abbrEHkJZPP9fM",
+      "backgroundUrl": "https://media.licdn.com/dms/image/v2/C4E16AQGba4BhpCykTA/profile-displaybackgroundimage-shrink_350_1400/profile-displaybackgroundimage-shrink_350_1400/0/1516880563413?e=1756339200&v=beta&t=fdimLlwIIQEke73CfLZWvq0T367YxZajvtmMwynSIiU",
+      "openToWork": false,
+      "premium": true,
+      "showVerificationBadge": true,
+      "creationDate": {
+        "month": 6,
+        "year": 2014
+      },
+      "followerCount": 3735,
+      "positions": {
+        "positionsCount": 10,
+        "positionHistory": [
+          {
+            "title": "VP of Sales",
+            "companyName": "ScrapIn",
+            "description": "B2B Data for AI +",
+            "startEndDate": {
+              "start": {
+                "month": 1,
+                "year": 2024
+              },
+              "end": null
+            },
+            "companyLogo": "https://media.licdn.com/dms/image/v2/D4E0BAQF-Z-m2ZKv6qQ/company-logo_200_200/B4EZcRELezHcAM-/0/1748337998127/scrapin_api_logo?e=1756339200&v=beta&t=GjTJ9cgDP2iBYJCx8GxXEg8V2hZjnNBOtvXe58eiqJ0",
+            "linkedInUrl": "https://www.social.com/company/100602385/",
+            "linkedInId": "100602385"
+          },
+          {
+            "title": "Co-Founder & CEO",
+            "companyName": "LukaHQ",
+            "companyLocation": "London, England, United Kingdom",
+            "description": "AI accounting for the mid-market",
+            "startEndDate": {
+              "start": {
+                "month": 1,
+                "year": 2023
+              },
+              "end": {
+                "month": 12,
+                "year": 2023
+              }
+            },
+            "companyLogo": "https://media.licdn.com/dms/image/v2/C4E0BAQHUbWeUxkGCfw/company-logo_400_400/company-logo_400_400/0/1677251426049?e=1756339200&v=beta&t=qQuFuWn2EsyNX-kqmN166nzxW-DxXD66cPph71e3F7g",
+            "linkedInUrl": "https://www.social.com/company/93128145/",
+            "linkedInId": "93128145"
+          },
+          {
+            "title": "Co-Founder & CEO",
+            "companyName": "Telleroo",
+            "companyLocation": "London",
+            "description": "Leading SME payments platform for bill and payroll payments in the UK 💪",
+            "startEndDate": {
+              "start": {
+                "month": 4,
+                "year": 2016
+              },
+              "end": {
+                "month": 10,
+                "year": 2020
+              }
+            },
+            "companyLogo": "https://media.licdn.com/dms/image/v2/D4E0BAQFg65EK-q7guw/company-logo_100_100/B4EZdkSAIuHsAQ-/0/1749734130592/telleroo_logo?e=1756339200&v=beta&t=4rKb656EJBg9K3ewqcB0_Gjt9Z2roK_8B5ABHX7Qvjg",
+            "linkedInUrl": "https://www.social.com/company/10820464/",
+            "linkedInId": "10820464"
+          }
+        ]
+      },
+      "schools": {
+        "educationsCount": 2,
+        "educationHistory": [
+          {
+            "degreeName": "Bachelor of Arts in Business (B.A.)",
+            "fieldOfStudy": "Management & Economics",
+            "linkedInUrl": "https://www.social.com/company/628151/",
+            "schoolLogo": "https://media.licdn.com/dms/image/v2/C4E0BAQHWOueQUCYM2w/company-logo_400_400/company-logo_400_400/0/1631321484128?e=1756339200&v=beta&t=D_3g7F10ojzXtq-dcHxFAvMR8ANmJN_rNb3ETPf9THM",
+            "schoolName": "MCI | The Entrepreneurial School®",
+            "startEndDate": {
+              "start": {
+                "month": 1,
+                "year": 2011
+              },
+              "end": {
+                "month": 1,
+                "year": 2015
+              }
+            }
+          },
+          {
+            "degreeName": "International Studies - Doing Business in Brazil",
+            "fieldOfStudy": null,
+            "linkedInUrl": "https://www.social.com/company/8175/",
+            "schoolLogo": "https://media.licdn.com/dms/image/v2/C4D0BAQFtDwxOTmj18Q/company-logo_400_400/company-logo_400_400/0/1657633907178/fgv_logo?e=1756339200&v=beta&t=Dfl7ag8K3dK8LeB2f_1AvexYw3QNaFWWsTK5KBDfIhk",
+            "schoolName": "FGV - Fundação Getulio Vargas",
+            "startEndDate": {
+              "start": {
+                "month": 1,
+                "year": 2014
+              },
+              "end": {
+                "month": 1,
+                "year": 2014
+              }
+            }
+          }
+        ]
+      },
+      "skills": ["Bubble.io", "Changemaker", "Decisionmaker"],
+      "languages": ["Deutsch", "English"],
+      "certifications": {
+        "certificationsCount": 1,
+        "certificationHistory": [
+          {
+            "name": "Trading Certificate Frankfurt Stock Exchange",
+            "organizationName": "Deutsche Börse",
+            "organizationUrl": "https://www.social.com/company/163430/",
+            "issuedDate": "Issued May 2012"
+          }
+        ]
+      }
+    },
+    "company": {
+      "linkedInId": "100602385",
+      "name": "ScrapIn",
+      "universalName": "scrapin-api",
+      "linkedInUrl": "https://www.social.com/company/100602385",
+      "employeeCount": 12,
+      "followerCount": 1030,
+      "employeeCountRange": {
+        "start": 11,
+        "end": 50
+      },
+      "websiteUrl": "https://www.scrapin.io/",
+      "tagline": "Powering AI products with Live B2B Data",
+      "description": "ScrapIn provides live B2B data with all necessary context you need to build a full-featured, scalable AI tool — We hide any data scraping complexity and infrastructure. Let us handle data collection and you focus on building.",
+      "industry": "Software Development",
+      "phone": null,
+      "specialities": [],
+      "headquarter": {
+        "city": "Paris",
+        "country": "FR",
+        "postalCode": "75000",
+        "geographicArea": null,
+        "street1": null,
+        "street2": null
+      },
+      "logo": "https://media.licdn.com/dms/image/v2/D4E0BAQF-Z-m2ZKv6qQ/company-logo_200_200/B4EZcRELezHcAM-/0/1748337998127/scrapin_api_logo?e=1756339200&v=beta&t=GjTJ9cgDP2iBYJCx8GxXEg8V2hZjnNBOtvXe58eiqJ0",
+      "foundedOn": {
+        "year": 2020
+      },
+      "fundingData": null,
+      "backgroundUrl": "https://media.licdn.com/dms/image/v2/D4E1BAQEnSV0NjtZSXA/company-background_200/B4EZcRNJq.HYAc-/0/1748340349995/scrapin_api_cover?e=1753966800&v=beta&t=PdbNUkpicYwyp6cn9tri20MLicIO_9ASua8ZUsJm5cg"
+    }
+  },
+  "metadata": {
+    "webhookType": "person"
+  }
+}
+```
+
+**Payload Fields:**
+
+- `subscriptionId` (string): The unique identifier of the subscription that triggered this alert
+- `data` (object): Contains the complete profile data
+  - `person` (object): Person profile data
+  - `company` (object): Company profile data
+- `metadata` (object): Additional metadata about the alert
+  - `webhookType` (string): The type of webhook, always `person` for person profile changes
+
+<Note>All deliveries are logged in your delivery logs.</Note>
+
+---
+
+## Subscriptions
+
+<Tip>
+  You can also manage your Change Alerts subscriptions directly from the web app
+  at [https://app.scrapin.io](https://app.scrapin.io/webhooks)
+</Tip>
+
+### List Subscriptions
+
+Get all your Change Alerts subscriptions with filtering and pagination.
+
+<Card title="GET /api/v1/alerts/subscriptions">
+  Retrieve all subscriptions for your workspace.
+</Card>
+
+**Query Parameters:**
+
+- `status` (string, optional): Filter by status (`active`, `inactive`)
+- `resourceType` (string, optional): Filter by resource type (`person`)
+- `page` (number, optional): Page number for pagination (default: 1)
+- `limit` (number, optional): Results per page (default: 50)
+
+**Response Example:**
+
+```json
+{
+  "success": true,
+  "pagination": {
+    "page": 1,
+    "limit": 50,
+    "total": 1,
+    "totalPages": 1
+  },
+  "data": [
+    {
+      "id": "uuid",
+      "resourceType": "person",
+      "resourceIdentifier": "john-doe",
+      "resourceUrl": "https://www.social.com/in/john-doe/",
+      "status": "active",
+      "alertUrl": "https://your-domain.com/alert",
+      "alertStatus": "active",
+      "createdAt": "2025-10-14T10:00:00Z",
+      "updatedAt": "2025-10-15T08:30:00Z"
+    }
+  ]
+}
+```
+
+### Subscribe to a Profile
+
+Subscribe to a person profile to receive updates.
+
+<Card title="POST /api/v1/alerts/subscribe">
+  Create a new subscription to a person profile.
+</Card>
+
+**Request Body:**
+
+```json
+{
+  "resourceUrl": "https://www.social.com/in/john-doe/"
+}
+```
+
+**Parameters:**
+
+- `resourceUrl` (string, required): Resource URL
+
+**Response:**
+
+```json
+{
+  "success": true,
+  "subscription": {
+    "id": "uuid",
+    "resourceIdentifier": "john-doe",
+    "resourceType": "person",
+    "resourceUrl": "https://www.social.com/in/john-doe/",
+    "createdAt": "2025-10-14T10:00:00Z"
+  }
+}
+```
+
+<Note>Only one active subscription per profile per workspace is allowed.</Note>
+
+### Unsubscribe from a Profile
+
+Cancel a subscription to stop receiving updates.
+
+<Card title="POST /api/v1/alerts/unsubscribe">Deactivate a subscription.</Card>
+
+**Request Body:**
+
+```json
+{
+  "resourceUrl": "https://www.social.com/in/john-doe/"
+}
+```
+
+**Parameters:**
+
+- `resourceUrl` (string, required): Resource URL
+
+**Response:**
+
+```json
+{
+  "success": true,
+  "subscription": {
+    "id": "uuid",
+    "resourceIdentifier": "john-doe",
+    "resourceUrl": "https://www.social.com/in/john-doe/",
+    "status": "inactive",
+    "updatedAt": "2025-10-14T10:00:00Z"
+  }
+}
+```
+
+<Info>
+  Unsubscribing sets the status to `inactive` but keeps the subscription
+  history. You can reactivate by subscribing again to the same resource.
+</Info>
+
+---
+
+## Delivery Logs
+
+<Tip>
+  You can also manage your Alert deliveries directly from the web app at
+  [https://app.scrapin.io](https://app.scrapin.io/webhooks)
+</Tip>
+
+### Get Alert Deliveries
+
+Access detailed logs of all Alert deliveries for monitoring and debugging.
+
+<Card title="GET /api/v1/alerts/deliveries">
+  Retrieve Alert delivery history with filters.
+</Card>
+
+**Query Parameters:**
+
+- `resourceUrl` (string, optional): Filter by specific resource URL
+- `resourceType` (string, optional): Filter by specific resource type (`person`)
+- `status` (string, optional): Filter by HTTP status (`success`, `error`, `all`)
+- `page` (number, optional): Page number for pagination (default: 1)
+- `limit` (number, optional): Results per page (default: 50)
+
+**Response Example:**
+
+```json
+{
+  "success": true,
+  "pagination": {
+    "page": 1,
+    "limit": 50,
+    "total": 15,
+    "totalPages": 1
+  },
+  "data": [
+    {
+      "id": "uuid",
+      "subscriptionId": "uuid",
+      "resourceIdentifier": "john-doe",
+      "resourceType": "person",
+      "resourceUrl": "https://www.social.com/in/john-doe/",
+      "statusCode": 200,
+      "responseTimeMs": 100,
+      "creditsCharged": 0.5,
+      "deliveredAt": "2025-10-15T08:30:00Z",
+      "deliveredAt": "2025-10-15T08:30:00Z"
+    }
+  ]
+}
+```
+
+---
+
+## Credit Consumption
+
+<CardGroup cols={1}>
+  <Card title="Per Delivery" icon="coins">
+    **0.50 credits** per successful Alert delivery
+  </Card>
+</CardGroup>
+
+---
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Alert not receiving notifications">
+    **Check:**
+    - Your Alert URL is correctly configured and active.
+    - You have active subscriptions to profiles.
+    - Your workspace has sufficient credits.
+  </Accordion>
+
+{" "}
+
+<Accordion title="402 Payment Required errors">
+  **Solution:** Check your workspace credit balance and add more credits to your
+  account.
+</Accordion>
+</AccordionGroup>
+
+---
+
+## Next Steps
+
+<CardGroup cols={1}>
+  <Card
+    title="Quotas & Limits"
+    icon="gauge"
+    href="/endpoint/v1/workspace/quotas"
+  >
+    Check your workspace limits
+  </Card>
+  <Card title="API Reference" icon="book" href="/introduction">
+    Explore all API endpoints
+  </Card>
+  <Card title="Support" icon="life-ring" href="mailto:support@scrapin.io">
+    Contact our support team
+  </Card>
+</CardGroup>
