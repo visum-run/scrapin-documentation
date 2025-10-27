@@ -25,8 +25,8 @@ The Change Alerts feature lets you monitor profiles. When our system detects a c
 Add your API key to each request using the `apikey` query parameter:
 
 ```
-GET /api/v1/alerts/*endpoint*?apikey=YOUR_API_KEY
-POST /api/v1/alerts/*endpoint*?apikey=YOUR_API_KEY
+GET https://api.scrapin.io/v1/alerts/*endpoint*?apikey=YOUR_API_KEY
+POST https://api.scrapin.io/v1/alerts/*endpoint*?apikey=YOUR_API_KEY
 ```
 
 **Get your API key:**
@@ -37,7 +37,7 @@ POST /api/v1/alerts/*endpoint*?apikey=YOUR_API_KEY
 **Example:**
 
 ```bash
-curl "https://api.scrapin.io/api/v1/alerts/url?apikey=YOUR_API_KEY" \
+curl "https://api.scrapin.io/v1/alerts/url?apikey=YOUR_API_KEY" \
   -H "Content-Type: application/json"
 ```
 
@@ -64,7 +64,7 @@ curl "https://api.scrapin.io/api/v1/alerts/url?apikey=YOUR_API_KEY" \
 
 Retrieve your current Alert URL configuration.
 
-<Card title="GET /api/v1/alerts/url">
+<Card title="GET https://api.scrapin.io/v1/alerts/url">
   Returns the Alert URL and status for your workspace.
 </Card>
 
@@ -87,7 +87,7 @@ Retrieve your current Alert URL configuration.
 
 Configure the Alert URL where notifications will be sent.
 
-<Card title="POST /api/v1/alerts/url">
+<Card title="POST https://api.scrapin.io/v1/alerts/url">
   Create or update your Alert URL configuration.
 </Card>
 
@@ -333,7 +333,7 @@ When a profile change is detected, Scrapin sends a POST request to your configur
 
 Get all your Change Alerts subscriptions with filtering and pagination.
 
-<Card title="GET /api/v1/alerts/subscriptions">
+<Card title="GET https://api.scrapin.io/v1/alerts/subscriptions">
   Retrieve all subscriptions for your workspace.
 </Card>
 
@@ -375,7 +375,7 @@ Get all your Change Alerts subscriptions with filtering and pagination.
 
 Subscribe to a person profile to receive updates.
 
-<Card title="POST /api/v1/alerts/subscribe">
+<Card title="POST https://api.scrapin.io/v1/alerts/subscribe">
   Create a new subscription to a person profile.
 </Card>
 
@@ -412,7 +412,9 @@ Subscribe to a person profile to receive updates.
 
 Cancel a subscription to stop receiving updates.
 
-<Card title="POST /api/v1/alerts/unsubscribe">Deactivate a subscription.</Card>
+<Card title="POST https://api.scrapin.io/v1/alerts/unsubscribe">
+  Deactivate a subscription.
+</Card>
 
 **Request Body:**
 
@@ -459,7 +461,7 @@ Cancel a subscription to stop receiving updates.
 
 Access detailed logs of all Alert deliveries for monitoring and debugging.
 
-<Card title="GET /api/v1/alerts/deliveries">
+<Card title="GET https://api.scrapin.io/v1/alerts/deliveries">
   Retrieve Alert delivery history with filters.
 </Card>
 
