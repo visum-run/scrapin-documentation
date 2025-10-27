@@ -1,19 +1,45 @@
 ---
-title: "Webhooks"
+title: "Change Alerts"
 description: "Subscribe to profile updates and receive notifications"
 ---
 
 ## Overview
 
-The webhook system allows you to subscribe to person profiles and receive notifications when they are updated. This eliminates the need for constant polling and enables data synchronization with your application.
+The Change Alerts feature lets you monitor profiles. When our system detects a change (new job, updated position, new data in the profile, etc.), Scrapin automatically sends a JSON payload to your Webhook URL endpoint instantly.
 
 <Note>
   **Near Real-Time:** Webhooks are triggered when our system detects profile
   updates during periodic crawls. Expect some delay between the profile update
-  and the webhook notification.
+  and the Webhooks notification.
 </Note>
 
 <Info>Each webhook delivery consumes **0.50 credits**.</Info>
+
+## Authentication
+
+<Warning>
+  **All API requests require authentication.** You must include your API key as
+  a query parameter in every request.
+</Warning>
+
+Add your API key to each request using the `apikey` query parameter:
+
+```
+GET /api/webhooks/*endpoint*?apikey=YOUR_API_KEY
+POST /api/webhooks/*endpoint*?apikey=YOUR_API_KEY
+```
+
+**Get your API key:**
+
+- Visit [https://app.scrapin.io/api](https://app.scrapin.io/api) to find your API key
+- Keep your API key secure and never share it publicly
+
+**Example:**
+
+```bash
+curl "https://api.scrapin.io/api/webhooks/url?apikey=YOUR_API_KEY" \
+  -H "Content-Type: application/json"
+```
 
 ## How it works
 
@@ -101,13 +127,13 @@ Configure the webhook URL where notifications will be sent.
 ## Subscriptions
 
 <Tip>
-  You can also manage your webhook subscriptions directly from the web app at
-  [https://app.scrapin.io/webhooks](https://app.scrapin.io/webhooks)
+  You can also manage your Change Alerts subscriptions directly from the web app
+  at [https://app.scrapin.io/webhooks](https://app.scrapin.io/webhooks)
 </Tip>
 
 ### List Subscriptions
 
-Get all your webhook subscriptions with filtering and pagination.
+Get all your Change Alerts subscriptions with filtering and pagination.
 
 <Card title="GET /api/webhooks/subscriptions">
   Retrieve all subscriptions for your workspace.
@@ -136,7 +162,7 @@ Get all your webhook subscriptions with filtering and pagination.
       "id": "uuid",
       "resourceType": "person",
       "resourceIdentifier": "john-doe",
-      "resourceUrl": "https://www.linkedin.com/in/john-doe/",
+      "resourceUrl": "https://www.social.com/in/john-doe/",
       "status": "active",
       "webhookUrl": "https://your-domain.com/webhook",
       "webhookStatus": "active",
@@ -159,7 +185,7 @@ Subscribe to a person profile to receive updates.
 
 ```json
 {
-  "resourceUrl": "https://www.linkedin.com/in/john-doe/"
+  "resourceUrl": "https://www.social.com/in/john-doe/"
 }
 ```
 
@@ -176,7 +202,7 @@ Subscribe to a person profile to receive updates.
     "id": "uuid",
     "resourceIdentifier": "john-doe",
     "resourceType": "person",
-    "resourceUrl": "https://www.linkedin.com/in/john-doe/",
+    "resourceUrl": "https://www.social.com/in/john-doe/",
     "createdAt": "2025-10-14T10:00:00Z"
   }
 }
@@ -194,7 +220,7 @@ Cancel a subscription to stop receiving updates.
 
 ```json
 {
-  "resourceUrl": "https://www.linkedin.com/in/john-doe/"
+  "resourceUrl": "https://www.social.com/in/john-doe/"
 }
 ```
 
@@ -210,7 +236,7 @@ Cancel a subscription to stop receiving updates.
   "subscription": {
     "id": "uuid",
     "resourceIdentifier": "john-doe",
-    "resourceUrl": "https://www.linkedin.com/in/john-doe/",
+    "resourceUrl": "https://www.social.com/in/john-doe/",
     "status": "inactive",
     "updatedAt": "2025-10-14T10:00:00Z"
   }
@@ -264,7 +290,7 @@ Access detailed logs of all webhook deliveries for monitoring and debugging.
       "subscriptionId": "uuid",
       "resourceIdentifier": "john-doe",
       "resourceType": "person",
-      "resourceUrl": "https://www.linkedin.com/in/john-doe/",
+      "resourceUrl": "https://www.social.com/in/john-doe/",
       "statusCode": 200,
       "responseTimeMs": 100,
       "creditsCharged": 0.5,
