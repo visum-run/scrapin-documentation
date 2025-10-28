@@ -383,6 +383,104 @@
         }
       }
     },
+    "/v1/enrichment/emails/finder/url": {
+      "post": {
+        "tags": ["Person"],
+        "operationId": "EmailsFinderFromUrl",
+        "summary": "Emails Finder from URL",
+        "description": "This operation allows you to find email addresses from a profile URL. It returns a list of emails with their types (professional, personal) along with credits and rate limit information. This operation consumes 2 credit.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "description": "This required parameter is a string. It represents the URL of the profile from which to extract email addresses."
+                  }
+                },
+                "required": ["url"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The endpoint returns email addresses found for the profile.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailsFinderResponse"
+                },
+                "examples": {
+                  "EmailsFound": {
+                    "$ref": "#/components/examples/EmailsFound"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
+    },
+    "/v1/enrichment/emails/finder": {
+      "post": {
+        "tags": ["Person"],
+        "operationId": "EmailsFinderFromNameAndCompany",
+        "summary": "Emails Finder from Data",
+        "description": "This operation allows you to find email addresses from a person's full name and company information. It returns a list of emails with their types (professional, personal) along with credits and rate limit information. This operation consumes 2 credit.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fullName": {
+                    "type": "string",
+                    "description": "This required parameter is a string. It represents the full name of the person."
+                  },
+                  "companyDomain": {
+                    "type": "string",
+                    "description": "This required parameter is a string. It represents the company domain (e.g., 'scrapin.io') or company name."
+                  }
+                },
+                "required": ["fullName", "companyDomain"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The endpoint returns email addresses found for the person.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailsFinderResponse"
+                },
+                "examples": {
+                  "EmailsFound": {
+                    "$ref": "#/components/examples/EmailsFound"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
+    },
     "/v1/enrichment/company/domain": {
       "get": {
         "tags": ["Company"],
@@ -3033,6 +3131,59 @@
             "description": "Array of volunteering experiences"
           }
         }
+      },
+      "EmailsFinderResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Indicates success or failure of api request."
+          },
+          "credits_consumed": {
+            "type": "integer",
+            "description": "Represents the number of credits consumed by this query."
+          },
+          "credits_left": {
+            "type": "integer",
+            "description": "Represents the usable credits available for the user account after this query."
+          },
+          "rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "daily_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "minute_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable minute request limit available for the user account after this query."
+          },
+          "next_minute_rate_limit_reset": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Represents the next minute rate limit reset timestamp for the user account after this query."
+          },
+          "emails": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/Email" },
+            "description": "Array of email addresses found for the profile."
+          }
+        }
+      },
+      "Email": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "description": "The email address."
+          },
+          "type": {
+            "type": "string",
+            "enum": ["professional", "personal"],
+            "description": "The type of email address (professional or personal)."
+          }
+        }
       }
     },
     "examples": {
@@ -3860,6 +4011,24 @@
               "role": "Volunteer",
               "cause": "Arts and Culture",
               "period": "Jan 2014 - Present · 11 yrs 7 mos"
+            }
+          ]
+        }
+      },
+      "EmailsFound": {
+        "summary": "Emails Found",
+        "value": {
+          "success": true,
+          "credits_consumed": 2,
+          "credits_left": 200731,
+          "rate_limit_left": 99890,
+          "daily_rate_limit_left": 99890,
+          "minute_rate_limit_left": 499,
+          "next_minute_rate_limit_reset": "2025-10-28T15:23:32.000Z",
+          "emails": [
+            {
+              "value": "john@scrapin.io",
+              "type": "professional"
             }
           ]
         }

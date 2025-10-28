@@ -24,7 +24,12 @@
           },
           {
             "group": "Person",
-            "pages": ["endpoint/v1/person/profile", "endpoint/v1/person/match"]
+            "pages": [
+              "endpoint/v1/person/profile",
+              "endpoint/v1/person/match",
+              "endpoint/v1/person/emails-finder-url",
+              "endpoint/v1/person/emails-finder"
+            ]
           },
           {
             "group": "Changes Alerts",
