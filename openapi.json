@@ -434,7 +434,7 @@
       "post": {
         "tags": ["Person"],
         "operationId": "EmailsFinderFromNameAndCompany",
-        "summary": "Emails Finder from Name and Company",
+        "summary": "Emails Finder from Data",
         "description": "This operation allows you to find email addresses from a person's full name and company information. It returns a list of emails with their types (professional, personal) along with credits and rate limit information. This operation consumes 1 credit.",
         "requestBody": {
           "required": true,
