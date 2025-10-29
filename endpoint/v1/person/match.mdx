@@ -8,3 +8,17 @@ openapi: "POST /v1/enrichment/match"
   caching and reduce costs. Cache hits consume only **0.5 credits** instead of 1
   credit. See the request parameters below for details.
 </Info>
+
+## How Caching Works
+
+<CardGroup cols={2}>
+  <Card title="Cache Hit" icon="bolt">
+    If we find the profile in our cache within your specified duration, we serve
+    it instantly at **0.5 credits**. This is a 50% savings on the standard
+    price.
+  </Card>
+  <Card title="Cache Miss" icon="arrows-rotate">
+    If the profile isn't cached, we perform a **live scrape** to get fresh data.
+    This costs the standard **1 credit**.
+  </Card>
+</CardGroup>
