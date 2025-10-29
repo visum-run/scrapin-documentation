@@ -114,7 +114,7 @@
         "tags": ["Person"],
         "operationId": "GetProfileData",
         "summary": "Get Profile Data",
-        "description": "This operation allows you to get profile data from an url. It returns profile data with credits and rate limit information. This operation consumes 1 credit.",
+        "description": "This operation allows you to get profile data from an url. It returns profile data with credits and rate limit information. This operation consumes 1 credit (or 0.5 credits if served from cache).",
         "requestBody": {
           "required": true,
           "content": {
@@ -125,6 +125,11 @@
                   "linkedInUrl": {
                     "type": "string",
                     "description": "This required parameter is a string. It represents the Social URL of the person with this format: https://www.social.com/in/xxxxxxxxxxxxx/."
+                  },
+                  "cacheDuration": {
+                    "type": "string",
+                    "description": "Optional parameter to enable caching. Accepts duration strings like '4h', '2d', '1w', '2mo', '1y'. We use the [parse-duration](https://www.npmjs.com/package/parse-duration) library internally to parse these values. If the profile is found in cache within this duration, only 0.5 credits are consumed. Otherwise, fresh data is scraped for 1 credit.",
+                    "example": "2d"
                   },
                   "includes": {
                     "type": "object",
@@ -243,7 +248,7 @@
         "tags": ["Person"],
         "operationId": "MatchProfile",
         "summary": "Match Profile",
-        "description": "This operation allows you to match a single person profile from various parameters. It returns profile data with credits and rate limit information. This operation consumes 1 credit.",
+        "description": "This operation allows you to match a single person profile from various parameters. It returns profile data with credits and rate limit information. This operation consumes 1 credit (or 0.5 credits if served from cache).",
         "requestBody": {
           "required": true,
           "content": {
@@ -270,6 +275,11 @@
                   "email": {
                     "type": "string",
                     "description": "This optional parameter is a string. It represents the email to body."
+                  },
+                  "cacheDuration": {
+                    "type": "string",
+                    "description": "Optional parameter to enable caching. Accepts duration strings like '4h', '2d', '1w', '2mo', '1y'. We use the [parse-duration](https://www.npmjs.com/package/parse-duration) library internally to parse these values. If the profile is found in cache within this duration, only 0.5 credits are consumed. Otherwise, fresh data is scraped for 1 credit.",
+                    "example": "2d"
                   },
                   "includes": {
                     "type": "object",
@@ -1335,6 +1345,61 @@
           },
           "person": {
             "$ref": "#/components/schemas/PersonProfile"
+          }
+        }
+      },
+      "ProfileResponseV1": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Indicates success or failure of api request."
+          },
+          "credits_left": {
+            "type": "integer",
+            "description": "Represents the usable credits available for the user account after this query."
+          },
+          "rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "daily_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable daily request limit available for the user account after this query."
+          },
+          "minute_rate_limit_left": {
+            "type": "integer",
+            "description": "Represents the usable minute request limit available for the user account after this query."
+          },
+          "next_minute_rate_limit_reset": {
+            "type": "integer",
+            "description": "Represents the next minute rate limit reset for the user account after this query."
+          },
+          "person": {
+            "$ref": "#/components/schemas/PersonProfile"
+          },
+          "company": {
+            "oneOf": [
+              { "$ref": "#/components/schemas/Company" },
+              { "type": "boolean", "enum": [false] }
+            ]
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/RequestMetadata"
+          }
+        }
+      },
+      "RequestMetadata": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "enum": ["cache", "fresh"],
+            "description": "Indicates whether the data was served from cache or freshly scraped."
+          },
+          "executionTimeMs": {
+            "type": "integer",
+            "description": "The execution time in milliseconds for this request."
           }
         }
       },
