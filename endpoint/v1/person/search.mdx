@@ -10,12 +10,42 @@ openapi: "POST /v1/enrichment/persons/search"
 
 ## Overview
 
-Search for LinkedIn profiles in our DataLake using advanced filters. This endpoint allows you to find multiple profiles matching specific criteria from our existing database.
+Search for profiles in our DataLake using advanced filters. This endpoint allows you to find multiple profiles matching specific criteria from our existing database.
 
 <Note>
-  **DataLake Search:** This endpoint searches our existing database. Live
-  LinkedIn search will be available soon at a different pricing.
+  **DataLake Search:** This endpoint searches our existing database with
+  historical data. Check the `updateDate` field in each result to see when the
+  profile was last refreshed.
 </Note>
+
+## 🚀 Need Fresh Data?
+
+The search results include an `updateDate` field showing when each profile was last updated. If the data isn't recent enough for your needs, you can get **live, real-time data** using our other endpoints:
+
+<CardGroup cols={2}>
+  <Card
+    title="Person Profile Data"
+    icon="user"
+    href="/endpoint/v1/person/profile"
+  >
+    Extract fresh profile data directly in real-time from the profile URL.
+  </Card>
+  <Card
+    title="Person Profile Match"
+    icon="user"
+    href="/endpoint/v1/person/match"
+  >
+    Extract fresh profile data directly in real-time from first name, last name,
+    company, email.
+  </Card>
+</CardGroup>
+
+<Tip>
+  **Smart Workflow**: Use Person Search to discover candidates, then check the
+  `updateDate`. If the data is recent enough (e.g., within last 30 days), use it
+  directly. If not, fetch fresh data using the profile endpoints for critical
+  contacts.
+</Tip>
 
 ## Use Cases
 
@@ -68,6 +98,23 @@ Search for LinkedIn profiles in our DataLake using advanced filters. This endpoi
 
 - **Be specific**: Use multiple filters to narrow down results and improve relevance
 - **Monitor costs**: Each page costs 0.10 credits (20 results per page). Accessing multiple pages will consume additional credits.
+- **Check data freshness**: Always review the `updateDate` field. For time-sensitive use cases, consider refreshing older profiles with live scraping.
+
+### Hybrid Approach: Search + Live Enrichment
+
+Maximize efficiency and accuracy with this workflow:
+
+1. **Search** - Use this endpoint to find relevant profiles at 0.10 credits per page
+2. **Filter** - Review the `updateDate` to identify which profiles need refreshing
+3. **Enrich** - Use [Person Profile Data](/endpoint/v1/person/profile) or [Person Match](/endpoint/v1/person/match) to get fresh data only for selected profiles
+
+**Example Cost Comparison:**
+
+- Search 100 profiles (5 pages): **0.50 credits**
+- Live-scrape all 100 profiles: **100 credits** 💸
+- **Smart approach**: Search 100 + refresh 10 most important: **0.50 + 10 = 10.50 credits** ✅
+
+This hybrid approach saves up to 90% on credits while maintaining data quality where it matters most!
 
 ## Credit Consumption
 
