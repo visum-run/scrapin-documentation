@@ -491,6 +491,81 @@
         }
       }
     },
+    "/v1/enrichment/persons/search": {
+      "post": {
+        "tags": ["Person"],
+        "operationId": "PersonsSearch",
+        "summary": "Person Search",
+        "description": "Search for profiles in our DataLake using advanced filters. This endpoint allows you to find multiple profiles matching specific criteria from our existing database. This operation consumes 0.10 credits per page (maximum 20 results per page).",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "firstName": {
+                    "type": "string",
+                    "description": "First name of the person (starts with matching). Optional but at least one filter must be provided."
+                  },
+                  "lastName": {
+                    "type": "string",
+                    "description": "Last name of the person (starts with matching). Optional but at least one filter must be provided."
+                  },
+                  "headline": {
+                    "type": "string",
+                    "description": "Headline (contains matching). Optional but at least one filter must be provided."
+                  },
+                  "companyName": {
+                    "type": "string",
+                    "description": "Current company name (starts with matching). Optional but at least one filter must be provided."
+                  },
+                  "currentPositionTitle": {
+                    "type": "string",
+                    "description": "Current job title (contains matching). Optional but at least one filter must be provided."
+                  },
+                  "locationCity": {
+                    "type": "string",
+                    "description": "City location (starts with matching). Optional but at least one filter must be provided."
+                  },
+                  "locationCountryCode": {
+                    "type": "string",
+                    "description": "Country code(s), comma-separated (e.g., 'US,GB,FR'). Optional but at least one filter must be provided."
+                  },
+                  "page": {
+                    "type": "integer",
+                    "description": "Page number for pagination (default: 1). Results are limited to 20 per page.",
+                    "default": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The endpoint returns a list of persons matching the search criteria.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PersonsSearchResponse"
+                },
+                "examples": {
+                  "PersonsFound": {
+                    "$ref": "#/components/examples/PersonsSearchFound"
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PaymentRequired" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" }
+        }
+      }
+    },
     "/v1/enrichment/company/domain": {
       "get": {
         "tags": ["Company"],
@@ -3249,6 +3324,114 @@
             "description": "The type of email address (professional or personal)."
           }
         }
+      },
+      "PersonsSearchResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Indicates if the request was successful."
+          },
+          "credits_consumed": {
+            "type": "number",
+            "description": "Credits consumed by this request (always 0.1)."
+          },
+          "credits_left": {
+            "type": "number",
+            "description": "Remaining credits in your account."
+          },
+          "rate_limit_left": {
+            "type": "integer",
+            "description": "Remaining API calls for the current period."
+          },
+          "daily_rate_limit_left": {
+            "type": "integer",
+            "description": "Remaining daily API calls."
+          },
+          "minute_rate_limit_left": {
+            "type": "integer",
+            "description": "Remaining API calls for the current minute."
+          },
+          "next_minute_rate_limit_reset": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp when minute rate limit resets."
+          },
+          "metadata": {
+            "type": "object",
+            "properties": {
+              "source": {
+                "type": "string",
+                "enum": ["cache", "fresh"],
+                "description": "Data source: 'cache' (DataLake) or 'fresh' (Live)."
+              }
+            }
+          },
+          "pagination": {
+            "type": "object",
+            "properties": {
+              "currentPage": {
+                "type": "integer",
+                "description": "Current page number."
+              },
+              "totalPages": {
+                "type": "integer",
+                "description": "Total number of pages available."
+              },
+              "totalResults": {
+                "type": "integer",
+                "description": "Total number of results matching the query."
+              },
+              "resultsPerPage": {
+                "type": "integer",
+                "description": "Number of results per page (fixed at 20)."
+              }
+            }
+          },
+          "persons": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/PersonSearchResult" },
+            "description": "Array of person results."
+          }
+        }
+      },
+      "PersonSearchResult": {
+        "type": "object",
+        "properties": {
+          "publicIdentifier": {
+            "type": "string",
+            "description": "Public identifier."
+          },
+          "linkedInUrl": {
+            "type": "string",
+            "description": "Full profile URL."
+          },
+          "firstName": {
+            "type": "string",
+            "description": "Person's first name."
+          },
+          "lastName": {
+            "type": "string",
+            "description": "Person's last name."
+          },
+          "headline": {
+            "type": "string",
+            "description": "Headline."
+          },
+          "currentPositionTitle": {
+            "type": "string",
+            "description": "Current job title (optional)."
+          },
+          "currentCompanyName": {
+            "type": "string",
+            "description": "Current company name (optional)."
+          },
+          "updateDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Last update date of profile data (optional)."
+          }
+        }
       }
     },
     "examples": {
@@ -4751,6 +4934,49 @@
           "msg": "No data found"
         }
       },
+      "PersonsSearchFound": {
+        "summary": "Persons Search Results",
+        "value": {
+          "success": true,
+          "credits_consumed": 0.1,
+          "credits_left": 99.9,
+          "rate_limit_left": 99,
+          "daily_rate_limit_left": 999,
+          "minute_rate_limit_left": 19,
+          "next_minute_rate_limit_reset": "2024-10-31T12:46:00.000Z",
+          "metadata": {
+            "source": "fresh"
+          },
+          "pagination": {
+            "currentPage": 1,
+            "totalPages": 5,
+            "totalResults": 98,
+            "resultsPerPage": 20
+          },
+          "persons": [
+            {
+              "publicIdentifier": "johndoe",
+              "linkedInUrl": "https://www.linkedin.com/in/johndoe",
+              "firstName": "John",
+              "lastName": "Doe",
+              "headline": "Software Engineer at Google",
+              "currentPositionTitle": "Senior Software Engineer",
+              "currentCompanyName": "Google",
+              "updateDate": "2025-10-02T00:00:00.000Z"
+            },
+            {
+              "publicIdentifier": "janedoe",
+              "linkedInUrl": "https://www.linkedin.com/in/janedoe",
+              "firstName": "Jane",
+              "lastName": "Doe",
+              "headline": "Product Manager | Tech Enthusiast",
+              "currentPositionTitle": "Senior Product Manager",
+              "currentCompanyName": "Microsoft",
+              "updateDate": "2025-09-15T00:00:00.000Z"
+            }
+          ]
+        }
+      },
       "ServerError": {
         "summary": "Server Error",
         "value": {
@@ -4826,7 +5052,7 @@
         "name": "apikey",
         "in": "query",
         "type": "apiKey",
-        "description": "This required parameter is a string. It represents the APIKEY obtained from the developer dashboard. \nYou must use it in the query string of your request as ?apiKey=YOUR_API_KEY or in the headers as x-api-key: YOUR_API_KEY"
+        "description": "This required parameter is a string. It represents the APIKEY obtained from the developer dashboard. \nYou must use it in the query string of your request as ?apikey=YOUR_API_KEY or in the headers as x-api-key: YOUR_API_KEY"
       }
     }
   }
