@@ -4934,14 +4934,6 @@
           "msg": "No data found"
         }
       },
-      "TooManyRequests": {
-        "summary": "Rate Limit Exceeded",
-        "value": {
-          "statusCode": 429,
-          "statusMessage": "Too Many Requests",
-          "message": "Rate limit exceeded"
-        }
-      },
       "PersonsSearchFound": {
         "summary": "Persons Search Results",
         "value": {
