@@ -20,30 +20,20 @@ Search for profiles in our DataLake using advanced filters. This endpoint allows
 
 ## 🚀 Need Fresh Data?
 
-The search results include an `updateDate` field showing when each profile was last updated. If the data isn't recent enough for your needs, you can get **live, real-time data** using our other endpoints:
+The search results include an `updateDate` field showing when each profile was last updated. If the data isn't recent enough for your needs, you can get **live, real-time data** using:
 
-<CardGroup cols={2}>
-  <Card
-    title="Person Profile Data"
-    icon="user"
-    href="/endpoint/v1/person/profile"
-  >
-    Extract fresh profile data directly in real-time from the profile URL.
-  </Card>
-  <Card
-    title="Person Profile Match"
-    icon="user"
-    href="/endpoint/v1/person/match"
-  >
-    Extract fresh profile data directly in real-time from first name, last name,
-    company, email.
-  </Card>
-</CardGroup>
+<Card
+  title="Person Profile Data"
+  icon="user"
+  href="/endpoint/v1/person/profile"
+>
+  Extract fresh profile data directly in real-time from the profile URL.
+</Card>
 
 <Tip>
   **Smart Workflow**: Use Person Search to discover candidates, then check the
   `updateDate`. If the data is recent enough (e.g., within last 30 days), use it
-  directly. If not, fetch fresh data using the profile endpoints for critical
+  directly. If not, fetch fresh data using Person Profile Data for critical
   contacts.
 </Tip>
 
@@ -106,7 +96,7 @@ Maximize efficiency and accuracy with this workflow:
 
 1. **Search** - Use this endpoint to find relevant profiles at 0.10 credits per page
 2. **Filter** - Review the `updateDate` to identify which profiles need refreshing
-3. **Enrich** - Use [Person Profile Data](/endpoint/v1/person/profile) or [Person Match](/endpoint/v1/person/match) to get the freshest data for the profiles you need
+3. **Enrich** - Use [Person Profile Data](/endpoint/v1/person/profile) to get the freshest data for the profiles you need
 
 **Example Cost Comparison:**
 
