@@ -3,11 +3,20 @@ title: "Person Search"
 openapi: "POST /v1/enrichment/persons/search"
 ---
 
-<Info>
-  Each search costs **0.10 credits per page** (maximum 20 results per page).
-  Perfect for bulk lead generation and talent sourcing.
-</Info>
+<Warning>
+  **BETA Feature - Important Notice :** This feature is currently in BETA
+  testing phase, please note: <br /> - The API structure and parameters may
+  change at any time. <br /> - **No credits will be debited** during the BETA
+  period. <br /> - We recommend not building critical production workflows
+  around this endpoint until it's stable.
+</Warning>
 
+{/* prettier-ignore */}
+{/*<Info>
+Each search costs **0.10 credits per page** (maximum 20 results per page).
+Perfect for bulk lead generation and talent sourcing.
+
+</Info>*/}
 ## Overview
 
 Search for profiles in our DataLake using advanced filters. This endpoint allows you to find multiple profiles matching specific criteria from our existing database.
@@ -87,17 +96,19 @@ The search results include an `updateDate` field showing when each profile was l
 ### Efficient Searching
 
 - **Be specific**: Use multiple filters to narrow down results and improve relevance
-- **Monitor costs**: Each page costs 0.10 credits (20 results per page). Accessing multiple pages will consume additional credits.
+  {/* - **Monitor costs**: Each page costs 0.10 credits (20 results per page). Accessing multiple pages will consume additional credits. */}
 - **Check data freshness**: Always review the `updateDate` field. For time-sensitive use cases, consider refreshing older profiles with live scraping.
 
 ### Hybrid Approach: Search + Live Enrichment
 
 Maximize efficiency and accuracy with this workflow:
 
-1. **Search** - Use this endpoint to find relevant profiles at 0.10 credits per page
+1. **Search** - Use this endpoint to find relevant profiles {/* at 0.10 credits per page */}
 2. **Filter** - Review the `updateDate` to identify which profiles need refreshing
 3. **Enrich** - Use [Person Profile Data](/endpoint/v1/person/profile) to get the freshest data for the profiles you need
 
+{/* prettier-ignore */}
+{/*
 **Example Cost Comparison:**
 
 - Search 100 profiles (5 pages): **0.50 credits**
@@ -105,19 +116,24 @@ Maximize efficiency and accuracy with this workflow:
 - **Smart approach**: Search 100 + refresh 10 most important: **0.50 + 10 = 10.50 credits** ✅
 
 This hybrid approach saves up to 90% on credits while maintaining data quality where it matters most!
+\*/}
 
-## Credit Consumption
+{/* prettier-ignore */}
+{/* ## Credit Consumption
 
 <CardGroup cols={1}>
   <Card title="Per Page" icon="coins">
     **0.10 credits** per page (maximum 20 results per page)
   </Card>
 </CardGroup>
+*/}
 
-<Tip>
-  Cost-effective for finding multiple profiles. Each page costs 0.10 credits
-  regardless of the number of results (up to 20). Use pagination wisely to
-  manage your credit consumption.
+{/* prettier-ignore */}
+{/*<Tip>
+Cost-effective for finding multiple profiles. Each page costs 0.10 credits
+regardless of the number of results (up to 20). Use pagination wisely to
+manage your credit consumption.
+
 </Tip>
 
 <Warning>
@@ -125,3 +141,4 @@ This hybrid approach saves up to 90% on credits while maintaining data quality w
   example, accessing pages 1, 2, and 3 will cost 0.30 credits total (3 pages ×
   0.10 credits).
 </Warning>
+*/}

@@ -496,7 +496,7 @@
         "tags": ["Person"],
         "operationId": "PersonsSearch",
         "summary": "Person Search",
-        "description": "Search for profiles in our DataLake using advanced filters. This endpoint allows you to find multiple profiles matching specific criteria from our existing database. This operation consumes 0.10 credits per page (maximum 20 results per page).",
+        "description": "Search for profiles in our DataLake using advanced filters. This endpoint allows you to find multiple profiles matching specific criteria from our existing database.",
         "requestBody": {
           "required": true,
           "content": {
@@ -3334,7 +3334,7 @@
           },
           "credits_consumed": {
             "type": "number",
-            "description": "Credits consumed by this request (always 0.1)."
+            "description": "Credits consumed by this request (always 0)."
           },
           "credits_left": {
             "type": "number",
@@ -4938,7 +4938,7 @@
         "summary": "Persons Search Results",
         "value": {
           "success": true,
-          "credits_consumed": 0.1,
+          "credits_consumed": 0,
           "credits_left": 99.9,
           "rate_limit_left": 99,
           "daily_rate_limit_left": 999,
