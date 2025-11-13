@@ -1472,6 +1472,15 @@
             "enum": ["cache", "fresh"],
             "description": "Indicates whether the data was served from cache or freshly scraped."
           },
+          "request_id": {
+            "type": "string",
+            "description": "Unique identifier for this request."
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "ISO 8601 timestamp indicating when the cached data was last updated. This field is only present when source is 'cache'."
+          },
           "executionTimeMs": {
             "type": "integer",
             "description": "The execution time in milliseconds for this request."
@@ -3950,6 +3959,11 @@
             },
             "fundingData": null,
             "backgroundUrl": "https://media.licdn.com/dms/image/v2/D4E1BAQEnSV0NjtZSXA/company-background_200/B4EZcRNJq.HYAc-/0/1748340349995/scrapin_api_cover?e=1753966800&v=beta&t=PdbNUkpicYwyp6cn9tri20MLicIO_9ASua8ZUsJm5cg"
+          },
+          "metadata": {
+            "source": "cache",
+            "request_id": "578d19ac-961e-4a91-ba6b-6deeb67a11e8",
+            "updatedAt": "2025-11-13T10:16:29.821Z"
           }
         }
       },
