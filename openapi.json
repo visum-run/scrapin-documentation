@@ -1301,168 +1301,157 @@
   },
   "components": {
     "schemas": {
-      "ProfileSearchResponseV0": {
+      "RateLimitInfo": {
         "type": "object",
         "properties": {
-          "success": {
-            "type": "boolean",
-            "description": "Indicates success or failure of api request."
-          },
-          "email": {
-            "type": "string",
-            "description": "Represents the email of the person account that was queried"
-          },
-          "emailType": {
-            "type": "string",
-            "description": "Represents the type of account."
-          },
-          "person": {
-            "oneOf": [
-              { "$ref": "#/components/schemas/Person" },
-              { "type": "boolean", "enum": [false] }
-            ]
-          },
-          "company": {
-            "oneOf": [
-              { "$ref": "#/components/schemas/Company" },
-              { "type": "boolean", "enum": [false] }
-            ]
+          "credits_consumed": {
+            "type": "number",
+            "description": "Represents the number of credits consumed by this query."
           },
           "credits_left": {
-            "type": "integer",
+            "type": "number",
             "description": "Represents the usable credits available for the user account after this query."
           },
           "rate_limit_left": {
-            "type": "integer",
+            "type": "number",
             "description": "Represents the usable daily request limit available for the user account after this query."
           },
           "daily_rate_limit_left": {
-            "type": "integer",
+            "type": "number",
             "description": "Represents the usable daily request limit available for the user account after this query."
           },
           "minute_rate_limit_left": {
-            "type": "integer",
+            "type": "number",
             "description": "Represents the usable minute request limit available for the user account after this query."
           },
           "next_minute_rate_limit_reset": {
-            "type": "integer",
-            "description": "Represents the next minute rate limit reset for the user account after this query."
+            "type": "string",
+            "description": "Represents the next minute rate limit reset for the user account after this query. Datetime in ISO 8601 format (e.g., 2025-11-14T14:34:43.000Z)."
           }
         }
+      },
+      "ProfileSearchResponseV0": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "success": {
+                "type": "boolean",
+                "description": "Indicates success or failure of api request."
+              }
+            }
+          },
+          { "$ref": "#/components/schemas/RateLimitInfo" },
+          {
+            "type": "object",
+            "properties": {
+              "email": {
+                "type": "string",
+                "description": "Represents the email of the person account that was queried"
+              },
+              "emailType": {
+                "type": "string",
+                "description": "Represents the type of account."
+              },
+              "person": {
+                "oneOf": [
+                  { "$ref": "#/components/schemas/Person" },
+                  { "type": "boolean", "enum": [false] }
+                ]
+              },
+              "company": {
+                "oneOf": [
+                  { "$ref": "#/components/schemas/Company" },
+                  { "type": "boolean", "enum": [false] }
+                ]
+              }
+            }
+          }
+        ]
       },
       "ProfileResponseV0": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "description": "Indicates success or failure of api request."
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "success": {
+                "type": "boolean",
+                "description": "Indicates success or failure of api request."
+              }
+            }
           },
-          "credits_left": {
-            "type": "integer",
-            "description": "The usable credits available for the user account after this query."
-          },
-          "rate_limit_left": {
-            "type": "integer",
-            "description": "The usable daily request limit available for the user account after this query."
-          },
-          "daily_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "minute_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable minute request limit available for the user account after this query."
-          },
-          "next_minute_rate_limit_reset": {
-            "type": "integer",
-            "description": "Represents the next minute rate limit reset for the user account after this query."
-          },
-          "person": {
-            "oneOf": [
-              { "$ref": "#/components/schemas/Person" },
-              { "type": "boolean", "enum": [false] }
-            ]
-          },
-          "company": {
-            "oneOf": [
-              { "$ref": "#/components/schemas/Company" },
-              { "type": "boolean", "enum": [false] }
-            ]
+          { "$ref": "#/components/schemas/RateLimitInfo" },
+          {
+            "type": "object",
+            "properties": {
+              "person": {
+                "oneOf": [
+                  { "$ref": "#/components/schemas/Person" },
+                  { "type": "boolean", "enum": [false] }
+                ]
+              },
+              "company": {
+                "oneOf": [
+                  { "$ref": "#/components/schemas/Company" },
+                  { "type": "boolean", "enum": [false] }
+                ]
+              }
+            }
           }
-        }
+        ]
       },
       "ProfileResponse": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "description": "Indicates success or failure of api request."
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "success": {
+                "type": "boolean",
+                "description": "Indicates success or failure of api request."
+              }
+            }
           },
-          "credits_left": {
-            "type": "integer",
-            "description": "Represents the usable credits available for the user account after this query."
-          },
-          "rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "daily_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "minute_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable minute request limit available for the user account after this query."
-          },
-          "next_minute_rate_limit_reset": {
-            "type": "integer",
-            "description": "Represents the next minute rate limit reset for the user account after this query."
-          },
-          "person": {
-            "$ref": "#/components/schemas/PersonProfile"
+          { "$ref": "#/components/schemas/RateLimitInfo" },
+          {
+            "type": "object",
+            "properties": {
+              "person": {
+                "$ref": "#/components/schemas/PersonProfile"
+              }
+            }
           }
-        }
+        ]
       },
       "ProfileResponseV1": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "description": "Indicates success or failure of api request."
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "success": {
+                "type": "boolean",
+                "description": "Indicates success or failure of api request."
+              }
+            }
           },
-          "credits_left": {
-            "type": "integer",
-            "description": "Represents the usable credits available for the user account after this query."
-          },
-          "rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "daily_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "minute_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable minute request limit available for the user account after this query."
-          },
-          "next_minute_rate_limit_reset": {
-            "type": "integer",
-            "description": "Represents the next minute rate limit reset for the user account after this query."
-          },
-          "person": {
-            "$ref": "#/components/schemas/PersonProfile"
-          },
-          "company": {
-            "oneOf": [
-              { "$ref": "#/components/schemas/Company" },
-              { "type": "boolean", "enum": [false] }
-            ]
-          },
-          "metadata": {
-            "$ref": "#/components/schemas/RequestMetadata"
+          { "$ref": "#/components/schemas/RateLimitInfo" },
+          {
+            "type": "object",
+            "properties": {
+              "person": {
+                "$ref": "#/components/schemas/PersonProfile"
+              },
+              "company": {
+                "oneOf": [
+                  { "$ref": "#/components/schemas/Company" },
+                  { "type": "boolean", "enum": [false] }
+                ]
+              },
+              "metadata": {
+                "$ref": "#/components/schemas/RequestMetadata"
+              }
+            }
           }
-        }
+        ]
       },
       "RequestMetadata": {
         "type": "object",
@@ -1569,104 +1558,74 @@
         }
       },
       "SummaryResponse": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "description": "Indicates success or failure of api request."
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "success": {
+                "type": "boolean",
+                "description": "Indicates success or failure of api request."
+              }
+            }
           },
-          "credits_left": {
-            "type": "integer",
-            "description": "Represents the usable credits available for the user account after this query."
-          },
-          "rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "daily_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "minute_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable minute request limit available for the user account after this query."
-          },
-          "next_minute_rate_limit_reset": {
-            "type": "integer",
-            "description": "Represents the next minute rate limit reset for the user account after this query."
-          },
-          "summary": {
-            "type": "string",
-            "description": "A summary description of the person or entity."
+          { "$ref": "#/components/schemas/RateLimitInfo" },
+          {
+            "type": "object",
+            "properties": {
+              "summary": {
+                "type": "string",
+                "description": "A summary description of the person or entity."
+              }
+            }
           }
-        }
+        ]
       },
       "FollowersCountResponse": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "description": "Indicates success or failure of api request."
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "success": {
+                "type": "boolean",
+                "description": "Indicates success or failure of api request."
+              }
+            }
           },
-          "credits_left": {
-            "type": "integer",
-            "description": "Represents the usable credits available for the user account after this query."
-          },
-          "rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "daily_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "minute_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable minute request limit available for the user account after this query."
-          },
-          "next_minute_rate_limit_reset": {
-            "type": "integer",
-            "description": "Represents the next minute rate limit reset for the user account after this query."
-          },
-          "followersCount": {
-            "type": "string",
-            "description": "The number of followers of the person."
+          { "$ref": "#/components/schemas/RateLimitInfo" },
+          {
+            "type": "object",
+            "properties": {
+              "followersCount": {
+                "type": "string",
+                "description": "The number of followers of the person."
+              }
+            }
           }
-        }
+        ]
       },
       "ExperienceResponse": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "description": "Indicates success or failure of api request."
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "success": {
+                "type": "boolean",
+                "description": "Indicates success or failure of api request."
+              }
+            }
           },
-          "credits_left": {
-            "type": "integer",
-            "description": "Represents the usable credits available for the user account after this query."
-          },
-          "rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "daily_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "minute_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable minute request limit available for the user account after this query."
-          },
-          "next_minute_rate_limit_reset": {
-            "type": "integer",
-            "description": "Represents the next minute rate limit reset for the user account after this query."
-          },
-          "positions": {
-            "type": "array",
-            "items": { "$ref": "#/components/schemas/Position" },
-            "description": "Array of work experience positions"
+          { "$ref": "#/components/schemas/RateLimitInfo" },
+          {
+            "type": "object",
+            "properties": {
+              "positions": {
+                "type": "array",
+                "items": { "$ref": "#/components/schemas/Position" },
+                "description": "Array of work experience positions"
+              }
+            }
           }
-        }
+        ]
       },
       "Position": {
         "type": "object",
@@ -1720,38 +1679,28 @@
         }
       },
       "EducationResponse": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "description": "Indicates success or failure of api request."
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "success": {
+                "type": "boolean",
+                "description": "Indicates success or failure of api request."
+              }
+            }
           },
-          "credits_left": {
-            "type": "integer",
-            "description": "Represents the usable credits available for the user account after this query."
-          },
-          "rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "daily_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "minute_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable minute request limit available for the user account after this query."
-          },
-          "next_minute_rate_limit_reset": {
-            "type": "integer",
-            "description": "Represents the next minute rate limit reset for the user account after this query."
-          },
-          "schools": {
-            "type": "array",
-            "items": { "$ref": "#/components/schemas/School" },
-            "description": "Array of education schools and degrees"
+          { "$ref": "#/components/schemas/RateLimitInfo" },
+          {
+            "type": "object",
+            "properties": {
+              "schools": {
+                "type": "array",
+                "items": { "$ref": "#/components/schemas/School" },
+                "description": "Array of education schools and degrees"
+              }
+            }
           }
-        }
+        ]
       },
       "School": {
         "type": "object",
@@ -1789,38 +1738,28 @@
         }
       },
       "SkillsResponse": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "description": "Indicates success or failure of api request."
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "success": {
+                "type": "boolean",
+                "description": "Indicates success or failure of api request."
+              }
+            }
           },
-          "credits_left": {
-            "type": "integer",
-            "description": "Represents the usable credits available for the user account after this query."
-          },
-          "rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "daily_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "minute_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable minute request limit available for the user account after this query."
-          },
-          "next_minute_rate_limit_reset": {
-            "type": "integer",
-            "description": "Represents the next minute rate limit reset for the user account after this query."
-          },
-          "skills": {
-            "type": "array",
-            "items": { "$ref": "#/components/schemas/Skill" },
-            "description": "Array of skills with endorsement counts"
+          { "$ref": "#/components/schemas/RateLimitInfo" },
+          {
+            "type": "object",
+            "properties": {
+              "skills": {
+                "type": "array",
+                "items": { "$ref": "#/components/schemas/Skill" },
+                "description": "Array of skills with endorsement counts"
+              }
+            }
           }
-        }
+        ]
       },
       "Skill": {
         "type": "object",
@@ -1837,38 +1776,28 @@
         "required": ["name"]
       },
       "LanguagesResponse": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "description": "Indicates success or failure of api request."
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "success": {
+                "type": "boolean",
+                "description": "Indicates success or failure of api request."
+              }
+            }
           },
-          "credits_left": {
-            "type": "integer",
-            "description": "Represents the usable credits available for the user account after this query."
-          },
-          "rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "daily_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "minute_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable minute request limit available for the user account after this query."
-          },
-          "next_minute_rate_limit_reset": {
-            "type": "integer",
-            "description": "Represents the next minute rate limit reset for the user account after this query."
-          },
-          "languages": {
-            "type": "array",
-            "items": { "$ref": "#/components/schemas/Language" },
-            "description": "Array of languages with proficiency levels"
+          { "$ref": "#/components/schemas/RateLimitInfo" },
+          {
+            "type": "object",
+            "properties": {
+              "languages": {
+                "type": "array",
+                "items": { "$ref": "#/components/schemas/Language" },
+                "description": "Array of languages with proficiency levels"
+              }
+            }
           }
-        }
+        ]
       },
       "Language": {
         "type": "object",
@@ -2089,74 +2018,54 @@
         }
       },
       "CompanySearch": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "description": "Indicates success or failure of api request."
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "success": {
+                "type": "boolean",
+                "description": "Indicates success or failure of api request."
+              }
+            }
           },
-          "credits_left": {
-            "type": "integer",
-            "description": "Represents the usable credits available for the user account after this query."
-          },
-          "rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "daily_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "minute_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable minute request limit available for the user account after this query."
-          },
-          "next_minute_rate_limit_reset": {
-            "type": "integer",
-            "description": "Represents the next minute rate limit reset for the user account after this query."
-          },
-          "company": {
-            "oneOf": [
-              { "$ref": "#/components/schemas/Company" },
-              { "type": "boolean", "enum": [false] }
-            ]
+          { "$ref": "#/components/schemas/RateLimitInfo" },
+          {
+            "type": "object",
+            "properties": {
+              "company": {
+                "oneOf": [
+                  { "$ref": "#/components/schemas/Company" },
+                  { "type": "boolean", "enum": [false] }
+                ]
+              }
+            }
           }
-        }
+        ]
       },
       "ExtractCompanyDataProfile": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "description": "Indicates success or failure of api request."
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "success": {
+                "type": "boolean",
+                "description": "Indicates success or failure of api request."
+              }
+            }
           },
-          "credits_left": {
-            "type": "integer",
-            "description": "Represents the usable credits available for the user account after this query."
-          },
-          "rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "daily_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "minute_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable minute request limit available for the user account after this query."
-          },
-          "next_minute_rate_limit_reset": {
-            "type": "integer",
-            "description": "Represents the next minute rate limit reset for the user account after this query."
-          },
-          "company": {
-            "oneOf": [
-              { "$ref": "#/components/schemas/Company" },
-              { "type": "boolean", "enum": [false] }
-            ]
+          { "$ref": "#/components/schemas/RateLimitInfo" },
+          {
+            "type": "object",
+            "properties": {
+              "company": {
+                "oneOf": [
+                  { "$ref": "#/components/schemas/Company" },
+                  { "type": "boolean", "enum": [false] }
+                ]
+              }
+            }
           }
-        }
+        ]
       },
       "Job": {
         "type": "object",
@@ -2178,77 +2087,57 @@
         }
       },
       "JobSearch": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "description": "Indicates success or failure of api request."
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "success": {
+                "type": "boolean",
+                "description": "Indicates success or failure of api request."
+              }
+            }
           },
-          "credits_left": {
-            "type": "integer",
-            "description": "Represents the usable credits available for the user account after this query."
-          },
-          "rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "daily_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "minute_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable minute request limit available for the user account after this query."
-          },
-          "next_minute_rate_limit_reset": {
-            "type": "integer",
-            "description": "Represents the next minute rate limit reset for the user account after this query."
-          },
-          "metadata": {
-            "description": "Metadata information",
-            "$ref": "#/components/schemas/Metadata"
-          },
-          "jobs": {
-            "type": "array",
-            "items": { "$ref": "#/components/schemas/Job" },
-            "description": "Array of jobs"
+          { "$ref": "#/components/schemas/RateLimitInfo" },
+          {
+            "type": "object",
+            "properties": {
+              "metadata": {
+                "description": "Metadata information",
+                "$ref": "#/components/schemas/Metadata"
+              },
+              "jobs": {
+                "type": "array",
+                "items": { "$ref": "#/components/schemas/Job" },
+                "description": "Array of jobs"
+              }
+            }
           }
-        }
+        ]
       },
       "ExtractJobData": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "description": "Indicates success or failure of api request."
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "success": {
+                "type": "boolean",
+                "description": "Indicates success or failure of api request."
+              }
+            }
           },
-          "credits_left": {
-            "type": "integer",
-            "description": "Represents the usable credits available for the user account after this query."
-          },
-          "rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "daily_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "minute_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable minute request limit available for the user account after this query."
-          },
-          "next_minute_rate_limit_reset": {
-            "type": "integer",
-            "description": "Represents the next minute rate limit reset for the user account after this query."
-          },
-          "job": {
-            "oneOf": [
-              { "$ref": "#/components/schemas/Job" },
-              { "type": "boolean", "enum": [false] }
-            ]
+          { "$ref": "#/components/schemas/RateLimitInfo" },
+          {
+            "type": "object",
+            "properties": {
+              "job": {
+                "oneOf": [
+                  { "$ref": "#/components/schemas/Job" },
+                  { "type": "boolean", "enum": [false] }
+                ]
+              }
+            }
           }
-        }
+        ]
       },
       "Metadata": {
         "type": "object",
@@ -2782,38 +2671,28 @@
         }
       },
       "RecommendationsResponse": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "description": "Indicates success or failure of api request."
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "success": {
+                "type": "boolean",
+                "description": "Indicates success or failure of api request."
+              }
+            }
           },
-          "credits_left": {
-            "type": "integer",
-            "description": "Represents the usable credits available for the user account after this query."
-          },
-          "rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "daily_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "minute_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable minute request limit available for the user account after this query."
-          },
-          "next_minute_rate_limit_reset": {
-            "type": "integer",
-            "description": "Represents the next minute rate limit reset for the user account after this query."
-          },
-          "recommendations": {
-            "type": "array",
-            "items": { "$ref": "#/components/schemas/Recommendation" },
-            "description": "Array of recommendations"
+          { "$ref": "#/components/schemas/RateLimitInfo" },
+          {
+            "type": "object",
+            "properties": {
+              "recommendations": {
+                "type": "array",
+                "items": { "$ref": "#/components/schemas/Recommendation" },
+                "description": "Array of recommendations"
+              }
+            }
           }
-        }
+        ]
       },
       "RepostV2": {
         "properties": {
@@ -2848,302 +2727,222 @@
         }
       },
       "ActivitiesPost": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "description": "Indicates success or failure of api request."
-          },
-          "credits_left": {
-            "type": "integer",
-            "description": "Represents the usable credits available for the user account after this query."
-          },
-          "rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "daily_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "minute_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable minute request limit available for the user account after this query."
-          },
-          "next_minute_rate_limit_reset": {
-            "type": "integer",
-            "description": "Represents the next minute rate limit reset for the user account after this query."
-          },
-          "post": {
+        "allOf": [
+          {
             "type": "object",
-            "description": "Activity post of a person",
-            "$ref": "#/components/schemas/PostV2"
+            "properties": {
+              "success": {
+                "type": "boolean",
+                "description": "Indicates success or failure of api request."
+              }
+            }
+          },
+          { "$ref": "#/components/schemas/RateLimitInfo" },
+          {
+            "type": "object",
+            "properties": {
+              "post": {
+                "type": "object",
+                "description": "Activity post of a person",
+                "$ref": "#/components/schemas/PostV2"
+              }
+            }
           }
-        }
+        ]
       },
       "ActivitiesPosts": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "description": "Indicates success or failure of api request."
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "success": {
+                "type": "boolean",
+                "description": "Indicates success or failure of api request."
+              }
+            }
           },
-          "credits_left": {
-            "type": "integer",
-            "description": "Represents the usable credits available for the user account after this query."
-          },
-          "rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "daily_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "minute_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable minute request limit available for the user account after this query."
-          },
-          "next_minute_rate_limit_reset": {
-            "type": "integer",
-            "description": "Represents the next minute rate limit reset for the user account after this query."
-          },
-          "posts": {
-            "type": "array",
-            "description": "All activity posts of a person",
-            "items": { "$ref": "#/components/schemas/PostV2" }
+          { "$ref": "#/components/schemas/RateLimitInfo" },
+          {
+            "type": "object",
+            "properties": {
+              "posts": {
+                "type": "array",
+                "description": "All activity posts of a person",
+                "items": { "$ref": "#/components/schemas/PostV2" }
+              }
+            }
           }
-        }
+        ]
       },
       "ActivitiesComment": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "description": "Indicates success or failure of api request."
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "success": {
+                "type": "boolean",
+                "description": "Indicates success or failure of api request."
+              }
+            }
           },
-          "credits_left": {
-            "type": "integer",
-            "description": "Represents the usable credits available for the user account after this query."
-          },
-          "rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "daily_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "minute_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable minute request limit available for the user account after this query."
-          },
-          "next_minute_rate_limit_reset": {
-            "type": "integer",
-            "description": "Represents the next minute rate limit reset for the user account after this query."
-          },
-          "metadata": {
-            "description": "Metadata information",
-            "$ref": "#/components/schemas/Metadata"
-          },
-          "comments": {
-            "type": "array",
-            "description": "All comments of a person on a post",
-            "items": { "$ref": "#/components/schemas/CommentV2" }
+          { "$ref": "#/components/schemas/RateLimitInfo" },
+          {
+            "type": "object",
+            "properties": {
+              "metadata": {
+                "description": "Metadata information",
+                "$ref": "#/components/schemas/Metadata"
+              },
+              "comments": {
+                "type": "array",
+                "description": "All comments of a person on a post",
+                "items": { "$ref": "#/components/schemas/CommentV2" }
+              }
+            }
           }
-        }
+        ]
       },
       "ActivitiesComments": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "description": "Indicates success or failure of api request."
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "success": {
+                "type": "boolean",
+                "description": "Indicates success or failure of api request."
+              }
+            }
           },
-          "credits_left": {
-            "type": "integer",
-            "description": "Represents the usable credits available for the user account after this query."
-          },
-          "rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "daily_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "minute_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable minute request limit available for the user account after this query."
-          },
-          "next_minute_rate_limit_reset": {
-            "type": "integer",
-            "description": "Represents the next minute rate limit reset for the user account after this query."
-          },
-          "comments": {
-            "type": "array",
-            "description": "All comments of a profile",
-            "items": { "$ref": "#/components/schemas/CommentsV2" }
+          { "$ref": "#/components/schemas/RateLimitInfo" },
+          {
+            "type": "object",
+            "properties": {
+              "comments": {
+                "type": "array",
+                "description": "All comments of a profile",
+                "items": { "$ref": "#/components/schemas/CommentsV2" }
+              }
+            }
           }
-        }
+        ]
       },
       "ActivitiesReaction": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "description": "Indicates success or failure of api request."
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "success": {
+                "type": "boolean",
+                "description": "Indicates success or failure of api request."
+              }
+            }
           },
-          "credits_left": {
-            "type": "integer",
-            "description": "Represents the usable credits available for the user account after this query."
-          },
-          "rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "daily_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "minute_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable minute request limit available for the user account after this query."
-          },
-          "next_minute_rate_limit_reset": {
-            "type": "integer",
-            "description": "Represents the next minute rate limit reset for the user account after this query."
-          },
-          "metadata": {
-            "description": "Metadata information",
-            "$ref": "#/components/schemas/Metadata"
-          },
-          "reactions": {
-            "type": "array",
-            "description": "All reactions of a person on a post",
-            "items": { "$ref": "#/components/schemas/ReactionV2" }
+          { "$ref": "#/components/schemas/RateLimitInfo" },
+          {
+            "type": "object",
+            "properties": {
+              "metadata": {
+                "description": "Metadata information",
+                "$ref": "#/components/schemas/Metadata"
+              },
+              "reactions": {
+                "type": "array",
+                "description": "All reactions of a person on a post",
+                "items": { "$ref": "#/components/schemas/ReactionV2" }
+              }
+            }
           }
-        }
+        ]
       },
       "ActivitiesReactions": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "description": "Indicates success or failure of api request."
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "success": {
+                "type": "boolean",
+                "description": "Indicates success or failure of api request."
+              }
+            }
           },
-          "credits_left": {
-            "type": "integer",
-            "description": "Represents the usable credits available for the user account after this query."
-          },
-          "rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "daily_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "minute_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable minute request limit available for the user account after this query."
-          },
-          "next_minute_rate_limit_reset": {
-            "type": "integer",
-            "description": "Represents the next minute rate limit reset for the user account after this query."
-          },
-          "reactions": {
-            "type": "array",
-            "description": "All reactions of a person on a post",
-            "items": { "$ref": "#/components/schemas/ReactionsV2" }
+          { "$ref": "#/components/schemas/RateLimitInfo" },
+          {
+            "type": "object",
+            "properties": {
+              "reactions": {
+                "type": "array",
+                "description": "All reactions of a person on a post",
+                "items": { "$ref": "#/components/schemas/ReactionsV2" }
+              }
+            }
           }
-        }
+        ]
       },
       "ActivitiesRepost": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "description": "Indicates success or failure of api request."
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "success": {
+                "type": "boolean",
+                "description": "Indicates success or failure of api request."
+              }
+            }
           },
-          "credits_left": {
-            "type": "integer",
-            "description": "Represents the usable credits available for the user account after this query."
-          },
-          "rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "daily_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "minute_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable minute request limit available for the user account after this query."
-          },
-          "next_minute_rate_limit_reset": {
-            "type": "integer",
-            "description": "Represents the next minute rate limit reset for the user account after this query."
-          },
-          "metadata": {
-            "description": "Metadata information",
-            "$ref": "#/components/schemas/Metadata"
-          },
-          "reactions": {
-            "type": "array",
-            "description": "All reposts of a person on a post",
-            "items": { "$ref": "#/components/schemas/RepostV2" }
+          { "$ref": "#/components/schemas/RateLimitInfo" },
+          {
+            "type": "object",
+            "properties": {
+              "metadata": {
+                "description": "Metadata information",
+                "$ref": "#/components/schemas/Metadata"
+              },
+              "reactions": {
+                "type": "array",
+                "description": "All reposts of a person on a post",
+                "items": { "$ref": "#/components/schemas/RepostV2" }
+              }
+            }
           }
-        }
+        ]
       },
       "CompanyActivitiesPosts": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "description": "Indicates success or failure of api request."
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "success": {
+                "type": "boolean",
+                "description": "Indicates success or failure of api request."
+              }
+            }
           },
-          "credits_left": {
-            "type": "integer",
-            "description": "Represents the usable credits available for the user account after this query."
-          },
-          "rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "daily_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "minute_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable minute request limit available for the user account after this query."
-          },
-          "next_minute_rate_limit_reset": {
-            "type": "integer",
-            "description": "Represents the next minute rate limit reset for the user account after this query."
-          },
-          "metadata": {
-            "description": "Metadata information",
-            "$ref": "#/components/schemas/Metadata"
-          },
-          "posts": {
-            "type": "array",
-            "description": "All activity posts of a company",
-            "items": { "$ref": "#/components/schemas/PostV2" }
+          { "$ref": "#/components/schemas/RateLimitInfo" },
+          {
+            "type": "object",
+            "properties": {
+              "metadata": {
+                "description": "Metadata information",
+                "$ref": "#/components/schemas/Metadata"
+              },
+              "posts": {
+                "type": "array",
+                "description": "All activity posts of a company",
+                "items": { "$ref": "#/components/schemas/PostV2" }
+              }
+            }
           }
-        }
+        ]
       },
       "Quotas": {
         "type": "object",
         "properties": {
           "credits_left": {
-            "type": "integer",
+            "type": "number",
             "description": "Represents the usable credits available for the user account after this query."
           },
           "rate_limit_left": {
-            "type": "integer",
+            "type": "number",
             "description": "Represents the usable daily request limit available for the user account after this query."
           }
         }
@@ -3193,38 +2992,28 @@
         }
       },
       "CertificationsResponse": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "description": "Indicates success or failure of api request."
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "success": {
+                "type": "boolean",
+                "description": "Indicates success or failure of api request."
+              }
+            }
           },
-          "credits_left": {
-            "type": "integer",
-            "description": "Represents the usable credits available for the user account after this query."
-          },
-          "rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "daily_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "minute_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable minute request limit available for the user account after this query."
-          },
-          "next_minute_rate_limit_reset": {
-            "type": "integer",
-            "description": "Represents the next minute rate limit reset for the user account after this query."
-          },
-          "certifications": {
-            "type": "array",
-            "items": { "$ref": "#/components/schemas/Certification" },
-            "description": "Array of certifications"
+          { "$ref": "#/components/schemas/RateLimitInfo" },
+          {
+            "type": "object",
+            "properties": {
+              "certifications": {
+                "type": "array",
+                "items": { "$ref": "#/components/schemas/Certification" },
+                "description": "Array of certifications"
+              }
+            }
           }
-        }
+        ]
       },
       "VolunteeringExperience": {
         "type": "object",
@@ -3248,77 +3037,54 @@
         }
       },
       "VolunteeringExperiencesResponse": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "description": "Indicates success or failure of api request."
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "success": {
+                "type": "boolean",
+                "description": "Indicates success or failure of api request."
+              }
+            }
           },
-          "credits_left": {
-            "type": "integer",
-            "description": "Represents the usable credits available for the user account after this query."
-          },
-          "rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "daily_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "minute_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable minute request limit available for the user account after this query."
-          },
-          "next_minute_rate_limit_reset": {
-            "type": "integer",
-            "description": "Represents the next minute rate limit reset for the user account after this query."
-          },
-          "volunteeringExperiences": {
-            "type": "array",
-            "items": { "$ref": "#/components/schemas/VolunteeringExperience" },
-            "description": "Array of volunteering experiences"
+          { "$ref": "#/components/schemas/RateLimitInfo" },
+          {
+            "type": "object",
+            "properties": {
+              "volunteeringExperiences": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/VolunteeringExperience"
+                },
+                "description": "Array of volunteering experiences"
+              }
+            }
           }
-        }
+        ]
       },
       "EmailsFinderResponse": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "description": "Indicates success or failure of api request."
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "success": {
+                "type": "boolean",
+                "description": "Indicates success or failure of api request."
+              }
+            }
           },
-          "credits_consumed": {
-            "type": "integer",
-            "description": "Represents the number of credits consumed by this query."
-          },
-          "credits_left": {
-            "type": "integer",
-            "description": "Represents the usable credits available for the user account after this query."
-          },
-          "rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "daily_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable daily request limit available for the user account after this query."
-          },
-          "minute_rate_limit_left": {
-            "type": "integer",
-            "description": "Represents the usable minute request limit available for the user account after this query."
-          },
-          "next_minute_rate_limit_reset": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Represents the next minute rate limit reset timestamp for the user account after this query."
-          },
-          "emails": {
-            "type": "array",
-            "items": { "$ref": "#/components/schemas/Email" },
-            "description": "Array of email addresses found for the profile."
+          { "$ref": "#/components/schemas/RateLimitInfo" },
+          {
+            "type": "object",
+            "properties": {
+              "emails": {
+                "type": "array",
+                "items": { "$ref": "#/components/schemas/Email" },
+                "description": "Array of email addresses found for the profile."
+              }
+            }
           }
-        }
+        ]
       },
       "Email": {
         "type": "object",
@@ -3335,74 +3101,59 @@
         }
       },
       "PersonsSearchResponse": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "description": "Indicates if the request was successful."
-          },
-          "credits_consumed": {
-            "type": "number",
-            "description": "Credits consumed by this request (always 0)."
-          },
-          "credits_left": {
-            "type": "number",
-            "description": "Remaining credits in your account."
-          },
-          "rate_limit_left": {
-            "type": "integer",
-            "description": "Remaining API calls for the current period."
-          },
-          "daily_rate_limit_left": {
-            "type": "integer",
-            "description": "Remaining daily API calls."
-          },
-          "minute_rate_limit_left": {
-            "type": "integer",
-            "description": "Remaining API calls for the current minute."
-          },
-          "next_minute_rate_limit_reset": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Timestamp when minute rate limit resets."
-          },
-          "metadata": {
+        "allOf": [
+          {
             "type": "object",
             "properties": {
-              "source": {
-                "type": "string",
-                "enum": ["cache", "fresh"],
-                "description": "Data source: 'cache' (DataLake) or 'fresh' (Live)."
+              "success": {
+                "type": "boolean",
+                "description": "Indicates if the request was successful."
               }
             }
           },
-          "pagination": {
+          { "$ref": "#/components/schemas/RateLimitInfo" },
+          {
             "type": "object",
             "properties": {
-              "currentPage": {
-                "type": "integer",
-                "description": "Current page number."
+              "metadata": {
+                "type": "object",
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "enum": ["cache", "fresh"],
+                    "description": "Data source: 'cache' (DataLake) or 'fresh' (Live)."
+                  }
+                }
               },
-              "totalPages": {
-                "type": "integer",
-                "description": "Total number of pages available."
+              "pagination": {
+                "type": "object",
+                "properties": {
+                  "currentPage": {
+                    "type": "integer",
+                    "description": "Current page number."
+                  },
+                  "totalPages": {
+                    "type": "integer",
+                    "description": "Total number of pages available."
+                  },
+                  "totalResults": {
+                    "type": "integer",
+                    "description": "Total number of results matching the query."
+                  },
+                  "resultsPerPage": {
+                    "type": "integer",
+                    "description": "Number of results per page (fixed at 20)."
+                  }
+                }
               },
-              "totalResults": {
-                "type": "integer",
-                "description": "Total number of results matching the query."
-              },
-              "resultsPerPage": {
-                "type": "integer",
-                "description": "Number of results per page (fixed at 20)."
+              "persons": {
+                "type": "array",
+                "items": { "$ref": "#/components/schemas/PersonSearchResult" },
+                "description": "Array of person results."
               }
             }
-          },
-          "persons": {
-            "type": "array",
-            "items": { "$ref": "#/components/schemas/PersonSearchResult" },
-            "description": "Array of person results."
           }
-        }
+        ]
       },
       "PersonSearchResult": {
         "type": "object",
@@ -3450,7 +3201,7 @@
           "success": true,
           "email": "bill.gates@microsoft.com",
           "emailType": "professional",
-          "credits_left": 90000,
+          "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
           "minute_rate_limit_left": 499,
@@ -3598,7 +3349,7 @@
         "summary": "Person Profile Extracted",
         "value": {
           "success": true,
-          "credits_left": 90000,
+          "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
           "minute_rate_limit_left": 499,
@@ -3746,7 +3497,7 @@
         "summary": "Person Profile Extracted",
         "value": {
           "success": true,
-          "credits_left": 90000,
+          "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
           "minute_rate_limit_left": 499,
@@ -3971,7 +3722,7 @@
         "summary": "Profile Found",
         "value": {
           "success": true,
-          "credits_left": 90000,
+          "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
           "minute_rate_limit_left": 499,
@@ -4002,7 +3753,7 @@
         "summary": "Summary Found",
         "value": {
           "success": true,
-          "credits_left": 90000,
+          "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
           "minute_rate_limit_left": 499,
@@ -4014,7 +3765,7 @@
         "summary": "Followers Count Found",
         "value": {
           "success": true,
-          "credits_left": 90000,
+          "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
           "minute_rate_limit_left": 499,
@@ -4026,7 +3777,7 @@
         "summary": "Experience Found",
         "value": {
           "success": true,
-          "credits_left": 90000,
+          "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
           "minute_rate_limit_left": 499,
@@ -4090,7 +3841,7 @@
         "summary": "Education Found",
         "value": {
           "success": true,
-          "credits_left": 90000,
+          "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
           "minute_rate_limit_left": 499,
@@ -4138,7 +3889,7 @@
         "summary": "Skills Found",
         "value": {
           "success": true,
-          "credits_left": 90000,
+          "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
           "minute_rate_limit_left": 499,
@@ -4177,7 +3928,7 @@
         "summary": "Languages Found",
         "value": {
           "success": true,
-          "credits_left": 90000,
+          "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
           "minute_rate_limit_left": 499,
@@ -4206,7 +3957,7 @@
         "summary": "Recommendations Found",
         "value": {
           "success": true,
-          "credits_left": 90000,
+          "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
           "minute_rate_limit_left": 499,
@@ -4237,7 +3988,7 @@
         "summary": "Certifications Found",
         "value": {
           "success": true,
-          "credits_left": 90000,
+          "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
           "minute_rate_limit_left": 499,
@@ -4262,7 +4013,7 @@
         "summary": "Volunteering Experiences Found",
         "value": {
           "success": true,
-          "credits_left": 90000,
+          "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
           "minute_rate_limit_left": 499,
@@ -4282,7 +4033,7 @@
         "value": {
           "success": true,
           "credits_consumed": 2,
-          "credits_left": 200731,
+          "credits_left": 200731.5,
           "rate_limit_left": 99890,
           "daily_rate_limit_left": 99890,
           "minute_rate_limit_left": 499,
@@ -4299,7 +4050,7 @@
         "summary": "Company Found",
         "value": {
           "success": true,
-          "credits_left": 90000,
+          "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
           "minute_rate_limit_left": 499,
@@ -4348,7 +4099,7 @@
         "summary": "Company Profile Extracted",
         "value": {
           "success": true,
-          "credits_left": 90000,
+          "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
           "minute_rate_limit_left": 499,
@@ -4397,7 +4148,7 @@
         "summary": "Job List Example",
         "value": {
           "success": true,
-          "credits_left": 90000,
+          "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
           "minute_rate_limit_left": 499,
@@ -4440,7 +4191,7 @@
         "summary": "Company Profile Extracted",
         "value": {
           "success": true,
-          "credits_left": 90000,
+          "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
           "minute_rate_limit_left": 499,
@@ -4467,7 +4218,7 @@
         "summary": "Activities Post",
         "value": {
           "success": true,
-          "credits_left": 19934,
+          "credits_left": 19934.5,
           "rate_limit_left": 19999,
           "daily_rate_limit_left": 19999,
           "minute_rate_limit_left": 499,
@@ -4508,7 +4259,7 @@
         "summary": "Activities Posts",
         "value": {
           "success": true,
-          "credits_left": 19934,
+          "credits_left": 19934.5,
           "rate_limit_left": 19999,
           "daily_rate_limit_left": 19999,
           "minute_rate_limit_left": 499,
@@ -4580,7 +4331,7 @@
         "summary": "Activities Comments",
         "value": {
           "success": true,
-          "credits_left": 19934,
+          "credits_left": 19934.5,
           "rate_limit_left": 19999,
           "daily_rate_limit_left": 19999,
           "minute_rate_limit_left": 499,
@@ -4623,7 +4374,7 @@
         "summary": "Activities Comments",
         "value": {
           "success": true,
-          "credits_left": 19934,
+          "credits_left": 19934.5,
           "rate_limit_left": 19999,
           "daily_rate_limit_left": 19999,
           "minute_rate_limit_left": 499,
@@ -4690,7 +4441,7 @@
         "summary": "Activities Reactions",
         "value": {
           "success": true,
-          "credits_left": 19934,
+          "credits_left": 19934.5,
           "rate_limit_left": 19999,
           "daily_rate_limit_left": 19999,
           "minute_rate_limit_left": 499,
@@ -4725,7 +4476,7 @@
         "summary": "Activities Reactions",
         "value": {
           "success": true,
-          "credits_left": 19934,
+          "credits_left": 19934.5,
           "rate_limit_left": 19999,
           "daily_rate_limit_left": 19999,
           "minute_rate_limit_left": 499,
@@ -4782,7 +4533,7 @@
         "summary": "Activities Reactions",
         "value": {
           "success": true,
-          "credits_left": 19934,
+          "credits_left": 19934.5,
           "rate_limit_left": 19999,
           "daily_rate_limit_left": 19999,
           "minute_rate_limit_left": 499,
@@ -4819,7 +4570,7 @@
         "summary": "Activities Posts",
         "value": {
           "success": true,
-          "credits_left": 19934,
+          "credits_left": 19934.5,
           "rate_limit_left": 19999,
           "daily_rate_limit_left": 19999,
           "minute_rate_limit_left": 499,
@@ -4897,7 +4648,7 @@
         "summary": "Quotas Found",
         "value": {
           "status": "success",
-          "data": { "credits_left": 90000, "rate_limit_left": 19000 }
+          "data": { "credits_left": 90000.5, "rate_limit_left": 19000 }
         }
       },
       "NoApiKey": {
