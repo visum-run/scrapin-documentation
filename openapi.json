@@ -3199,6 +3199,7 @@
         "summary": "Profile Found",
         "value": {
           "success": true,
+          "credits_consumed": 1,
           "email": "bill.gates@microsoft.com",
           "emailType": "professional",
           "credits_left": 90000.5,
@@ -3349,6 +3350,7 @@
         "summary": "Person Profile Extracted",
         "value": {
           "success": true,
+          "credits_consumed": 1,
           "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
@@ -3497,6 +3499,7 @@
         "summary": "Person Profile Extracted",
         "value": {
           "success": true,
+          "credits_consumed": 1,
           "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
@@ -3722,6 +3725,7 @@
         "summary": "Profile Found",
         "value": {
           "success": true,
+          "credits_consumed": 1,
           "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
@@ -3753,6 +3757,7 @@
         "summary": "Summary Found",
         "value": {
           "success": true,
+          "credits_consumed": 1,
           "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
@@ -3765,6 +3770,7 @@
         "summary": "Followers Count Found",
         "value": {
           "success": true,
+          "credits_consumed": 1,
           "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
@@ -3777,6 +3783,7 @@
         "summary": "Experience Found",
         "value": {
           "success": true,
+          "credits_consumed": 1,
           "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
@@ -3841,6 +3848,7 @@
         "summary": "Education Found",
         "value": {
           "success": true,
+          "credits_consumed": 1,
           "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
@@ -3889,6 +3897,7 @@
         "summary": "Skills Found",
         "value": {
           "success": true,
+          "credits_consumed": 1,
           "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
@@ -3928,6 +3937,7 @@
         "summary": "Languages Found",
         "value": {
           "success": true,
+          "credits_consumed": 1,
           "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
@@ -3957,6 +3967,7 @@
         "summary": "Recommendations Found",
         "value": {
           "success": true,
+          "credits_consumed": 1,
           "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
@@ -3988,6 +3999,7 @@
         "summary": "Certifications Found",
         "value": {
           "success": true,
+          "credits_consumed": 1,
           "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
@@ -4013,6 +4025,7 @@
         "summary": "Volunteering Experiences Found",
         "value": {
           "success": true,
+          "credits_consumed": 1,
           "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
@@ -4050,6 +4063,7 @@
         "summary": "Company Found",
         "value": {
           "success": true,
+          "credits_consumed": 1,
           "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
@@ -4099,6 +4113,7 @@
         "summary": "Company Profile Extracted",
         "value": {
           "success": true,
+          "credits_consumed": 1,
           "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
@@ -4148,6 +4163,7 @@
         "summary": "Job List Example",
         "value": {
           "success": true,
+          "credits_consumed": 1,
           "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
@@ -4191,6 +4207,7 @@
         "summary": "Company Profile Extracted",
         "value": {
           "success": true,
+          "credits_consumed": 1,
           "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
@@ -4218,6 +4235,7 @@
         "summary": "Activities Post",
         "value": {
           "success": true,
+          "credits_consumed": 1,
           "credits_left": 19934.5,
           "rate_limit_left": 19999,
           "daily_rate_limit_left": 19999,
@@ -4259,6 +4277,7 @@
         "summary": "Activities Posts",
         "value": {
           "success": true,
+          "credits_consumed": 1,
           "credits_left": 19934.5,
           "rate_limit_left": 19999,
           "daily_rate_limit_left": 19999,
@@ -4331,6 +4350,7 @@
         "summary": "Activities Comments",
         "value": {
           "success": true,
+          "credits_consumed": 1,
           "credits_left": 19934.5,
           "rate_limit_left": 19999,
           "daily_rate_limit_left": 19999,
@@ -4374,6 +4394,7 @@
         "summary": "Activities Comments",
         "value": {
           "success": true,
+          "credits_consumed": 1,
           "credits_left": 19934.5,
           "rate_limit_left": 19999,
           "daily_rate_limit_left": 19999,
@@ -4441,6 +4462,7 @@
         "summary": "Activities Reactions",
         "value": {
           "success": true,
+          "credits_consumed": 1,
           "credits_left": 19934.5,
           "rate_limit_left": 19999,
           "daily_rate_limit_left": 19999,
@@ -4476,6 +4498,7 @@
         "summary": "Activities Reactions",
         "value": {
           "success": true,
+          "credits_consumed": 1,
           "credits_left": 19934.5,
           "rate_limit_left": 19999,
           "daily_rate_limit_left": 19999,
@@ -4533,6 +4556,7 @@
         "summary": "Activities Reactions",
         "value": {
           "success": true,
+          "credits_consumed": 1,
           "credits_left": 19934.5,
           "rate_limit_left": 19999,
           "daily_rate_limit_left": 19999,
@@ -4570,6 +4594,7 @@
         "summary": "Activities Posts",
         "value": {
           "success": true,
+          "credits_consumed": 1,
           "credits_left": 19934.5,
           "rate_limit_left": 19999,
           "daily_rate_limit_left": 19999,
