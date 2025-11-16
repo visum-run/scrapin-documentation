@@ -3,6 +3,8 @@ title: "Person Profile Data"
 openapi: "POST /v1/enrichment/profile"
 ---
 
+import ReportIssue from "/snippets/report-issue.mdx";
+
 <Info>
   **Caching Available:** Use the optional `cacheDuration` parameter to enable
   caching and reduce costs. Cache hits consume only **0.5 credits** instead of 1
@@ -22,3 +24,5 @@ openapi: "POST /v1/enrichment/profile"
     This costs the standard **1 credit**.
   </Card>
 </CardGroup>
+
+<ReportIssue />
