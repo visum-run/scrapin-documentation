@@ -571,7 +571,7 @@
         "tags": ["Company"],
         "operationId": "CompanySearch",
         "summary": "Company Search",
-        "description": "This operation allows you to find a company from its domain name. It returns company information as the response. This operation consumes 1 credit.",
+        "description": "This operation allows you to find a company from its domain name. It returns company information as the response. This operation consumes 1 credit (or 0.5 credits if served from cache).",
         "parameters": [
           {
             "name": "domain",
@@ -579,6 +579,14 @@
             "schema": { "type": "string" },
             "description": "This required parameter is a string. It represents the domain name of the company to query.",
             "required": true
+          },
+          {
+            "name": "cacheDuration",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "Optional parameter to enable caching. Accepts duration strings like '4h', '2d', '1w', '2mo', '1y'. We use the [parse-duration](https://www.npmjs.com/package/parse-duration) library internally to parse these values. If the profile is found in cache within this duration, only 0.5 credits are consumed. Otherwise, fresh data is scraped for 1 credit.",
+            "required": false,
+            "example": "2d"
           }
         ],
         "responses": {
@@ -610,7 +618,7 @@
         "tags": ["Company"],
         "operationId": "ExtractCompanyDataProfile",
         "summary": "Extract Company Data Profile",
-        "description": "This operation allows you to extract data from a Company URL. It returns company data as the response. This operation consumes 1 credit.",
+        "description": "This operation allows you to extract data from a Company URL. It returns company data as the response. This operation consumes 1 credit (or 0.5 credits if served from cache).",
         "parameters": [
           {
             "name": "linkedInUrl",
@@ -618,6 +626,14 @@
             "schema": { "type": "string" },
             "description": "This required parameter is a string. It represents the Social URL of the company with this format: https://www.social.com/company/xxxxxxxxxx/.",
             "required": true
+          },
+          {
+            "name": "cacheDuration",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "Optional parameter to enable caching. Accepts duration strings like '4h', '2d', '1w', '2mo', '1y'. We use the [parse-duration](https://www.npmjs.com/package/parse-duration) library internally to parse these values. If the profile is found in cache within this duration, only 0.5 credits are consumed. Otherwise, fresh data is scraped for 1 credit.",
+            "required": false,
+            "example": "2d"
           }
         ],
         "responses": {
@@ -2032,6 +2048,25 @@
           {
             "type": "object",
             "properties": {
+              "metadata": {
+                "type": "object",
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "enum": ["cache", "fresh"],
+                    "description": "Indicates whether the data was served from cache or freshly scraped."
+                  },
+                  "request_id": {
+                    "type": "string",
+                    "description": "Unique identifier for this request."
+                  },
+                  "updatedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "ISO 8601 timestamp indicating when the cached data was last updated. This field is only present when source is 'cache'."
+                  }
+                }
+              },
               "company": {
                 "oneOf": [
                   { "$ref": "#/components/schemas/Company" },
@@ -2057,6 +2092,25 @@
           {
             "type": "object",
             "properties": {
+              "metadata": {
+                "type": "object",
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "enum": ["cache", "fresh"],
+                    "description": "Indicates whether the data was served from cache or freshly scraped."
+                  },
+                  "request_id": {
+                    "type": "string",
+                    "description": "Unique identifier for this request."
+                  },
+                  "updatedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "ISO 8601 timestamp indicating when the cached data was last updated. This field is only present when source is 'cache'."
+                  }
+                }
+              },
               "company": {
                 "oneOf": [
                   { "$ref": "#/components/schemas/Company" },
@@ -3601,6 +3655,10 @@
           "daily_rate_limit_left": 19000,
           "minute_rate_limit_left": 499,
           "next_minute_rate_limit_reset": "2025-07-24T12:11:01.000Z",
+          "metadata": {
+            "source": "fresh",
+            "request_id": "000xcc2a-829a-4200-9704-f6f9cf9a23de"
+          },
           "person": {
             "publicIdentifier": "michael",
             "linkedInIdentifier": "ACoAABTEFqYBfjGaiNAy5ITKaPacBEBDdR1Srhs",
@@ -3809,11 +3867,6 @@
             },
             "fundingData": null,
             "backgroundUrl": "https://media.licdn.com/dms/image/v2/D4E1BAQEnSV0NjtZSXA/company-background_200/B4EZcRNJq.HYAc-/0/1748340349995/scrapin_api_cover?e=1753966800&v=beta&t=PdbNUkpicYwyp6cn9tri20MLicIO_9ASua8ZUsJm5cg"
-          },
-          "metadata": {
-            "source": "cache",
-            "request_id": "578d19ac-961e-4a91-ba6b-6deeb67a11e8",
-            "updatedAt": "2025-11-13T10:16:29.821Z"
           }
         }
       },
@@ -4165,6 +4218,10 @@
           "daily_rate_limit_left": 19000,
           "minute_rate_limit_left": 499,
           "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
+          "metadata": {
+            "source": "fresh",
+            "request_id": "000xcc2a-829a-4200-9704-f6f9cf9a23de"
+          },
           "company": {
             "linkedInId": "71234370",
             "name": "Data company",
@@ -4215,6 +4272,10 @@
           "daily_rate_limit_left": 19000,
           "minute_rate_limit_left": 499,
           "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
+          "metadata": {
+            "source": "fresh",
+            "request_id": "000xcc2a-829a-4200-9704-f6f9cf9a23de"
+          },
           "company": {
             "linkedInId": "71234370",
             "name": "Data company",
@@ -4831,7 +4892,8 @@
           "minute_rate_limit_left": 19,
           "next_minute_rate_limit_reset": "2024-10-31T12:46:00.000Z",
           "metadata": {
-            "source": "fresh"
+            "source": "fresh",
+            "request_id": "000xcc2a-829a-4200-9704-f6f9cf9a23de"
           },
           "pagination": {
             "currentPage": 1,
