@@ -2741,6 +2741,20 @@
           {
             "type": "object",
             "properties": {
+              "metadata": {
+                "type": "object",
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "enum": ["fresh"],
+                    "description": "Indicates whether the data freshly scraped."
+                  },
+                  "request_id": {
+                    "type": "string",
+                    "description": "Unique identifier for this request."
+                  }
+                }
+              },
               "post": {
                 "type": "object",
                 "description": "Activity post of a person",
@@ -2765,6 +2779,20 @@
           {
             "type": "object",
             "properties": {
+              "metadata": {
+                "type": "object",
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "enum": ["fresh"],
+                    "description": "Indicates whether the data freshly scraped."
+                  },
+                  "request_id": {
+                    "type": "string",
+                    "description": "Unique identifier for this request."
+                  }
+                }
+              },
               "posts": {
                 "type": "array",
                 "description": "All activity posts of a person",
@@ -2790,8 +2818,18 @@
             "type": "object",
             "properties": {
               "metadata": {
-                "description": "Metadata information",
-                "$ref": "#/components/schemas/Metadata"
+                "type": "object",
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "enum": ["fresh"],
+                    "description": "Indicates whether the data freshly scraped."
+                  },
+                  "request_id": {
+                    "type": "string",
+                    "description": "Unique identifier for this request."
+                  }
+                }
               },
               "comments": {
                 "type": "array",
@@ -2817,6 +2855,20 @@
           {
             "type": "object",
             "properties": {
+              "metadata": {
+                "type": "object",
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "enum": ["fresh"],
+                    "description": "Indicates whether the data freshly scraped."
+                  },
+                  "request_id": {
+                    "type": "string",
+                    "description": "Unique identifier for this request."
+                  }
+                }
+              },
               "comments": {
                 "type": "array",
                 "description": "All comments of a profile",
@@ -2842,8 +2894,18 @@
             "type": "object",
             "properties": {
               "metadata": {
-                "description": "Metadata information",
-                "$ref": "#/components/schemas/Metadata"
+                "type": "object",
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "enum": ["fresh"],
+                    "description": "Indicates whether the data freshly scraped."
+                  },
+                  "request_id": {
+                    "type": "string",
+                    "description": "Unique identifier for this request."
+                  }
+                }
               },
               "reactions": {
                 "type": "array",
@@ -2869,6 +2931,20 @@
           {
             "type": "object",
             "properties": {
+              "metadata": {
+                "type": "object",
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "enum": ["fresh"],
+                    "description": "Indicates whether the data freshly scraped."
+                  },
+                  "request_id": {
+                    "type": "string",
+                    "description": "Unique identifier for this request."
+                  }
+                }
+              },
               "reactions": {
                 "type": "array",
                 "description": "All reactions of a person on a post",
@@ -2894,8 +2970,18 @@
             "type": "object",
             "properties": {
               "metadata": {
-                "description": "Metadata information",
-                "$ref": "#/components/schemas/Metadata"
+                "type": "object",
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "enum": ["fresh"],
+                    "description": "Indicates whether the data freshly scraped."
+                  },
+                  "request_id": {
+                    "type": "string",
+                    "description": "Unique identifier for this request."
+                  }
+                }
               },
               "reactions": {
                 "type": "array",
@@ -2922,8 +3008,18 @@
             "type": "object",
             "properties": {
               "metadata": {
-                "description": "Metadata information",
-                "$ref": "#/components/schemas/Metadata"
+                "type": "object",
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "enum": ["fresh"],
+                    "description": "Indicates whether the data freshly scraped."
+                  },
+                  "request_id": {
+                    "type": "string",
+                    "description": "Unique identifier for this request."
+                  }
+                }
               },
               "posts": {
                 "type": "array",
