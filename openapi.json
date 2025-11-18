@@ -532,6 +532,11 @@
                     "type": "string",
                     "description": "Country code(s), comma-separated (e.g., 'US,GB,FR'). Optional but at least one filter must be provided."
                   },
+                  "currentCompanyId": {
+                    "oneOf": [{ "type": "string" }, { "type": "number" }],
+                    "description": "Company identifier - can be either the company slug (string) or ID (number or string). Filter profiles by their current company. Optional but at least one filter must be provided.",
+                    "example": "google, google-cloud"
+                  },
                   "page": {
                     "type": "integer",
                     "description": "Page number for pagination (default: 1). Results are limited to 20 per page.",
