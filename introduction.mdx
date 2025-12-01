@@ -41,3 +41,23 @@ When you're looking to connect to our API, the first step is to **have an accoun
 The ScrapIn API rate limit depends on your subscription level. Rate limits are essential for managing server load and ensuring consistent, reliable service for all users. By controlling the number of requests each user can make, we prevent any single user from overloading the system, which helps maintain fast response times, stability, and fair usage across all accounts.
 
 <TimeoutNotice />
+
+## Caching System
+
+ScrapIn offers an intelligent caching system to help you save credits while maintaining access to quality data. When you use endpoints that support caching, you can significantly reduce your costs by leveraging previously scraped data.
+
+### How It Works
+
+Many of our endpoints accept an optional `cacheDuration` parameter that allows you to specify how recent the cached data should be (e.g., 7 days, 30 days). Here's how the system responds:
+
+**Cache Hit (0.5 credits)**
+
+- If we have the requested data in our cache and it's within your specified duration, we serve it instantly
+- **Cost: Only 0.5 credits** - that's a 50% savings compared to live scraping
+- Ideal for data that doesn't need to be real-time
+
+**Cache Miss (1 credit)**
+
+- If the data isn't cached or is older than your specified duration, we perform a fresh live scrape
+- **Cost: 1 credit** - standard pricing for fresh data
+- Guarantees you get the most up-to-date information
