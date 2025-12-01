@@ -1,40 +1,43 @@
 ---
 title: Introduction
-description: ''
+description: ""
 position: 1
-category: 'Getting Started'
+category: "Getting Started"
 ---
 
-![Home Screen](/images/getting-started.png "Landing page after login")
+import TimeoutNotice from "/snippets/timeout-notice.mdx";
 
+![Home Screen](/images/getting-started.png "Landing page after login")
 
 Welcome to the ScrapIn API 👋
 
 ScrapIn is a simple and powerful data provider API.
 
-Our API is organized around [REST](https://en.wikipedia.org/wiki/Representational_State_Transfer), has predictable resource-oriented URLs, accepts [JSON-encoded](https://www.json.org/json-en.html)  request bodies, returns [JSON-encoded](https://www.json.org/json-en.html) responses, and uses standard [HTTP response codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes), authentication, and verbs.
+Our API is organized around [REST](https://en.wikipedia.org/wiki/Representational_State_Transfer), has predictable resource-oriented URLs, accepts [JSON-encoded](https://www.json.org/json-en.html) request bodies, returns [JSON-encoded](https://www.json.org/json-en.html) responses, and uses standard [HTTP response codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes), authentication, and verbs.
 
 Integrate our services into your software to simplify, transform and save time on searching for someone's profile.
 
 ## Status Codes
+
 ScrapIn uses standard HTTP response codes to indicate the success or failure of an API request.
 
 In general: Codes in the 2xx range indicate success and Codes in the 4xx range indicate an error that failed given the information provided.
 
-| Code	 | Name	 | Summary |
-| :---:    | :---   | :---     |
-|200	|OK	| Everything worked as expected.|
-|400	|Bad Request |	The request was unacceptable, often due to missing a required parameter. |
-|401	|Unauthorized	|Invalid token provided in Authorization header |
-|402	|Payment Required	|You don't have enough credits on your account to perform the request.  |
-|403	|Forbidden	| The API key doesn't have permissions to perform the request.|
-|404	|Not Found	| The API didn't find any result for this query.|
-|429	|Too Many Requests	| The request was unacceptable due to too many request (see Rate limit bellow).|
-|500	|Server Error	| The request fail due to a server error.|
+| Code | Name              | Summary                                                                       |
+| :--: | :---------------- | :---------------------------------------------------------------------------- |
+| 200  | OK                | Everything worked as expected.                                                |
+| 400  | Bad Request       | The request was unacceptable, often due to missing a required parameter.      |
+| 401  | Unauthorized      | Invalid token provided in Authorization header                                |
+| 402  | Payment Required  | You don't have enough credits on your account to perform the request.         |
+| 403  | Forbidden         | The API key doesn't have permissions to perform the request.                  |
+| 404  | Not Found         | The API didn't find any result for this query.                                |
+| 429  | Too Many Requests | The request was unacceptable due to too many request (see Rate limit bellow). |
+| 500  | Server Error      | The request fail due to a server error.                                       |
 
-
-When you're looking to connect to our API, the first step is to __have an account__.
+When you're looking to connect to our API, the first step is to **have an account**.
 
 ## Rate limit
 
 The ScrapIn API rate limit depends on your subscription level. Rate limits are essential for managing server load and ensuring consistent, reliable service for all users. By controlling the number of requests each user can make, we prevent any single user from overloading the system, which helps maintain fast response times, stability, and fair usage across all accounts.
+
+<TimeoutNotice />
