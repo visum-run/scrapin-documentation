@@ -5,4 +5,222 @@ openapi: "GET /v1/enrichment/resolve/email"
 
 import ReportIssue from "/snippets/report-issue.mdx";
 
+<Info>
+  **Caching Available:** Use the optional `cacheDuration` parameter to enable
+  caching and reduce costs. Cache hits consume only **0.5 credits** instead of 1
+  credit. See the request parameters below for details.
+</Info>
+
+## How Caching Works
+
+<CardGroup cols={2}>
+  <Card title="Cache Hit" icon="bolt">
+    If we find the profile in our cache within your specified duration, we serve
+    it instantly at **0.5 credits**. This is a 50% savings on the standard
+    price.
+  </Card>
+  <Card title="Cache Miss" icon="arrows-rotate">
+    If the profile isn't cached, we perform a **live scrape** to get fresh data.
+    This costs the standard **1 credit**.
+  </Card>
+</CardGroup>
+
+## Response Structure
+
+The response contains three main sections:
+
+### Root Level
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `success` | boolean | Indicates success or failure of the API request |
+| `credits_consumed` | number | Number of credits consumed by this request |
+| `credits_left` | number | Remaining credits in your account |
+| `rate_limit_left` | number | Remaining requests before rate limit |
+| `daily_rate_limit_left` | number | Remaining daily requests |
+| `minute_rate_limit_left` | number | Remaining requests this minute |
+| `next_minute_rate_limit_reset` | datetime | When the minute rate limit resets |
+| `person` | object | The person profile data (see below) |
+| `company` | object \| false | The company data (if available) |
+| `metadata` | object | Request metadata |
+
+### Person Object
+
+The `person` object contains the profile data. It has **base fields** that are always returned, and **conditional fields** that depend on the `includes` parameter.
+
+#### Base Fields (Always Returned)
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `publicIdentifier` | string | Public identifier of the person |
+| `linkedInIdentifier` | string | Social identifier of the person |
+| `memberIdentifier` | string | Member identifier of the person |
+| `linkedInUrl` | string | Social URL of the person |
+| `firstName` | string | First name of the person |
+| `lastName` | string | Last name of the person |
+| `headline` | string | Professional headline |
+| `location` | object | Location information (city, state, country, countryCode) |
+| `photoUrl` | string | URL to profile photo |
+| `backgroundUrl` | string | URL to background image |
+| `openToWork` | boolean | Whether the person is open to work |
+| `premium` | boolean | Whether the person has a premium account |
+| `pronoun` | string | Preferred pronoun |
+| `showVerificationBadge` | boolean | Whether verification badge is shown |
+
+#### Location Object
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `city` | string | City where the person is located |
+| `state` | string | State where the person is located |
+| `country` | string | Country where the person is located |
+| `countryCode` | string | Country code (e.g., "GB", "US") |
+
+<Warning>
+  **History Limitation:** The `positionHistory`, `educationHistory`, and `certificationHistory` fields return only the **last 10 items**. If a profile contains more than 10 positions, only the 10 most recent will be included in the response.
+</Warning>
+
+#### Conditional Fields (Based on `includes` Parameter)
+
+Use the `includes` request parameter to request additional data. The following fields are available:
+
+<AccordionGroup>
+  <Accordion title="summary" icon="align-left">
+    **Include:** `includes=summary`
+    
+    | Field | Type | Description |
+    |-------|------|-------------|
+    | `summary` | string | The person's about/bio section |
+  </Accordion>
+
+  <Accordion title="creationDate" icon="calendar">
+    **Include:** `includes=creationDate`
+    
+    | Field | Type | Description |
+    |-------|------|-------------|
+    | `creationDate` | object | Profile creation date |
+    | `creationDate.month` | integer | Month of creation (1-12) |
+    | `creationDate.year` | integer | Year of creation |
+  </Accordion>
+
+  <Accordion title="followersCount" icon="users">
+    **Include:** `includes=followersCount`
+    
+    | Field | Type | Description |
+    |-------|------|-------------|
+    | `followerCount` | integer | Number of followers |
+  </Accordion>
+
+  <Accordion title="positions" icon="briefcase">
+    **Include:** `includes=positions`
+    
+    | Field | Type | Description |
+    |-------|------|-------------|
+    | `positions` | object | Work experience container |
+    | `positions.positionsCount` | integer | Total number of positions |
+    | `positions.positionHistory` | array | Array of position entries |
+
+    **Position Object:**
+    | Field | Type | Description |
+    |-------|------|-------------|
+    | `title` | string | Job title |
+    | `companyName` | string | Company name |
+    | `description` | string | Position description |
+    | `companyLocation` | string | Company location |
+    | `companyLogo` | string | URL to company logo |
+    | `linkedInUrl` | string | Company's LinkedIn URL |
+    | `linkedInId` | string | Company's LinkedIn ID |
+    | `startEndDate` | object | Start and end dates |
+    | `startEndDate.start` | object | Start date (month, year) |
+    | `startEndDate.end` | object \| null | End date (null if current) |
+  </Accordion>
+
+  <Accordion title="schools" icon="graduation-cap">
+    **Include:** `includes=schools`
+    
+    | Field | Type | Description |
+    |-------|------|-------------|
+    | `schools` | object | Education container |
+    | `schools.educationsCount` | integer | Total number of education entries |
+    | `schools.educationHistory` | array | Array of education entries |
+
+    **Education Object:**
+    | Field | Type | Description |
+    |-------|------|-------------|
+    | `schoolName` | string | Name of the school |
+    | `degreeName` | string | Degree obtained |
+    | `fieldOfStudy` | string | Field of study |
+    | `description` | string | Description |
+    | `schoolLogo` | string | URL to school logo |
+    | `linkedInUrl` | string | School's LinkedIn URL |
+    | `startEndDate` | object | Start and end dates |
+  </Accordion>
+
+  <Accordion title="skills" icon="lightbulb">
+    **Include:** `includes=skills`
+    
+    | Field | Type | Description |
+    |-------|------|-------------|
+    | `skills` | array | Array of skill names (strings) |
+  </Accordion>
+
+  <Accordion title="languages" icon="language">
+    **Include:** `includes=languages`
+    
+    | Field | Type | Description |
+    |-------|------|-------------|
+    | `languages` | array | Array of language names (strings) |
+  </Accordion>
+
+  <Accordion title="certifications" icon="certificate">
+    **Include:** `includes=certifications`
+    
+    | Field | Type | Description |
+    |-------|------|-------------|
+    | `certifications` | object | Certifications container |
+    | `certifications.certificationsCount` | integer | Total number of certifications |
+    | `certifications.certificationHistory` | array | Array of certification entries |
+
+    **Certification Object:**
+    | Field | Type | Description |
+    |-------|------|-------------|
+    | `name` | string | Certification name |
+    | `organizationName` | string | Issuing organization |
+    | `organizationUrl` | string | Organization's LinkedIn URL |
+    | `issuedDate` | string | Date when issued |
+  </Accordion>
+</AccordionGroup>
+
+### Company Object
+
+When the person's current company is available, the `company` object contains:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `linkedInId` | string | Company's LinkedIn ID |
+| `name` | string | Company name |
+| `universalName` | string | Company's universal name/slug |
+| `linkedInUrl` | string | Company's LinkedIn URL |
+| `employeeCount` | number | Number of employees |
+| `employeeCountRange` | object | Employee count range (start, end) |
+| `followerCount` | number | Number of followers |
+| `websiteUrl` | string | Company website URL |
+| `tagline` | string | Company tagline |
+| `description` | string | Company description |
+| `industry` | string | Industry |
+| `specialities` | array | Company specialities |
+| `headquarter` | object | Headquarters location |
+| `logo` | string | Company logo URL |
+| `backgroundUrl` | string | Company background image URL |
+| `foundedOn` | object | Founding date |
+
+### Metadata Object
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `source` | string | `"cache"` or `"fresh"` - indicates data source |
+| `request_id` | string | Unique identifier for this request |
+| `updatedAt` | datetime | When cached data was last updated (only if source is "cache") |
+| `executionTimeMs` | integer | Request execution time in milliseconds |
+
 <ReportIssue />

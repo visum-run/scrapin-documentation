@@ -1554,6 +1554,109 @@
           "showVerificationBadge": {
             "type": "boolean",
             "description": "Indicates if the person shows verification badge"
+          },
+          "summary": {
+            "type": "string",
+            "description": "A summary/about section of the person's profile. Included when 'summary' is in the includes parameter."
+          },
+          "creationDate": {
+            "$ref": "#/components/schemas/CreationDate",
+            "description": "The date when the person's profile was created. Included when 'creationDate' is in the includes parameter."
+          },
+          "followerCount": {
+            "type": "integer",
+            "description": "Number of followers the person has. Included when 'followersCount' is in the includes parameter."
+          },
+          "positions": {
+            "$ref": "#/components/schemas/PositionsData",
+            "description": "Work experience positions of the person. Included when 'positions' is in the includes parameter."
+          },
+          "schools": {
+            "$ref": "#/components/schemas/EducationsData",
+            "description": "Education history of the person. Included when 'schools' is in the includes parameter."
+          },
+          "skills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of skills. Included when 'skills' is in the includes parameter."
+          },
+          "languages": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of languages spoken. Included when 'languages' is in the includes parameter."
+          },
+          "certifications": {
+            "$ref": "#/components/schemas/CertificationsData",
+            "description": "Certifications obtained by the person. Included when 'certifications' is in the includes parameter."
+          }
+        }
+      },
+      "CreationDate": {
+        "type": "object",
+        "description": "Represents the creation date of a profile",
+        "properties": {
+          "month": {
+            "type": "integer",
+            "description": "Month of creation (1-12)"
+          },
+          "year": {
+            "type": "integer",
+            "description": "Year of creation"
+          }
+        }
+      },
+      "PositionsData": {
+        "type": "object",
+        "description": "Container for work experience positions",
+        "properties": {
+          "positionsCount": {
+            "type": "integer",
+            "description": "Total number of positions"
+          },
+          "positionHistory": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Position"
+            },
+            "description": "Array of position entries"
+          }
+        }
+      },
+      "EducationsData": {
+        "type": "object",
+        "description": "Container for education history",
+        "properties": {
+          "educationsCount": {
+            "type": "integer",
+            "description": "Total number of education entries"
+          },
+          "educationHistory": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/School"
+            },
+            "description": "Array of education entries"
+          }
+        }
+      },
+      "CertificationsData": {
+        "type": "object",
+        "description": "Container for certifications",
+        "properties": {
+          "certificationsCount": {
+            "type": "integer",
+            "description": "Total number of certifications"
+          },
+          "certificationHistory": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Certification"
+            },
+            "description": "Array of certification entries"
           }
         }
       },

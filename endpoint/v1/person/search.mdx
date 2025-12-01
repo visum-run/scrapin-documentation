@@ -110,6 +110,45 @@ The search results include an `updateDate` field showing when each profile was l
   </Accordion>
 </AccordionGroup>
 
+## Response Structure
+
+The response contains a paginated list of matching profiles with simplified data:
+
+### Root Level
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `success` | boolean | Indicates success or failure of the API request |
+| `credits_consumed` | number | Number of credits consumed by this request |
+| `credits_left` | number | Remaining credits in your account |
+| `rate_limit_left` | number | Remaining requests before rate limit |
+| `daily_rate_limit_left` | number | Remaining daily requests |
+| `minute_rate_limit_left` | number | Remaining requests this minute |
+| `next_minute_rate_limit_reset` | datetime | When the minute rate limit resets |
+| `results` | array | Array of matching person profiles (see below) |
+| `total` | number | Total number of matching results |
+| `page` | number | Current page number |
+| `hasMore` | boolean | Whether more results are available |
+
+### Results Array (Person Objects)
+
+Each object in the `results` array contains simplified profile data:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `publicIdentifier` | string | Public identifier of the person |
+| `linkedInUrl` | string | LinkedIn URL of the person |
+| `firstName` | string | First name of the person |
+| `lastName` | string | Last name of the person |
+| `headline` | string | Professional headline |
+| `currentPositionTitle` | string | Current job title |
+| `currentCompanyName` | string | Current company name |
+| `updateDate` | datetime | When this profile was last updated in our DataLake |
+
+<Note>
+  The `updateDate` field indicates when the profile was last refreshed in our database. For fresher data, use the [Person Profile Data](/endpoint/v1/person/profile) endpoint.
+</Note>
+
 ## Best Practices
 
 ### Efficient Searching
