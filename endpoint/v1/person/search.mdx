@@ -125,14 +125,29 @@ The response contains a paginated list of matching profiles with simplified data
 | `daily_rate_limit_left` | number | Remaining daily requests |
 | `minute_rate_limit_left` | number | Remaining requests this minute |
 | `next_minute_rate_limit_reset` | datetime | When the minute rate limit resets |
-| `results` | array | Array of matching person profiles (see below) |
-| `total` | number | Total number of matching results |
-| `page` | number | Current page number |
-| `hasMore` | boolean | Whether more results are available |
+| `persons` | array | Array of matching person profiles (see below) |
+| `pagination` | object | Pagination information (see below) |
+| `metadata` | object | Metadata about the response (see below) |
 
-### Results Array (Person Objects)
+### Pagination Object
 
-Each object in the `results` array contains simplified profile data:
+| Field | Type | Description |
+|-------|------|-------------|
+| `currentPage` | integer | Current page number |
+| `totalPages` | integer | Total number of pages available |
+| `totalResults` | integer | Total number of results matching the query |
+| `resultsPerPage` | integer | Number of results per page (fixed at 20) |
+
+### Metadata Object
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `source` | string | Data source - either "cache" or "fresh" |
+| `request_id` | string | Unique identifier for this API request |
+
+### Persons Array (Person Objects)
+
+Each object in the `persons` array contains simplified profile data:
 
 | Field | Type | Description |
 |-------|------|-------------|
