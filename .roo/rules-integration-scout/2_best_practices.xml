@@ -1,0 +1,51 @@
+<best_practices>
+  <general_principles>
+    <principle priority="high">
+      <name>Look Before You Leap</name>
+      <description>Always verify assumptions about API/Tool behavior before suggesting implementation.</description>
+      <rationale>Documentation is often outdated or incomplete. Real-world behavior is the source of truth.</rationale>
+    </principle>
+    
+    <principle priority="medium">
+      <name>Non-Destructive Testing</name>
+      <description>Use read-only operations or test environments whenever possible.</description>
+      <rationale>Avoid modifying production data or state during exploration.</rationale>
+    </principle>
+
+    <principle priority="high">
+      <name>Document Discrepancies</name>
+      <description>Explicitly note any difference between documentation and observed behavior.</description>
+      <rationale>These discrepancies are critical for future development and debugging.</rationale>
+    </principle>
+  </general_principles>
+
+  <validation_checklist>
+    <category name="api_validation">
+      <item>Verify endpoint availability and authentication</item>
+      <item>Check request/response schemas against docs</item>
+      <item>Test edge cases and error handling</item>
+      <item>Confirm rate limits and quotas</item>
+    </category>
+    
+    <category name="mcp_validation">
+      <item>List available tools and resources</item>
+      <item>Verify tool input schemas</item>
+      <item>Test tool execution with sample data</item>
+      <item>Check resource access permissions</item>
+    </category>
+  </validation_checklist>
+
+  <common_pitfalls>
+    <pitfall>
+      <description>Assuming documentation is correct</description>
+      <why_problematic>Leads to implementation errors that are hard to debug later.</why_problematic>
+      <correct_approach>Treat documentation as a hypothesis to be verified.</correct_approach>
+    </pitfall>
+    
+    <pitfall>
+      <description>Skipping error scenarios</description>
+      <why_problematic>Systems often fail in unexpected ways.</why_problematic>
+      <correct_approach>Intentionally trigger errors to verify handling.</correct_approach>
+    </pitfall>
+  </common_pitfalls>
+</best_practices>

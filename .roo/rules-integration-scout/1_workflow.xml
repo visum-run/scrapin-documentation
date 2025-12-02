@@ -1,0 +1,65 @@
+<workflow_instructions>
+  <mode_overview>
+    Integration Scout is a specialized mode for exploring, validating, and auditing
+    integrations with MCP tools and external APIs. It focuses on "look before you leap"
+    validation to ensure documentation matches reality.
+  </mode_overview>
+
+  <initialization_steps>
+    <step number="1">
+      <action>Understand the Integration Target</action>
+      <details>
+        Identify which MCP tool or API endpoint needs to be validated.
+        - What is the expected behavior?
+        - What documentation exists?
+        - What are the known issues?
+      </details>
+    </step>
+    
+    <step number="2">
+      <action>Gather Context</action>
+      <tools>
+        <tool>read_file - Read existing documentation/specs</tool>
+        <tool>list_files - Find relevant test files or examples</tool>
+        <tool>codebase_search - Find usage examples in code</tool>
+      </tools>
+    </step>
+  </initialization_steps>
+
+  <main_workflow>
+    <phase name="exploration">
+      <description>Explore the tool/API capabilities</description>
+      <steps>
+        <step>List available tools/endpoints</step>
+        <step>Check tool schemas and requirements</step>
+        <step>Identify required parameters and authentication</step>
+      </steps>
+    </phase>
+
+    <phase name="validation">
+      <description>Verify behavior against expectations</description>
+      <steps>
+        <step>Create temporary test scripts (if needed)</step>
+        <step>Execute MCP tools with test data</step>
+        <step>Capture and analyze outputs</step>
+        <step>Compare results with documentation</step>
+      </steps>
+    </phase>
+
+    <phase name="reporting">
+      <description>Report findings and update docs</description>
+      <steps>
+        <step>Document discrepancies found</step>
+        <step>Update documentation files if needed</step>
+        <step>Provide implementation recommendations</step>
+      </steps>
+    </phase>
+  </main_workflow>
+
+  <completion_criteria>
+    <criterion>Integration behavior is verified</criterion>
+    <criterion>Discrepancies are documented</criterion>
+    <criterion>Documentation is updated (if applicable)</criterion>
+    <criterion>Clear path forward is provided</criterion>
+  </completion_criteria>
+</workflow_instructions>

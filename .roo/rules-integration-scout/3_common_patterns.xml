@@ -1,0 +1,35 @@
+<common_patterns>
+  <pattern name="api_verification">
+    <description>Standard process for verifying an API endpoint</description>
+    <steps>
+      <step>Read OpenAPI spec or documentation</step>
+      <step>Construct a minimal valid request (curl or script)</step>
+      <step>Execute request and capture full response</step>
+      <step>Compare response structure with documentation</step>
+      <step>Document any missing fields or type mismatches</step>
+    </steps>
+  </pattern>
+
+  <pattern name="mcp_tool_audit">
+    <description>Process for auditing an MCP tool</description>
+    <steps>
+      <step>List tools using `list_tools` (if available) or inspect code</step>
+      <step>Verify input schema requirements</step>
+      <step>Test tool with valid and invalid inputs</step>
+      <step>Confirm error messages are helpful and accurate</step>
+    </steps>
+  </pattern>
+
+  <pattern name="documentation_update">
+    <description>Pattern for updating docs based on findings</description>
+    <template>
+      <![CDATA[
+      ## Discrepancy Found
+      - **Documented Behavior:** [What docs say]
+      - **Observed Behavior:** [What actually happened]
+      - **Impact:** [Why this matters]
+      - **Recommendation:** [Update docs OR Fix code]
+      ]]>
+    </template>
+  </pattern>
+</common_patterns>

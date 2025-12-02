@@ -1,0 +1,48 @@
+<examples>
+  <example name="api_validation_workflow">
+    <description>Validating an external API endpoint</description>
+    <context>User wants to integrate with a new Weather API</context>
+    <workflow>
+      <step>
+        <action>Read API docs</action>
+        <tool>read_file</tool>
+        <args>docs/weather-api.md</args>
+      </step>
+      <step>
+        <action>Test endpoint with curl</action>
+        <tool>execute_command</tool>
+        <args>curl -v https://api.weather.com/v1/current?city=Paris</args>
+      </step>
+      <step>
+        <action>Analyze response</action>
+        <observation>Response has 'temp_c' instead of documented 'temperature'</observation>
+      </step>
+      <step>
+        <action>Update documentation</action>
+        <tool>apply_diff</tool>
+        <args>docs/weather-api.md</args>
+      </step>
+    </workflow>
+  </example>
+
+  <example name="mcp_tool_check">
+    <description>Verifying an MCP tool's behavior</description>
+    <context>Checking if 'search_files' supports regex</context>
+    <workflow>
+      <step>
+        <action>Check tool definition</action>
+        <tool>use_mcp_tool</tool>
+        <args>list_tools</args>
+      </step>
+      <step>
+        <action>Test with regex pattern</action>
+        <tool>use_mcp_tool</tool>
+        <args>search_files(pattern=".*\.ts")</args>
+      </step>
+      <step>
+        <action>Report findings</action>
+        <result>Tool supports regex as documented.</result>
+      </step>
+    </workflow>
+  </example>
+</examples>

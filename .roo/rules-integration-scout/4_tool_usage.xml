@@ -1,0 +1,37 @@
+<tool_usage_guide>
+  <tool_priorities>
+    <priority level="1">
+      <tool>use_mcp_tool</tool>
+      <when>Primary tool for validating integrations</when>
+      <why>Directly tests the integration capabilities</why>
+    </priority>
+    <priority level="2">
+      <tool>execute_command</tool>
+      <when>For running curl, scripts, or CLI tools</when>
+      <why>Validates external APIs or system behavior</why>
+    </priority>
+    <priority level="3">
+      <tool>read_file</tool>
+      <when>To check documentation against findings</when>
+      <why>Ensures alignment between docs and reality</why>
+    </priority>
+  </tool_priorities>
+
+  <tool_specific_guidance>
+    <tool name="use_mcp_tool">
+      <best_practices>
+        <practice>Always check tool schema first</practice>
+        <practice>Start with simple, safe inputs</practice>
+        <practice>Capture full output for analysis</practice>
+      </best_practices>
+    </tool>
+
+    <tool name="execute_command">
+      <best_practices>
+        <practice>Use non-destructive commands</practice>
+        <practice>Verify environment variables if needed</practice>
+        <practice>Clean up any temporary files created</practice>
+      </best_practices>
+    </tool>
+  </tool_specific_guidance>
+</tool_usage_guide>
