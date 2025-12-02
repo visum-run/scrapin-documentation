@@ -2229,7 +2229,62 @@
           }
         ]
       },
-      "Job": {
+      "JobDetailsDataResult": {
+        "type": "object",
+        "properties": {
+          "linkedinIdentifier": {
+            "type": "string",
+            "description": "Identifier of the job."
+          },
+          "title": { "type": "string", "description": "Title of the job." },
+          "companyName": {
+            "type": "string",
+            "description": "Name of the company that posted the job."
+          },
+          "companyLogo": {
+            "type": "string",
+            "description": "Logo of the company that posted the job."
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the job."
+          },
+          "location": {
+            "type": "string",
+            "description": "Location of the job."
+          },
+          "url": { "type": "string", "description": "URL of the job." },
+          "creationDate": {
+            "type": "string",
+            "description": "Date and time when the job was created. ISO 8601 format."
+          },
+          "repostedJob": {
+            "type": "boolean",
+            "description": "Indicates if the job is a reposted job."
+          },
+          "repostDate": {
+            "type": "string",
+            "description": "Date and time when the job was reposted. ISO 8601 format."
+          },
+          "applicantsCount": {
+            "type": "number",
+            "description": "Number of applicants for the job."
+          },
+          "flexibility": {
+            "type": "string",
+            "description": "Flexibility of the job."
+          },
+          "experienceLevel": {
+            "type": "string",
+            "description": "Experience level of the job."
+          },
+          "contractType": {
+            "type": "string",
+            "description": "Contract type of the job."
+          }
+        }
+      },
+      "JobSearchResult": {
         "type": "object",
         "properties": {
           "linkedinIdentifier": {
@@ -2272,12 +2327,36 @@
             "type": "object",
             "properties": {
               "metadata": {
-                "description": "Metadata information",
-                "$ref": "#/components/schemas/Metadata"
+                "properties": {
+                  "currentPage": {
+                    "type": "integer",
+                    "description": "The current page number being viewed."
+                  },
+                  "pageNumber": {
+                    "type": "integer",
+                    "description": "The total number of available pages."
+                  },
+                  "perPage": {
+                    "type": "integer",
+                    "description": "The number of items displayed per page."
+                  },
+                  "total": {
+                    "type": "integer",
+                    "description": "The total number of items available."
+                  },
+                  "source": {
+                    "type": "string",
+                    "description": "Indicates whether the data freshly scraped."
+                  },
+                  "request_id": {
+                    "type": "string",
+                    "description": "Unique identifier for this request."
+                  }
+                }
               },
               "jobs": {
                 "type": "array",
-                "items": { "$ref": "#/components/schemas/Job" },
+                "items": { "$ref": "#/components/schemas/JobSearchResult" },
                 "description": "Array of jobs"
               }
             }
@@ -2299,9 +2378,21 @@
           {
             "type": "object",
             "properties": {
+              "metadata": {
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "description": "Indicates whether the data freshly scraped."
+                  },
+                  "request_id": {
+                    "type": "string",
+                    "description": "Unique identifier for this request."
+                  }
+                }
+              },
               "job": {
                 "oneOf": [
-                  { "$ref": "#/components/schemas/Job" },
+                  { "$ref": "#/components/schemas/JobDetailsDataResult" },
                   { "type": "boolean", "enum": [false] }
                 ]
               }
@@ -4490,6 +4581,10 @@
           "daily_rate_limit_left": 19000,
           "minute_rate_limit_left": 499,
           "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
+          "metadata": {
+            "source": "fresh",
+            "request_id": "000xcc2a-829a-4200-9704-f6f9cf9a23de"
+          },
           "job": {
             "linkedinIdentifier": "4102642841",
             "title": "Senior Software Engineer, Full Stack, Learning & Education",
@@ -4500,7 +4595,7 @@
             "url": "https://www.social.com/jobs/view/4102642841",
             "creationDate": "2024-12-18T03:13:03.000Z",
             "repostedJob": false,
-            "repostDate": null,
+            "repostDate": "2024-12-18T03:13:03.000Z",
             "applicantsCount": 15,
             "flexibility": "On-site",
             "experienceLevel": "Mid-Senior level",
