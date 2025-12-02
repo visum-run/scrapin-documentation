@@ -2346,7 +2346,7 @@
                   },
                   "source": {
                     "type": "string",
-                    "description": "Indicates whether the data freshly scraped."
+                    "description": "Indicates whether the data was served from cache or freshly scraped."
                   },
                   "request_id": {
                     "type": "string",
@@ -2382,7 +2382,7 @@
                 "properties": {
                   "source": {
                     "type": "string",
-                    "description": "Indicates whether the data freshly scraped."
+                    "description": "Indicates whether the data was served from cache or freshly scraped."
                   },
                   "request_id": {
                     "type": "string",
@@ -2421,7 +2421,7 @@
           },
           "source": {
             "type": "string",
-            "description": "Indicates whether the data freshly scraped."
+            "description": "Indicates whether the data was served from cache or freshly scraped."
           },
           "request_id": {
             "type": "string",
@@ -3016,7 +3016,7 @@
                   "source": {
                     "type": "string",
                     "enum": ["fresh"],
-                    "description": "Indicates whether the data freshly scraped."
+                    "description": "Indicates whether the data was served from cache or freshly scraped."
                   },
                   "request_id": {
                     "type": "string",
@@ -3054,7 +3054,7 @@
                   "source": {
                     "type": "string",
                     "enum": ["fresh"],
-                    "description": "Indicates whether the data freshly scraped."
+                    "description": "Indicates whether the data was served from cache or freshly scraped."
                   },
                   "request_id": {
                     "type": "string",
@@ -3089,10 +3089,26 @@
               "metadata": {
                 "type": "object",
                 "properties": {
+                  "currentPage": {
+                    "type": "integer",
+                    "description": "The current page number being viewed."
+                  },
+                  "pageNumber": {
+                    "type": "integer",
+                    "description": "The total number of available pages."
+                  },
+                  "perPage": {
+                    "type": "integer",
+                    "description": "The number of items displayed per page."
+                  },
+                  "total": {
+                    "type": "integer",
+                    "description": "The total number of items available."
+                  },
                   "source": {
                     "type": "string",
                     "enum": ["fresh"],
-                    "description": "Indicates whether the data freshly scraped."
+                    "description": "Indicates whether the data was served from cache or freshly scraped."
                   },
                   "request_id": {
                     "type": "string",
@@ -3130,7 +3146,7 @@
                   "source": {
                     "type": "string",
                     "enum": ["fresh"],
-                    "description": "Indicates whether the data freshly scraped."
+                    "description": "Indicates whether the data was served from cache or freshly scraped."
                   },
                   "request_id": {
                     "type": "string",
@@ -3165,10 +3181,26 @@
               "metadata": {
                 "type": "object",
                 "properties": {
+                  "currentPage": {
+                    "type": "integer",
+                    "description": "The current page number being viewed."
+                  },
+                  "pageNumber": {
+                    "type": "integer",
+                    "description": "The total number of available pages."
+                  },
+                  "perPage": {
+                    "type": "integer",
+                    "description": "The number of items displayed per page."
+                  },
+                  "total": {
+                    "type": "integer",
+                    "description": "The total number of items available."
+                  },
                   "source": {
                     "type": "string",
                     "enum": ["fresh"],
-                    "description": "Indicates whether the data freshly scraped."
+                    "description": "Indicates whether the data was served from cache or freshly scraped."
                   },
                   "request_id": {
                     "type": "string",
@@ -3206,7 +3238,7 @@
                   "source": {
                     "type": "string",
                     "enum": ["fresh"],
-                    "description": "Indicates whether the data freshly scraped."
+                    "description": "Indicates whether the data was served from cache or freshly scraped."
                   },
                   "request_id": {
                     "type": "string",
@@ -3241,10 +3273,26 @@
               "metadata": {
                 "type": "object",
                 "properties": {
+                  "currentPage": {
+                    "type": "integer",
+                    "description": "The current page number being viewed."
+                  },
+                  "pageNumber": {
+                    "type": "integer",
+                    "description": "The total number of available pages."
+                  },
+                  "perPage": {
+                    "type": "integer",
+                    "description": "The number of items displayed per page."
+                  },
+                  "total": {
+                    "type": "integer",
+                    "description": "The total number of items available."
+                  },
                   "source": {
                     "type": "string",
                     "enum": ["fresh"],
-                    "description": "Indicates whether the data freshly scraped."
+                    "description": "Indicates whether the data was served from cache or freshly scraped."
                   },
                   "request_id": {
                     "type": "string",
@@ -3279,10 +3327,26 @@
               "metadata": {
                 "type": "object",
                 "properties": {
+                  "currentPage": {
+                    "type": "integer",
+                    "description": "The current page number being viewed."
+                  },
+                  "pageNumber": {
+                    "type": "integer",
+                    "description": "The total number of available pages."
+                  },
+                  "perPage": {
+                    "type": "integer",
+                    "description": "The number of items displayed per page."
+                  },
+                  "total": {
+                    "type": "integer",
+                    "description": "The total number of items available."
+                  },
                   "source": {
                     "type": "string",
                     "enum": ["fresh"],
-                    "description": "Indicates whether the data freshly scraped."
+                    "description": "Indicates whether the data was served from cache or freshly scraped."
                   },
                   "request_id": {
                     "type": "string",
@@ -3442,6 +3506,19 @@
           {
             "type": "object",
             "properties": {
+              "metadata": {
+                "type": "object",
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "description": "Indicates whether the data was served from cache or freshly scraped."
+                  },
+                  "request_id": {
+                    "type": "string",
+                    "description": "Unique identifier for this request."
+                  }
+                }
+              },
               "emails": {
                 "type": "array",
                 "items": { "$ref": "#/components/schemas/Email" },
@@ -4415,6 +4492,10 @@
           "daily_rate_limit_left": 99890,
           "minute_rate_limit_left": 499,
           "next_minute_rate_limit_reset": "2025-10-28T15:23:32.000Z",
+          "metadata": {
+            "source": "fresh",
+            "request_id": "000xcc2a-829a-4200-9704-f6f9cf9a23de"
+          },
           "emails": [
             {
               "value": "john@scrapin.io",
@@ -4613,6 +4694,10 @@
           "daily_rate_limit_left": 19999,
           "minute_rate_limit_left": 499,
           "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
+          "metadata": {
+            "source": "fresh",
+            "request_id": "000xcc2a-829a-4200-9704-f6f9cf9a23de"
+          },
           "post": {
             "activityId": "6976499964512243712",
             "text": "Congrate to the team for this amazing milestone!",
@@ -4655,6 +4740,10 @@
           "daily_rate_limit_left": 19999,
           "minute_rate_limit_left": 499,
           "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
+          "metadata": {
+            "source": "fresh",
+            "request_id": "000xcc2a-829a-4200-9704-f6f9cf9a23de"
+          },
           "posts": [
             {
               "activityId": "6976499964512243712",
@@ -4732,7 +4821,9 @@
             "currentPage": 1,
             "pageNumber": 10,
             "perPage": 50,
-            "total": 500
+            "total": 500,
+            "source": "fresh",
+            "request_id": "000xcc2a-829a-4200-9704-f6f9cf9a23de"
           },
           "comments": [
             {
@@ -4772,6 +4863,10 @@
           "daily_rate_limit_left": 19999,
           "minute_rate_limit_left": 499,
           "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
+          "metadata": {
+            "source": "fresh",
+            "request_id": "000xcc2a-829a-4200-9704-f6f9cf9a23de"
+          },
           "comments": [
             {
               "text": "This is an excellent opportunity!",
@@ -4844,7 +4939,9 @@
             "currentPage": 1,
             "pageNumber": 10,
             "perPage": 50,
-            "total": 500
+            "total": 500,
+            "source": "fresh",
+            "request_id": "000xcc2a-829a-4200-9704-f6f9cf9a23de"
           },
           "reactions": [
             {
@@ -4876,6 +4973,10 @@
           "daily_rate_limit_left": 19999,
           "minute_rate_limit_left": 499,
           "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
+          "metadata": {
+            "source": "fresh",
+            "request_id": "000xcc2a-829a-4200-9704-f6f9cf9a23de"
+          },
           "reactions": [
             {
               "type": "LIKE",
@@ -4938,7 +5039,9 @@
             "currentPage": 1,
             "pageNumber": 10,
             "perPage": 50,
-            "total": 500
+            "total": 500,
+            "source": "fresh",
+            "request_id": "000xcc2a-829a-4200-9704-f6f9cf9a23de"
           },
           "reposts": [
             {
@@ -4976,7 +5079,9 @@
             "currentPage": 1,
             "pageNumber": 10,
             "perPage": 50,
-            "total": 500
+            "total": 500,
+            "source": "fresh",
+            "request_id": "000xcc2a-829a-4200-9704-f6f9cf9a23de"
           },
           "posts": [
             {
