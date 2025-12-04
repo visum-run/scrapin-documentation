@@ -1589,9 +1589,78 @@
             },
             "description": "List of languages spoken. Included when 'languages' is in the includes parameter."
           },
+          "languagesWithProficiency": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "language": {
+                  "type": "string"
+                },
+                "proficiency": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "List of languages spoken with proficiency. Included when 'languagesWithProficiency' is in the includes parameter."
+          },
+          "recommendations": {
+            "type": "object",
+            "properties": {
+              "recommendationsCount": {
+                "type": "integer"
+              },
+              "recommendationHistory": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "caption": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "authorFullname": {
+                      "type": "string"
+                    },
+                    "authorUrl": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "description": "Array of recommendation entries"
+              }
+            },
+            "description": "List of recommendations. Included when 'recommendations' is in the includes parameter. Limited to the last 2 recommendations."
+          },
           "certifications": {
             "$ref": "#/components/schemas/CertificationsData",
             "description": "Certifications obtained by the person. Included when 'certifications' is in the includes parameter."
+          },
+          "testScores": {
+            "type": "object",
+            "properties": {
+              "testScoresCount": {
+                "type": "integer"
+              },
+              "testScoreHistory": {
+                "type": "array"
+              }
+            },
+            "description": "List of test scores. Included when 'testScores' is in the includes parameter."
+          },
+          "volunteeringExperiences": {
+            "type": "object",
+            "properties": {
+              "volunteeringExperiencesCount": {
+                "type": "integer"
+              },
+              "volunteeringExperienceHistory": {
+                "type": "array"
+              }
+            },
+            "description": "List of volunteering experiences. Included when 'volunteeringExperiences' is in the includes parameter."
           }
         }
       },
@@ -4116,6 +4185,41 @@
               "Equities"
             ],
             "languages": ["Deutsch", "English"],
+            "languagesWithProficiency": [
+              {
+                "language": "Chinese",
+                "proficiency": "Native or bilingual proficiency"
+              },
+              {
+                "language": "English",
+                "proficiency": "Full professional proficiency"
+              },
+              {
+                "language": "French",
+                "proficiency": "Native or bilingual proficiency"
+              },
+              {
+                "language": "Japanese",
+                "proficiency": "Elementary proficiency"
+              }
+            ],
+            "recommendations": {
+              "recommendationsCount": 2,
+              "recommendationHistory": [
+                {
+                  "caption": "May 14, 2025, Lucas and David studied together",
+                  "description": "I had the opportunity to work with David, both at school and at work. In an academic environment, we worked together on several projects, in a very dynamic and effective way. We have different profiles with some similarities, and I saw him evolving in a complex professional environment and improving his skills while sharing his knowledge with me. \nWe also travelled together, and I discoverd a really curious and organized person, which are important qualities to work together in a team.",
+                  "authorFullname": "Lucas Nascimento",
+                  "authorUrl": "https://www.linkedin.com/in/lucasnascimento"
+                },
+                {
+                  "caption": "May 12, 2025, Lisa and David studied together",
+                  "description": "David and I spent two years studying together at ESILV. We worked on several common projects where he showed his great technical skills that helped the group a lot. David is curious, pragmatic and proactive. I also spent 3 weeks with him at Shanghai Normal University where he helped me with chinese course. I would definitely love to work with partners like David in the future. ",
+                  "authorFullname": "Lisa Lopes",
+                  "authorUrl": "https://www.linkedin.com/in/lisalopes"
+                }
+              ]
+            },
             "certifications": {
               "certificationsCount": 1,
               "certificationHistory": [
@@ -4126,6 +4230,14 @@
                   "issuedDate": "Issued May 2012"
                 }
               ]
+            },
+            "testScores": {
+              "testScoresCount": 0,
+              "testScoreHistory": []
+            },
+            "volunteeringExperiences": {
+              "volunteeringExperiencesCount": 0,
+              "volunteeringExperienceHistory": []
             }
           },
           "company": {
