@@ -539,7 +539,8 @@
                   },
                   "companyIndustries": {
                     "type": "string",
-                    "description": "Filter by company industry/industries. Supports single or multiple comma-separated values (e.g., 'Accommodation and Food Services' or 'Accommodation and Food Services,Administration of Justice,Accounting'). Optional but at least one filter must be provided."
+                    "description": "Filter by company industry/industries. Use comma-separated values for multiple industries (e.g., 'Accommodation and Food Services,Administration of Justice,Accounting'). The complete list of available industries can be found in the Scrapin application. Optional but at least one filter must be provided.",
+                    "example": "Accommodation and Food Services,Administration of Justice,Accounting"
                   },
                   "page": {
                     "type": "integer",
