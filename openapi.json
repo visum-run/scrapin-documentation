@@ -1572,6 +1572,10 @@
             "type": "integer",
             "description": "Number of followers the person has. Included when 'followersCount' is in the includes parameter."
           },
+          "connectionsCount": {
+            "type": "integer",
+            "description": "Number of connections the person has. Included when 'connectionsCount' is in the includes parameter."
+          },
           "positions": {
             "$ref": "#/components/schemas/PositionsData",
             "description": "Work experience positions of the person. Included when 'positions' is in the includes parameter."
@@ -3739,6 +3743,7 @@
             "premium": false,
             "creationDate": { "month": 5, "year": 2013 },
             "followerCount": 35415,
+            "connectionsCount": 650,
             "positions": {
               "positionsCount": 3,
               "positionHistory": [
@@ -3888,6 +3893,7 @@
             "premium": false,
             "creationDate": { "month": 5, "year": 2013 },
             "followerCount": 35415,
+            "connectionsCount": 650,
             "positions": {
               "positionsCount": 3,
               "positionHistory": [
@@ -4050,6 +4056,7 @@
               "year": 2014
             },
             "followerCount": 3735,
+            "connectionsCount": 650,
             "positions": {
               "positionsCount": 10,
               "positionHistory": [
