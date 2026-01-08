@@ -21,7 +21,7 @@ Search for profiles in our DataLake using advanced filters. This endpoint allows
 
 ## 🚀 Need Fresh Data?
 
-The search results include an `updateDate` field showing when each profile was last updated. If the data isn't recent enough for your needs, you can get **live, real-time data** using:
+The search results include an `updateDate` field showing when each profile was last updated. If you can't find profiles recent enough even with the `updateDate` filter, you can get **live, real-time data** using:
 
 <Card
   title="Person Profile Data"
@@ -125,15 +125,15 @@ The search results include an `updateDate` field showing when each profile was l
 
 - **Be specific**: Use multiple filters to narrow down results and improve relevance
 - **Monitor costs**: Each page costs 0.10 credits (20 results per page). Accessing multiple pages will consume additional credits.
-- **Check data freshness**: Always review the `updateDate` field. For time-sensitive use cases, consider refreshing older profiles with live scraping.
+- **Filter by freshness**: Use the `updateDate` parameter to only retrieve profiles updated within your required time frame (e.g., `"updateDate": "30d"` for last 30 days).
 
 ### Hybrid Approach: Search + Live Enrichment
 
 Maximize efficiency and accuracy with this workflow:
 
-1. **Search** - Use this endpoint to find relevant profiles {/* at 0.10 credits per page */}
-2. **Filter** - Review the `updateDate` to identify which profiles need refreshing
-3. **Enrich** - Use [Person Profile Data](/endpoint/v1/person/profile) to get the freshest data for the profiles you need
+1. **Search** - Use this endpoint with the `updateDate` parameter to find relevant profiles with recent data
+2. **Review** - Check if the returned profiles meet your freshness requirements
+3. **Enrich** - Use [Person Profile Data](/endpoint/v1/person/profile) only for profiles that need even fresher data
 
 ## Credit Consumption
 
