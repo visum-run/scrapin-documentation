@@ -5,6 +5,10 @@ openapi: "GET /v1/enrichment/company"
 
 import ReportIssue from "/snippets/report-issue.mdx";
 
+<Info>
+  **404 Errors:** If the URL returns a 404 (company not found), the request still consumes **1 credit**.
+</Info>
+
 <CardGroup cols={2}>
   <Card title="Cache Hit" icon="bolt">
     If we find the profile in our cache within your specified duration, we serve

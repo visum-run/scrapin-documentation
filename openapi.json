@@ -77,7 +77,7 @@
         "tags": ["Person"],
         "operationId": "GetProfileData",
         "summary": "Get Profile Data",
-        "description": "This operation allows you to get profile data from an url. It returns profile data with credits and rate limit information. This operation consumes 1 credit.",
+        "description": "This operation allows you to get profile data from an url. It returns profile data with credits and rate limit information. This operation consumes 1 credit. Note: 404 errors (profile not found) still consume 1 credit.",
         "parameters": [
           {
             "name": "linkedInUrl",
@@ -114,7 +114,7 @@
         "tags": ["Person"],
         "operationId": "GetProfileData",
         "summary": "Get Profile Data",
-        "description": "This operation allows you to get profile data from an url. It returns profile data with credits and rate limit information. This operation consumes 1 credit (or 0.5 credits if served from cache).",
+        "description": "This operation allows you to get profile data from an url. It returns profile data with credits and rate limit information. This operation consumes 1 credit (or 0.5 credits if served from cache). Note: 404 errors (profile not found) still consume 1 credit.",
         "requestBody": {
           "required": true,
           "content": {
@@ -633,7 +633,7 @@
         "tags": ["Company"],
         "operationId": "ExtractCompanyDataProfile",
         "summary": "Extract Company Data Profile",
-        "description": "This operation allows you to extract data from a Company URL. It returns company data as the response. This operation consumes 1 credit (or 0.5 credits if served from cache).",
+        "description": "This operation allows you to extract data from a Company URL. It returns company data as the response. This operation consumes 1 credit (or 0.5 credits if served from cache). Note: 404 errors (profile not found) still consume 1 credit.",
         "parameters": [
           {
             "name": "linkedInUrl",
