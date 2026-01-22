@@ -111,6 +111,18 @@ The search results include an `updateDate` field showing when each profile was l
       The complete list of available industries can be found in the Scrapin application.
     </Note>
   </Accordion>
+
+  <Accordion title="Filter by Company Size">
+    Target professionals working at companies of a specific size range using employee count filters:
+    ```json
+    {
+      "currentPositionTitle": "CTO",
+      "currentCompanyEmployeeCountMin": 50,
+      "currentCompanyEmployeeCountMax": 500
+    }
+    ```
+    This example finds CTOs at mid-sized companies (50-500 employees). You can use either parameter alone or both together.
+  </Accordion>
 </AccordionGroup>
 
 <Note>
