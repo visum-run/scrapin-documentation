@@ -1314,10 +1314,10 @@
         "tags": ["Workspaces"],
         "operationId": "WorkspacesQuotas",
         "summary": "Workspaces Quotas",
-        "description": "This endpoint retrieves the quotas for a specific workspace, including the remaining credits (credits_left) and rate limit (rate_limit_left). It is designed to help monitor resource availability and ensure proper usage within the workspace.",
+        "description": "This endpoint retrieves the quotas for a specific workspace, including credits usage, daily and per-minute rate limits, and auto top-up configuration. It is designed to help monitor resource availability and ensure proper usage within the workspace.",
         "responses": {
           "200": {
-            "description": "The endpoint returns information about the workspace quotas, including remaining credits (credits_left) and rate limit (rate_limit_left).",
+            "description": "The endpoint returns detailed information about the workspace quotas, including credits, daily rate limit, minute rate limit, and auto top-up settings.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3461,23 +3461,105 @@
         "properties": {
           "credits_left": {
             "type": "number",
-            "description": "Represents the usable credits available for the user account after this query."
+            "description": "Remaining credits available (shorthand)."
           },
           "rate_limit_left": {
             "type": "number",
-            "description": "Represents the usable daily request limit available for the user account after this query."
+            "description": "Remaining daily rate limit (shorthand)."
+          },
+          "credits": {
+            "type": "object",
+            "description": "Detailed credits information.",
+            "properties": {
+              "total": {
+                "type": "number",
+                "description": "Total credits allocated to the workspace."
+              },
+              "used": {
+                "type": "number",
+                "description": "Credits consumed so far."
+              },
+              "left": {
+                "type": "number",
+                "description": "Credits remaining."
+              }
+            }
+          },
+          "daily_rate_limit": {
+            "type": "object",
+            "description": "Daily rate limit details.",
+            "properties": {
+              "limit": {
+                "type": "number",
+                "description": "Maximum daily requests allowed."
+              },
+              "used": {
+                "type": "number",
+                "description": "Requests used today."
+              },
+              "left": {
+                "type": "number",
+                "description": "Requests remaining today."
+              },
+              "next_reset": {
+                "type": "string",
+                "format": "date-time",
+                "description": "Next daily reset time in ISO 8601 format."
+              }
+            }
+          },
+          "minute_rate_limit": {
+            "type": "object",
+            "description": "Per-minute rate limit details.",
+            "properties": {
+              "limit": {
+                "type": "number",
+                "description": "Maximum requests allowed per minute."
+              },
+              "used": {
+                "type": "number",
+                "description": "Requests used in the current minute window."
+              },
+              "left": {
+                "type": "number",
+                "description": "Requests remaining in the current minute window."
+              },
+              "next_reset": {
+                "type": "string",
+                "format": "date-time",
+                "description": "Next minute reset time in ISO 8601 format."
+              }
+            }
+          },
+          "auto_top_up": {
+            "type": "object",
+            "description": "Auto top-up configuration.",
+            "properties": {
+              "enabled": {
+                "type": "boolean",
+                "description": "Whether auto top-up is enabled."
+              },
+              "threshold": {
+                "type": "number",
+                "description": "Credit threshold that triggers auto top-up."
+              },
+              "amount": {
+                "type": "number",
+                "description": "Number of credits added on each top-up."
+              }
+            }
           }
         }
       },
       "WorkspacesQuotas": {
         "type": "object",
         "properties": {
-          "success": {
-            "type": "boolean",
-            "description": "Indicates whether the API request was successful."
+          "status": {
+            "type": "string",
+            "description": "Indicates the status of the API request.",
+            "example": "success"
           },
           "data": {
-            "type": "object",
             "$ref": "#/components/schemas/Quotas",
             "description": "Contains the quotas information for the workspace."
           }
@@ -5289,7 +5371,32 @@
         "summary": "Quotas Found",
         "value": {
           "status": "success",
-          "data": { "credits_left": 90000.5, "rate_limit_left": 19000 }
+          "data": {
+            "credits_left": 8766,
+            "rate_limit_left": 4850,
+            "credits": {
+              "total": 10000,
+              "used": 1234,
+              "left": 8766
+            },
+            "daily_rate_limit": {
+              "limit": 5000,
+              "used": 150,
+              "left": 4850,
+              "next_reset": "2026-01-28T00:00:00.000Z"
+            },
+            "minute_rate_limit": {
+              "limit": 500,
+              "used": 12,
+              "left": 488,
+              "next_reset": "2026-01-27T14:32:45.000Z"
+            },
+            "auto_top_up": {
+              "enabled": false,
+              "threshold": 100,
+              "amount": 1000
+            }
+          }
         }
       },
       "NoApiKey": {
