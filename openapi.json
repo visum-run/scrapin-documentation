@@ -1368,6 +1368,74 @@
           "next_minute_rate_limit_reset": {
             "type": "string",
             "description": "Represents the next minute rate limit reset for the user account after this query. Datetime in ISO 8601 format (e.g., 2025-11-14T14:34:43.000Z)."
+          },
+          "quotas": {
+            "type": "object",
+            "description": "Structured quota information for the user account. Provides the same data as the flat fields above in a more organized format.",
+            "properties": {
+              "credits": {
+                "type": "object",
+                "description": "Credit usage information for the user account.",
+                "properties": {
+                  "total": {
+                    "type": "number",
+                    "description": "Total credits available on the account."
+                  },
+                  "used": {
+                    "type": "number",
+                    "description": "Total credits used on the account."
+                  },
+                  "left": {
+                    "type": "number",
+                    "description": "Remaining credits available on the account."
+                  }
+                }
+              },
+              "daily_rate_limit": {
+                "type": "object",
+                "description": "Daily rate limit information for the user account.",
+                "properties": {
+                  "limit": {
+                    "type": "number",
+                    "description": "Maximum number of requests allowed per day."
+                  },
+                  "used": {
+                    "type": "number",
+                    "description": "Number of requests used today."
+                  },
+                  "left": {
+                    "type": "number",
+                    "description": "Remaining requests allowed today."
+                  },
+                  "next_reset": {
+                    "type": "string",
+                    "description": "Next daily rate limit reset time in ISO 8601 format (e.g., 2026-01-28T00:00:00.000Z)."
+                  }
+                }
+              },
+              "minute_rate_limit": {
+                "type": "object",
+                "description": "Per-minute rate limit information for the user account.",
+                "properties": {
+                  "limit": {
+                    "type": "number",
+                    "description": "Maximum number of requests allowed per minute."
+                  },
+                  "used": {
+                    "type": "number",
+                    "description": "Number of requests used in the current minute window."
+                  },
+                  "left": {
+                    "type": "number",
+                    "description": "Remaining requests allowed in the current minute window."
+                  },
+                  "next_reset": {
+                    "type": "string",
+                    "description": "Next minute rate limit reset time in ISO 8601 format (e.g., 2026-01-27T14:32:45.000Z)."
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -3824,6 +3892,11 @@
           "daily_rate_limit_left": 19000,
           "minute_rate_limit_left": 499,
           "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
+          "quotas": {
+            "credits": { "total": 10000, "used": 1234, "left": 8766 },
+            "daily_rate_limit": { "limit": 5000, "used": 150, "left": 4850, "next_reset": "2024-10-31T12:46:00.000Z" },
+            "minute_rate_limit": { "limit": 500, "used": 12, "left": 488, "next_reset": "2024-10-31T12:46:00.000Z" }
+          },
           "person": {
             "publicIdentifier": "williamhgates",
             "memberIdentifier": "251749025",
@@ -3974,6 +4047,11 @@
           "daily_rate_limit_left": 19000,
           "minute_rate_limit_left": 499,
           "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
+          "quotas": {
+            "credits": { "total": 10000, "used": 1234, "left": 8766 },
+            "daily_rate_limit": { "limit": 5000, "used": 150, "left": 4850, "next_reset": "2024-10-31T12:46:00.000Z" },
+            "minute_rate_limit": { "limit": 500, "used": 12, "left": 488, "next_reset": "2024-10-31T12:46:00.000Z" }
+          },
           "person": {
             "publicIdentifier": "williamhgates",
             "memberIdentifier": "251749025",
@@ -4124,6 +4202,11 @@
           "daily_rate_limit_left": 19000,
           "minute_rate_limit_left": 499,
           "next_minute_rate_limit_reset": "2025-07-24T12:11:01.000Z",
+          "quotas": {
+            "credits": { "total": 10000, "used": 1234, "left": 8766 },
+            "daily_rate_limit": { "limit": 5000, "used": 150, "left": 4850, "next_reset": "2024-10-31T12:46:00.000Z" },
+            "minute_rate_limit": { "limit": 500, "used": 12, "left": 488, "next_reset": "2024-10-31T12:46:00.000Z" }
+          },
           "metadata": {
             "source": "fresh",
             "request_id": "000xcc2a-829a-4200-9704-f6f9cf9a23de"
@@ -4393,6 +4476,11 @@
           "daily_rate_limit_left": 19000,
           "minute_rate_limit_left": 499,
           "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
+          "quotas": {
+            "credits": { "total": 10000, "used": 1234, "left": 8766 },
+            "daily_rate_limit": { "limit": 5000, "used": 150, "left": 4850, "next_reset": "2024-10-31T12:46:00.000Z" },
+            "minute_rate_limit": { "limit": 500, "used": 12, "left": 488, "next_reset": "2024-10-31T12:46:00.000Z" }
+          },
           "person": {
             "publicIdentifier": "michael",
             "linkedInIdentifier": "ACoAABTEFqYBfjGaiSRy5ITKaPqcBEBDdR1DrhA",
@@ -4425,6 +4513,11 @@
           "daily_rate_limit_left": 19000,
           "minute_rate_limit_left": 499,
           "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
+          "quotas": {
+            "credits": { "total": 10000, "used": 1234, "left": 8766 },
+            "daily_rate_limit": { "limit": 5000, "used": 150, "left": 4850, "next_reset": "2024-10-31T12:46:00.000Z" },
+            "minute_rate_limit": { "limit": 500, "used": 12, "left": 488, "next_reset": "2024-10-31T12:46:00.000Z" }
+          },
           "summary": "Hi there! My name is David and I'm an entrepreneur with a hacker mindset. 🏴‍☠️\n\nI am passionate about finding creative solutions to complex problems and am always looking for ways to optimize and improve processes. 🧠\n\nI am proud to have founded a company that build SaaS products to helps companies enrich their business data, and I am excited to continue driving innovation in the business world.\n\nThank you for visiting my profile and I hope to connect with you soon!"
         }
       },
@@ -4438,6 +4531,11 @@
           "daily_rate_limit_left": 19000,
           "minute_rate_limit_left": 499,
           "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
+          "quotas": {
+            "credits": { "total": 10000, "used": 1234, "left": 8766 },
+            "daily_rate_limit": { "limit": 5000, "used": 150, "left": 4850, "next_reset": "2024-10-31T12:46:00.000Z" },
+            "minute_rate_limit": { "limit": 500, "used": 12, "left": 488, "next_reset": "2024-10-31T12:46:00.000Z" }
+          },
           "followersCount": 646
         }
       },
@@ -4451,6 +4549,11 @@
           "daily_rate_limit_left": 19000,
           "minute_rate_limit_left": 499,
           "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
+          "quotas": {
+            "credits": { "total": 10000, "used": 1234, "left": 8766 },
+            "daily_rate_limit": { "limit": 5000, "used": 150, "left": 4850, "next_reset": "2024-10-31T12:46:00.000Z" },
+            "minute_rate_limit": { "limit": 500, "used": 12, "left": 488, "next_reset": "2024-10-31T12:46:00.000Z" }
+          },
           "positions": [
             {
               "title": "VP of Sales",
@@ -4516,6 +4619,11 @@
           "daily_rate_limit_left": 19000,
           "minute_rate_limit_left": 499,
           "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
+          "quotas": {
+            "credits": { "total": 10000, "used": 1234, "left": 8766 },
+            "daily_rate_limit": { "limit": 5000, "used": 150, "left": 4850, "next_reset": "2024-10-31T12:46:00.000Z" },
+            "minute_rate_limit": { "limit": 500, "used": 12, "left": 488, "next_reset": "2024-10-31T12:46:00.000Z" }
+          },
           "schools": [
             {
               "degreeName": "Engineering degree",
@@ -4565,6 +4673,11 @@
           "daily_rate_limit_left": 19000,
           "minute_rate_limit_left": 499,
           "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
+          "quotas": {
+            "credits": { "total": 10000, "used": 1234, "left": 8766 },
+            "daily_rate_limit": { "limit": 5000, "used": 150, "left": 4850, "next_reset": "2024-10-31T12:46:00.000Z" },
+            "minute_rate_limit": { "limit": 500, "used": 12, "left": 488, "next_reset": "2024-10-31T12:46:00.000Z" }
+          },
           "skills": [
             {
               "name": "AngularJS",
@@ -4605,6 +4718,11 @@
           "daily_rate_limit_left": 19000,
           "minute_rate_limit_left": 499,
           "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
+          "quotas": {
+            "credits": { "total": 10000, "used": 1234, "left": 8766 },
+            "daily_rate_limit": { "limit": 5000, "used": 150, "left": 4850, "next_reset": "2024-10-31T12:46:00.000Z" },
+            "minute_rate_limit": { "limit": 500, "used": 12, "left": 488, "next_reset": "2024-10-31T12:46:00.000Z" }
+          },
           "languages": [
             {
               "language": "Chinese",
@@ -4635,6 +4753,11 @@
           "daily_rate_limit_left": 19000,
           "minute_rate_limit_left": 499,
           "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
+          "quotas": {
+            "credits": { "total": 10000, "used": 1234, "left": 8766 },
+            "daily_rate_limit": { "limit": 5000, "used": 150, "left": 4850, "next_reset": "2024-10-31T12:46:00.000Z" },
+            "minute_rate_limit": { "limit": 500, "used": 12, "left": 488, "next_reset": "2024-10-31T12:46:00.000Z" }
+          },
           "recommendations": [
             {
               "caption": "August 18, 2020, Michael was Tom's client",
@@ -4667,6 +4790,11 @@
           "daily_rate_limit_left": 19000,
           "minute_rate_limit_left": 499,
           "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
+          "quotas": {
+            "credits": { "total": 10000, "used": 1234, "left": 8766 },
+            "daily_rate_limit": { "limit": 5000, "used": 150, "left": 4850, "next_reset": "2024-10-31T12:46:00.000Z" },
+            "minute_rate_limit": { "limit": 500, "used": 12, "left": 488, "next_reset": "2024-10-31T12:46:00.000Z" }
+          },
           "certifications": [
             {
               "name": "AWS Certified Solutions Architect",
@@ -4693,6 +4821,11 @@
           "daily_rate_limit_left": 19000,
           "minute_rate_limit_left": 499,
           "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
+          "quotas": {
+            "credits": { "total": 10000, "used": 1234, "left": 8766 },
+            "daily_rate_limit": { "limit": 5000, "used": 150, "left": 4850, "next_reset": "2024-10-31T12:46:00.000Z" },
+            "minute_rate_limit": { "limit": 500, "used": 12, "left": 488, "next_reset": "2024-10-31T12:46:00.000Z" }
+          },
           "volunteeringExperiences": [
             {
               "organizationName": "Humanitarian Aid NGO",
@@ -4713,6 +4846,11 @@
           "daily_rate_limit_left": 99890,
           "minute_rate_limit_left": 499,
           "next_minute_rate_limit_reset": "2025-10-28T15:23:32.000Z",
+          "quotas": {
+            "credits": { "total": 10000, "used": 1234, "left": 8766 },
+            "daily_rate_limit": { "limit": 5000, "used": 150, "left": 4850, "next_reset": "2024-10-31T12:46:00.000Z" },
+            "minute_rate_limit": { "limit": 500, "used": 12, "left": 488, "next_reset": "2024-10-31T12:46:00.000Z" }
+          },
           "metadata": {
             "source": "fresh",
             "request_id": "000xcc2a-829a-4200-9704-f6f9cf9a23de"
@@ -4735,6 +4873,11 @@
           "daily_rate_limit_left": 19000,
           "minute_rate_limit_left": 499,
           "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
+          "quotas": {
+            "credits": { "total": 10000, "used": 1234, "left": 8766 },
+            "daily_rate_limit": { "limit": 5000, "used": 150, "left": 4850, "next_reset": "2024-10-31T12:46:00.000Z" },
+            "minute_rate_limit": { "limit": 500, "used": 12, "left": 488, "next_reset": "2024-10-31T12:46:00.000Z" }
+          },
           "metadata": {
             "source": "fresh",
             "request_id": "000xcc2a-829a-4200-9704-f6f9cf9a23de"
@@ -4789,6 +4932,11 @@
           "daily_rate_limit_left": 19000,
           "minute_rate_limit_left": 499,
           "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
+          "quotas": {
+            "credits": { "total": 10000, "used": 1234, "left": 8766 },
+            "daily_rate_limit": { "limit": 5000, "used": 150, "left": 4850, "next_reset": "2024-10-31T12:46:00.000Z" },
+            "minute_rate_limit": { "limit": 500, "used": 12, "left": 488, "next_reset": "2024-10-31T12:46:00.000Z" }
+          },
           "metadata": {
             "source": "fresh",
             "request_id": "000xcc2a-829a-4200-9704-f6f9cf9a23de"
@@ -4843,6 +4991,11 @@
           "daily_rate_limit_left": 19000,
           "minute_rate_limit_left": 499,
           "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
+          "quotas": {
+            "credits": { "total": 10000, "used": 1234, "left": 8766 },
+            "daily_rate_limit": { "limit": 5000, "used": 150, "left": 4850, "next_reset": "2024-10-31T12:46:00.000Z" },
+            "minute_rate_limit": { "limit": 500, "used": 12, "left": 488, "next_reset": "2024-10-31T12:46:00.000Z" }
+          },
           "metadata": {
             "currentPage": 1,
             "pageNumber": 10,
@@ -4883,6 +5036,11 @@
           "daily_rate_limit_left": 19000,
           "minute_rate_limit_left": 499,
           "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
+          "quotas": {
+            "credits": { "total": 10000, "used": 1234, "left": 8766 },
+            "daily_rate_limit": { "limit": 5000, "used": 150, "left": 4850, "next_reset": "2024-10-31T12:46:00.000Z" },
+            "minute_rate_limit": { "limit": 500, "used": 12, "left": 488, "next_reset": "2024-10-31T12:46:00.000Z" }
+          },
           "metadata": {
             "source": "fresh",
             "request_id": "000xcc2a-829a-4200-9704-f6f9cf9a23de"
@@ -4915,6 +5073,11 @@
           "daily_rate_limit_left": 19999,
           "minute_rate_limit_left": 499,
           "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
+          "quotas": {
+            "credits": { "total": 10000, "used": 1234, "left": 8766 },
+            "daily_rate_limit": { "limit": 5000, "used": 150, "left": 4850, "next_reset": "2024-10-31T12:46:00.000Z" },
+            "minute_rate_limit": { "limit": 500, "used": 12, "left": 488, "next_reset": "2024-10-31T12:46:00.000Z" }
+          },
           "metadata": {
             "source": "fresh",
             "request_id": "000xcc2a-829a-4200-9704-f6f9cf9a23de"
@@ -4961,6 +5124,11 @@
           "daily_rate_limit_left": 19999,
           "minute_rate_limit_left": 499,
           "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
+          "quotas": {
+            "credits": { "total": 10000, "used": 1234, "left": 8766 },
+            "daily_rate_limit": { "limit": 5000, "used": 150, "left": 4850, "next_reset": "2024-10-31T12:46:00.000Z" },
+            "minute_rate_limit": { "limit": 500, "used": 12, "left": 488, "next_reset": "2024-10-31T12:46:00.000Z" }
+          },
           "metadata": {
             "source": "fresh",
             "request_id": "000xcc2a-829a-4200-9704-f6f9cf9a23de"
@@ -5038,6 +5206,11 @@
           "daily_rate_limit_left": 19999,
           "minute_rate_limit_left": 499,
           "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
+          "quotas": {
+            "credits": { "total": 10000, "used": 1234, "left": 8766 },
+            "daily_rate_limit": { "limit": 5000, "used": 150, "left": 4850, "next_reset": "2024-10-31T12:46:00.000Z" },
+            "minute_rate_limit": { "limit": 500, "used": 12, "left": 488, "next_reset": "2024-10-31T12:46:00.000Z" }
+          },
           "metadata": {
             "currentPage": 1,
             "pageNumber": 10,
@@ -5084,6 +5257,11 @@
           "daily_rate_limit_left": 19999,
           "minute_rate_limit_left": 499,
           "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
+          "quotas": {
+            "credits": { "total": 10000, "used": 1234, "left": 8766 },
+            "daily_rate_limit": { "limit": 5000, "used": 150, "left": 4850, "next_reset": "2024-10-31T12:46:00.000Z" },
+            "minute_rate_limit": { "limit": 500, "used": 12, "left": 488, "next_reset": "2024-10-31T12:46:00.000Z" }
+          },
           "metadata": {
             "source": "fresh",
             "request_id": "000xcc2a-829a-4200-9704-f6f9cf9a23de"
@@ -5156,6 +5334,11 @@
           "daily_rate_limit_left": 19999,
           "minute_rate_limit_left": 499,
           "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
+          "quotas": {
+            "credits": { "total": 10000, "used": 1234, "left": 8766 },
+            "daily_rate_limit": { "limit": 5000, "used": 150, "left": 4850, "next_reset": "2024-10-31T12:46:00.000Z" },
+            "minute_rate_limit": { "limit": 500, "used": 12, "left": 488, "next_reset": "2024-10-31T12:46:00.000Z" }
+          },
           "metadata": {
             "currentPage": 1,
             "pageNumber": 10,
@@ -5194,6 +5377,11 @@
           "daily_rate_limit_left": 19999,
           "minute_rate_limit_left": 499,
           "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
+          "quotas": {
+            "credits": { "total": 10000, "used": 1234, "left": 8766 },
+            "daily_rate_limit": { "limit": 5000, "used": 150, "left": 4850, "next_reset": "2024-10-31T12:46:00.000Z" },
+            "minute_rate_limit": { "limit": 500, "used": 12, "left": 488, "next_reset": "2024-10-31T12:46:00.000Z" }
+          },
           "metadata": {
             "source": "fresh",
             "request_id": "000xcc2a-829a-4200-9704-f6f9cf9a23de"
@@ -5256,6 +5444,11 @@
           "daily_rate_limit_left": 19999,
           "minute_rate_limit_left": 499,
           "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
+          "quotas": {
+            "credits": { "total": 10000, "used": 1234, "left": 8766 },
+            "daily_rate_limit": { "limit": 5000, "used": 150, "left": 4850, "next_reset": "2024-10-31T12:46:00.000Z" },
+            "minute_rate_limit": { "limit": 500, "used": 12, "left": 488, "next_reset": "2024-10-31T12:46:00.000Z" }
+          },
           "metadata": {
             "currentPage": 1,
             "pageNumber": 10,
@@ -5296,6 +5489,11 @@
           "daily_rate_limit_left": 19999,
           "minute_rate_limit_left": 499,
           "next_minute_rate_limit_reset": "2024-01-15T10:31:00Z",
+          "quotas": {
+            "credits": { "total": 10000, "used": 1234, "left": 8766 },
+            "daily_rate_limit": { "limit": 5000, "used": 150, "left": 4850, "next_reset": "2024-10-31T12:46:00.000Z" },
+            "minute_rate_limit": { "limit": 500, "used": 12, "left": 488, "next_reset": "2024-10-31T12:46:00.000Z" }
+          },
           "metadata": {
             "currentPage": 1,
             "pageNumber": 10,
@@ -5457,6 +5655,11 @@
           "daily_rate_limit_left": 999,
           "minute_rate_limit_left": 19,
           "next_minute_rate_limit_reset": "2024-10-31T12:46:00.000Z",
+          "quotas": {
+            "credits": { "total": 10000, "used": 1234, "left": 8766 },
+            "daily_rate_limit": { "limit": 5000, "used": 150, "left": 4850, "next_reset": "2024-10-31T12:46:00.000Z" },
+            "minute_rate_limit": { "limit": 500, "used": 12, "left": 488, "next_reset": "2024-10-31T12:46:00.000Z" }
+          },
           "metadata": {
             "source": "fresh",
             "request_id": "000xcc2a-829a-4200-9704-f6f9cf9a23de"
