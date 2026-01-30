@@ -1659,6 +1659,10 @@
             "type": "integer",
             "description": "Number of connections the person has. Included when 'connectionsCount' is in the includes parameter."
           },
+          "currentPosition": {
+            "$ref": "#/components/schemas/CurrentPosition",
+            "description": "Current position of the person. Returns the most recent active position."
+          },
           "positions": {
             "$ref": "#/components/schemas/PositionsData",
             "description": "Work experience positions of the person. Included when 'positions' is in the includes parameter."
@@ -1944,6 +1948,79 @@
           "linkedInId": {
             "type": "string",
             "description": "Social identifier of the company"
+          }
+        }
+      },
+      "CurrentPosition": {
+        "type": "object",
+        "description": "Current active position of the person",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Job title or position name"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the position or role"
+          },
+          "contractType": {
+            "type": "string",
+            "description": "Type of employment contract"
+          },
+          "companyName": {
+            "type": "string",
+            "description": "Name of the company"
+          },
+          "linkedInId": {
+            "type": "string",
+            "description": "Social identifier of the company"
+          },
+          "linkedInUrl": {
+            "type": "string",
+            "format": "uri",
+            "description": "Social URL of the company"
+          },
+          "companyLocation": {
+            "type": "string",
+            "description": "Location of the company"
+          },
+          "companyLogo": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to the company logo image"
+          },
+          "startEndDate": {
+            "type": "object",
+            "properties": {
+              "start": {
+                "type": "object",
+                "properties": {
+                  "month": {
+                    "type": "integer",
+                    "description": "Start month (1-12)"
+                  },
+                  "year": {
+                    "type": "integer",
+                    "description": "Start year"
+                  }
+                }
+              },
+              "end": {
+                "type": "object",
+                "nullable": true,
+                "properties": {
+                  "month": {
+                    "type": "integer",
+                    "description": "End month (1-12)"
+                  },
+                  "year": {
+                    "type": "integer",
+                    "description": "End year"
+                  }
+                },
+                "description": "End date, null if current position"
+              }
+            }
           }
         }
       },
@@ -3914,6 +3991,20 @@
             "creationDate": { "month": 5, "year": 2013 },
             "followerCount": 35415,
             "connectionsCount": 650,
+            "currentPosition": {
+              "title": "Co-chair",
+              "description": "Leading global health and development initiatives",
+              "contractType": "Full-time",
+              "companyName": "Bill & Melinda Gates Foundation",
+              "linkedInId": "8736",
+              "linkedInUrl": "https://www.social.com/company/bill-melinda-gates-foundation/",
+              "companyLocation": "Seattle, Washington, United States",
+              "companyLogo": "https://media.licdn.com/dms/image/C4E0BAQE7Na_mKQhIJg/company-logo_400_400/0/1633731811337/bill__melinda_gates_foundation_logo?e=1726099200&v=beta&t=LIgstVg1oR5LmBl9u1kolb_xeOqs5kX1ZTcUpaEtsE4",
+              "startEndDate": {
+                "start": { "month": 1, "year": 2000 },
+                "end": null
+              }
+            },
             "positions": {
               "positionsCount": 3,
               "positionHistory": [
@@ -4069,6 +4160,20 @@
             "creationDate": { "month": 5, "year": 2013 },
             "followerCount": 35415,
             "connectionsCount": 650,
+            "currentPosition": {
+              "title": "Co-chair",
+              "description": "Leading global health and development initiatives",
+              "contractType": "Full-time",
+              "companyName": "Bill & Melinda Gates Foundation",
+              "linkedInId": "8736",
+              "linkedInUrl": "https://www.social.com/company/bill-melinda-gates-foundation/",
+              "companyLocation": "Seattle, Washington, United States",
+              "companyLogo": "https://media.licdn.com/dms/image/C4E0BAQE7Na_mKQhIJg/company-logo_400_400/0/1633731811337/bill__melinda_gates_foundation_logo?e=1726099200&v=beta&t=LIgstVg1oR5LmBl9u1kolb_xeOqs5kX1ZTcUpaEtsE4",
+              "startEndDate": {
+                "start": { "month": 1, "year": 2000 },
+                "end": null
+              }
+            },
             "positions": {
               "positionsCount": 3,
               "positionHistory": [
@@ -4237,6 +4342,20 @@
             },
             "followerCount": 3735,
             "connectionsCount": 650,
+            "currentPosition": {
+              "title": "VP of Sales",
+              "description": "B2B Data for AI +",
+              "contractType": "Full-time",
+              "companyName": "ScrapIn",
+              "linkedInId": "100602385",
+              "linkedInUrl": "https://www.social.com/company/scrapin-api/",
+              "companyLocation": "London, England, United Kingdom",
+              "companyLogo": "https://media.licdn.com/dms/image/v2/D4E0BAQF-Z-m2ZKv6qQ/company-logo_200_200/B4EZcRELezHcAM-/0/1748337998127/scrapin_api_logo?e=1756339200&v=beta&t=GjTJ9cgDP2iBYJCx8GxXEg8V2hZjnNBOtvXe58eiqJ0",
+              "startEndDate": {
+                "start": { "month": 1, "year": 2024 },
+                "end": null
+              }
+            },
             "positions": {
               "positionsCount": 10,
               "positionHistory": [
