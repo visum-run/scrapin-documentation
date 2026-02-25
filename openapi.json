@@ -4112,10 +4112,6 @@
             "type": "string",
             "description": "Full company LinkedIn URL."
           },
-          "logo": {
-            "type": "string",
-            "description": "Company logo URL."
-          },
           "industry": {
             "type": "string",
             "description": "Company industry."
@@ -4142,24 +4138,6 @@
             "type": "integer",
             "description": "Number of LinkedIn followers."
           },
-          "headquarter": {
-            "type": "object",
-            "properties": {
-              "city": {
-                "type": "string",
-                "description": "Headquarter city."
-              },
-              "country": {
-                "type": "string",
-                "description": "Headquarter country."
-              },
-              "countryCode": {
-                "type": "string",
-                "description": "Headquarter country code (ISO 3166-1 alpha-2)."
-              }
-            },
-            "description": "Company headquarter location."
-          },
           "websiteUrl": {
             "type": "string",
             "description": "Company website URL."
@@ -4167,11 +4145,6 @@
           "tagline": {
             "type": "string",
             "description": "Company tagline."
-          },
-          "updateDate": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Last update date of company data."
           }
         }
       }

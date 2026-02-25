@@ -16,13 +16,12 @@ Search for companies in our DataLake using advanced filters. This endpoint allow
 
 <Note>
   **DataLake Search:** This endpoint searches our existing database with
-  historical data. Check the `updateDate` field in each result to see when the
-  company was last refreshed.
+  historical data.
 </Note>
 
 ## Need Fresh Data?
 
-The search results include an `updateDate` field showing when each company was last updated. If you can't find companies recent enough even with the `updateDate` filter, you can get **live, real-time data** using:
+If you can't find companies recent enough even with the `updateDate` filter, you can get **live, real-time data** using:
 
 <Card
   title="Company Profile Data"
@@ -33,10 +32,9 @@ The search results include an `updateDate` field showing when each company was l
 </Card>
 
 <Tip>
-  **Smart Workflow**: Use Company Search to discover companies, then check the
-  `updateDate`. If the data is recent enough (e.g., within last 30 days), use it
-  directly. If not, fetch fresh data using Company Profile Data for critical
-  targets.
+  **Smart Workflow**: Use Company Search with the `updateDate` filter to discover
+  companies with recent data. For critical targets that need the freshest data,
+  fetch live data using Company Profile Data.
 </Tip>
 
 ## Use Cases
@@ -97,8 +95,7 @@ The search results include an `updateDate` field showing when each company was l
 </AccordionGroup>
 
 <Note>
-  The `updateDate` field indicates when the company was last refreshed in our
-  database. For fresher data, use the [Company Profile
+  For fresher data, use the [Company Profile
   Data](/endpoint/v1/company/extract-profile) endpoint.
 </Note>
 
@@ -114,9 +111,9 @@ The search results include an `updateDate` field showing when each company was l
 
 Maximize efficiency and accuracy with this workflow:
 
-1. **Search** - Use this endpoint with the `updateDate` parameter to find relevant companies with recent data
-2. **Review** - Check if the returned companies meet your freshness requirements
-3. **Enrich** - Use [Company Profile Data](/endpoint/v1/company/extract-profile) only for companies that need even fresher data
+1. **Search** - Use this endpoint with the `updateDate` filter to find relevant companies with recent data
+2. **Review** - Check if the returned companies meet your requirements
+3. **Enrich** - Use [Company Profile Data](/endpoint/v1/company/extract-profile) only for companies that need fresher data
 
 ## Credit Consumption
 
