@@ -25,7 +25,10 @@
           {
             "group": "Search API",
             "tag": "NEW",
-            "pages": ["endpoint/v1/person/search"]
+            "pages": [
+              "endpoint/v1/person/search",
+              "endpoint/v1/company/company-search"
+            ]
           },
           {
             "group": "Person",
