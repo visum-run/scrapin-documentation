@@ -15,7 +15,7 @@
         "tags": ["Person"],
         "operationId": "PersonSearch",
         "summary": "Person Search",
-        "description": "This operation allows you to find a Profile based on first name, last name, company domain or email. It returns data profile and company information as the response. This operation consumes 1 credit.",
+        "description": "This operation allows you to find a Profile based on first name, last name, company domain or email. It returns data profile and company information as the response. This operation consumes 2 credits.",
         "parameters": [
           {
             "name": "firstName",
@@ -77,7 +77,7 @@
         "tags": ["Person"],
         "operationId": "GetProfileData",
         "summary": "Get Profile Data",
-        "description": "This operation allows you to get profile data from an url. It returns profile data with credits and rate limit information. This operation consumes 1 credit. Note: 404 errors (profile not found) still consume 1 credit.",
+        "description": "This operation allows you to get profile data from an url. It returns profile data with credits and rate limit information. This operation consumes 2 credits. Note: 404 errors (profile not found) still consume 2 credits.",
         "parameters": [
           {
             "name": "linkedInUrl",
@@ -114,7 +114,7 @@
         "tags": ["Person"],
         "operationId": "GetProfileData",
         "summary": "Get Profile Data",
-        "description": "This operation allows you to get profile data from an url. It returns profile data with credits and rate limit information. This operation consumes 1 credit (or 0.5 credits if served from cache). Note: 404 errors (profile not found) still consume 1 credit.",
+        "description": "This operation allows you to get profile data from an url. It returns profile data with credits and rate limit information. This operation consumes 2 credits (or 1 credit if served from cache). Note: 404 errors (profile not found) still consume 2 credits.",
         "requestBody": {
           "required": true,
           "content": {
@@ -128,7 +128,7 @@
                   },
                   "cacheDuration": {
                     "type": "string",
-                    "description": "Optional parameter to enable caching. Accepts duration strings like '4h', '2d', '1w', '2mo', '1y'. We use the [parse-duration](https://www.npmjs.com/package/parse-duration) library internally to parse these values. If the profile is found in cache within this duration, only 0.5 credits are consumed. Otherwise, fresh data is scraped for 1 credit.",
+                    "description": "Optional parameter to enable caching. Accepts duration strings like '4h', '2d', '1w', '2mo', '1y'. We use the [parse-duration](https://www.npmjs.com/package/parse-duration) library internally to parse these values. If the profile is found in cache within this duration, only 1 credit is consumed. Otherwise, fresh data is scraped for 2 credits.",
                     "example": "2d"
                   },
                   "includes": {
@@ -209,7 +209,7 @@
         "tags": ["Person"],
         "operationId": "GetProfileDataFromEmail",
         "summary": "Get Profile Data From Email Address",
-        "description": "This operation allows you to get profile data from email address. It returns profile data with credits and rate limit information. This operation consumes 5 credit.",
+        "description": "This operation allows you to get profile data from email address. It returns profile data with credits and rate limit information. This operation consumes 2 credits.",
         "parameters": [
           {
             "name": "email",
@@ -248,7 +248,7 @@
         "tags": ["Person"],
         "operationId": "MatchProfile",
         "summary": "Match Profile",
-        "description": "This operation allows you to match a single person profile from various parameters. It returns profile data with credits and rate limit information. This operation consumes 1 credit (or 0.5 credits if served from cache).",
+        "description": "This operation allows you to match a single person profile from various parameters. It returns profile data with credits and rate limit information. This operation consumes 2 credits (or 1 credit if served from cache).",
         "requestBody": {
           "required": true,
           "content": {
@@ -278,7 +278,7 @@
                   },
                   "cacheDuration": {
                     "type": "string",
-                    "description": "Optional parameter to enable caching. Accepts duration strings like '4h', '2d', '1w', '2mo', '1y'. We use the [parse-duration](https://www.npmjs.com/package/parse-duration) library internally to parse these values. If the profile is found in cache within this duration, only 0.5 credits are consumed. Otherwise, fresh data is scraped for 1 credit.",
+                    "description": "Optional parameter to enable caching. Accepts duration strings like '4h', '2d', '1w', '2mo', '1y'. We use the [parse-duration](https://www.npmjs.com/package/parse-duration) library internally to parse these values. If the profile is found in cache within this duration, only 1 credit is consumed. Otherwise, fresh data is scraped for 2 credits.",
                     "example": "2d"
                   },
                   "includes": {
@@ -359,7 +359,7 @@
         "tags": ["Person"],
         "operationId": "GetVolunteeringExperiences",
         "summary": "Get Volunteering Experiences",
-        "description": "This operation allows you to get volunteering experiences data from a profile. It returns volunteering experiences information with credits and rate limit information. This operation consumes 1 credit.",
+        "description": "This operation allows you to get volunteering experiences data from a profile. It returns volunteering experiences information with credits and rate limit information. This operation consumes 2 credits.",
         "parameters": [
           {
             "name": "linkedInUrl",
@@ -398,7 +398,7 @@
         "tags": ["Person"],
         "operationId": "EmailFinderFromUrl",
         "summary": "Email Finder from URL",
-        "description": "This operation allows you to find email from a profile URL. It returns a list of email with their types (professional, personal) along with credits and rate limit information. This operation consumes 2 credit.",
+        "description": "This operation allows you to find email from a profile URL. It returns a list of email with their types (professional, personal) along with credits and rate limit information. This operation consumes 4 credits.",
         "requestBody": {
           "required": true,
           "content": {
@@ -445,7 +445,7 @@
         "tags": ["Person"],
         "operationId": "EmailFinderFromNameAndCompany",
         "summary": "Email Finder from Data",
-        "description": "This operation allows you to find email addresses from a person's full name and company information. It returns a list of email with their types (professional, personal) along with credits and rate limit information. This operation consumes 2 credit.",
+        "description": "This operation allows you to find email addresses from a person's full name and company information. It returns a list of email with their types (professional, personal) along with credits and rate limit information. This operation consumes 4 credits.",
         "requestBody": {
           "required": true,
           "content": {
@@ -679,7 +679,7 @@
         "tags": ["Company"],
         "operationId": "CompanyMatch",
         "summary": "Company Match",
-        "description": "This operation allows you to find a company from its domain name. It returns company information as the response. This operation consumes 1 credit (or 0.5 credits if served from cache).",
+        "description": "This operation allows you to find a company from its domain name. It returns company information as the response. This operation consumes 2 credits (or 1 credit if served from cache).",
         "parameters": [
           {
             "name": "domain",
@@ -692,7 +692,7 @@
             "name": "cacheDuration",
             "in": "query",
             "schema": { "type": "string" },
-            "description": "Optional parameter to enable caching. Accepts duration strings like '4h', '2d', '1w', '2mo', '1y'. We use the [parse-duration](https://www.npmjs.com/package/parse-duration) library internally to parse these values. If the profile is found in cache within this duration, only 0.5 credits are consumed. Otherwise, fresh data is scraped for 1 credit.",
+            "description": "Optional parameter to enable caching. Accepts duration strings like '4h', '2d', '1w', '2mo', '1y'. We use the [parse-duration](https://www.npmjs.com/package/parse-duration) library internally to parse these values. If the profile is found in cache within this duration, only 1 credit is consumed. Otherwise, fresh data is scraped for 2 credits.",
             "required": false,
             "example": "2d"
           }
@@ -726,7 +726,7 @@
         "tags": ["Company"],
         "operationId": "ExtractCompanyDataProfile",
         "summary": "Extract Company Data Profile",
-        "description": "This operation allows you to extract data from a Company URL. It returns company data as the response. This operation consumes 1 credit (or 0.5 credits if served from cache). Note: 404 errors (profile not found) still consume 1 credit.",
+        "description": "This operation allows you to extract data from a Company URL. It returns company data as the response. This operation consumes 2 credits (or 1 credit if served from cache). Note: 404 errors (profile not found) still consume 2 credits.",
         "parameters": [
           {
             "name": "linkedInUrl",
@@ -739,7 +739,7 @@
             "name": "cacheDuration",
             "in": "query",
             "schema": { "type": "string" },
-            "description": "Optional parameter to enable caching. Accepts duration strings like '4h', '2d', '1w', '2mo', '1y'. We use the [parse-duration](https://www.npmjs.com/package/parse-duration) library internally to parse these values. If the profile is found in cache within this duration, only 0.5 credits are consumed. Otherwise, fresh data is scraped for 1 credit.",
+            "description": "Optional parameter to enable caching. Accepts duration strings like '4h', '2d', '1w', '2mo', '1y'. We use the [parse-duration](https://www.npmjs.com/package/parse-duration) library internally to parse these values. If the profile is found in cache within this duration, only 1 credit is consumed. Otherwise, fresh data is scraped for 2 credits.",
             "required": false,
             "example": "2d"
           }
@@ -773,7 +773,7 @@
         "tags": ["Job"],
         "operationId": "JobSearch",
         "summary": "Extract Job Search Data",
-        "description": "This operation allows you to extract data from a Job Search by keywords, location and companyUrl filters. At least one of the input parameters is required. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. It returns a list of job data as the response. This operation consumes 1 credit.",
+        "description": "This operation allows you to extract data from a Job Search by keywords, location and companyUrl filters. At least one of the input parameters is required. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. It returns a list of job data as the response. This operation consumes 2 credits.",
         "parameters": [
           {
             "name": "keywords",
@@ -834,7 +834,7 @@
         "tags": ["Job"],
         "operationId": "ExtractJobData",
         "summary": "Extract Job Data",
-        "description": "This operation allows you to extract data from a Job URL. It returns job data as the response. This operation consumes 1 credit.",
+        "description": "This operation allows you to extract data from a Job URL. It returns job data as the response. This operation consumes 2 credits.",
         "parameters": [
           {
             "name": "url",
@@ -873,7 +873,7 @@
         "tags": ["Person"],
         "operationId": "PersonsActivitiesPost",
         "summary": "Get Person Activities Post",
-        "description": "This operation allows you to retrieve the activity post details of a person based on their activity post ID. This operation consumes 1 credit.",
+        "description": "This operation allows you to retrieve the activity post details of a person based on their activity post ID. This operation consumes 2 credits.",
         "parameters": [
           {
             "name": "activityId",
@@ -919,7 +919,7 @@
         "tags": ["Person"],
         "operationId": "PersonsActivitiesPosts",
         "summary": "Get Person Activities Posts",
-        "description": "This operation allows you to retrieve the last 50 activity posts of a person based on their Profile URL. This operation consumes 1 credit.",
+        "description": "This operation allows you to retrieve the last 50 activity posts of a person based on their Profile URL. This operation consumes 2 credits.",
         "parameters": [
           {
             "name": "linkedInUrl",
@@ -958,7 +958,7 @@
         "tags": ["Person"],
         "operationId": "PersonsActivitiesComments",
         "summary": "Get Person Activities Comments",
-        "description": "This operation allows you to retrieve the last 50 activity comments of a person based on their Profile URL. This operation consumes 1 credit.",
+        "description": "This operation allows you to retrieve the last 50 activity comments of a person based on their Profile URL. This operation consumes 2 credits.",
         "parameters": [
           {
             "name": "linkedInUrl",
@@ -997,7 +997,7 @@
         "tags": ["Person"],
         "operationId": "PersonsActivitiesReactions",
         "summary": "Get Person Activities Reactions",
-        "description": "This operation allows you to retrieve the last 50 activity reactions of a person based on their Profile URL. This operation consumes 1 credit.",
+        "description": "This operation allows you to retrieve the last 50 activity reactions of a person based on their Profile URL. This operation consumes 2 credits.",
         "parameters": [
           {
             "name": "linkedInUrl",
@@ -1036,7 +1036,7 @@
         "tags": ["Person"],
         "operationId": "PersonsActivitiesPostComments",
         "summary": "Get Person Activities Post Comments",
-        "description": "This operation allows you to retrieve all comments on activity post of a person based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.",
+        "description": "This operation allows you to retrieve all comments on activity post of a person based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 2 credits.",
         "parameters": [
           {
             "name": "activityId",
@@ -1082,7 +1082,7 @@
         "tags": ["Person"],
         "operationId": "PersonsActivitiesPostReactions",
         "summary": "Get Person Activities Post Reactions",
-        "description": "This operation allows you to retrieve all reactions on activity post of a person based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.",
+        "description": "This operation allows you to retrieve all reactions on activity post of a person based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 2 credits.",
         "parameters": [
           {
             "name": "activityId",
@@ -1128,7 +1128,7 @@
         "tags": ["Person"],
         "operationId": "PersonsActivitiesPostReposts",
         "summary": "Get Person Activities Post Reposts",
-        "description": "This operation allows you to retrieve all reposts on activity post of a person based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.",
+        "description": "This operation allows you to retrieve all reposts on activity post of a person based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 2 credits.",
         "parameters": [
           {
             "name": "activityId",
@@ -1174,7 +1174,7 @@
         "tags": ["Company"],
         "operationId": "CompaniesActivitiesPost",
         "summary": "Get Company Activities Post",
-        "description": "This operation allows you to retrieve the activity post details of a company based on their activity post ID. This operation consumes 1 credit.",
+        "description": "This operation allows you to retrieve the activity post details of a company based on their activity post ID. This operation consumes 2 credits.",
         "parameters": [
           {
             "name": "activityId",
@@ -1213,7 +1213,7 @@
         "tags": ["Company"],
         "operationId": "CompaniesActivitiesPosts",
         "summary": "Get Company Activities Posts",
-        "description": "This operation allows you to retrieve all activity posts of a company based on their Profile URL. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.",
+        "description": "This operation allows you to retrieve all activity posts of a company based on their Profile URL. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 2 credits.",
         "parameters": [
           {
             "name": "linkedInUrl",
@@ -1259,7 +1259,7 @@
         "tags": ["Company"],
         "operationId": "CompaniesActivitiesPostComments",
         "summary": "Get Company Activities Post Comments",
-        "description": "This operation allows you to retrieve all comments on activity post of a company based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.",
+        "description": "This operation allows you to retrieve all comments on activity post of a company based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 2 credits.",
         "parameters": [
           {
             "name": "activityId",
@@ -1305,7 +1305,7 @@
         "tags": ["Company"],
         "operationId": "CompaniesActivitiesPostReactions",
         "summary": "Get Company Activities Post Reactions",
-        "description": "This operation allows you to retrieve all reactions on activity post of a company based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.",
+        "description": "This operation allows you to retrieve all reactions on activity post of a company based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 2 credits.",
         "parameters": [
           {
             "name": "activityId",
@@ -1351,7 +1351,7 @@
         "tags": ["Company"],
         "operationId": "CompaniesActivitiesPostReposts",
         "summary": "Get Company Activities Post Reposts",
-        "description": "This operation allows you to retrieve all reposts on activity post of a company based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 1 credit.",
+        "description": "This operation allows you to retrieve all reposts on activity post of a company based on their activity post ID. Pagination is limited to 10 pages, with a maximum of 50 items per page, allowing retrieval of up to 500 items. This operation consumes 2 credits.",
         "parameters": [
           {
             "name": "activityId",
@@ -4154,7 +4154,7 @@
         "summary": "Profile Found",
         "value": {
           "success": true,
-          "credits_consumed": 1,
+          "credits_consumed": 2,
           "email": "bill.gates@microsoft.com",
           "emailType": "professional",
           "credits_left": 90000.5,
@@ -4325,7 +4325,7 @@
         "summary": "Person Profile Extracted",
         "value": {
           "success": true,
-          "credits_consumed": 1,
+          "credits_consumed": 2,
           "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
@@ -4494,7 +4494,7 @@
         "summary": "Person Profile Extracted",
         "value": {
           "success": true,
-          "credits_consumed": 1,
+          "credits_consumed": 2,
           "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
@@ -4782,7 +4782,7 @@
         "summary": "Profile Found",
         "value": {
           "success": true,
-          "credits_consumed": 1,
+          "credits_consumed": 2,
           "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
@@ -4819,7 +4819,7 @@
         "summary": "Summary Found",
         "value": {
           "success": true,
-          "credits_consumed": 1,
+          "credits_consumed": 2,
           "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
@@ -4837,7 +4837,7 @@
         "summary": "Followers Count Found",
         "value": {
           "success": true,
-          "credits_consumed": 1,
+          "credits_consumed": 2,
           "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
@@ -4855,7 +4855,7 @@
         "summary": "Experience Found",
         "value": {
           "success": true,
-          "credits_consumed": 1,
+          "credits_consumed": 2,
           "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
@@ -4925,7 +4925,7 @@
         "summary": "Education Found",
         "value": {
           "success": true,
-          "credits_consumed": 1,
+          "credits_consumed": 2,
           "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
@@ -4979,7 +4979,7 @@
         "summary": "Skills Found",
         "value": {
           "success": true,
-          "credits_consumed": 1,
+          "credits_consumed": 2,
           "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
@@ -5024,7 +5024,7 @@
         "summary": "Languages Found",
         "value": {
           "success": true,
-          "credits_consumed": 1,
+          "credits_consumed": 2,
           "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
@@ -5059,7 +5059,7 @@
         "summary": "Recommendations Found",
         "value": {
           "success": true,
-          "credits_consumed": 1,
+          "credits_consumed": 2,
           "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
@@ -5096,7 +5096,7 @@
         "summary": "Certifications Found",
         "value": {
           "success": true,
-          "credits_consumed": 1,
+          "credits_consumed": 2,
           "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
@@ -5127,7 +5127,7 @@
         "summary": "Volunteering Experiences Found",
         "value": {
           "success": true,
-          "credits_consumed": 1,
+          "credits_consumed": 2,
           "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
@@ -5152,7 +5152,7 @@
         "summary": "Emails Found",
         "value": {
           "success": true,
-          "credits_consumed": 2,
+          "credits_consumed": 4,
           "credits_left": 200731.5,
           "rate_limit_left": 99890,
           "daily_rate_limit_left": 99890,
@@ -5179,7 +5179,7 @@
         "summary": "Company Found",
         "value": {
           "success": true,
-          "credits_consumed": 1,
+          "credits_consumed": 2,
           "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
@@ -5238,7 +5238,7 @@
         "summary": "Company Profile Extracted",
         "value": {
           "success": true,
-          "credits_consumed": 1,
+          "credits_consumed": 2,
           "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
@@ -5297,7 +5297,7 @@
         "summary": "Job List Example",
         "value": {
           "success": true,
-          "credits_consumed": 1,
+          "credits_consumed": 2,
           "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
@@ -5342,7 +5342,7 @@
         "summary": "Company Profile Extracted",
         "value": {
           "success": true,
-          "credits_consumed": 1,
+          "credits_consumed": 2,
           "credits_left": 90000.5,
           "rate_limit_left": 19000,
           "daily_rate_limit_left": 19000,
@@ -5379,7 +5379,7 @@
         "summary": "Activities Post",
         "value": {
           "success": true,
-          "credits_consumed": 1,
+          "credits_consumed": 2,
           "credits_left": 19934.5,
           "rate_limit_left": 19999,
           "daily_rate_limit_left": 19999,
@@ -5430,7 +5430,7 @@
         "summary": "Activities Posts",
         "value": {
           "success": true,
-          "credits_consumed": 1,
+          "credits_consumed": 2,
           "credits_left": 19934.5,
           "rate_limit_left": 19999,
           "daily_rate_limit_left": 19999,
@@ -5512,7 +5512,7 @@
         "summary": "Activities Comments",
         "value": {
           "success": true,
-          "credits_consumed": 1,
+          "credits_consumed": 2,
           "credits_left": 19934.5,
           "rate_limit_left": 19999,
           "daily_rate_limit_left": 19999,
@@ -5563,7 +5563,7 @@
         "summary": "Activities Comments",
         "value": {
           "success": true,
-          "credits_consumed": 1,
+          "credits_consumed": 2,
           "credits_left": 19934.5,
           "rate_limit_left": 19999,
           "daily_rate_limit_left": 19999,
@@ -5640,7 +5640,7 @@
         "summary": "Activities Reactions",
         "value": {
           "success": true,
-          "credits_consumed": 1,
+          "credits_consumed": 2,
           "credits_left": 19934.5,
           "rate_limit_left": 19999,
           "daily_rate_limit_left": 19999,
@@ -5683,7 +5683,7 @@
         "summary": "Activities Reactions",
         "value": {
           "success": true,
-          "credits_consumed": 1,
+          "credits_consumed": 2,
           "credits_left": 19934.5,
           "rate_limit_left": 19999,
           "daily_rate_limit_left": 19999,
@@ -5750,7 +5750,7 @@
         "summary": "Activities Reactions",
         "value": {
           "success": true,
-          "credits_consumed": 1,
+          "credits_consumed": 2,
           "credits_left": 19934.5,
           "rate_limit_left": 19999,
           "daily_rate_limit_left": 19999,
@@ -5795,7 +5795,7 @@
         "summary": "Activities Posts",
         "value": {
           "success": true,
-          "credits_consumed": 1,
+          "credits_consumed": 2,
           "credits_left": 19934.5,
           "rate_limit_left": 19999,
           "daily_rate_limit_left": 19999,

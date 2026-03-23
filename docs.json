@@ -23,14 +23,6 @@
             "pages": ["introduction", "quickstart"]
           },
           {
-            "group": "Search API",
-            "tag": "NEW",
-            "pages": [
-              "endpoint/v1/person/search",
-              "endpoint/v1/company/company-search"
-            ]
-          },
-          {
             "group": "Person",
             "pages": [
               "endpoint/v1/person/profile",
@@ -38,10 +30,6 @@
               "endpoint/v1/person/emails-finder-url",
               "endpoint/v1/person/emails-finder"
             ]
-          },
-          {
-            "group": "Changes Alerts",
-            "pages": ["changes-alerts/person"]
           },
           {
             "group": "Person Activities",
